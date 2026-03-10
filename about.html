@@ -23,11 +23,13 @@
     --text-tertiary: #999999;
     --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
     --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
-    --shadow-lg: 0 20px 60px rgba(0,0,0,0.1);
+    --radius: 16px;
+    --content-width: 680px;
+    --section-padding: 80px 24px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
   body {
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
@@ -35,20 +37,21 @@
     background: var(--bg);
     line-height: 1.7;
     overflow-x: hidden;
+    word-break: keep-all;
   }
 
-  /* Nav */
+  /* ===== Nav ===== */
   .nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.92);
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
   }
   .nav-inner {
-    max-width: 720px; margin: 0 auto; padding: 0 24px;
+    max-width: var(--content-width); margin: 0 auto; padding: 0 24px;
     height: 56px; display: flex; align-items: center; justify-content: space-between;
   }
-  .nav-logo { font-size: 20px; font-weight: 700; color: var(--brand); text-decoration: none; }
+  .nav-logo { font-size: 20px; font-weight: 700; color: var(--brand); text-decoration: none; letter-spacing: -0.5px; }
   .nav-cta {
     background: var(--brand); color: white; border: none; border-radius: 999px;
     padding: 8px 20px; font-size: 14px; font-weight: 600; cursor: pointer;
@@ -56,26 +59,46 @@
   }
   .nav-cta:hover { background: var(--brand-dark); }
 
-  /* Sections */
+  /* ===== Section Layout ===== */
   .section {
-    max-width: 720px; margin: 0 auto; padding: 80px 24px;
+    max-width: var(--content-width); margin: 0 auto; padding: var(--section-padding);
   }
-  .section-wide {
-    max-width: 100%; padding-left: 0; padding-right: 0;
+  .section-bg {
+    background: var(--bg-section);
   }
-  .section-inner { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+  .section-bg > .section-inner {
+    max-width: var(--content-width); margin: 0 auto; padding: var(--section-padding);
+  }
 
-  /* Hero */
+  /* Section header pattern */
+  .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .section-header h2 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  .section-header p {
+    font-size: 15px;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+  }
+
+  /* ===== Hero ===== */
   .hero {
-    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    min-height: 100vh; min-height: 100dvh;
+    display: flex; align-items: center; justify-content: center;
     text-align: center; position: relative; overflow: hidden;
     background: linear-gradient(180deg, var(--bg) 0%, var(--bg-warm) 100%);
-    padding-top: 56px;
+    padding: 56px 24px 40px;
   }
   .hero::before {
     content: ''; position: absolute; top: -100px; right: -100px;
     width: 400px; height: 400px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,107,107,0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255,107,107,0.08) 0%, transparent 70%);
     animation: drift 10s ease-in-out infinite;
   }
   .hero::after {
@@ -88,25 +111,30 @@
     0%, 100% { transform: translate(0,0); }
     50% { transform: translate(-20px, 15px); }
   }
-  .hero-content { position: relative; z-index: 2; padding: 40px 24px; }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 520px; margin: 0 auto;
+  }
   .hero-logo {
-    width: 88px; height: 88px; margin: 0 auto 32px;
+    width: 80px; height: 80px; margin: 0 auto 28px;
     animation: fadeUp 0.8s ease;
   }
   .hero-logo svg { width: 100%; height: 100%; }
 
   .hero-question {
-    font-size: clamp(14px, 2vw, 16px); color: var(--text-tertiary);
+    font-size: 15px; color: var(--text-tertiary);
     margin-bottom: 12px; animation: fadeUp 0.8s ease 0.1s both;
   }
   .hero h1 {
-    font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.3;
-    margin-bottom: 16px; animation: fadeUp 0.8s ease 0.2s both;
+    font-size: 36px; font-weight: 700; line-height: 1.35;
+    margin-bottom: 20px; animation: fadeUp 0.8s ease 0.2s both;
+    letter-spacing: -0.5px;
   }
   .hero h1 .brand { color: var(--brand); }
   .hero-desc {
-    font-size: clamp(16px, 2.5vw, 19px); color: var(--text-secondary);
-    line-height: 1.7; margin-bottom: 40px; animation: fadeUp 0.8s ease 0.3s both;
+    font-size: 17px; color: var(--text-secondary);
+    line-height: 1.8; margin-bottom: 36px; animation: fadeUp 0.8s ease 0.3s both;
   }
   .hero-cta {
     display: inline-block; background: var(--brand); color: white;
@@ -116,84 +144,91 @@
   }
   .hero-cta:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,107,107,0.4); }
   .hero-sub {
-    font-size: 13px; color: var(--text-tertiary); margin-top: 12px;
+    font-size: 13px; color: var(--text-tertiary); margin-top: 14px;
     animation: fadeUp 0.8s ease 0.5s both;
   }
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Pain Points */
-  .pain { background: var(--bg-section); }
+  /* ===== Pain Points ===== */
   .pain-list {
-    display: flex; flex-direction: column; gap: 16px; margin-top: 40px;
+    display: flex; flex-direction: column; gap: 12px;
   }
   .pain-item {
-    background: var(--bg); border-radius: 16px; padding: 24px 28px;
+    background: var(--bg); border-radius: var(--radius); padding: 20px 24px;
     display: flex; align-items: flex-start; gap: 16px;
     box-shadow: var(--shadow-sm); transition: transform 0.2s;
   }
   .pain-item:hover { transform: translateX(4px); }
-  .pain-emoji { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
-  .pain-text { font-size: 16px; color: var(--text-secondary); line-height: 1.6; }
-  .pain-text strong { color: var(--text-primary); }
-
-  /* Solution */
-  .solution-title {
-    font-size: clamp(24px, 4vw, 36px); font-weight: 700;
-    text-align: center; line-height: 1.4; margin-bottom: 12px;
+  .pain-emoji {
+    font-size: 24px; flex-shrink: 0;
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-section); border-radius: 10px;
   }
-  .solution-title .brand { color: var(--brand); }
-  .solution-sub {
-    text-align: center; font-size: 17px; color: var(--text-secondary);
-    margin-bottom: 48px;
+  .pain-text { font-size: 15px; color: var(--text-secondary); line-height: 1.65; flex: 1; }
+  .pain-text strong { color: var(--text-primary); font-weight: 600; }
+
+  /* ===== Solution / Steps ===== */
+  .solution-header {
+    text-align: center; margin-bottom: 48px;
+  }
+  .solution-header h2 {
+    font-size: 28px; font-weight: 700; line-height: 1.4; margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+  .solution-header h2 .brand { color: var(--brand); }
+  .solution-header p {
+    font-size: 16px; color: var(--text-secondary); line-height: 1.6;
   }
 
-  /* How it works */
   .steps { display: flex; flex-direction: column; gap: 0; position: relative; }
   .steps::before {
-    content: ''; position: absolute; left: 31px; top: 40px; bottom: 40px;
+    content: ''; position: absolute; left: 27px; top: 48px; bottom: 48px;
     width: 2px; background: linear-gradient(180deg, var(--brand-light), var(--brand), var(--brand-light));
   }
   .step {
-    display: flex; gap: 24px; align-items: flex-start; position: relative;
-    padding: 24px 0;
+    display: flex; gap: 20px; align-items: flex-start; position: relative;
+    padding: 20px 0;
   }
   .step-num {
-    width: 64px; height: 64px; border-radius: 50%; flex-shrink: 0;
+    width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
-    font-size: 24px; font-weight: 700; color: white;
+    font-size: 22px; font-weight: 700; color: white;
     background: linear-gradient(135deg, var(--brand), var(--brand-dark));
-    box-shadow: 0 4px 16px rgba(255,107,107,0.3);
+    box-shadow: 0 4px 16px rgba(255,107,107,0.25);
     position: relative; z-index: 1;
   }
-  .step-content { padding-top: 8px; }
-  .step-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-  .step-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
+  .step-content { padding-top: 4px; flex: 1; }
+  .step-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .step-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.65; }
 
-  /* Moim Examples */
-  .moim-section { background: var(--bg-section); }
+  /* ===== Moim Examples ===== */
   .moim-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
   }
   .moim-card {
-    background: var(--bg); border-radius: 20px; padding: 28px 20px;
+    background: var(--bg); border-radius: var(--radius); padding: 24px 16px;
     text-align: center; box-shadow: var(--shadow-sm);
     border: 1px solid rgba(0,0,0,0.03);
     transition: all 0.3s;
   }
   .moim-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-  .moim-icon { font-size: 40px; margin-bottom: 12px; }
-  .moim-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .moim-icon {
+    font-size: 36px; margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .moim-name { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
   .moim-desc { font-size: 13px; color: var(--text-tertiary); line-height: 1.5; }
 
-  /* What you get */
+  /* ===== Benefits ===== */
   .benefit-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
   }
   .benefit-card {
-    border-radius: 20px; padding: 32px 24px;
+    border-radius: var(--radius); padding: 28px 22px;
     transition: transform 0.2s;
   }
   .benefit-card:hover { transform: translateY(-2px); }
@@ -201,143 +236,206 @@
   .benefit-card:nth-child(2) { background: #F5F0FF; }
   .benefit-card:nth-child(3) { background: #F0F8FF; }
   .benefit-card:nth-child(4) { background: #FFF8F0; }
-  .benefit-emoji { font-size: 32px; margin-bottom: 12px; }
-  .benefit-title { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
-  .benefit-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  .benefit-emoji {
+    font-size: 28px; margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .benefit-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .benefit-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-  /* Reviews */
+  /* ===== Reviews ===== */
   .review-grid {
-    display: flex; flex-direction: column; gap: 16px; margin-top: 40px;
+    display: flex; flex-direction: column; gap: 14px;
   }
   .review-card {
-    background: var(--bg); border-radius: 16px; padding: 28px;
+    background: var(--bg); border-radius: var(--radius); padding: 24px;
     box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.03);
   }
-  .review-text {
-    font-size: 16px; color: var(--text-secondary); line-height: 1.7;
-    font-style: italic; margin-bottom: 12px;
+  .review-quote {
+    display: flex; align-items: flex-start; gap: 4px;
+    margin-bottom: 12px;
   }
-  .review-author { font-size: 13px; color: var(--text-tertiary); font-weight: 500; }
+  .review-mark {
+    font-size: 32px; color: var(--brand-light); font-weight: 700;
+    line-height: 1; margin-top: -4px; flex-shrink: 0;
+  }
+  .review-text {
+    font-size: 15px; color: var(--text-secondary); line-height: 1.7;
+  }
+  .review-author {
+    font-size: 13px; color: var(--text-tertiary); font-weight: 500;
+    padding-left: 2px;
+  }
 
-  /* Children section */
-  .children { background: linear-gradient(135deg, #F5F0FF, #FFF5F5); }
+  /* ===== Children Section ===== */
+  .children-bg {
+    background: linear-gradient(135deg, #F5F0FF, #FFF5F5);
+  }
   .children-content { text-align: center; }
-  .children-emoji { font-size: 56px; margin-bottom: 20px; }
+  .children-emoji { font-size: 48px; margin-bottom: 20px; line-height: 1.2; }
   .children-title {
-    font-size: clamp(22px, 3.5vw, 32px); font-weight: 700;
-    line-height: 1.4; margin-bottom: 12px;
+    font-size: 26px; font-weight: 700;
+    line-height: 1.45; margin-bottom: 16px;
+    letter-spacing: -0.3px;
   }
   .children-desc {
-    font-size: 17px; color: var(--text-secondary); line-height: 1.8;
-    max-width: 480px; margin: 0 auto 32px;
+    font-size: 16px; color: var(--text-secondary); line-height: 1.8;
+    max-width: 420px; margin: 0 auto 28px;
   }
   .children-quote {
-    background: var(--bg); border-radius: 16px; padding: 28px 32px;
-    display: inline-block; max-width: 440px;
+    background: var(--bg); border-radius: var(--radius); padding: 24px 28px;
+    display: inline-block; max-width: 400px; width: 100%;
     box-shadow: var(--shadow-sm); text-align: left;
   }
   .children-quote p {
-    font-size: 16px; color: var(--text-secondary); line-height: 1.7;
+    font-size: 15px; color: var(--text-secondary); line-height: 1.75;
   }
   .children-quote p strong { color: var(--brand); }
 
-  /* Trust */
+  /* ===== Trust ===== */
   .trust-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
   }
-  .trust-item { text-align: center; }
-  .trust-icon { font-size: 32px; margin-bottom: 8px; }
-  .trust-label { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
-  .trust-desc { font-size: 12px; color: var(--text-tertiary); }
+  .trust-item { text-align: center; padding: 12px 8px; }
+  .trust-icon {
+    width: 48px; height: 48px; margin: 0 auto 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    background: var(--bg-section); border-radius: 12px;
+  }
+  .trust-label { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .trust-desc { font-size: 12px; color: var(--text-tertiary); line-height: 1.4; }
 
-  /* CTA Bottom */
+  /* ===== CTA Bottom ===== */
   .cta-bottom {
-    text-align: center; padding: 100px 24px;
+    text-align: center; padding: 80px 24px;
     background: linear-gradient(180deg, var(--bg-warm), var(--bg));
     position: relative;
   }
   .cta-bottom::before {
     content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-    width: 1px; height: 60px;
+    width: 1px; height: 48px;
     background: linear-gradient(180deg, transparent, var(--brand));
   }
   .cta-title {
-    font-size: clamp(24px, 4vw, 36px); font-weight: 700;
+    font-size: 28px; font-weight: 700;
     line-height: 1.4; margin-bottom: 12px;
+    letter-spacing: -0.3px;
   }
   .cta-title .brand { color: var(--brand); }
   .cta-desc {
-    font-size: 17px; color: var(--text-secondary); margin-bottom: 36px;
+    font-size: 16px; color: var(--text-secondary); margin-bottom: 32px;
   }
   .cta-button {
     display: inline-block; background: var(--brand); color: white;
-    border-radius: 999px; padding: 18px 48px; font-size: 18px; font-weight: 700;
+    border-radius: 999px; padding: 16px 44px; font-size: 17px; font-weight: 700;
     text-decoration: none; box-shadow: 0 8px 24px rgba(255,107,107,0.3);
     transition: all 0.3s;
   }
   .cta-button:hover { background: var(--brand-dark); transform: translateY(-2px); }
   .cta-stores {
-    margin-top: 16px; display: flex; justify-content: center; gap: 16px;
+    margin-top: 16px; display: flex; justify-content: center; gap: 20px;
     flex-wrap: wrap;
   }
   .cta-store {
     display: inline-flex; align-items: center; gap: 6px;
     font-size: 13px; color: var(--text-tertiary); text-decoration: none;
+    transition: color 0.2s;
   }
+  .cta-store:hover { color: var(--text-secondary); }
 
-  /* Footer */
+  /* ===== Footer ===== */
   .footer {
-    text-align: center; padding: 32px 24px;
+    text-align: center; padding: 28px 24px;
     font-size: 12px; color: var(--text-tertiary);
     border-top: 1px solid #F0F0F0;
   }
   .footer a { color: var(--text-tertiary); text-decoration: none; }
   .footer a:hover { color: var(--brand); }
 
-  /* Responsive */
-  @media (max-width: 640px) {
-    .section { padding: 60px 20px; }
-    .section-inner { padding: 0 20px; }
-    .hero { min-height: auto; padding: 80px 0 48px; }
-    .hero-content { padding: 24px 20px; }
-    .hero-logo { width: 68px; height: 68px; margin-bottom: 24px; }
+  /* ===== Responsive ===== */
+  @media (max-width: 768px) {
+    :root {
+      --section-padding: 60px 20px;
+    }
+    .section-header h2 { font-size: 23px; }
+    .hero h1 { font-size: 30px; }
+    .hero-desc { font-size: 16px; }
+    .solution-header h2 { font-size: 24px; }
+    .moim-grid { grid-template-columns: repeat(2, 1fr); }
+    .children-title { font-size: 23px; }
+    .cta-title { font-size: 24px; }
+  }
+
+  @media (max-width: 480px) {
+    :root {
+      --section-padding: 48px 16px;
+    }
+    .nav-inner { padding: 0 16px; }
+
+    .hero { padding: 56px 16px 32px; min-height: auto; }
+    .hero-logo { width: 64px; height: 64px; margin-bottom: 20px; }
+    .hero-question { font-size: 14px; }
+    .hero h1 { font-size: 26px; margin-bottom: 16px; }
+    .hero-desc { font-size: 15px; line-height: 1.75; margin-bottom: 28px; }
     .hero-cta { padding: 14px 32px; font-size: 16px; }
+    .hero-sub { font-size: 12px; }
 
-    .pain-item { padding: 20px; gap: 12px; }
-    .pain-emoji { font-size: 24px; }
-    .pain-text { font-size: 15px; }
+    .section-header { margin-bottom: 28px; }
+    .section-header h2 { font-size: 21px; }
+    .section-header p { font-size: 14px; }
 
-    .steps::before { left: 23px; }
-    .step-num { width: 48px; height: 48px; font-size: 18px; }
-    .step { gap: 16px; padding: 16px 0; }
-    .step-title { font-size: 17px; }
+    .pain-item { padding: 16px 18px; gap: 12px; }
+    .pain-emoji { width: 36px; height: 36px; font-size: 20px; border-radius: 8px; }
+    .pain-text { font-size: 14px; }
+
+    .solution-header h2 { font-size: 22px; }
+    .solution-header p { font-size: 15px; }
+    .steps::before { left: 21px; }
+    .step { gap: 14px; padding: 14px 0; }
+    .step-num { width: 44px; height: 44px; font-size: 18px; }
+    .step-title { font-size: 16px; }
     .step-desc { font-size: 14px; }
 
-    .moim-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .moim-card { padding: 20px 16px; }
-    .moim-icon { font-size: 32px; }
+    .moim-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .moim-card { padding: 18px 12px; border-radius: 14px; }
+    .moim-icon { font-size: 30px; margin-bottom: 8px; }
     .moim-name { font-size: 14px; }
     .moim-desc { font-size: 12px; }
 
-    .benefit-grid { grid-template-columns: 1fr; gap: 12px; }
-    .benefit-card { padding: 24px 20px; }
+    .benefit-grid { grid-template-columns: 1fr; gap: 10px; }
+    .benefit-card { padding: 22px 18px; display: flex; gap: 14px; align-items: flex-start; }
+    .benefit-emoji { font-size: 24px; margin-bottom: 0; flex-shrink: 0; }
+    .benefit-text { flex: 1; }
 
     .review-card { padding: 20px; }
-    .review-text { font-size: 15px; }
+    .review-text { font-size: 14px; }
+    .review-mark { font-size: 28px; }
 
-    .children-emoji { font-size: 44px; }
-    .children-quote { padding: 20px 24px; }
-    .children-quote p { font-size: 15px; }
+    .children-emoji { font-size: 40px; margin-bottom: 16px; }
+    .children-title { font-size: 22px; }
+    .children-desc { font-size: 15px; margin-bottom: 24px; }
+    .children-quote { padding: 20px 22px; }
+    .children-quote p { font-size: 14px; }
 
-    .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .trust-icon { font-size: 28px; }
+    .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .trust-icon { width: 44px; height: 44px; font-size: 22px; border-radius: 10px; }
+    .trust-label { font-size: 13px; }
+    .trust-desc { font-size: 11px; }
 
-    .cta-button { padding: 16px 36px; font-size: 16px; }
+    .cta-bottom { padding: 60px 16px; }
+    .cta-title { font-size: 22px; }
+    .cta-desc { font-size: 15px; margin-bottom: 24px; }
+    .cta-button { padding: 14px 36px; font-size: 16px; }
+    .cta-stores { gap: 16px; }
   }
-  @media (max-width: 380px) {
-    .hero h1 { font-size: 24px; }
-    .moim-grid { grid-template-columns: 1fr 1fr; }
-    .solution-title { font-size: 22px; }
+
+  @media (max-width: 360px) {
+    .hero h1 { font-size: 23px; }
+    .section-header h2 { font-size: 20px; }
+    .solution-header h2 { font-size: 20px; }
+    .moim-grid { gap: 8px; }
+    .moim-card { padding: 16px 10px; }
   }
 </style>
 </head>
@@ -375,15 +473,17 @@
       당신은 나오기만 하면 됩니다.
     </p>
     <a href="https://ondam-front.vercel.app" class="hero-cta">온담 시작하기</a>
-    <p class="hero-sub">가입 무료 &middot; 첫 모임 특별 초대</p>
+    <p class="hero-sub">가입 무료 · 첫 모임 특별 초대</p>
   </div>
 </section>
 
 <!-- Pain Points -->
-<section class="pain section-wide">
-  <div class="section section-inner">
-    <h2 style="font-size:clamp(22px,3.5vw,30px);font-weight:700;text-align:center;margin-bottom:4px;">혹시 이런 경험 있으신가요?</h2>
-    <p style="text-align:center;color:var(--text-tertiary);font-size:15px;">나이가 들수록, 좋은 만남은 점점 멀어집니다</p>
+<div class="section-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>혹시 이런 경험 있으신가요?</h2>
+      <p>나이가 들수록, 좋은 만남은 점점 멀어집니다</p>
+    </div>
 
     <div class="pain-list">
       <div class="pain-item">
@@ -400,16 +500,18 @@
       </div>
       <div class="pain-item">
         <span class="pain-emoji">&#x1F614;</span>
-        <div class="pain-text"><strong>혼자 나가기 부담됩니다.</strong> "나만 가는 건 아니겠지?" 모르는 사람들 사이에 혼자 가는 게 쉽지 않습니다.</div>
+        <div class="pain-text"><strong>혼자 나가기 부담됩니다.</strong> 모르는 사람들 사이에 혼자 가는 게 쉽지 않습니다.</div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- Solution -->
 <section class="section">
-  <h2 class="solution-title">그래서 <span class="brand">온담</span>이<br>대신 준비합니다</h2>
-  <p class="solution-sub">모임 기획부터 장소 예약, 사람 연결까지.<br>온담이 전부 해드립니다.</p>
+  <div class="solution-header">
+    <h2>그래서 <span class="brand">온담</span>이<br>대신 준비합니다</h2>
+    <p>모임 기획부터 장소 예약, 사람 연결까지<br>온담이 전부 해드립니다.</p>
+  </div>
 
   <div class="steps">
     <div class="step">
@@ -437,10 +539,12 @@
 </section>
 
 <!-- Moim Examples -->
-<section class="moim-section section-wide">
-  <div class="section section-inner">
-    <h2 style="font-size:clamp(22px,3.5vw,30px);font-weight:700;text-align:center;margin-bottom:4px;">이런 모임이 기다리고 있어요</h2>
-    <p style="text-align:center;color:var(--text-tertiary);font-size:15px;">온담이 기획하는 다양한 테마의 모임</p>
+<div class="section-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>이런 모임이 기다리고 있어요</h2>
+      <p>온담이 기획하는 다양한 테마의 모임</p>
+    </div>
 
     <div class="moim-grid">
       <div class="moim-card">
@@ -475,63 +579,84 @@
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- What you get -->
+<!-- Benefits -->
 <section class="section">
-  <h2 style="font-size:clamp(22px,3.5vw,30px);font-weight:700;text-align:center;margin-bottom:4px;">온담에서 얻는 것들</h2>
-  <p style="text-align:center;color:var(--text-tertiary);font-size:15px;">모임 하나로 시작되는 변화</p>
+  <div class="section-header">
+    <h2>온담에서 얻는 것들</h2>
+    <p>모임 하나로 시작되는 변화</p>
+  </div>
 
   <div class="benefit-grid">
     <div class="benefit-card">
       <div class="benefit-emoji">&#x1F91D;</div>
-      <div class="benefit-title">새로운 친구</div>
-      <div class="benefit-desc">비슷한 나이, 비슷한 관심사를 가진 사람들과 자연스럽게 친해집니다.</div>
+      <div class="benefit-text">
+        <div class="benefit-title">새로운 친구</div>
+        <div class="benefit-desc">비슷한 나이, 비슷한 관심사를 가진 사람들과 자연스럽게 친해집니다.</div>
+      </div>
     </div>
     <div class="benefit-card">
       <div class="benefit-emoji">&#x1F4C5;</div>
-      <div class="benefit-title">기다려지는 주말</div>
-      <div class="benefit-desc">매주 새로운 모임이 열립니다. 토요일이 기다려지기 시작합니다.</div>
+      <div class="benefit-text">
+        <div class="benefit-title">기다려지는 주말</div>
+        <div class="benefit-desc">매주 새로운 모임이 열립니다. 토요일이 기다려지기 시작합니다.</div>
+      </div>
     </div>
     <div class="benefit-card">
       <div class="benefit-emoji">&#x1F49B;</div>
-      <div class="benefit-title">따뜻한 관계</div>
-      <div class="benefit-desc">모임에서 시작된 인연이 우정으로, 때로는 특별한 관계로 이어집니다.</div>
+      <div class="benefit-text">
+        <div class="benefit-title">따뜻한 관계</div>
+        <div class="benefit-desc">모임에서 시작된 인연이 우정으로, 때로는 특별한 관계로 이어집니다.</div>
+      </div>
     </div>
     <div class="benefit-card">
       <div class="benefit-emoji">&#x1F3E0;</div>
-      <div class="benefit-title">나만의 커뮤니티</div>
-      <div class="benefit-desc">정기적으로 만나는 사람들이 생기면, 그게 바로 내 커뮤니티입니다.</div>
+      <div class="benefit-text">
+        <div class="benefit-title">나만의 커뮤니티</div>
+        <div class="benefit-desc">정기적으로 만나는 사람들이 생기면, 그게 바로 내 커뮤니티입니다.</div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Reviews -->
-<section class="section-wide" style="background:var(--bg-section);">
-  <div class="section section-inner">
-    <h2 style="font-size:clamp(22px,3.5vw,30px);font-weight:700;text-align:center;margin-bottom:4px;">참여자 이야기</h2>
-    <p style="text-align:center;color:var(--text-tertiary);font-size:15px;">온담 모임에 다녀온 분들의 솔직한 후기</p>
+<div class="section-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>참여자 이야기</h2>
+      <p>온담 모임에 다녀온 분들의 솔직한 후기</p>
+    </div>
 
     <div class="review-grid">
       <div class="review-card">
-        <div class="review-text">"퇴직하고 2년 동안 집에만 있었어요. 온담 산책 모임에 처음 나갔는데, 다들 너무 편하게 대해주셔서 놀랐습니다. 지금은 매주 나가요."</div>
+        <div class="review-quote">
+          <span class="review-mark">"</span>
+          <div class="review-text">퇴직하고 2년 동안 집에만 있었어요. 온담 산책 모임에 처음 나갔는데, 다들 너무 편하게 대해주셔서 놀랐습니다. 지금은 매주 나가요.</div>
+        </div>
         <div class="review-author">김OO, 58세, 서울</div>
       </div>
       <div class="review-card">
-        <div class="review-text">"혼자 밥 먹는 게 지겨웠는데, 온담에서 만난 분들이랑 이젠 같이 먹어요. 토요일이 기다려지는 건 정말 오랜만이에요."</div>
+        <div class="review-quote">
+          <span class="review-mark">"</span>
+          <div class="review-text">혼자 밥 먹는 게 지겨웠는데, 온담에서 만난 분들이랑 이젠 같이 먹어요. 토요일이 기다려지는 건 정말 오랜만이에요.</div>
+        </div>
         <div class="review-author">이OO, 63세, 경기</div>
       </div>
       <div class="review-card">
-        <div class="review-text">"딸이 깔아줬어요. 처음엔 반신반의했는데, 첫 모임에서 동갑내기 친구를 만났습니다. 지금 제일 친한 친구예요."</div>
+        <div class="review-quote">
+          <span class="review-mark">"</span>
+          <div class="review-text">딸이 깔아줬어요. 처음엔 반신반의했는데, 첫 모임에서 동갑내기 친구를 만났습니다. 지금 제일 친한 친구예요.</div>
+        </div>
         <div class="review-author">박OO, 55세, 인천</div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- Children Section -->
-<section class="children section-wide">
-  <div class="section section-inner">
+<div class="children-bg">
+  <div class="section-inner" style="padding:var(--section-padding);">
     <div class="children-content">
       <div class="children-emoji">&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;</div>
       <h2 class="children-title">부모님의 토요일이<br>달라집니다</h2>
@@ -550,12 +675,14 @@
       </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- Trust -->
 <section class="section">
-  <h2 style="font-size:clamp(22px,3.5vw,30px);font-weight:700;text-align:center;margin-bottom:4px;">안심하고 참여하세요</h2>
-  <p style="text-align:center;color:var(--text-tertiary);font-size:15px;">온담은 안전하고 신뢰할 수 있는 서비스입니다</p>
+  <div class="section-header">
+    <h2>안심하고 참여하세요</h2>
+    <p>온담은 안전하고 신뢰할 수 있는 서비스입니다</p>
+  </div>
 
   <div class="trust-grid">
     <div class="trust-item">
@@ -587,20 +714,19 @@
   <p class="cta-desc">가입은 무료입니다. 첫 모임이 기다리고 있어요.</p>
   <a href="https://ondam-front.vercel.app" class="cta-button">온담 시작하기</a>
   <div class="cta-stores">
-    <a href="#" class="cta-store">&#x1F34E; App Store</a>
-    <a href="#" class="cta-store">&#x25B6;&#xFE0F; Google Play</a>
-    <a href="https://ondam-front.vercel.app" class="cta-store">&#x1F310; 웹에서 바로</a>
+    <a href="#" class="cta-store">App Store</a>
+    <a href="#" class="cta-store">Google Play</a>
+    <a href="https://ondam-front.vercel.app" class="cta-store">웹에서 바로</a>
   </div>
 </section>
 
 <!-- Footer -->
 <footer class="footer">
-  <p><a href="/">투자자 페이지</a> &middot; <a href="https://ondam-front.vercel.app">온담 앱</a></p>
+  <p><a href="/">투자자 페이지</a> · <a href="https://ondam-front.vercel.app">온담 앱</a></p>
   <p style="margin-top:8px;">&copy; 2026 Ondam. All rights reserved.</p>
 </footer>
 
 <script>
-// Animate on scroll
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -608,7 +734,7 @@ const obs = new IntersectionObserver((entries) => {
       e.target.style.transform = 'translateY(0)';
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.pain-item, .step, .moim-card, .benefit-card, .review-card, .trust-item').forEach(el => {
   el.style.opacity = '0';
