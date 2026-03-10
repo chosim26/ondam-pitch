@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>온담 - 좋은 모임, 따뜻한 만남</title>
+<meta name="description" content="좋은 모임 찾기, 왜 이렇게 어려울까요? 온담이 모임을 기획하고, 장소를 예약하고, 좋은 사람들을 연결합니다.">
+<meta property="og:title" content="온담 - 좋은 모임, 따뜻한 만남">
+<meta property="og:description" content="모임 찾기도, 예약하기도, 새 사람 만나기도 어려우셨나요? 온담이 대신 준비합니다.">
+<meta property="og:type" content="website">
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+  :root {
+    --brand: #FF6B6B;
+    --brand-dark: #E85555;
+    --brand-light: #FFE4E4;
+    --bg: #FFFFFF;
+    --bg-warm: #FDF8F6;
+    --bg-section: #F9F5F2;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-tertiary: #999999;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    color: var(--text-primary);
+    background: var(--bg);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Nav */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .nav-inner {
+    max-width: 720px; margin: 0 auto; padding: 0 24px;
+    height: 56px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-size: 20px; font-weight: 700; color: var(--brand); text-decoration: none; }
+  .nav-cta {
+    background: var(--brand); color: white; border: none; border-radius: 999px;
+    padding: 8px 20px; font-size: 14px; font-weight: 600; cursor: pointer;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--brand-dark); }
+
+  /* Sections */
+  .section {
+    max-width: 720px; margin: 0 auto; padding: 80px 24px;
+  }
+  .section-wide {
+    max-width: 100%; padding-left: 0; padding-right: 0;
+  }
+  .section-inner { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; position: relative; overflow: hidden;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-warm) 100%);
+    padding-top: 56px;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,107,107,0.1) 0%, transparent 70%);
+    animation: drift 10s ease-in-out infinite;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -80px; left: -80px;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,165,116,0.06) 0%, transparent 70%);
+    animation: drift 12s ease-in-out infinite reverse;
+  }
+  @keyframes drift {
+    0%, 100% { transform: translate(0,0); }
+    50% { transform: translate(-20px, 15px); }
+  }
+  .hero-content { position: relative; z-index: 2; padding: 40px 24px; }
+  .hero-logo {
+    width: 88px; height: 88px; margin: 0 auto 32px;
+    animation: fadeUp 0.8s ease;
+  }
+  .hero-logo svg { width: 100%; height: 100%; }
+
+  .hero-question {
+    font-size: clamp(14px, 2vw, 16px); color: var(--text-tertiary);
+    margin-bottom: 12px; animation: fadeUp 0.8s ease 0.1s both;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.3;
+    margin-bottom: 16px; animation: fadeUp 0.8s ease 0.2s both;
+  }
+  .hero h1 .brand { color: var(--brand); }
+  .hero-desc {
+    font-size: clamp(16px, 2.5vw, 19px); color: var(--text-secondary);
+    line-height: 1.7; margin-bottom: 40px; animation: fadeUp 0.8s ease 0.3s both;
+  }
+  .hero-cta {
+    display: inline-block; background: var(--brand); color: white;
+    border-radius: 999px; padding: 16px 40px; font-size: 17px; font-weight: 700;
+    text-decoration: none; box-shadow: 0 8px 24px rgba(255,107,107,0.3);
+    transition: all 0.3s; animation: fadeUp 0.8s ease 0.4s both;
+  }
+  .hero-cta:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,107,107,0.4); }
+  .hero-sub {
+    font-size: 13px; color: var(--text-tertiary); margin-top: 12px;
+    animation: fadeUp 0.8s ease 0.5s both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Pain Points */
+  .pain { background: var(--bg-section); }
+  .pain-list {
+    display: flex; flex-direction: column; gap: 16px; margin-top: 40px;
+  }
+  .pain-item {
+    background: var(--bg); border-radius: 16px; padding: 24px 28px;
+    display: flex; align-items: flex-start; gap: 16px;
+    box-shadow: var(--shadow-sm); transition: transform 0.2s;
+  }
+  .pain-item:hover { transform: translateX(4px); }
+  .pain-emoji { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+  .pain-text { font-size: 16px; color: var(--text-secondary); line-height: 1.6; }
+  .pain-text strong { color: var(--text-primary); }
+
+  /* Solution */
+  .solution-title {
+    font-size: clamp(24px, 4vw, 36px); font-weight: 700;
+    text-align: center; line-height: 1.4; margin-bottom: 12px;
+  }
+  .solution-title .brand { color: var(--brand); }
+  .solution-sub {
+    text-align: center; font-size: 17px; color: var(--text-secondary);
+    margin-bottom: 48px;
+  }
+
+  /* How it works */
+  .steps { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .steps::before {
+    content: ''; position: absolute; left: 31px; top: 40px; bottom: 40px;
+    width: 2px; background: linear-gradient(180deg, var(--brand-light), var(--brand), var(--brand-light));
+  }
+  .step {
+    display: flex; gap: 24px; align-items: flex-start; position: relative;
+    padding: 24px 0;
+  }
+  .step-num {
+    width: 64px; height: 64px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; font-weight: 700; color: white;
+    background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+    box-shadow: 0 4px 16px rgba(255,107,107,0.3);
+    position: relative; z-index: 1;
+  }
+  .step-content { padding-top: 8px; }
+  .step-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .step-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* Moim Examples */
+  .moim-section { background: var(--bg-section); }
+  .moim-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px;
+  }
+  .moim-card {
+    background: var(--bg); border-radius: 20px; padding: 28px 20px;
+    text-align: center; box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: all 0.3s;
+  }
+  .moim-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .moim-icon { font-size: 40px; margin-bottom: 12px; }
+  .moim-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .moim-desc { font-size: 13px; color: var(--text-tertiary); line-height: 1.5; }
+
+  /* What you get */
+  .benefit-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px;
+  }
+  .benefit-card {
+    border-radius: 20px; padding: 32px 24px;
+    transition: transform 0.2s;
+  }
+  .benefit-card:hover { transform: translateY(-2px); }
+  .benefit-card:nth-child(1) { background: #FFF5F5; }
+  .benefit-card:nth-child(2) { background: #F5F0FF; }
+  .benefit-card:nth-child(3) { background: #F0F8FF; }
+  .benefit-card:nth-child(4) { background: #FFF8F0; }
+  .benefit-emoji { font-size: 32px; margin-bottom: 12px; }
+  .benefit-title { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+  .benefit-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* Reviews */
+  .review-grid {
+    display: flex; flex-direction: column; gap: 16px; margin-top: 40px;
+  }
+  .review-card {
+    background: var(--bg); border-radius: 16px; padding: 28px;
+    box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.03);
+  }
+  .review-text {
+    font-size: 16px; color: var(--text-secondary); line-height: 1.7;
+    font-style: italic; margin-bottom: 12px;
+  }
+  .review-author { font-size: 13px; color: var(--text-tertiary); font-weight: 500; }
+
+  /* Children section */
+  .children { background: linear-gradient(135deg, #F5F0FF, #FFF5F5); }
+  .children-content { text-align: center; }
+  .children-emoji { font-size: 56px; margin-bottom: 20px; }
+  .children-title {
+    font-size: clamp(22px, 3.5vw, 32px); font-weight: 700;
+    line-height: 1.4; margin-bottom: 12px;
+  }
+  .children-desc {
+    font-size: 17px; color: var(--text-secondary); line-height: 1.8;
+    max-width: 480px; margin: 0 auto 32px;
+  }
+  .children-quote {
+    background: var(--bg); border-radius: 16px; padding: 28px 32px;
+    display: inline-block; max-width: 440px;
+    box-shadow: var(--shadow-sm); text-align: left;
+  }
+  .children-quote p {
+    font-size: 16px; color: var(--text-secondary); line-height: 1.7;
+  }
+  .children-quote p strong { color: var(--brand); }
+
+  /* Trust */
+  .trust-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px;
+  }
+  .trust-item { text-align: center; }
+  .trust-icon { font-size: 32px; margin-bottom: 8px; }
+  .trust-label { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+  .trust-desc { font-size: 12px; color: var(--text-tertiary); }
+
+  /* CTA Bottom */
+  .cta-bottom {
+    text-align: center; padding: 100px 24px;
+    background: linear-gradient(180deg, var(--bg-warm), var(--bg));
+    position: relative;
+  }
+  .cta-bottom::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 60px;
+    background: linear-gradient(180deg, transparent, var(--brand));
+  }
+  .cta-title {
+    font-size: clamp(24px, 4vw, 36px); font-weight: 700;
+    line-height: 1.4; margin-bottom: 12px;
+  }
+  .cta-title .brand { color: var(--brand); }
+  .cta-desc {
+    font-size: 17px; color: var(--text-secondary); margin-bottom: 36px;
+  }
+  .cta-button {
+    display: inline-block; background: var(--brand); color: white;
+    border-radius: 999px; padding: 18px 48px; font-size: 18px; font-weight: 700;
+    text-decoration: none; box-shadow: 0 8px 24px rgba(255,107,107,0.3);
+    transition: all 0.3s;
+  }
+  .cta-button:hover { background: var(--brand-dark); transform: translateY(-2px); }
+  .cta-stores {
+    margin-top: 16px; display: flex; justify-content: center; gap: 16px;
+    flex-wrap: wrap;
+  }
+  .cta-store {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; color: var(--text-tertiary); text-decoration: none;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center; padding: 32px 24px;
+    font-size: 12px; color: var(--text-tertiary);
+    border-top: 1px solid #F0F0F0;
+  }
+  .footer a { color: var(--text-tertiary); text-decoration: none; }
+  .footer a:hover { color: var(--brand); }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .section { padding: 60px 20px; }
+    .section-inner { padding: 0 20px; }
+    .hero { min-height: auto; padding: 80px 0 48px; }
+    .hero-content { padding: 24px 20px; }
+    .hero-logo { width: 68px; height: 68px; margin-bottom: 24px; }
+    .hero-cta { padding: 14px 32px; font-size: 16px; }
+
+    .pain-item { padding: 20px; gap: 12px; }
+    .pain-emoji { font-size: 24px; }
+    .pain-text { font-size: 15px; }
+
+    .steps::before { left: 23px; }
+    .step-num { width: 48px; height: 48px; font-size: 18px; }
+    .step { gap: 16px; padding: 16px 0; }
+    .step-title { font-size: 17px; }
+    .step-desc { font-size: 14px; }
+
+    .moim-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .moim-card { padding: 20px 16px; }
+    .moim-icon { font-size: 32px; }
+    .moim-name { font-size: 14px; }
+    .moim-desc { font-size: 12px; }
+
+    .benefit-grid { grid-template-columns: 1fr; gap: 12px; }
+    .benefit-card { padding: 24px 20px; }
+
+    .review-card { padding: 20px; }
+    .review-text { font-size: 15px; }
+
+    .children-emoji { font-size: 44px; }
+    .children-quote { padding: 20px 24px; }
+    .children-quote p { font-size: 15px; }
+
+    .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .trust-icon { font-size: 28px; }
+
+    .cta-button { padding: 16px 36px; font-size: 16px; }
+  }
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 24px; }
+    .moim-grid { grid-template-columns: 1fr 1fr; }
+    .solution-title { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">ondam</a>
+    <a href="https://ondam-front.vercel.app" class="nav-cta">앱 시작하기</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-logo">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="56" fill="#FFF5F5" stroke="#FFE4E4" stroke-width="2"/>
+        <g transform="translate(60, 50)">
+          <path d="M-26,-28 C-26,-28 -26,-35 -18,-35 L18,-35 C26,-35 26,-28 26,-28 L26,10 C26,10 26,17 18,17 L6,17 L0,27 L-6,17 L-18,17 C-26,17 -26,10 -26,10 Z" fill="#FF6B6B"/>
+          <path d="M0,12 C-13,-1 -18,-12 -10,-17 C-5,-20 0,-14 0,-14 C0,-14 5,-20 10,-17 C18,-12 13,-1 0,12 Z" fill="white" opacity="0.95"/>
+          <line x1="-11" y1="-27" x2="-11" y2="-31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          <line x1="0" y1="-28" x2="0" y2="-33" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          <line x1="11" y1="-27" x2="11" y2="-31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        </g>
+      </svg>
+    </div>
+
+    <p class="hero-question">좋은 모임 찾기, 왜 이렇게 어려울까요?</p>
+    <h1>따뜻한 모임,<br><span class="brand">온담</span>이 준비합니다</h1>
+    <p class="hero-desc">
+      모임을 기획하고, 장소를 예약하고,<br>
+      좋은 사람들을 연결합니다.<br>
+      당신은 나오기만 하면 됩니다.
+    </p>
+    <a href="https://ondam-front.vercel.app" class="hero-cta">온담 시작하기</a>
+    <p class="hero-sub">가입 무료 &middot; 첫 모임 특별 초대</p>
+  </div>
+</section>
+
+<!-- Pain Points -->
+<section class="pain section-wide">
+  <div class="section section-inner">
+    <h2 style="font-size:clamp(22px,3.5vw,30px);font-weight:700;text-align:center;margin-bottom:4px;">혹시 이런 경험 있으신가요?</h2>
+    <p style="text-align:center;color:var(--text-tertiary);font-size:15px;">나이가 들수록, 좋은 만남은 점점 멀어집니다</p>
+
+    <div class="pain-list">
+      <div class="pain-item">
+        <span class="pain-emoji">&#x1F50D;</span>
+        <div class="pain-text"><strong>모임 찾기가 어렵습니다.</strong> 검색해도 나오는 건 20~30대용 모임뿐. 나이에 맞는 좋은 모임은 어디 있을까요?</div>
+      </div>
+      <div class="pain-item">
+        <span class="pain-emoji">&#x1F4F1;</span>
+        <div class="pain-text"><strong>예약이 복잡합니다.</strong> 장소 찾고, 인원 모으고, 날짜 맞추고... 모임 하나 만들려면 일이 너무 많습니다.</div>
+      </div>
+      <div class="pain-item">
+        <span class="pain-emoji">&#x1F465;</span>
+        <div class="pain-text"><strong>새 사람 만나기가 어렵습니다.</strong> 직장 동료는 흩어지고, 학교 친구는 연락이 뜸해지고. 새로운 친구를 어디서 만들까요?</div>
+      </div>
+      <div class="pain-item">
+        <span class="pain-emoji">&#x1F614;</span>
+        <div class="pain-text"><strong>혼자 나가기 부담됩니다.</strong> "나만 가는 건 아니겠지?" 모르는 사람들 사이에 혼자 가는 게 쉽지 않습니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Solution -->
+<section class="section">
+  <h2 class="solution-title">그래서 <span class="brand">온담</span>이<br>대신 준비합니다</h2>
+  <p class="solution-sub">모임 기획부터 장소 예약, 사람 연결까지.<br>온담이 전부 해드립니다.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">온담이 모임을 기획합니다</div>
+        <div class="step-desc">산책, 맛집, 여행, 문화 탐방 등 다양한 테마로 모임을 설계합니다. 장소 예약, 인원 구성, 분위기까지 온담이 신경 씁니다.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">마음에 드는 모임에 참여하세요</div>
+        <div class="step-desc">앱에서 모임을 둘러보고, 끌리는 모임에 참여 신청만 누르면 됩니다. 6~10명 소규모라 편안하게 대화할 수 있습니다.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">따뜻한 만남이 시작됩니다</div>
+        <div class="step-desc">함께 걷고, 먹고, 웃으면서 자연스럽게 관계가 만들어집니다. 마음에 드는 사람이 있다면, 채팅으로 대화를 이어가세요.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Moim Examples -->
+<section class="moim-section section-wide">
+  <div class="section section-inner">
+    <h2 style="font-size:clamp(22px,3.5vw,30px);font-weight:700;text-align:center;margin-bottom:4px;">이런 모임이 기다리고 있어요</h2>
+    <p style="text-align:center;color:var(--text-tertiary);font-size:15px;">온담이 기획하는 다양한 테마의 모임</p>
+
+    <div class="moim-grid">
+      <div class="moim-card">
+        <div class="moim-icon">&#x1F6B6;</div>
+        <div class="moim-name">도심 산책</div>
+        <div class="moim-desc">서촌, 북촌, 한강<br>함께 걸으며 대화해요</div>
+      </div>
+      <div class="moim-card">
+        <div class="moim-icon">&#x2615;</div>
+        <div class="moim-name">커피 한 잔</div>
+        <div class="moim-desc">분위기 좋은 카페에서<br>편한 수다 한판</div>
+      </div>
+      <div class="moim-card">
+        <div class="moim-icon">&#x1F3A8;</div>
+        <div class="moim-name">문화 탐방</div>
+        <div class="moim-desc">전시, 공연, 영화<br>함께 보면 더 좋은 것들</div>
+      </div>
+      <div class="moim-card">
+        <div class="moim-icon">&#x1F372;</div>
+        <div class="moim-name">맛집 탐방</div>
+        <div class="moim-desc">좋은 사람들과<br>맛있는 밥 한 끼</div>
+      </div>
+      <div class="moim-card">
+        <div class="moim-icon">&#x26F0;</div>
+        <div class="moim-name">가벼운 등산</div>
+        <div class="moim-desc">북한산, 관악산<br>건강한 만남</div>
+      </div>
+      <div class="moim-card">
+        <div class="moim-icon">&#x2708;&#xFE0F;</div>
+        <div class="moim-name">여행 동반</div>
+        <div class="moim-desc">혼자는 막막한 여행<br>함께라면 설레는 여행</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What you get -->
+<section class="section">
+  <h2 style="font-size:clamp(22px,3.5vw,30px);font-weight:700;text-align:center;margin-bottom:4px;">온담에서 얻는 것들</h2>
+  <p style="text-align:center;color:var(--text-tertiary);font-size:15px;">모임 하나로 시작되는 변화</p>
+
+  <div class="benefit-grid">
+    <div class="benefit-card">
+      <div class="benefit-emoji">&#x1F91D;</div>
+      <div class="benefit-title">새로운 친구</div>
+      <div class="benefit-desc">비슷한 나이, 비슷한 관심사를 가진 사람들과 자연스럽게 친해집니다.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-emoji">&#x1F4C5;</div>
+      <div class="benefit-title">기다려지는 주말</div>
+      <div class="benefit-desc">매주 새로운 모임이 열립니다. 토요일이 기다려지기 시작합니다.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-emoji">&#x1F49B;</div>
+      <div class="benefit-title">따뜻한 관계</div>
+      <div class="benefit-desc">모임에서 시작된 인연이 우정으로, 때로는 특별한 관계로 이어집니다.</div>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-emoji">&#x1F3E0;</div>
+      <div class="benefit-title">나만의 커뮤니티</div>
+      <div class="benefit-desc">정기적으로 만나는 사람들이 생기면, 그게 바로 내 커뮤니티입니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="section-wide" style="background:var(--bg-section);">
+  <div class="section section-inner">
+    <h2 style="font-size:clamp(22px,3.5vw,30px);font-weight:700;text-align:center;margin-bottom:4px;">참여자 이야기</h2>
+    <p style="text-align:center;color:var(--text-tertiary);font-size:15px;">온담 모임에 다녀온 분들의 솔직한 후기</p>
+
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="review-text">"퇴직하고 2년 동안 집에만 있었어요. 온담 산책 모임에 처음 나갔는데, 다들 너무 편하게 대해주셔서 놀랐습니다. 지금은 매주 나가요."</div>
+        <div class="review-author">김OO, 58세, 서울</div>
+      </div>
+      <div class="review-card">
+        <div class="review-text">"혼자 밥 먹는 게 지겨웠는데, 온담에서 만난 분들이랑 이젠 같이 먹어요. 토요일이 기다려지는 건 정말 오랜만이에요."</div>
+        <div class="review-author">이OO, 63세, 경기</div>
+      </div>
+      <div class="review-card">
+        <div class="review-text">"딸이 깔아줬어요. 처음엔 반신반의했는데, 첫 모임에서 동갑내기 친구를 만났습니다. 지금 제일 친한 친구예요."</div>
+        <div class="review-author">박OO, 55세, 인천</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Children Section -->
+<section class="children section-wide">
+  <div class="section section-inner">
+    <div class="children-content">
+      <div class="children-emoji">&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;</div>
+      <h2 class="children-title">부모님의 토요일이<br>달라집니다</h2>
+      <p class="children-desc">
+        요즘 부모님, 뭐 하고 지내시나요?<br>
+        혼자 TV 보고 계시진 않나요?<br><br>
+        온담을 선물해 주세요.<br>
+        부모님의 주말이 따뜻해집니다.
+      </p>
+      <div class="children-quote">
+        <p>
+          <em>"엄마, 요즘 뭐 하고 지내?"</em><br><br>
+          <strong>"온담 모임 다녀왔어, 너무 좋았어!"</strong><br><br>
+          이 대답 하나면, 충분합니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust -->
+<section class="section">
+  <h2 style="font-size:clamp(22px,3.5vw,30px);font-weight:700;text-align:center;margin-bottom:4px;">안심하고 참여하세요</h2>
+  <p style="text-align:center;color:var(--text-tertiary);font-size:15px;">온담은 안전하고 신뢰할 수 있는 서비스입니다</p>
+
+  <div class="trust-grid">
+    <div class="trust-item">
+      <div class="trust-icon">&#x1F4F1;</div>
+      <div class="trust-label">본인 인증</div>
+      <div class="trust-desc">전화번호 인증 필수</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">&#x2B50;</div>
+      <div class="trust-label">리뷰 시스템</div>
+      <div class="trust-desc">모임 후 별점 & 후기</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">&#x1F6E1;&#xFE0F;</div>
+      <div class="trust-label">신고 & 차단</div>
+      <div class="trust-desc">불쾌한 사람 즉시 차단</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">&#x1F46E;</div>
+      <div class="trust-label">운영팀 관리</div>
+      <div class="trust-desc">모임 품질 직접 관리</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Bottom -->
+<section class="cta-bottom">
+  <h2 class="cta-title">좋은 사람 만나기,<br>이제 <span class="brand">온담</span>에서 시작하세요</h2>
+  <p class="cta-desc">가입은 무료입니다. 첫 모임이 기다리고 있어요.</p>
+  <a href="https://ondam-front.vercel.app" class="cta-button">온담 시작하기</a>
+  <div class="cta-stores">
+    <a href="#" class="cta-store">&#x1F34E; App Store</a>
+    <a href="#" class="cta-store">&#x25B6;&#xFE0F; Google Play</a>
+    <a href="https://ondam-front.vercel.app" class="cta-store">&#x1F310; 웹에서 바로</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p><a href="/">투자자 페이지</a> &middot; <a href="https://ondam-front.vercel.app">온담 앱</a></p>
+  <p style="margin-top:8px;">&copy; 2026 Ondam. All rights reserved.</p>
+</footer>
+
+<script>
+// Animate on scroll
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.pain-item, .step, .moim-card, .benefit-card, .review-card, .trust-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
