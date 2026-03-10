@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>온담(Ondam) — 비즈니스 분석 & 투자 가치 보고서</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+  :root {
+    --brand: #FF6B6B;
+    --brand-dark: #E85555;
+    --brand-light: #FFE4E4;
+    --brand-glow: rgba(255, 107, 107, 0.15);
+    --bg-primary: #FFFFFF;
+    --bg-warm: #FDF8F6;
+    --bg-section: #F9F5F2;
+    --bg-dark: #1A1A1A;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-tertiary: #999999;
+    --text-white: #FFFFFF;
+    --accent-gold: #D4A574;
+    --accent-blue: #5B8DEF;
+    --accent-green: #4CAF7D;
+    --accent-purple: #8B6FC0;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,0.1);
+    --shadow-brand: 0 8px 30px rgba(255,107,107,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s;
+  }
+  .nav.scrolled { box-shadow: var(--shadow-sm); }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brand);
+  }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--brand); }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-warm) 100%);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--brand-glow) 0%, transparent 70%);
+    animation: float 8s ease-in-out infinite;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,165,116,0.08) 0%, transparent 70%);
+    animation: float 10s ease-in-out infinite reverse;
+  }
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-30px, 20px); }
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+  }
+  .hero-logo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 40px;
+    animation: fadeInUp 1s ease;
+  }
+  .hero-logo svg { width: 100%; height: 100%; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--brand-light);
+    color: var(--brand);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+    animation: fadeInUp 1s ease 0.1s both;
+  }
+  .hero-title {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    animation: fadeInUp 1s ease 0.2s both;
+  }
+  .hero-title .brand { color: var(--brand); }
+  .hero-subtitle {
+    font-size: clamp(18px, 2.5vw, 24px);
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-bottom: 12px;
+    animation: fadeInUp 1s ease 0.3s both;
+  }
+  .hero-quote {
+    font-size: 17px;
+    color: var(--text-tertiary);
+    font-style: italic;
+    margin-bottom: 48px;
+    animation: fadeInUp 1s ease 0.4s both;
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Hero Stats */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeInUp 1s ease 0.5s both;
+  }
+  .hero-stat {
+    background: var(--bg-primary);
+    border-radius: 16px;
+    padding: 24px 16px;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .hero-stat:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  .hero-stat-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--brand);
+    line-height: 1.2;
+  }
+  .hero-stat-unit {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--brand-dark);
+  }
+  .hero-stat-label {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+  }
+
+  /* ===== SECTIONS ===== */
+  .section {
+    padding: 100px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-alt {
+    background: var(--bg-section);
+  }
+  .section-dark {
+    background: var(--bg-dark);
+    color: var(--text-white);
+  }
+  .section-full {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brand);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+  .section-desc {
+    font-size: 17px;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  /* ===== MARKET OPPORTUNITY ===== */
+  .market-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+  .market-card {
+    background: var(--bg-primary);
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .market-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .market-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .market-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .market-card-stat {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--brand);
+    margin-bottom: 4px;
+  }
+  .market-card-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Bar Chart */
+  .bar-chart {
+    background: var(--bg-primary);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .bar-chart-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 32px;
+  }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 16px;
+  }
+  .bar-label {
+    width: 120px;
+    font-size: 14px;
+    font-weight: 500;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .bar-track {
+    flex: 1;
+    height: 32px;
+    background: #F0F0F0;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    transition: width 1.5s ease;
+  }
+
+  /* ===== LONELINESS CRISIS ===== */
+  .crisis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .crisis-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .crisis-stat {
+    background: var(--bg-primary);
+    border-radius: 16px;
+    padding: 24px 28px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-left: 4px solid var(--brand);
+    transition: transform 0.2s;
+  }
+  .crisis-stat:hover { transform: translateX(4px); }
+  .crisis-stat-number {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--brand);
+    flex-shrink: 0;
+    min-width: 100px;
+  }
+  .crisis-stat-text {
+    font-size: 15px;
+    color: var(--text-secondary);
+  }
+  .crisis-message {
+    text-align: center;
+    padding: 60px 40px;
+  }
+  .crisis-message-icon {
+    font-size: 80px;
+    margin-bottom: 24px;
+    opacity: 0.8;
+  }
+  .crisis-message-text {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+  .crisis-message-text strong { color: var(--brand); font-weight: 700; }
+
+  /* ===== SERVICES ===== */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .service-card {
+    background: var(--bg-primary);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .service-card.featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .service-header {
+    padding: 40px;
+  }
+  .service-number {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brand);
+    margin-bottom: 12px;
+  }
+  .service-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .service-tagline {
+    font-size: 15px;
+    color: var(--text-tertiary);
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .service-desc {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .service-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .service-features li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .service-features li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  .service-visual {
+    background: linear-gradient(135deg, var(--brand-light), #FFF5F0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    min-height: 280px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Gacha Cards Visual */
+  .gacha-cards {
+    display: flex;
+    gap: 12px;
+    transform: perspective(800px) rotateY(-5deg);
+  }
+  .gacha-card {
+    width: 90px;
+    height: 130px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+    box-shadow: 0 8px 24px rgba(255,107,107,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 36px;
+    transition: transform 0.4s;
+    cursor: pointer;
+  }
+  .gacha-card:nth-child(2) {
+    transform: translateY(-10px);
+    background: linear-gradient(135deg, #FF8E8E, var(--brand));
+  }
+  .gacha-card:nth-child(3) {
+    background: linear-gradient(135deg, var(--accent-gold), #C4935E);
+  }
+  .gacha-card:hover {
+    transform: translateY(-16px) rotateY(180deg);
+  }
+
+  /* Moim Visual */
+  .moim-visual {
+    position: relative;
+  }
+  .moim-people {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    max-width: 200px;
+  }
+  .moim-person {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: var(--shadow-sm);
+    animation: popIn 0.5s ease both;
+  }
+  .moim-person:nth-child(1) { background: #FFE4E4; animation-delay: 0.1s; }
+  .moim-person:nth-child(2) { background: #E4F0FF; animation-delay: 0.2s; }
+  .moim-person:nth-child(3) { background: #E4FFE9; animation-delay: 0.3s; }
+  .moim-person:nth-child(4) { background: #FFF4E4; animation-delay: 0.4s; }
+  .moim-person:nth-child(5) { background: #F0E4FF; animation-delay: 0.5s; }
+  .moim-person:nth-child(6) { background: #FFE4F0; animation-delay: 0.6s; }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* ===== USER JOURNEY ===== */
+  .journey {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    position: relative;
+    padding: 40px 0;
+  }
+  .journey-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    padding: 0 12px;
+  }
+  .journey-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 32px;
+    right: -10%;
+    width: 20%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brand), var(--brand-light));
+  }
+  .journey-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--brand-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin: 0 auto 16px;
+    transition: transform 0.3s;
+  }
+  .journey-step:hover .journey-icon {
+    transform: scale(1.1);
+    background: var(--brand);
+  }
+  .journey-step:hover .journey-icon span { filter: brightness(10); }
+  .journey-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .journey-desc {
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+
+  /* ===== COMPETITION ===== */
+  .comp-table-wrap {
+    overflow-x: auto;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-primary);
+    font-size: 14px;
+  }
+  .comp-table th {
+    background: #FAFAFA;
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-secondary);
+    border-bottom: 2px solid #F0F0F0;
+    white-space: nowrap;
+  }
+  .comp-table th:first-child {
+    border-top-left-radius: 20px;
+  }
+  .comp-table th:last-child {
+    border-top-right-radius: 20px;
+  }
+  .comp-table th.highlight {
+    background: var(--brand);
+    color: white;
+  }
+  .comp-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid #F5F5F5;
+    color: var(--text-secondary);
+  }
+  .comp-table td.highlight {
+    background: #FFF8F8;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+  .comp-table tr:last-child td { border-bottom: none; }
+  .comp-table .check { color: var(--accent-green); font-weight: 700; }
+  .comp-table .cross { color: #CCC; }
+  .comp-table .star { color: var(--brand); font-weight: 700; }
+
+  /* ===== DIFFERENTIATORS ===== */
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+  .diff-card {
+    background: var(--bg-primary);
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .diff-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--brand);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  .diff-card:hover::before { transform: scaleX(1); }
+  .diff-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .diff-num {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--brand-light);
+    margin-bottom: 12px;
+  }
+  .diff-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .diff-desc {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+  }
+
+  /* ===== BM ===== */
+  .bm-columns {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+  .bm-primary {
+    background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+    border-radius: 24px;
+    padding: 48px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .bm-primary::after {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+  }
+  .bm-primary-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .bm-primary h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .bm-primary p {
+    font-size: 15px;
+    opacity: 0.85;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+  .bm-secondary {
+    background: var(--bg-primary);
+    border-radius: 24px;
+    padding: 48px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .bm-secondary h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .bm-secondary p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  /* Membership comparison table */
+  .membership-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .membership-table th {
+    text-align: left;
+    padding: 12px 0;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    font-size: 12px;
+  }
+  .membership-table td {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 14px;
+  }
+  .membership-table td:nth-child(2) { text-align: center; opacity: 0.6; }
+  .membership-table td:nth-child(3) { text-align: center; font-weight: 600; }
+  .membership-table tr:last-child td { border-bottom: none; }
+
+  /* Revenue projection */
+  .revenue-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .revenue-card {
+    background: var(--bg-primary);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: all 0.3s;
+  }
+  .revenue-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-brand);
+    border-color: var(--brand-light);
+  }
+  .revenue-year {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .revenue-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+  .revenue-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--brand);
+  }
+  .revenue-sub {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 8px;
+  }
+
+  /* ===== TAM/SAM/SOM ===== */
+  .tam-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+  }
+  .tam-circles {
+    position: relative;
+    width: 400px;
+    height: 400px;
+  }
+  .tam-circle {
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  .tam-circle:hover { transform: scale(1.03); }
+  .tam-circle.tam {
+    width: 400px;
+    height: 400px;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, #FFE4E4, #FFF0F0);
+    border: 2px solid rgba(255,107,107,0.2);
+  }
+  .tam-circle.sam {
+    width: 280px;
+    height: 280px;
+    top: 60px;
+    left: 60px;
+    background: linear-gradient(135deg, #FFD0D0, #FFE4E4);
+    border: 2px solid rgba(255,107,107,0.3);
+  }
+  .tam-circle.som {
+    width: 160px;
+    height: 160px;
+    top: 120px;
+    left: 120px;
+    background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+    border: none;
+    color: white;
+    box-shadow: var(--shadow-brand);
+  }
+  .tam-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+  .tam-value {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .tam-desc {
+    font-size: 11px;
+    opacity: 0.7;
+  }
+  .tam-circle.tam .tam-label,
+  .tam-circle.tam .tam-value { position: absolute; top: 24px; }
+  .tam-circle.tam .tam-label { top: 20px; color: var(--brand); }
+  .tam-circle.tam .tam-value { top: 36px; color: var(--brand-dark); font-size: 14px; }
+  .tam-circle.sam .tam-label,
+  .tam-circle.sam .tam-value { position: absolute; top: 16px; }
+  .tam-circle.sam .tam-label { top: 14px; color: var(--brand); }
+  .tam-circle.sam .tam-value { top: 30px; color: var(--brand-dark); font-size: 13px; }
+  .tam-circle.som .tam-label { font-size: 11px; }
+  .tam-circle.som .tam-value { font-size: 16px; }
+  .tam-circle.som .tam-desc { font-size: 10px; }
+
+  .tam-legend {
+    margin-left: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .tam-legend-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .tam-legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .tam-legend-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .tam-legend-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  /* ===== MARKETING ===== */
+  .campaign-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+  .campaign-card {
+    background: var(--bg-primary);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: all 0.3s;
+  }
+  .campaign-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+  .campaign-header {
+    padding: 40px 32px 0;
+    position: relative;
+  }
+  .campaign-emoji {
+    font-size: 40px;
+    margin-bottom: 16px;
+  }
+  .campaign-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+  .campaign-body {
+    padding: 0 32px 36px;
+  }
+  .campaign-text {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 2;
+    font-style: italic;
+    position: relative;
+    padding-left: 16px;
+    border-left: 3px solid var(--brand-light);
+  }
+  .campaign-cta {
+    display: block;
+    margin-top: 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--brand);
+    font-style: normal;
+    border-left: none;
+    padding-left: 0;
+  }
+
+  /* Channel strategy */
+  .channel-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .channel-card {
+    background: var(--bg-primary);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: all 0.2s;
+  }
+  .channel-card:hover { transform: translateX(4px); }
+  .channel-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .channel-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .channel-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .channel-stat {
+    font-size: 12px;
+    color: var(--brand);
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  /* ===== VALUE ===== */
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .value-card {
+    padding: 40px;
+    border-radius: 24px;
+    transition: transform 0.3s;
+  }
+  .value-card:hover { transform: translateY(-4px); }
+  .value-card.social {
+    background: linear-gradient(135deg, #FFF5F5, #FFE4E4);
+    border: 1px solid rgba(255,107,107,0.15);
+  }
+  .value-card.economic {
+    background: linear-gradient(135deg, #F5F0FF, #EDE4FF);
+    border: 1px solid rgba(139,111,192,0.15);
+  }
+  .value-card.tech {
+    background: linear-gradient(135deg, #F0F8FF, #E4F0FF);
+    border: 1px solid rgba(91,141,239,0.15);
+  }
+  .value-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  .value-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .value-subtitle {
+    font-size: 14px;
+    color: var(--text-tertiary);
+    margin-bottom: 20px;
+  }
+  .value-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .value-list li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+  }
+  .value-list li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  .value-card.social .value-list li::before { background: var(--brand); }
+  .value-card.economic .value-list li::before { background: var(--accent-purple); }
+  .value-card.tech .value-list li::before { background: var(--accent-blue); }
+
+  /* ===== INVESTMENT ===== */
+  .invest-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-bottom: 60px;
+  }
+  .invest-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .invest-card:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-4px);
+    border-color: var(--brand);
+  }
+  .invest-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+  .invest-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-white);
+  }
+  .invest-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .invest-items li {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.4;
+  }
+  .invest-items li::before {
+    content: '\2713 ';
+    color: var(--brand);
+    font-weight: 700;
+  }
+
+  /* ===== DATA TABLE ===== */
+  .data-table-wrap {
+    overflow-x: auto;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+    background: var(--bg-primary);
+  }
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .data-table th {
+    background: #FAFAFA;
+    padding: 14px 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #F0F0F0;
+  }
+  .data-table td {
+    padding: 12px 20px;
+    border-bottom: 1px solid #F8F8F8;
+    color: var(--text-secondary);
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: #FEFEFE; }
+  .data-table td:nth-child(3) {
+    font-weight: 700;
+    color: var(--brand);
+  }
+  .data-table .cat-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .cat-pop { background: #E4F0FF; color: #5B8DEF; }
+  .cat-dig { background: #E4FFE9; color: #4CAF7D; }
+  .cat-mkt { background: #FFF4E4; color: #D4A574; }
+  .cat-comp { background: #F0E4FF; color: #8B6FC0; }
+  .cat-need { background: #FFE4E4; color: #FF6B6B; }
+  .cat-grow { background: #E4F5FF; color: #5BA0EF; }
+
+  /* ===== VISION ===== */
+  .vision {
+    text-align: center;
+    padding: 120px 40px;
+    background: linear-gradient(180deg, var(--bg-warm), var(--bg-primary));
+    position: relative;
+    overflow: hidden;
+  }
+  .vision::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(180deg, transparent, var(--brand));
+  }
+  .vision-text {
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 22px;
+    line-height: 2;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+  .vision-text strong {
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+  .vision-text .brand {
+    color: var(--brand);
+    font-weight: 700;
+  }
+  .vision-closing {
+    margin-top: 48px;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--brand);
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    border-top: 1px solid #F0F0F0;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .market-grid { grid-template-columns: 1fr; }
+    .crisis-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card.featured { grid-template-columns: 1fr; }
+    .diff-grid { grid-template-columns: repeat(3, 1fr); }
+    .bm-columns { grid-template-columns: 1fr; }
+    .revenue-grid { grid-template-columns: repeat(2, 1fr); }
+    .campaign-grid { grid-template-columns: 1fr; }
+    .channel-grid { grid-template-columns: 1fr; }
+    .value-grid { grid-template-columns: 1fr; }
+    .invest-grid { grid-template-columns: repeat(2, 1fr); }
+    .tam-visual { flex-direction: column; }
+    .tam-legend { margin-left: 0; margin-top: 40px; }
+    .journey { flex-wrap: wrap; }
+    .journey-step { flex: 0 0 33%; }
+    .journey-step:not(:last-child)::after { display: none; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 640px) {
+    .section { padding: 60px 20px; }
+    .section-inner { padding: 0 20px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .hero-stat { padding: 16px 12px; }
+    .hero-stat-number { font-size: 22px; }
+    .diff-grid { grid-template-columns: 1fr 1fr; }
+    .invest-grid { grid-template-columns: 1fr; }
+    .revenue-grid { grid-template-columns: 1fr 1fr; }
+    .tam-circles { width: 280px; height: 280px; }
+    .tam-circle.tam { width: 280px; height: 280px; }
+    .tam-circle.sam { width: 196px; height: 196px; top: 42px; left: 42px; }
+    .tam-circle.som { width: 112px; height: 112px; top: 84px; left: 84px; }
+    .journey-step { flex: 0 0 50%; margin-bottom: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">ondam</div>
+    <div class="nav-links">
+      <a href="#market">시장 기회</a>
+      <a href="#services">핵심 서비스</a>
+      <a href="#competition">경쟁 분석</a>
+      <a href="#bm">비즈니스 모델</a>
+      <a href="#marketing">마케팅</a>
+      <a href="#invest">투자 포인트</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-logo">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="56" fill="#FFF5F5" stroke="#FFE4E4" stroke-width="2"/>
+        <g transform="translate(60, 50)">
+          <path d="M-26,-28 C-26,-28 -26,-35 -18,-35 L18,-35 C26,-35 26,-28 26,-28 L26,10 C26,10 26,17 18,17 L6,17 L0,27 L-6,17 L-18,17 C-26,17 -26,10 -26,10 Z" fill="#FF6B6B"/>
+          <path d="M0,12 C-13,-1 -18,-12 -10,-17 C-5,-20 0,-14 0,-14 C0,-14 5,-20 10,-17 C18,-12 13,-1 0,12 Z" fill="white" opacity="0.95"/>
+          <line x1="-11" y1="-27" x2="-11" y2="-31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          <line x1="0" y1="-28" x2="0" y2="-33" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          <line x1="11" y1="-27" x2="11" y2="-31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        </g>
+      </svg>
+    </div>
+    <div class="hero-badge">Business Analysis & Investment Report</div>
+    <h1 class="hero-title"><span class="brand">온담</span>의 가치</h1>
+    <p class="hero-subtitle">대한민국 2,000만 5070세대를 위한 소셜 매칭 플랫폼</p>
+    <p class="hero-quote">"다시, 사람과 사람 사이에 온기를 담다"</p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-number">2,000<span class="hero-stat-unit">만</span></div>
+        <div class="hero-stat-label">타겟 인구 (50~70세)</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">3<span class="hero-stat-unit">%</span></div>
+        <div class="hero-stat-label">시니어 소셜앱 침투율</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">168<span class="hero-stat-unit">조</span></div>
+        <div class="hero-stat-label">실버경제 2030 전망</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">97<span class="hero-stat-unit">%</span></div>
+        <div class="hero-stat-label">미개척 시장</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Market Opportunity -->
+<section class="section-alt" id="market">
+  <div class="section" style="padding-top:100px;padding-bottom:100px;">
+    <span class="section-label">Market Opportunity</span>
+    <h2 class="section-title">왜 온담인가 &mdash; 시장의 구조적 기회</h2>
+    <p class="section-desc">초고령사회, 디지털 격차 해소, 외로움 위기. 세 가지 구조적 변화가 만들어낸 거대한 블루오션.</p>
+
+    <div class="market-grid">
+      <div class="market-card">
+        <div class="market-card-icon" style="background:#FFF0F0;">&#x1F468;&#x200D;&#x1F9B3;</div>
+        <div class="market-card-title">초고령사회 진입</div>
+        <div class="market-card-stat">20.3%</div>
+        <div class="market-card-desc">2025년 65세 이상 인구 1,012만 명. 60대가 40대를 추월한 인구 역전 시대. 베이비붐 세대 1,666만 명이 지금 50~70대에 진입 중입니다.</div>
+      </div>
+      <div class="market-card">
+        <div class="market-card-icon" style="background:#F0F0FF;">&#x1F4F1;</div>
+        <div class="market-card-title">디지털 격차 해소</div>
+        <div class="market-card-stat">96~99%</div>
+        <div class="market-card-desc">50~60대 스마트폰 보급률. 온라인뱅킹 89.5%, 온라인장보기 74.5%. 장벽은 기기가 아니라 <strong>나이에 맞는 앱의 부재</strong>입니다.</div>
+      </div>
+      <div class="market-card">
+        <div class="market-card-icon" style="background:#FFF5E4;">&#x1F4A1;</div>
+        <div class="market-card-title">소셜앱 블루오션</div>
+        <div class="market-card-stat">3%</div>
+        <div class="market-card-desc">시니어의 소셜 커뮤니티 앱 이용률. 97%가 미개척. "직접 만남 기회를 늘리고 싶다" 32.8%. 수요는 있지만 공급이 없는 시장.</div>
+      </div>
+    </div>
+
+    <!-- Smartphone Adoption Chart -->
+    <div class="bar-chart">
+      <div class="bar-chart-title">시니어 스마트폰 보급률 (2025, 한국갤럽)</div>
+      <div class="bar-row">
+        <span class="bar-label">50대</span>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:99%;background:linear-gradient(90deg,#FF6B6B,#FF8E8E);">99%</div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">60대</span>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:98%;background:linear-gradient(90deg,#FF8E8E,#FFB0B0);">~98%</div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">70대+</span>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:91%;background:linear-gradient(90deg,#FFB0B0,#FFCECE);">91%</div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" style="color:var(--brand);font-weight:700;">소셜앱 이용</span>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:3%;background:var(--text-tertiary);min-width:40px;">3%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Loneliness Crisis -->
+<section class="section">
+  <span class="section-label">The Problem</span>
+  <h2 class="section-title">외로움 위기 &mdash; 사회적 문제가 비즈니스 기회</h2>
+  <p class="section-desc">이것은 불편함이 아닙니다. 생명과 직결된 사회적 위기입니다.</p>
+
+  <div class="crisis-grid">
+    <div class="crisis-stats">
+      <div class="crisis-stat">
+        <div class="crisis-stat-number">48.9%</div>
+        <div class="crisis-stat-text">1인가구 중 외로움을 느끼는 비율</div>
+      </div>
+      <div class="crisis-stat">
+        <div class="crisis-stat-number">OECD 1위</div>
+        <div class="crisis-stat-text">대한민국 고령자 고독 수준</div>
+      </div>
+      <div class="crisis-stat">
+        <div class="crisis-stat-number">2.3배</div>
+        <div class="crisis-stat-text">독거 시니어 자살률 (비독거 대비)</div>
+      </div>
+      <div class="crisis-stat">
+        <div class="crisis-stat-number">213.8만</div>
+        <div class="crisis-stat-text">65세 이상 1인가구 (역대 최고)</div>
+      </div>
+      <div class="crisis-stat">
+        <div class="crisis-stat-number">32.8%</div>
+        <div class="crisis-stat-text">"직접 만남 기회를 늘리고 싶다" (50대 이상)</div>
+      </div>
+    </div>
+    <div class="crisis-message">
+      <div class="crisis-message-icon">&#x1F49B;</div>
+      <div class="crisis-message-text">
+        온담의 모임 하나가<br>
+        누군가의 <strong>토요일</strong>을 바꿉니다.<br><br>
+        토요일이 바뀌면 한 주가 바뀝니다.<br>
+        한 주가 바뀌면 <strong>삶이 바뀝니다.</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Core Services -->
+<section class="section-alt" id="services">
+  <div class="section" style="padding-top:100px;padding-bottom:100px;">
+    <span class="section-label">Core Services</span>
+    <h2 class="section-title">온담의 핵심 서비스</h2>
+    <p class="section-desc">인연(1:1 매칭)과 모임(소그룹 오프라인)이 하나의 앱에서 자연스럽게 연결됩니다.</p>
+
+    <div class="services-grid">
+      <!-- Featured: Inyeon -->
+      <div class="service-card featured">
+        <div class="service-header">
+          <div class="service-number">01 &mdash; 핵심 서비스</div>
+          <div class="service-name">인연 (1:1 매칭)</div>
+          <div class="service-tagline">"오늘 당신에게 찾아온 인연을 확인하세요"</div>
+          <div class="service-desc">가차(Gacha) 기반 매칭 시스템. 매일 3장의 카드를 뒤집어 오늘의 인연을 만나세요. 무한 스와이프의 피로감 대신, 운명적 만남의 설렘을 제공합니다.</div>
+          <ul class="service-features">
+            <li>5가지 추천 타입: 근처, 동문, 인기, 종교, 관심사</li>
+            <li>대화 요청 시스템: 24시간 수락/거절</li>
+            <li>하루 3장 무료, 멤버십 시 6장 + 무제한 대화 요청</li>
+            <li>"운명의 카드"라는 감성적 프레이밍으로 만남앱 거부감 해소</li>
+          </ul>
+        </div>
+        <div class="service-visual">
+          <div class="gacha-cards">
+            <div class="gacha-card">&#x2728;</div>
+            <div class="gacha-card">&#x1F49D;</div>
+            <div class="gacha-card">&#x2753;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Moim -->
+      <div class="service-card">
+        <div class="service-visual" style="min-height:200px;">
+          <div class="moim-visual">
+            <div class="moim-people">
+              <div class="moim-person">&#x1F468;</div>
+              <div class="moim-person">&#x1F469;</div>
+              <div class="moim-person">&#x1F474;</div>
+              <div class="moim-person">&#x1F475;</div>
+              <div class="moim-person">&#x1F468;&#x200D;&#x1F9B3;</div>
+              <div class="moim-person">&#x1F469;&#x200D;&#x1F9B3;</div>
+            </div>
+          </div>
+        </div>
+        <div class="service-header">
+          <div class="service-number">02 &mdash; 핵심 서비스</div>
+          <div class="service-name">모임 (소그룹 오프라인)</div>
+          <div class="service-tagline">"혼자가 아닌, 함께라서 가능한 첫걸음"</div>
+          <div class="service-desc">6~10명 소규모 오프라인 모임. 취미, 여행, 건강, 문화 등 다양한 카테고리. 온담 공식 모임으로 품질 보증.</div>
+          <ul class="service-features">
+            <li>리뷰 & 별점으로 신뢰 구축</li>
+            <li>노쇼 관리로 건전한 커뮤니티 유지</li>
+            <li>모임 후 1:1 채팅으로 자연스러운 전환</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Chat + Profile -->
+      <div class="service-card">
+        <div class="service-header">
+          <div class="service-number">03 &mdash; 커뮤니케이션</div>
+          <div class="service-name">채팅 & 프로필</div>
+          <div class="service-tagline">"대화가 관계의 시작입니다"</div>
+          <div class="service-desc">대화 요청 수락 후 1:1 채팅으로 자연스럽게 이어지는 대화. 텍스트, 사진, 읽음 확인까지.</div>
+          <ul class="service-features">
+            <li>시니어 맞춤 프로필: 결혼상태, 자녀, 종교, 학교 등</li>
+            <li>최대 6장 사진 (CDN으로 빠른 로딩)</li>
+            <li>전화번호 인증 + 프로필 검증 시스템</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- User Journey -->
+    <h3 style="font-size:20px;font-weight:700;margin:60px 0 12px;text-align:center;">사용자 여정 &mdash; 모임이 트로이 목마</h3>
+    <p style="text-align:center;color:var(--text-tertiary);font-size:15px;margin-bottom:32px;">"데이팅 앱의 가장 큰 문제는 데이팅 앱이라는 것입니다"</p>
+    <div class="journey">
+      <div class="journey-step">
+        <div class="journey-icon"><span>&#x1F6B6;</span></div>
+        <div class="journey-title">모임 발견</div>
+        <div class="journey-desc">"산책 모임 있네?"<br>심리적 장벽 없는 유입</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon"><span>&#x1F91D;</span></div>
+        <div class="journey-title">오프라인 만남</div>
+        <div class="journey-desc">함께 걷고, 먹고, 웃기<br>자연스러운 관심 발생</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon"><span>&#x1F0CF;</span></div>
+        <div class="journey-title">인연 카드</div>
+        <div class="journey-desc">1:1 매칭으로 전환<br>카드 뒤집기의 설렘</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon"><span>&#x1F4AC;</span></div>
+        <div class="journey-title">대화 시작</div>
+        <div class="journey-desc">대화 요청 &rarr; 채팅<br>관계가 깊어짐</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon" style="background:var(--brand);"><span style="filter:brightness(10);">&#x2B50;</span></div>
+        <div class="journey-title">멤버십 전환</div>
+        <div class="journey-desc">더 많은 인연, 무제한 대화 요청<br><strong style="color:var(--brand);">수익화</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Competition -->
+<section class="section" id="competition">
+  <span class="section-label">Competition</span>
+  <h2 class="section-title">경쟁 분석 &mdash; 온담은 뭐가 다른가</h2>
+  <p class="section-desc">시니어 소셜 시장에 지배적 플레이어는 아직 없습니다.</p>
+
+  <div class="comp-table-wrap" style="margin-bottom:48px;">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th style="width:140px;">항목</th>
+          <th class="highlight" style="width:160px;">온담</th>
+          <th>시놀/시럽</th>
+          <th>오이</th>
+          <th>중년만남류</th>
+          <th>네이버밴드</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>타겟</strong></td>
+          <td class="highlight">50~70대</td>
+          <td>50~70대</td>
+          <td>45세 이상</td>
+          <td>중년 전반</td>
+          <td>전 연령</td>
+        </tr>
+        <tr>
+          <td><strong>핵심 기능</strong></td>
+          <td class="highlight star">인연+모임 하이브리드</td>
+          <td>데이팅+모임+AI전화</td>
+          <td>취미 모임</td>
+          <td>채팅/데이팅</td>
+          <td>그룹 커뮤니티</td>
+        </tr>
+        <tr>
+          <td><strong>1:1 매칭</strong></td>
+          <td class="highlight check">O (가차 시스템)</td>
+          <td class="check">O</td>
+          <td class="cross">X</td>
+          <td>O (저품질)</td>
+          <td class="cross">X</td>
+        </tr>
+        <tr>
+          <td><strong>매칭&harr;모임 연계</strong></td>
+          <td class="highlight star">O (핵심 차별화)</td>
+          <td>별도 앱 분리</td>
+          <td class="cross">X</td>
+          <td class="cross">X</td>
+          <td class="cross">X</td>
+        </tr>
+        <tr>
+          <td><strong>가차 UX</strong></td>
+          <td class="highlight star">O (독자적)</td>
+          <td class="cross">X</td>
+          <td class="cross">X</td>
+          <td class="cross">X</td>
+          <td class="cross">X</td>
+        </tr>
+        <tr>
+          <td><strong>멤버십 BM</strong></td>
+          <td class="highlight star">O (구독 수익)</td>
+          <td>포인트 소모형</td>
+          <td>&mdash;</td>
+          <td class="cross">X</td>
+          <td>무료</td>
+        </tr>
+        <tr>
+          <td><strong>신뢰&middot;안전</strong></td>
+          <td class="highlight">인증+리뷰+노쇼관리</td>
+          <td>기본</td>
+          <td>기본</td>
+          <td style="color:#E85555;">매우 낮음</td>
+          <td>없음</td>
+        </tr>
+        <tr>
+          <td><strong>사용자</strong></td>
+          <td class="highlight">런칭 초기</td>
+          <td>~10만</td>
+          <td>&mdash;</td>
+          <td>&mdash;</td>
+          <td>1,924만</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 5 Differentiators -->
+  <h3 style="font-size:20px;font-weight:700;margin-bottom:24px;">온담만의 결정적 차별화</h3>
+  <div class="diff-grid">
+    <div class="diff-card">
+      <div class="diff-num">01</div>
+      <div class="diff-title">인연+모임<br>하이브리드</div>
+      <div class="diff-desc">하나의 앱에서 1:1 매칭과 소그룹 모임이 자연스럽게 연결</div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">02</div>
+      <div class="diff-title">가차 디스커버리<br>인연의 설렘</div>
+      <div class="diff-desc">무한 스와이프 대신 하루 3장 카드. 운명이라는 감성적 프레이밍</div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">03</div>
+      <div class="diff-title">신뢰 기반<br>커뮤니티</div>
+      <div class="diff-desc">인증, 리뷰, 노쇼 관리, 신고 시스템으로 안전한 환경 구축</div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">04</div>
+      <div class="diff-title">온담 공식<br>모임 운영</div>
+      <div class="diff-desc">콜드 스타트 극복. 운영팀이 기획하는 프리미엄 모임으로 품질 보증</div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">05</div>
+      <div class="diff-title">시니어 맞춤<br>UX 설계</div>
+      <div class="diff-desc">카카오 로그인, 최소 옵션, 알림 최소화. 50대 디지털 행동 기반 설계</div>
+    </div>
+  </div>
+</section>
+
+<!-- Business Model -->
+<section class="section-alt" id="bm">
+  <div class="section" style="padding-top:100px;padding-bottom:100px;">
+    <span class="section-label">Business Model</span>
+    <h2 class="section-title">비즈니스 모델</h2>
+    <p class="section-desc">멤버십(구독)을 핵심으로, 캔디(인앱 화폐)를 보조로 한 이중 수익 구조.</p>
+
+    <div class="bm-columns">
+      <div class="bm-primary">
+        <div class="bm-primary-badge">핵심 BM</div>
+        <h3>멤버십 &mdash; 온담 프리미엄</h3>
+        <p>예측 가능한 반복 수익(MRR). 시니어는 한번 익숙해지면 이탈률이 낮아 높은 LTV를 보장합니다.</p>
+        <table class="membership-table">
+          <thead>
+            <tr>
+              <th>기능</th>
+              <th>무료</th>
+              <th>프리미엄</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>일일 인연 카드</td>
+              <td>3장</td>
+              <td>6장</td>
+            </tr>
+            <tr>
+              <td>대화 요청</td>
+              <td>1회/일</td>
+              <td>무제한</td>
+            </tr>
+            <tr>
+              <td>프리미엄 모임</td>
+              <td>&mdash;</td>
+              <td>접근 가능</td>
+            </tr>
+            <tr>
+              <td>프로필 상위 노출</td>
+              <td>&mdash;</td>
+              <td>O</td>
+            </tr>
+            <tr>
+              <td>방문자 확인</td>
+              <td>&mdash;</td>
+              <td>O</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bm-secondary">
+        <h3>캔디 (인앱 화폐)</h3>
+        <p>멤버십을 원하지 않는 라이트 유저도 필요한 순간에만 소액 결제. 멤버십 전환 전 "맛보기" 역할.</p>
+        <ul class="service-features">
+          <li>대화 요청: 3캔디</li>
+          <li>즉시 채팅 개설: 5캔디</li>
+          <li>추가 메시지: 1캔디/건</li>
+          <li>Apple IAP / Google Play / 토스페이먼츠</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Revenue Projections -->
+    <h3 style="font-size:20px;font-weight:700;margin-bottom:8px;">매출 시나리오 (멤버십 기준)</h3>
+    <p style="font-size:14px;color:var(--text-tertiary);margin-bottom:24px;">시놀은 1.5년 만에 10만 사용자 달성. 온담은 하이브리드 모델로 더 빠른 성장이 가능합니다.</p>
+    <div class="revenue-grid">
+      <div class="revenue-card">
+        <div class="revenue-year">Year 1 &middot; 보수적</div>
+        <div class="revenue-label">MAU 5만 &middot; 전환 5%</div>
+        <div class="revenue-number">6억</div>
+        <div class="revenue-sub">월 5,000만원</div>
+      </div>
+      <div class="revenue-card">
+        <div class="revenue-year">Year 2 &middot; 기본</div>
+        <div class="revenue-label">MAU 20만 &middot; 전환 7%</div>
+        <div class="revenue-number">33.6억</div>
+        <div class="revenue-sub">월 2.8억원</div>
+      </div>
+      <div class="revenue-card">
+        <div class="revenue-year">Year 3 &middot; 성장</div>
+        <div class="revenue-label">MAU 50만 &middot; 전환 10%</div>
+        <div class="revenue-number">132억</div>
+        <div class="revenue-sub">월 11억원</div>
+      </div>
+      <div class="revenue-card">
+        <div class="revenue-year">Year 5 &middot; 목표</div>
+        <div class="revenue-label">MAU 100만 &middot; 전환 12%</div>
+        <div class="revenue-number">316억</div>
+        <div class="revenue-sub">월 26.4억원</div>
+      </div>
+    </div>
+
+    <!-- TAM/SAM/SOM -->
+    <h3 style="font-size:20px;font-weight:700;margin:60px 0 8px;text-align:center;">시장 규모 (TAM/SAM/SOM)</h3>
+    <div class="tam-visual">
+      <div class="tam-circles">
+        <div class="tam-circle tam">
+          <span class="tam-label">TAM</span>
+          <span class="tam-value">싱글 시니어 ~1,000만</span>
+        </div>
+        <div class="tam-circle sam">
+          <span class="tam-label">SAM</span>
+          <span class="tam-value">관심층 ~100만</span>
+        </div>
+        <div class="tam-circle som">
+          <div>
+            <div class="tam-label">SOM</div>
+            <div class="tam-value">33~316억</div>
+            <div class="tam-desc">Y1~5 연매출</div>
+          </div>
+        </div>
+      </div>
+      <div class="tam-legend">
+        <div class="tam-legend-item">
+          <div class="tam-legend-dot" style="background:#FFE4E4;border:2px solid rgba(255,107,107,0.2);"></div>
+          <div>
+            <div class="tam-legend-title">TAM (전체 시장)</div>
+            <div class="tam-legend-desc">50~70대 싱글 ~1,000만 명<br>데이팅앱 시장 1,859억 + 실버경제 100조</div>
+          </div>
+        </div>
+        <div class="tam-legend-item">
+          <div class="tam-legend-dot" style="background:#FFD0D0;border:2px solid rgba(255,107,107,0.3);"></div>
+          <div>
+            <div class="tam-legend-title">SAM (접근 가능 시장)</div>
+            <div class="tam-legend-desc">스마트폰 보유 싱글 시니어 소셜앱 관심층<br>~100만 명, 연 1.2조원 잠재 수익</div>
+          </div>
+        </div>
+        <div class="tam-legend-item">
+          <div class="tam-legend-dot" style="background:var(--brand);"></div>
+          <div>
+            <div class="tam-legend-title">SOM (확보 가능 시장)</div>
+            <div class="tam-legend-desc">Y1~2: 10~50만 사용자<br>Y3~5: 50~100만 사용자, 연 33~316억원</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Marketing -->
+<section class="section" id="marketing">
+  <span class="section-label">Marketing Strategy</span>
+  <h2 class="section-title">마케팅 전략</h2>
+  <p class="section-desc">"온담은 데이팅 앱이 아닙니다. 다시 사람을 만나는 곳입니다."</p>
+
+  <!-- Emotional Campaigns -->
+  <div class="campaign-grid">
+    <div class="campaign-card">
+      <div class="campaign-header">
+        <div class="campaign-emoji">&#x1F338;</div>
+        <div class="campaign-name">캠페인 1<br>두 번째 봄</div>
+      </div>
+      <div class="campaign-body">
+        <div class="campaign-text">
+          자녀들은 독립하고, 배우자와는 헤어지고,
+          직장 동료는 각자의 길을 갔습니다.<br><br>
+          어느 날 문득 깨달았습니다.
+          연락할 사람이 없다는 것을.<br><br>
+          온담에서 첫 모임에 나갔습니다.
+          산책 모임이었습니다.
+          어색한 인사, 서툰 농담, 그리고 따뜻한 커피 한 잔.<br><br>
+          그날 이후, 토요일이 기다려지기 시작했습니다.
+          <span class="campaign-cta">온담. 다시 사람을 만나는 곳.</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-header">
+        <div class="campaign-emoji">&#x1F49D;</div>
+        <div class="campaign-name">캠페인 2<br>당신의 이야기는<br>아직 끝나지 않았습니다</div>
+      </div>
+      <div class="campaign-body">
+        <div class="campaign-text">
+          55세, 이혼 후 3년.
+          주변 사람들은 말합니다. "이 나이에 뭘."<br><br>
+          하지만 심장은 아직 뜁니다.
+          웃고 싶고, 설레고 싶고,
+          누군가에게 좋은 하루를 물어보고 싶습니다.<br><br>
+          온담에서 카드를 뒤집었습니다.
+          같은 학교 출신, 같은 취미, 비슷한 이야기를 가진 사람이었습니다.<br><br>
+          나이는 숫자일 뿐이었습니다.
+          <span class="campaign-cta">온담. 오늘, 당신의 인연을 만나보세요.</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-header">
+        <div class="campaign-emoji">&#x1F372;</div>
+        <div class="campaign-name">캠페인 3<br>혼자 먹는 밥이<br>지겨울 때</div>
+      </div>
+      <div class="campaign-body">
+        <div class="campaign-text">
+          퇴근 후 빈 집, 혼자 차리는 저녁.
+          TV 소리만 가득한 주말.<br><br>
+          온담 모임에서는
+          누군가와 함께 먹고, 함께 걷고, 함께 웃습니다.<br><br>
+          어제는 북한산 둘레길을 걸었습니다.
+          내일은 서촌에서 커피를 마십니다.<br><br>
+          밥 한 끼의 온기는,
+          함께할 때 비로소 완성됩니다.
+          <span class="campaign-cta">온담. 따뜻한 만남이 시작되는 곳.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Channel Strategy -->
+  <h3 style="font-size:20px;font-weight:700;margin-bottom:24px;">채널 전략 &mdash; 시니어가 있는 곳으로</h3>
+  <div class="channel-grid">
+    <div class="channel-card">
+      <div class="channel-icon" style="background:#FFE4E4;">&#x1F4FA;</div>
+      <div>
+        <div class="channel-name">유튜브</div>
+        <div class="channel-desc">시니어 유튜버 협업, "두 번째 봄" 시리즈 영상 콘텐츠</div>
+        <div class="channel-stat">50대+ 이용률 69.5%</div>
+      </div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-icon" style="background:#E4FFE9;">&#x1F50D;</div>
+      <div>
+        <div class="channel-name">네이버</div>
+        <div class="channel-desc">블로그/카페 콘텐츠 마케팅, 검색 광고 (시니어 정보 검색 1위)</div>
+        <div class="channel-stat">시니어 검색 점유율 76.5%</div>
+      </div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-icon" style="background:#FFF4E4;">&#x1F4AC;</div>
+      <div>
+        <div class="channel-name">카카오톡 / 밴드</div>
+        <div class="channel-desc">플러스친구 채널, 밴드 내 모임 홍보, 시니어 그룹 타겟팅</div>
+        <div class="channel-stat">카카오 98.9% / 밴드 50대 40.6%</div>
+      </div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-icon" style="background:#F0E4FF;">&#x1F3DB;</div>
+      <div>
+        <div class="channel-name">오프라인 접점</div>
+        <div class="channel-desc">복지관 출장 모임, 문화센터 연계, 대형마트 체험 부스, 약국 QR</div>
+        <div class="channel-stat">시니어 새 만남 1위: 취미/동호회 42.5%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Value -->
+<section class="section-alt">
+  <div class="section" style="padding-top:100px;padding-bottom:100px;">
+    <span class="section-label">Value Proposition</span>
+    <h2 class="section-title">온담이 지닌 가치</h2>
+    <p class="section-desc">사회적 가치, 경제적 가치, 기술적 가치. 세 축이 만나는 교차점.</p>
+
+    <div class="value-grid">
+      <div class="value-card social">
+        <div class="value-icon">&#x1F49B;</div>
+        <div class="value-title">사회적 가치</div>
+        <div class="value-subtitle">"연결의 인프라"</div>
+        <ul class="value-list">
+          <li>OECD 1위 고령자 고독 문제의 실질적 솔루션</li>
+          <li>독거 시니어 자살률 2.3배 &mdash; 연결이 생명을 구합니다</li>
+          <li>정부 초고령사회 정책과 시너지</li>
+          <li>ESG 투자 가치: 사회적 고립 해소</li>
+        </ul>
+      </div>
+      <div class="value-card economic">
+        <div class="value-icon">&#x1F4C8;</div>
+        <div class="value-title">경제적 가치</div>
+        <div class="value-subtitle">"확실한 시장, 확실한 타이밍"</div>
+        <ul class="value-list">
+          <li>매년 증가하는 타겟 인구 (2040년까지 지속)</li>
+          <li>침투율 3%, 지배적 플레이어 부재</li>
+          <li>시니어의 높은 경제력 &rarr; 높은 ARPU</li>
+          <li>낮은 이탈률 &rarr; 높은 LTV</li>
+          <li>투자 트렌드: 4년간 12배 성장 (58억&rarr;718억)</li>
+        </ul>
+      </div>
+      <div class="value-card tech">
+        <div class="value-icon">&#x1F680;</div>
+        <div class="value-title">기술적 가치</div>
+        <div class="value-subtitle">"확장 가능한 아키텍처"</div>
+        <ul class="value-list">
+          <li>React 18 + Spring Boot 3 + PostgreSQL</li>
+          <li>웹 + iOS + Android 멀티 플랫폼</li>
+          <li>Apple IAP + Google Play + 토스 3중 결제</li>
+          <li>위치/동문/관심사/인기도 추천 엔진</li>
+          <li>AWS (EC2 + RDS + S3 + CloudFront)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Investment Points (Dark) -->
+<section class="section-dark section-full" id="invest">
+  <div class="section-inner" style="padding-top:100px;padding-bottom:100px;">
+    <span class="section-label" style="color:var(--brand);">Why Invest Now</span>
+    <h2 class="section-title" style="color:white;">왜 지금 온담에 투자해야 하는가</h2>
+    <p class="section-desc" style="color:rgba(255,255,255,0.5);margin-bottom:48px;">다섯 가지 구조적 이유.</p>
+
+    <div class="invest-grid">
+      <div class="invest-card">
+        <div class="invest-icon">&#x1F30F;</div>
+        <div class="invest-title">시장</div>
+        <ul class="invest-items">
+          <li>2,000만 타겟, 50% 싱글</li>
+          <li>소셜앱 침투율 3%</li>
+          <li>실버경제 100조 &rarr; 168조</li>
+          <li>지배적 경쟁자 부재</li>
+        </ul>
+      </div>
+      <div class="invest-card">
+        <div class="invest-icon">&#x1F4F1;</div>
+        <div class="invest-title">제품</div>
+        <ul class="invest-items">
+          <li>인연+모임 유일한 통합 플랫폼</li>
+          <li>가차 UX 독자적 매칭</li>
+          <li>모임이 유입+신뢰+전환 해결</li>
+          <li>풀스택 제품 이미 동작 중</li>
+        </ul>
+      </div>
+      <div class="invest-card">
+        <div class="invest-icon">&#x1F4B0;</div>
+        <div class="invest-title">BM</div>
+        <ul class="invest-items">
+          <li>멤버십 중심 반복 수익</li>
+          <li>캔디 보조 수익화</li>
+          <li>시니어 낮은 이탈률 &rarr; 높은 LTV</li>
+          <li>Y3 목표: 연 132억</li>
+        </ul>
+      </div>
+      <div class="invest-card">
+        <div class="invest-icon">&#x23F0;</div>
+        <div class="invest-title">타이밍</div>
+        <ul class="invest-items">
+          <li>2025 초고령사회 진입</li>
+          <li>시니어 투자 4년간 12배</li>
+          <li>디지털 격차 해소 완료</li>
+          <li>아직 승자가 없는 시장</li>
+        </ul>
+      </div>
+      <div class="invest-card">
+        <div class="invest-icon">&#x1F49A;</div>
+        <div class="invest-title">임팩트</div>
+        <ul class="invest-items">
+          <li>OECD 1위 고독 문제 해결</li>
+          <li>정부 정책과 시너지</li>
+          <li>ESG 투자 가치</li>
+          <li>사회적 연결이 생명을 구함</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Key Metrics Table -->
+<section class="section">
+  <span class="section-label">Key Metrics</span>
+  <h2 class="section-title">핵심 수치 한눈에 보기</h2>
+  <p class="section-desc">모든 수치는 공식 출처를 기반으로 합니다.</p>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>카테고리</th>
+          <th>지표</th>
+          <th>수치</th>
+          <th>출처</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="cat-badge cat-pop">인구</span></td><td>50~70세 인구</td><td>2,000만 명</td><td>통계청</td></tr>
+        <tr><td><span class="cat-badge cat-pop">인구</span></td><td>이 중 싱글 비율</td><td>50%+ (~1,000만)</td><td>시놀 데이터</td></tr>
+        <tr><td><span class="cat-badge cat-pop">인구</span></td><td>65세 이상 1인가구</td><td>213.8만 가구</td><td>통계청 2025</td></tr>
+        <tr><td><span class="cat-badge cat-dig">디지털</span></td><td>50~60대 스마트폰</td><td>96~99%</td><td>한국갤럽 2025</td></tr>
+        <tr><td><span class="cat-badge cat-dig">디지털</span></td><td>시니어 소셜앱 침투율</td><td>3%</td><td>오픈서베이 2024</td></tr>
+        <tr><td><span class="cat-badge cat-mkt">시장</span></td><td>한국 데이팅앱 시장</td><td>1,859억원</td><td>Sensor Tower</td></tr>
+        <tr><td><span class="cat-badge cat-mkt">시장</span></td><td>실버경제 규모</td><td>100조 &rarr; 168조 (2030)</td><td>보건산업진흥원</td></tr>
+        <tr><td><span class="cat-badge cat-mkt">시장</span></td><td>시니어 스타트업 투자</td><td>718억원 (2024)</td><td>THE VC</td></tr>
+        <tr><td><span class="cat-badge cat-comp">경쟁</span></td><td>시놀 사용자</td><td>~10만 명</td><td>ZDNet</td></tr>
+        <tr><td><span class="cat-badge cat-comp">경쟁</span></td><td>시놀 투자액</td><td>5.5억원</td><td>THE VC</td></tr>
+        <tr><td><span class="cat-badge cat-need">니즈</span></td><td>"직접 만남 늘리고 싶다"</td><td>32.8% (50대+)</td><td>오픈서베이</td></tr>
+        <tr><td><span class="cat-badge cat-need">니즈</span></td><td>1인가구 외로움</td><td>48.9%</td><td>통계청</td></tr>
+        <tr><td><span class="cat-badge cat-need">니즈</span></td><td>고령자 고독</td><td>OECD 1위</td><td>OECD</td></tr>
+        <tr><td><span class="cat-badge cat-grow">성장</span></td><td>초고령사회 진입</td><td>2025년 (65+ 20.3%)</td><td>통계청</td></tr>
+        <tr><td><span class="cat-badge cat-grow">성장</span></td><td>65+ 인구 전망</td><td>30% (2036), 40% (2045)</td><td>통계청</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Vision -->
+<section class="vision">
+  <div class="vision-text">
+    <strong>모든 세대에게는 그 세대의 앱이 있습니다.</strong><br><br>
+    20대에게 틴더가 있고,<br>
+    30대에게 블라인드가 있듯이,<br>
+    <strong>50대 이상에게는 <span class="brand">온담</span>이 있어야 합니다.</strong><br><br>
+    온담은 대한민국 2,000만 시니어가<br>
+    다시 사람과 연결되고,<br>
+    다시 설레고,<br>
+    다시 함께하는 삶을 시작하는 곳입니다.
+  </div>
+  <div class="vision-closing">따뜻한 만남, 온담에서 시작됩니다.</div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>본 보고서는 통계청, 오픈서베이, 한국갤럽, THE VC, Sensor Tower, OECD 등 공식 데이터를 기반으로 작성되었습니다.</p>
+  <p style="margin-top:8px;opacity:0.6;">&copy; 2026 Ondam. All rights reserved.</p>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Animate bar charts on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.bar-fill').forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0%';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            bar.style.width = width;
+          });
+        });
+      });
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.bar-chart').forEach(chart => observer.observe(chart));
+
+// Animate elements on scroll
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.market-card, .crisis-stat, .service-card, .diff-card, .campaign-card, .value-card, .invest-card, .revenue-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  fadeObserver.observe(el);
+});
+</script>
+</body>
+</html>
