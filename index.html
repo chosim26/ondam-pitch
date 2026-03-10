@@ -1247,7 +1247,7 @@
     .channel-grid { grid-template-columns: 1fr; }
     .value-grid { grid-template-columns: 1fr; }
     .invest-grid { grid-template-columns: repeat(2, 1fr); }
-    .tam-visual { flex-direction: column; }
+    .tam-visual { flex-direction: column; align-items: center; }
     .tam-legend { margin-left: 0; margin-top: 40px; }
     .journey { flex-wrap: wrap; }
     .journey-step { flex: 0 0 33%; }
@@ -1255,19 +1255,158 @@
     .nav-links { display: none; }
   }
   @media (max-width: 640px) {
-    .section { padding: 60px 20px; }
-    .section-inner { padding: 0 20px; }
-    .hero-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
-    .hero-stat { padding: 16px 12px; }
+    html { font-size: 15px; }
+    .section { padding: 48px 16px; }
+    .section-inner { padding: 0 16px; }
+    .section-title { font-size: 26px; margin-bottom: 12px; }
+    .section-desc { font-size: 15px; margin-bottom: 32px; }
+
+    /* Hero */
+    .hero { min-height: auto; padding: 100px 0 60px; }
+    .hero-content { padding: 20px; }
+    .hero-logo { width: 80px; height: 80px; margin-bottom: 24px; }
+    .hero-badge { font-size: 11px; padding: 5px 12px; }
+    .hero-title { font-size: 32px; }
+    .hero-subtitle { font-size: 16px; }
+    .hero-quote { font-size: 14px; margin-bottom: 32px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hero-stat { padding: 16px 10px; border-radius: 12px; }
     .hero-stat-number { font-size: 22px; }
-    .diff-grid { grid-template-columns: 1fr 1fr; }
-    .invest-grid { grid-template-columns: 1fr; }
-    .revenue-grid { grid-template-columns: 1fr 1fr; }
-    .tam-circles { width: 280px; height: 280px; }
-    .tam-circle.tam { width: 280px; height: 280px; }
-    .tam-circle.sam { width: 196px; height: 196px; top: 42px; left: 42px; }
-    .tam-circle.som { width: 112px; height: 112px; top: 84px; left: 84px; }
+    .hero-stat-label { font-size: 11px; }
+
+    /* Market cards */
+    .market-card { padding: 24px; }
+    .market-card-stat { font-size: 26px; }
+    .market-card-desc { font-size: 13px; }
+
+    /* Bar chart */
+    .bar-chart { padding: 24px 16px; }
+    .bar-label { width: 80px; font-size: 12px; }
+    .bar-fill { font-size: 11px; padding-left: 8px; }
+    .bar-track { height: 28px; }
+
+    /* Crisis */
+    .crisis-stat { padding: 16px 20px; flex-direction: column; gap: 8px; }
+    .crisis-stat-number { font-size: 28px; min-width: auto; }
+    .crisis-stat-text { font-size: 13px; }
+    .crisis-message { padding: 40px 20px; }
+    .crisis-message-icon { font-size: 56px; }
+    .crisis-message-text { font-size: 18px; }
+
+    /* Services */
+    .service-header { padding: 28px 20px; }
+    .service-name { font-size: 20px; }
+    .service-desc { font-size: 14px; }
+    .service-features li { font-size: 13px; }
+    .service-visual { min-height: 200px !important; padding: 28px; }
+    .gacha-cards { transform: perspective(800px) rotateY(0deg); }
+    .gacha-card { width: 72px; height: 104px; font-size: 28px; }
+
+    /* Journey */
+    .journey { gap: 0; padding: 20px 0; }
     .journey-step { flex: 0 0 50%; margin-bottom: 24px; }
+    .journey-icon { width: 52px; height: 52px; font-size: 22px; }
+    .journey-title { font-size: 13px; }
+    .journey-desc { font-size: 11px; }
+
+    /* Competition table */
+    .comp-table th, .comp-table td { padding: 10px 12px; font-size: 12px; }
+    .comp-table th:first-child, .comp-table td:first-child { position: sticky; left: 0; z-index: 1; min-width: 80px; }
+    .comp-table th:first-child { background: #FAFAFA; }
+    .comp-table td:first-child { background: var(--bg-primary); }
+    .comp-table td.highlight:first-child { background: #FFF8F8; }
+
+    /* Differentiators */
+    .diff-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .diff-card { padding: 20px 16px; }
+    .diff-num { font-size: 28px; margin-bottom: 8px; }
+    .diff-title { font-size: 13px; }
+    .diff-desc { font-size: 12px; }
+
+    /* BM */
+    .bm-primary { padding: 28px 20px; }
+    .bm-primary h3 { font-size: 22px; }
+    .bm-primary p { font-size: 14px; }
+    .membership-table td, .membership-table th { font-size: 12px; padding: 8px 0; }
+    .bm-secondary { padding: 28px 20px; }
+    .bm-secondary h3 { font-size: 18px; }
+
+    /* Revenue */
+    .revenue-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .revenue-card { padding: 20px 16px; }
+    .revenue-number { font-size: 22px; }
+    .revenue-year { font-size: 11px; }
+    .revenue-label { font-size: 11px; }
+    .revenue-sub { font-size: 11px; }
+
+    /* TAM circles */
+    .tam-circles { width: 260px; height: 260px; }
+    .tam-circle.tam { width: 260px; height: 260px; }
+    .tam-circle.sam { width: 180px; height: 180px; top: 40px; left: 40px; }
+    .tam-circle.som { width: 100px; height: 100px; top: 80px; left: 80px; }
+    .tam-circle.tam .tam-value { font-size: 12px; }
+    .tam-circle.sam .tam-value { font-size: 11px; }
+    .tam-circle.som .tam-value { font-size: 14px; }
+    .tam-circle.som .tam-label { font-size: 10px; }
+    .tam-legend { gap: 16px; }
+    .tam-legend-title { font-size: 14px; }
+    .tam-legend-desc { font-size: 12px; }
+
+    /* Campaign */
+    .campaign-card { border-radius: 16px; }
+    .campaign-header { padding: 28px 20px 0; }
+    .campaign-emoji { font-size: 32px; margin-bottom: 12px; }
+    .campaign-name { font-size: 17px; margin-bottom: 16px; }
+    .campaign-body { padding: 0 20px 28px; }
+    .campaign-text { font-size: 14px; line-height: 1.8; padding-left: 12px; }
+    .campaign-cta { font-size: 14px; }
+
+    /* Channel */
+    .channel-card { padding: 20px; gap: 14px; }
+    .channel-icon { width: 40px; height: 40px; font-size: 20px; border-radius: 10px; }
+    .channel-name { font-size: 14px; }
+    .channel-desc { font-size: 12px; }
+
+    /* Value */
+    .value-card { padding: 28px 20px; border-radius: 16px; }
+    .value-icon { font-size: 32px; margin-bottom: 14px; }
+    .value-title { font-size: 18px; }
+    .value-list li { font-size: 13px; }
+
+    /* Invest */
+    .invest-grid { grid-template-columns: 1fr; gap: 12px; }
+    .invest-card { padding: 24px 20px; text-align: left; display: flex; gap: 16px; align-items: flex-start; }
+    .invest-icon { font-size: 28px; margin-bottom: 0; flex-shrink: 0; }
+    .invest-title { font-size: 15px; margin-bottom: 10px; }
+    .invest-items li { font-size: 12px; }
+
+    /* Data table */
+    .data-table th, .data-table td { padding: 10px 12px; font-size: 12px; white-space: nowrap; }
+    .data-table td:nth-child(3) { font-size: 12px; }
+
+    /* Vision */
+    .vision { padding: 80px 20px; }
+    .vision::before { height: 50px; }
+    .vision-text { font-size: 17px; line-height: 1.8; }
+    .vision-closing { font-size: 22px; margin-top: 32px; }
+
+    /* Footer */
+    .footer { padding: 28px 16px; font-size: 11px; }
+  }
+
+  /* Extra small screens (iPhone SE etc.) */
+  @media (max-width: 380px) {
+    .hero-title { font-size: 26px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .hero-stat-number { font-size: 20px; }
+    .section-title { font-size: 22px; }
+    .diff-grid { grid-template-columns: 1fr; }
+    .revenue-grid { grid-template-columns: 1fr; }
+    .tam-circles { width: 220px; height: 220px; }
+    .tam-circle.tam { width: 220px; height: 220px; }
+    .tam-circle.sam { width: 152px; height: 152px; top: 34px; left: 34px; }
+    .tam-circle.som { width: 84px; height: 84px; top: 68px; left: 68px; }
+    .tam-circle.som .tam-value { font-size: 12px; }
   }
 </style>
 </head>
