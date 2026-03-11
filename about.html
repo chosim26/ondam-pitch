@@ -366,6 +366,39 @@
   .footer a { color: var(--text-tertiary); text-decoration: none; }
   .footer a:hover { color: var(--brand); }
 
+  /* ===== Scroll Animations ===== */
+  .anim-fade-up {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .anim-fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  .anim-slide-left {
+    opacity: 0; transform: translateX(-32px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .anim-slide-left.visible { opacity: 1; transform: translateX(0); }
+
+  .anim-slide-right {
+    opacity: 0; transform: translateX(32px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .anim-slide-right.visible { opacity: 1; transform: translateX(0); }
+
+  .anim-scale {
+    opacity: 0; transform: scale(0.9);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .anim-scale.visible { opacity: 1; transform: scale(1); }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .anim-fade-up, .anim-slide-left, .anim-slide-right, .anim-scale {
+      opacity: 1 !important; transform: none !important;
+      transition: none !important;
+    }
+  }
+
   /* ===== Responsive ===== */
   @media (max-width: 768px) {
     :root {
@@ -736,19 +769,68 @@
 </footer>
 
 <script>
-const obs = new IntersectionObserver((entries) => {
+// Scroll animation system
+const animate = (entries) => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.style.opacity = '1';
-      e.target.style.transform = 'translateY(0)';
-    }
+    if (!e.isIntersecting) return;
+    e.target.classList.add('visible');
+    obs.unobserve(e.target);
   });
-}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+};
+const obs = new IntersectionObserver(animate, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
-document.querySelectorAll('.pain-item, .step, .moim-card, .benefit-card, .review-card, .trust-item').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(16px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+// Section headers - fade up
+document.querySelectorAll('.section-header, .solution-header, .children-content, .cta-bottom').forEach(el => {
+  el.classList.add('anim-fade-up');
+  obs.observe(el);
+});
+
+// Pain items - slide in from left, staggered
+document.querySelectorAll('.pain-item').forEach((el, i) => {
+  el.classList.add('anim-slide-left');
+  el.style.transitionDelay = `${i * 0.1}s`;
+  obs.observe(el);
+});
+
+// Steps - slide in from right, staggered
+document.querySelectorAll('.step').forEach((el, i) => {
+  el.classList.add('anim-slide-right');
+  el.style.transitionDelay = `${i * 0.15}s`;
+  obs.observe(el);
+});
+
+// Moim cards - scale up, staggered
+document.querySelectorAll('.moim-card').forEach((el, i) => {
+  el.classList.add('anim-scale');
+  el.style.transitionDelay = `${i * 0.08}s`;
+  obs.observe(el);
+});
+
+// Benefit cards - fade up, staggered
+document.querySelectorAll('.benefit-card').forEach((el, i) => {
+  el.classList.add('anim-fade-up');
+  el.style.transitionDelay = `${i * 0.12}s`;
+  obs.observe(el);
+});
+
+// Review cards - slide left, staggered
+document.querySelectorAll('.review-card').forEach((el, i) => {
+  el.classList.add('anim-slide-left');
+  el.style.transitionDelay = `${i * 0.12}s`;
+  obs.observe(el);
+});
+
+// Trust items - scale, staggered
+document.querySelectorAll('.trust-item').forEach((el, i) => {
+  el.classList.add('anim-scale');
+  el.style.transitionDelay = `${i * 0.1}s`;
+  obs.observe(el);
+});
+
+// Children quote - fade up
+document.querySelectorAll('.children-quote').forEach(el => {
+  el.classList.add('anim-fade-up');
+  el.style.transitionDelay = '0.2s';
   obs.observe(el);
 });
 </script>
