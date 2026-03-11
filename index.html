@@ -134,7 +134,7 @@
     margin: 0 auto 40px;
     animation: fadeInUp 1s ease;
   }
-  .hero-logo svg { width: 100%; height: 100%; }
+  .hero-logo img { width: 100%; height: 100%; object-fit: contain; }
   .hero-badge {
     display: inline-block;
     background: var(--brand-light);
@@ -1434,16 +1434,7 @@
 <section class="hero">
   <div class="hero-content">
     <div class="hero-logo">
-      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="60" cy="60" r="56" fill="#FFF5F5" stroke="#FFE4E4" stroke-width="2"/>
-        <g transform="translate(60, 50)">
-          <path d="M-26,-28 C-26,-28 -26,-35 -18,-35 L18,-35 C26,-35 26,-28 26,-28 L26,10 C26,10 26,17 18,17 L6,17 L0,27 L-6,17 L-18,17 C-26,17 -26,10 -26,10 Z" fill="#FF6B6B"/>
-          <path d="M0,12 C-13,-1 -18,-12 -10,-17 C-5,-20 0,-14 0,-14 C0,-14 5,-20 10,-17 C18,-12 13,-1 0,12 Z" fill="white" opacity="0.95"/>
-          <line x1="-11" y1="-27" x2="-11" y2="-31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-          <line x1="0" y1="-28" x2="0" y2="-33" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-          <line x1="11" y1="-27" x2="11" y2="-31" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-        </g>
-      </svg>
+      <img src="./logo.png" alt="온담 로고" style="width:100%;height:100%;object-fit:contain;">
     </div>
     <div class="hero-badge">Business Analysis & Investment Report</div>
     <h1 class="hero-title"><span class="brand">온담</span>의 가치</h1>
