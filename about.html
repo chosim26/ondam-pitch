@@ -132,6 +132,12 @@
     letter-spacing: -0.5px;
   }
   .hero h1 .brand { color: var(--brand); }
+  .hero-sub-title {
+    font-size: 22px; color: var(--text-secondary); font-weight: 500;
+    margin-bottom: 20px; animation: fadeUp 0.8s ease 0.2s both;
+    line-height: 1.5;
+  }
+  .hero-sub-title .brand { color: var(--brand); font-weight: 700; }
   .hero-desc {
     font-size: 19px; color: var(--text-secondary);
     line-height: 1.8; margin-bottom: 36px; animation: fadeUp 0.8s ease 0.3s both;
@@ -278,9 +284,13 @@
     line-height: 1.45; margin-bottom: 16px;
     letter-spacing: -0.3px;
   }
+  .children-sub {
+    font-size: 20px; color: var(--brand); font-weight: 600;
+    line-height: 1.6; margin-bottom: 20px;
+  }
   .children-desc {
     font-size: 18px; color: var(--text-secondary); line-height: 1.8;
-    max-width: 420px; margin: 0 auto 28px;
+    max-width: 440px; margin: 0 auto 28px;
   }
   .children-quote {
     background: var(--bg); border-radius: var(--radius); padding: 24px 28px;
@@ -365,6 +375,8 @@
     .solution-header h2 { font-size: 28px; }
     .moim-grid { grid-template-columns: repeat(2, 1fr); }
     .children-title { font-size: 26px; }
+    .children-sub { font-size: 18px; }
+    .hero-sub-title { font-size: 20px; }
     .cta-title { font-size: 28px; }
   }
 
@@ -414,8 +426,10 @@
     .review-mark { font-size: 28px; }
 
     .children-emoji { font-size: 40px; margin-bottom: 16px; }
-    .children-title { font-size: 24px; }
+    .children-title { font-size: 22px; }
+    .children-sub { font-size: 17px; }
     .children-desc { font-size: 16px; margin-bottom: 24px; }
+    .hero-sub-title { font-size: 18px; }
     .children-quote { padding: 20px 22px; }
     .children-quote p { font-size: 16px; }
 
@@ -457,12 +471,12 @@
       <img src="./logo.png" alt="온담 로고">
     </div>
 
-    <p class="hero-question">모임 찾고, 예약하고, 사람 모으고... 너무 번거롭지 않으셨나요?</p>
-    <h1><span class="brand">온담</span>이 다 해드립니다.<br>나오기만 하세요.</h1>
+    <h1>좋은 모임 찾기,<br>왜 이렇게 어려울까요?</h1>
+    <p class="hero-sub-title">따뜻한 모임, <span class="brand">온담</span>이 준비합니다.</p>
     <p class="hero-desc">
-      테마별 소규모 모임을 기획하고,<br>
-      비슷한 나이대의 좋은 분들을 연결합니다.<br>
-      6~10명이라 편안합니다.
+      모임 기획, 장소 예약, 사람 연결까지<br>
+      온담이 전부 합니다.<br>
+      비슷한 나이대 6~10명, 소규모라 편안합니다.
     </p>
     <a href="https://ondam-front.vercel.app" class="hero-cta">이번 주 모임 보기</a>
     <p class="hero-sub">3분 가입 · 첫 모임 초대권 제공</p>
@@ -651,12 +665,12 @@
   <div class="section-inner" style="padding:var(--section-padding);">
     <div class="children-content">
       <div class="children-emoji">&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;</div>
-      <h2 class="children-title">부모님의 토요일이<br>달라집니다</h2>
+      <h2 class="children-title">나도 새로운 곳 가기 어려운데,<br>부모님은 오죽할까.</h2>
+      <p class="children-sub">그래서 만들었습니다.<br>나와만 주세요, 나머지는 온담이.</p>
       <p class="children-desc">
-        요즘 부모님, 뭐 하고 지내시나요?<br>
-        혼자 TV 보고 계시진 않나요?<br><br>
-        온담을 선물해 주세요.<br>
-        부모님의 주말이 따뜻해집니다.
+        모임 기획, 장소 예약, 사람 연결까지<br>
+        온담이 전부 합니다.<br>
+        자식같은 마음으로, 부모님의 주말을 준비합니다.
       </p>
       <div class="children-quote">
         <p>
