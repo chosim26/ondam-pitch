@@ -76,13 +76,13 @@
     margin-bottom: 40px;
   }
   .section-header h2 {
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 700;
     line-height: 1.4;
     margin-bottom: 10px;
   }
   .section-header p {
-    font-size: 19px;
+    font-size: 20px;
     color: var(--text-tertiary);
     line-height: 1.5;
   }
@@ -93,8 +93,8 @@
     display: flex; align-items: center; justify-content: center;
     text-align: center; position: relative; overflow: hidden;
     background:
-      linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(253,248,246,0.9) 100%),
-      url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80') center/cover no-repeat;
+      linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(253,248,246,0.92) 100%),
+      url('https://images.unsplash.com/photo-1543807535-eceef0bc6599?w=1200&q=80') center/cover no-repeat;
     padding: 56px 24px 40px;
   }
   .hero::before {
@@ -125,23 +125,24 @@
   .hero-logo img { width: 100%; height: 100%; object-fit: contain; }
 
   .hero-question {
-    font-size: 17px; color: var(--text-tertiary);
+    font-size: 18px; color: var(--text-secondary);
     margin-bottom: 14px; animation: fadeUp 0.8s ease 0.1s both;
   }
   .hero h1 {
-    font-size: 42px; font-weight: 700; line-height: 1.35;
+    font-size: 44px; font-weight: 800; line-height: 1.35;
     margin-bottom: 22px; animation: fadeUp 0.8s ease 0.2s both;
     letter-spacing: -0.5px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.06);
   }
   .hero h1 .brand { color: var(--brand); }
   .hero-sub-title {
-    font-size: 24px; color: var(--text-secondary); font-weight: 500;
+    font-size: 26px; color: var(--text-primary); font-weight: 600;
     margin-bottom: 20px; animation: fadeUp 0.8s ease 0.2s both;
     line-height: 1.5;
   }
   .hero-sub-title .brand { color: var(--brand); font-weight: 700; }
   .hero-desc {
-    font-size: 20px; color: var(--text-secondary);
+    font-size: 21px; color: var(--text-primary); opacity: 0.75;
     line-height: 1.8; margin-bottom: 36px; animation: fadeUp 0.8s ease 0.3s both;
   }
   .hero-cta {
@@ -171,8 +172,8 @@
   }
   .pain-item:hover { transform: translateX(4px); }
   .pain-emoji {
-    font-size: 26px; flex-shrink: 0;
-    width: 44px; height: 44px;
+    font-size: 28px; flex-shrink: 0;
+    width: 48px; height: 48px;
     display: flex; align-items: center; justify-content: center;
     background: var(--bg-section); border-radius: 10px;
   }
@@ -228,11 +229,11 @@
   }
   .moim-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
   .moim-icon {
-    font-size: 36px; margin-bottom: 10px;
+    font-size: 40px; margin-bottom: 12px;
     line-height: 1.2;
   }
-  .moim-name { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-  .moim-desc { font-size: 17px; color: var(--text-tertiary); line-height: 1.5; }
+  .moim-name { font-size: 21px; font-weight: 700; margin-bottom: 6px; }
+  .moim-desc { font-size: 18px; color: var(--text-tertiary); line-height: 1.5; }
 
   /* ===== Benefits ===== */
   .benefit-grid {
@@ -343,13 +344,13 @@
   }
   .trust-item { text-align: center; padding: 12px 8px; }
   .trust-icon {
-    width: 48px; height: 48px; margin: 0 auto 10px;
+    width: 52px; height: 52px; margin: 0 auto 12px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 24px;
+    font-size: 28px;
     background: var(--bg-section); border-radius: 12px;
   }
-  .trust-label { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
-  .trust-desc { font-size: 16px; color: var(--text-tertiary); line-height: 1.4; }
+  .trust-label { font-size: 19px; font-weight: 700; margin-bottom: 6px; }
+  .trust-desc { font-size: 17px; color: var(--text-secondary); line-height: 1.5; }
 
   /* ===== CTA Bottom ===== */
   .cta-bottom {
