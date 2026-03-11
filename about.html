@@ -260,31 +260,33 @@
     background: var(--bg); border-radius: var(--radius); padding: 28px;
     box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.03);
   }
-  .review-quote {
-    display: flex; align-items: flex-start; gap: 6px;
-    margin-bottom: 14px;
-  }
-  .review-mark {
-    font-size: 36px; color: var(--brand); font-weight: 700;
-    line-height: 1; margin-top: -6px; flex-shrink: 0; opacity: 0.3;
-  }
   .review-text {
-    font-size: 18px; color: var(--text-secondary); line-height: 1.75;
+    font-size: 18px; color: var(--text-secondary); line-height: 1.8;
+    margin-bottom: 16px; position: relative;
+    padding-left: 20px;
+  }
+  .review-text::before {
+    content: '"'; position: absolute; left: 0; top: -4px;
+    font-size: 28px; color: var(--brand); opacity: 0.4; font-weight: 700;
   }
   .review-text mark {
     background: #FFF9C4; color: var(--text-primary);
     padding: 2px 5px; border-radius: 3px; font-weight: 600;
   }
+  .review-footer {
+    display: flex; align-items: center; justify-content: flex-end; gap: 8px;
+  }
   .review-author {
     font-size: 15px; color: var(--brand); font-weight: 600;
-    text-align: right;
   }
 
   /* ===== Children Section ===== */
   .children-bg {
-    background: linear-gradient(135deg, #F5F0FF, #FFF5F5);
+    background: linear-gradient(135deg, rgba(245,240,255,0.92), rgba(255,245,245,0.92)),
+      url('https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1200&q=80') center/cover no-repeat;
+    position: relative;
   }
-  .children-content { text-align: center; }
+  .children-content { text-align: center; position: relative; z-index: 1; }
   .children-emoji { font-size: 48px; margin-bottom: 20px; line-height: 1.2; }
   .children-title {
     font-size: 30px; font-weight: 700;
@@ -299,15 +301,39 @@
     font-size: 18px; color: var(--text-secondary); line-height: 1.8;
     max-width: 440px; margin: 0 auto 28px;
   }
-  .children-quote {
-    background: var(--bg); border-radius: var(--radius); padding: 24px 28px;
-    display: inline-block; max-width: 400px; width: 100%;
-    box-shadow: var(--shadow-sm); text-align: left;
+
+  /* KakaoTalk style chat */
+  .chat-box {
+    max-width: 360px; width: 100%; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 10px;
+    text-align: left;
   }
-  .children-quote p {
-    font-size: 17px; color: var(--text-secondary); line-height: 1.75;
+  .chat-row { display: flex; align-items: flex-end; gap: 6px; }
+  .chat-row.right { justify-content: flex-end; }
+  .chat-row.left { justify-content: flex-start; }
+  .chat-bubble {
+    padding: 12px 16px; border-radius: 16px;
+    font-size: 16px; line-height: 1.55; max-width: 75%;
   }
-  .children-quote p strong { color: var(--brand); }
+  .chat-row.right .chat-bubble {
+    background: #FEE500; color: #1A1A1A;
+    border-bottom-right-radius: 4px;
+  }
+  .chat-row.left .chat-bubble {
+    background: var(--bg); color: var(--text-primary);
+    border-bottom-left-radius: 4px;
+    box-shadow: var(--shadow-sm);
+  }
+  .chat-name {
+    font-size: 12px; color: var(--text-tertiary); margin-bottom: 4px;
+    padding-left: 4px;
+  }
+  .chat-left-group { display: flex; flex-direction: column; }
+  .chat-bubble strong { color: var(--brand); }
+  .chat-result {
+    text-align: center; margin-top: 16px;
+    font-size: 17px; color: var(--text-primary); font-weight: 600;
+  }
 
   /* ===== Trust ===== */
   .trust-grid {
@@ -470,8 +496,8 @@
     .children-sub { font-size: 17px; }
     .children-desc { font-size: 16px; margin-bottom: 24px; }
     .hero-sub-title { font-size: 18px; }
-    .children-quote { padding: 20px 22px; }
-    .children-quote p { font-size: 16px; }
+    .chat-box { max-width: 100%; }
+    .chat-bubble { font-size: 15px; max-width: 80%; }
 
     .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .trust-icon { width: 44px; height: 44px; font-size: 22px; border-radius: 10px; }
@@ -676,25 +702,22 @@
 
     <div class="review-grid">
       <div class="review-card">
-        <div class="review-quote">
-          <span class="review-mark">"</span>
-          <div class="review-text">퇴직하고 2년 동안 집에만 있었어요. 온담 산책 모임에 처음 나갔는데, 다들 너무 편하게 대해주셔서 놀랐습니다. <mark>지금은 매주 나가요.</mark></div>
+        <div class="review-text">퇴직하고 2년 동안 집에만 있었어요. 온담 산책 모임에 처음 나갔는데, 다들 너무 편하게 대해주셔서 놀랐습니다. <mark>지금은 매주 나가요.</mark></div>
+        <div class="review-footer">
+          <span class="review-author">&#x1F6B6; 김OO · 58세 · 서울</span>
         </div>
-        <div class="review-author">&#x1F6B6; 김OO · 58세 · 서울</div>
       </div>
       <div class="review-card">
-        <div class="review-quote">
-          <span class="review-mark">"</span>
-          <div class="review-text"><mark>혼자 밥 먹는 게 지겨웠는데,</mark> 온담에서 만난 분들이랑 이젠 같이 먹어요. <mark>토요일이 기다려지는 건 정말 오랜만이에요.</mark></div>
+        <div class="review-text"><mark>혼자 밥 먹는 게 지겨웠는데,</mark> 온담에서 만난 분들이랑 이젠 같이 먹어요. <mark>토요일이 기다려지는 건 정말 오랜만이에요.</mark></div>
+        <div class="review-footer">
+          <span class="review-author">&#x2615; 이OO · 63세 · 경기</span>
         </div>
-        <div class="review-author">&#x2615; 이OO · 63세 · 경기</div>
       </div>
       <div class="review-card">
-        <div class="review-quote">
-          <span class="review-mark">"</span>
-          <div class="review-text"><mark>딸이 깔아줬어요.</mark> 처음엔 반신반의했는데, 첫 모임에서 동갑내기 친구를 만났습니다. <mark>지금 제일 친한 친구예요.</mark></div>
+        <div class="review-text"><mark>딸이 깔아줬어요.</mark> 처음엔 반신반의했는데, 첫 모임에서 동갑내기 친구를 만났습니다. <mark>지금 제일 친한 친구예요.</mark></div>
+        <div class="review-footer">
+          <span class="review-author">&#x1F46B; 박OO · 55세 · 인천</span>
         </div>
-        <div class="review-author">&#x1F46B; 박OO · 55세 · 인천</div>
       </div>
     </div>
   </div>
@@ -705,20 +728,45 @@
   <div class="section-inner" style="padding:var(--section-padding);">
     <div class="children-content">
       <div class="children-emoji">&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;</div>
-      <h2 class="children-title">나도 새로운 곳 가기 어려운데,<br>부모님은 오죽할까.</h2>
+      <h2 class="children-title">나도 새로운 곳 가기 어려운데,<br>부모님은 오죽하실까요.</h2>
       <p class="children-sub">그래서 만들었습니다.<br>나와만 주세요, 나머지는 온담이.</p>
       <p class="children-desc">
         모임 기획, 장소 예약, 사람 연결까지<br>
         온담이 전부 합니다.<br>
         자식같은 마음으로, 부모님의 주말을 준비합니다.
       </p>
-      <div class="children-quote">
-        <p>
-          <em>"엄마, 요즘 뭐 하고 지내?"</em><br><br>
-          <strong>"온담 모임 다녀왔어, 너무 좋았어!"</strong><br><br>
-          이 대답 하나면, 충분합니다.
-        </p>
+
+      <div class="chat-box">
+        <div class="chat-row right">
+          <div class="chat-bubble">엄마 요즘 뭐 하고 지내?</div>
+        </div>
+        <div class="chat-left-group">
+          <div class="chat-name">엄마</div>
+          <div class="chat-row left">
+            <div class="chat-bubble">그냥 집에 있지 뭐...</div>
+          </div>
+        </div>
+        <div class="chat-row right">
+          <div class="chat-bubble">엄마 이거 한번 써봐!<br>모임 같은 거 해주는 앱이야</div>
+        </div>
+        <div class="chat-left-group">
+          <div class="chat-name">엄마</div>
+          <div class="chat-row left">
+            <div class="chat-bubble">그런 게 있어? 괜찮으려나</div>
+          </div>
+        </div>
+        <div style="text-align:center;font-size:13px;color:var(--text-tertiary);margin:8px 0;">· · · 2주 후 · · ·</div>
+        <div class="chat-left-group">
+          <div class="chat-name">엄마</div>
+          <div class="chat-row left">
+            <div class="chat-bubble"><strong>온담 모임 다녀왔어!</strong><br>북촌 산책했는데 너무 좋았어 &#x1F60A;<br>친구도 생겼어!</div>
+          </div>
+        </div>
+        <div class="chat-row right">
+          <div class="chat-bubble">&#x1F62D; 엄마 너무 좋다</div>
+        </div>
       </div>
+      <div class="chat-result">이 대화 하나면, 충분합니다.</div>
     </div>
   </div>
 </div>
@@ -831,10 +879,10 @@ document.querySelectorAll('.trust-item').forEach((el, i) => {
   obs.observe(el);
 });
 
-// Children quote - fade up
-document.querySelectorAll('.children-quote').forEach(el => {
+// Chat bubbles - fade up, staggered
+document.querySelectorAll('.chat-row, .chat-left-group, .chat-result').forEach((el, i) => {
   el.classList.add('anim-fade-up');
-  el.style.transitionDelay = '0.2s';
+  el.style.transitionDelay = `${0.15 + i * 0.2}s`;
   obs.observe(el);
 });
 </script>
