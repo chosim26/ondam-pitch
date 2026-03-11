@@ -82,7 +82,7 @@
     margin-bottom: 10px;
   }
   .section-header p {
-    font-size: 17px;
+    font-size: 18px;
     color: var(--text-tertiary);
     line-height: 1.5;
   }
@@ -174,9 +174,9 @@
     display: flex; align-items: center; justify-content: center;
     background: var(--bg-section); border-radius: 10px;
   }
-  .pain-text { font-size: 16px; color: var(--text-secondary); line-height: 1.65; flex: 1; }
+  .pain-text { font-size: 17px; color: var(--text-secondary); line-height: 1.65; flex: 1; }
   .pain-text strong {
-    display: block; font-size: 18px; color: var(--text-primary);
+    display: block; font-size: 19px; color: var(--text-primary);
     font-weight: 700; margin-bottom: 4px;
   }
 
@@ -211,8 +211,8 @@
     position: relative; z-index: 1;
   }
   .step-content { padding-top: 4px; flex: 1; }
-  .step-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-  .step-desc { font-size: 17px; color: var(--text-secondary); line-height: 1.65; }
+  .step-title { font-size: 21px; font-weight: 700; margin-bottom: 6px; }
+  .step-desc { font-size: 18px; color: var(--text-secondary); line-height: 1.65; }
 
   /* ===== Moim Examples ===== */
   .moim-grid {
@@ -229,8 +229,8 @@
     font-size: 36px; margin-bottom: 10px;
     line-height: 1.2;
   }
-  .moim-name { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
-  .moim-desc { font-size: 14px; color: var(--text-tertiary); line-height: 1.5; }
+  .moim-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .moim-desc { font-size: 15px; color: var(--text-tertiary); line-height: 1.5; }
 
   /* ===== Benefits ===== */
   .benefit-grid {
@@ -249,31 +249,35 @@
     font-size: 28px; margin-bottom: 10px;
     line-height: 1.2;
   }
-  .benefit-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
-  .benefit-desc { font-size: 16px; color: var(--text-secondary); line-height: 1.6; }
+  .benefit-title { font-size: 19px; font-weight: 700; margin-bottom: 6px; }
+  .benefit-desc { font-size: 17px; color: var(--text-secondary); line-height: 1.6; }
 
   /* ===== Reviews ===== */
   .review-grid {
     display: flex; flex-direction: column; gap: 14px;
   }
   .review-card {
-    background: var(--bg); border-radius: var(--radius); padding: 24px;
+    background: var(--bg); border-radius: var(--radius); padding: 28px;
     box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.03);
   }
   .review-quote {
-    display: flex; align-items: flex-start; gap: 4px;
-    margin-bottom: 12px;
+    display: flex; align-items: flex-start; gap: 6px;
+    margin-bottom: 14px;
   }
   .review-mark {
-    font-size: 32px; color: var(--brand-light); font-weight: 700;
-    line-height: 1; margin-top: -4px; flex-shrink: 0;
+    font-size: 36px; color: var(--brand); font-weight: 700;
+    line-height: 1; margin-top: -6px; flex-shrink: 0; opacity: 0.3;
   }
   .review-text {
-    font-size: 17px; color: var(--text-secondary); line-height: 1.7;
+    font-size: 18px; color: var(--text-secondary); line-height: 1.75;
+  }
+  .review-text mark {
+    background: var(--brand-light); color: var(--text-primary);
+    padding: 1px 4px; border-radius: 3px; font-weight: 600;
   }
   .review-author {
-    font-size: 14px; color: var(--text-tertiary); font-weight: 500;
-    padding-left: 2px;
+    font-size: 15px; color: var(--brand); font-weight: 600;
+    text-align: right;
   }
 
   /* ===== Children Section ===== */
@@ -316,8 +320,8 @@
     font-size: 24px;
     background: var(--bg-section); border-radius: 12px;
   }
-  .trust-label { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-  .trust-desc { font-size: 14px; color: var(--text-tertiary); line-height: 1.4; }
+  .trust-label { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .trust-desc { font-size: 15px; color: var(--text-tertiary); line-height: 1.4; }
 
   /* ===== CTA Bottom ===== */
   .cta-bottom {
@@ -674,23 +678,23 @@
       <div class="review-card">
         <div class="review-quote">
           <span class="review-mark">"</span>
-          <div class="review-text">퇴직하고 2년 동안 집에만 있었어요. 온담 산책 모임에 처음 나갔는데, 다들 너무 편하게 대해주셔서 놀랐습니다. 지금은 매주 나가요.</div>
+          <div class="review-text">퇴직하고 2년 동안 집에만 있었어요. 온담 산책 모임에 처음 나갔는데, 다들 너무 편하게 대해주셔서 놀랐습니다. <mark>지금은 매주 나가요.</mark></div>
         </div>
-        <div class="review-author">김OO, 58세, 서울</div>
+        <div class="review-author">&#x1F6B6; 김OO · 58세 · 서울</div>
       </div>
       <div class="review-card">
         <div class="review-quote">
           <span class="review-mark">"</span>
-          <div class="review-text">혼자 밥 먹는 게 지겨웠는데, 온담에서 만난 분들이랑 이젠 같이 먹어요. 토요일이 기다려지는 건 정말 오랜만이에요.</div>
+          <div class="review-text">혼자 밥 먹는 게 지겨웠는데, 온담에서 만난 분들이랑 이젠 같이 먹어요. <mark>토요일이 기다려지는 건 정말 오랜만이에요.</mark></div>
         </div>
-        <div class="review-author">이OO, 63세, 경기</div>
+        <div class="review-author">&#x2615; 이OO · 63세 · 경기</div>
       </div>
       <div class="review-card">
         <div class="review-quote">
           <span class="review-mark">"</span>
-          <div class="review-text">딸이 깔아줬어요. 처음엔 반신반의했는데, 첫 모임에서 동갑내기 친구를 만났습니다. 지금 제일 친한 친구예요.</div>
+          <div class="review-text">딸이 깔아줬어요. 처음엔 반신반의했는데, 첫 모임에서 동갑내기 친구를 만났습니다. <mark>지금 제일 친한 친구예요.</mark></div>
         </div>
-        <div class="review-author">박OO, 55세, 인천</div>
+        <div class="review-author">&#x1F46B; 박OO · 55세 · 인천</div>
       </div>
     </div>
   </div>
