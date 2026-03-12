@@ -51,7 +51,8 @@
     max-width: var(--content-width); margin: 0 auto; padding: 0 24px;
     height: 56px; display: flex; align-items: center; justify-content: space-between;
   }
-  .nav-logo { font-size: 20px; font-weight: 700; color: var(--brand); text-decoration: none; letter-spacing: -0.5px; }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-logo img { height: 32px; width: auto; }
   .nav-cta {
     background: var(--brand); color: white; border: none; border-radius: 999px;
     padding: 10px 22px; font-size: 16px; font-weight: 600; cursor: pointer;
@@ -528,7 +529,7 @@
 <!-- Nav -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="/" class="nav-logo">ondam</a>
+    <a href="/" class="nav-logo"><img src="./logo.png" alt="온담"></a>
     <a href="https://chosim.me" class="nav-cta">무료로 시작하기</a>
   </div>
 </nav>
