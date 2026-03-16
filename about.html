@@ -414,12 +414,58 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   /* ===== Footer ===== */
   .footer {
-    text-align: center; padding: 28px 24px;
+    text-align: center; padding: 28px 24px 100px;
     font-size: 14px; color: var(--text-tertiary);
     border-top: 1px solid #F0F0F0;
   }
   .footer a { color: var(--text-tertiary); text-decoration: none; }
   .footer a:hover { color: var(--brand); }
+
+  /* ===== Sticky Mobile CTA ===== */
+  .sticky-cta {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding: 12px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+  .sticky-cta.show { transform: translateY(0); }
+  .sticky-cta-text {
+    font-size: 14px; color: var(--text-secondary); line-height: 1.4;
+    font-weight: 600;
+  }
+  .sticky-cta-text strong { color: var(--brand); }
+  .sticky-cta-btn {
+    flex-shrink: 0;
+    background: var(--brand); color: white; border: none; border-radius: 999px;
+    padding: 14px 28px; font-size: 16px; font-weight: 700; cursor: pointer;
+    text-decoration: none; white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(255,107,107,0.3);
+  }
+
+  /* ===== Social Proof Badge ===== */
+  .hero-proof {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.85); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,107,107,0.15);
+    border-radius: 999px; padding: 8px 18px;
+    margin-bottom: 24px; animation: fadeUp 0.8s ease 0.05s both;
+  }
+  .hero-proof-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #4CAF50; animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .hero-proof-text {
+    font-size: 14px; color: var(--text-secondary); font-weight: 500;
+  }
+  .hero-proof-text strong { color: var(--brand); font-weight: 700; }
 
   /* ===== Scroll Animations ===== */
   .anim-fade-up {
@@ -566,6 +612,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <img src="./logo.png" alt="온담 로고">
     </div>
 
+    <div class="hero-proof">
+      <span class="hero-proof-dot"></span>
+      <span class="hero-proof-text"><strong>서울</strong> 지역 첫 모임 참여자 모집 중</span>
+    </div>
     <h1>좋은 모임 찾기,<br>왜 이렇게 어려울까요?</h1>
     <p class="hero-sub-title">따뜻한 모임, <span class="brand">온담</span>이 준비합니다.</p>
     <p class="hero-desc">
@@ -841,6 +891,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- Sticky Mobile CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-text"><strong>서울</strong> 첫 모임 모집 중</div>
+  <a href="https://ondam-front.vercel.app" class="sticky-cta-btn">무료로 시작하기</a>
+</div>
+
 <!-- Footer -->
 <footer class="footer">
   <p><a href="/">투자자 페이지</a> · <a href="https://ondam-front.vercel.app">온담 웹</a></p>
@@ -912,6 +968,18 @@ document.querySelectorAll('.chat-row, .chat-left-group, .chat-result').forEach((
   el.style.transitionDelay = `${0.15 + i * 0.2}s`;
   obs.observe(el);
 });
+
+// Sticky CTA - show after scrolling past hero
+const stickyCta = document.getElementById('stickyCta');
+const hero = document.querySelector('.hero');
+if (stickyCta && hero) {
+  const stickyObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      stickyCta.classList.toggle('show', !e.isIntersecting);
+    });
+  }, { threshold: 0 });
+  stickyObs.observe(hero);
+}
 </script>
 </body>
 </html>
