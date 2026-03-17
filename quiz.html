@@ -883,8 +883,7 @@ function showResult() {
   setTimeout(() => { slide3.style.display = 'none'; slide3.classList.remove('exit-left'); }, 400);
 
   // Hide progress and quiz slides container
-  document.getElementById('progressWrap').style.opacity = '0';
-  document.getElementById('progressWrap').style.pointerEvents = 'none';
+  document.getElementById('progressWrap').style.display = 'none';
   document.getElementById('quizSlides').style.display = 'none';
 
   const key = pickMoim();
@@ -952,7 +951,7 @@ function resetQuiz() {
   // Show quiz slides and progress
   document.getElementById('quizSlides').style.display = '';
   const pw = document.getElementById('progressWrap');
-  pw.style.opacity = ''; pw.style.pointerEvents = '';
+  pw.style.display = '';
   updateProgress(1);
 
   // Reset all slides to initial state
