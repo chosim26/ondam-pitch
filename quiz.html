@@ -882,9 +882,10 @@ function showResult() {
   slide3.classList.remove('active');
   setTimeout(() => { slide3.style.display = 'none'; slide3.classList.remove('exit-left'); }, 400);
 
-  // Hide progress
+  // Hide progress and quiz slides container
   document.getElementById('progressWrap').style.opacity = '0';
   document.getElementById('progressWrap').style.pointerEvents = 'none';
+  document.getElementById('quizSlides').style.display = 'none';
 
   const key = pickMoim();
   const moim = MOIMS[key];
@@ -948,10 +949,21 @@ function resetQuiz() {
   // Hide result
   document.getElementById('resultSlide').classList.remove('show');
 
-  // Show progress
+  // Show quiz slides and progress
+  document.getElementById('quizSlides').style.display = '';
   const pw = document.getElementById('progressWrap');
   pw.style.opacity = ''; pw.style.pointerEvents = '';
   updateProgress(1);
+
+  // Reset all slides to initial state
+  document.querySelectorAll('.quiz-slide').forEach(s => {
+    s.classList.remove('active','exit-left');
+    s.style.display = '';
+    s.style.transform = '';
+    s.style.opacity = '';
+  });
+  document.getElementById('slide1').classList.add('active');
+  document.getElementById('q2-bridge').style.display = 'none';
 
   // Show slide 1
   ['slide1','slide2','slide3'].forEach((id, i) => {
