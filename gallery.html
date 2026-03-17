@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모임 현장 - 온담</title>
+<meta name="description" content="온담 모임 현장 사진과 참여자 이야기. 산책, 맛집, 등산, 문화 나들이 등 다양한 모임이 매주 열립니다.">
+<meta property="og:title" content="모임 현장 - 온담">
+<meta property="og:description" content="온담에서 열린 모임 현장을 소개합니다. 3,000명이 함께한 따뜻한 만남.">
+<meta property="og:type" content="website">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KVVXVJJ5');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Ads Conversion Tracking -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18005256112"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18005256112');
+  gtag('config', 'G-JSNVDKKX6Q', {
+    linker: { domains: ['chosim.me', 'ondam-front.vercel.app'] }
+  });
+</script>
+<!-- Event snippet for 페이지 조회 conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-18005256112/NYBCCJ2Z94UcELDPyYlD'});
+</script>
+<!-- End Google Ads Conversion Tracking -->
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '26764462659812070');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<!-- Kakao Pixel -->
+<script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/kas/static/kp.js"></script>
+<script type="text/javascript">kakaoPixel('8604667356398961253').pageView();</script>
+<!-- End Kakao Pixel -->
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+  :root {
+    --brand: #FF6B6B;
+    --brand-dark: #E85555;
+    --brand-light: #FFE4E4;
+    --bg: #FFFFFF;
+    --bg-warm: #FDF8F6;
+    --bg-section: #F9F5F2;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-tertiary: #999999;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+    --radius: 16px;
+    --content-width: 680px;
+    --section-padding: 80px 24px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    color: var(--text-primary);
+    background: var(--bg);
+    line-height: 1.7;
+    overflow-x: hidden;
+    word-break: keep-all;
+  }
+
+  /* ===== Nav ===== */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .nav-inner {
+    max-width: var(--content-width); margin: 0 auto; padding: 0 24px;
+    height: 56px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-left { display: flex; align-items: center; gap: 20px; }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-logo img { height: 32px; width: auto; }
+  .nav-links {
+    display: flex; align-items: center; gap: 4px;
+  }
+  .nav-link {
+    font-size: 14px; font-weight: 500; color: var(--text-secondary);
+    text-decoration: none; padding: 6px 10px; border-radius: 8px;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .nav-link:hover { color: var(--brand); background: var(--brand-light); }
+  .nav-link.active { color: var(--brand); font-weight: 700; }
+  .nav-cta {
+    background: var(--brand); color: white; border: none; border-radius: 999px;
+    padding: 10px 22px; font-size: 16px; font-weight: 600; cursor: pointer;
+    text-decoration: none; transition: background 0.2s; white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--brand-dark); }
+
+  /* ===== Section Layout ===== */
+  .section {
+    max-width: var(--content-width); margin: 0 auto; padding: var(--section-padding);
+  }
+  .section-bg {
+    background: var(--bg-section);
+  }
+  .section-bg > .section-inner {
+    max-width: var(--content-width); margin: 0 auto; padding: var(--section-padding);
+  }
+  .section-warm {
+    background: var(--bg-warm);
+  }
+  .section-warm > .section-inner {
+    max-width: var(--content-width); margin: 0 auto; padding: var(--section-padding);
+  }
+
+  /* Section header pattern */
+  .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .section-header h2 {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .section-header p {
+    font-size: 20px;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+  }
+
+  /* ===== Page Hero ===== */
+  .page-hero {
+    padding: 96px 24px 56px;
+    text-align: center;
+    background: linear-gradient(180deg, var(--bg-warm) 0%, var(--bg) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: ''; position: absolute; top: -40px; right: -60px;
+    width: 360px; height: 360px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,107,107,0.12) 0%, transparent 60%);
+    animation: drift 10s ease-in-out infinite;
+  }
+  .page-hero::after {
+    content: ''; position: absolute; bottom: -40px; left: -40px;
+    width: 280px; height: 280px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,180,107,0.08) 0%, transparent 60%);
+    animation: drift 12s ease-in-out infinite reverse;
+  }
+  @keyframes drift {
+    0%, 100% { transform: translate(0,0); }
+    50% { transform: translate(-20px, 15px); }
+  }
+  .page-hero-inner {
+    position: relative; z-index: 2;
+    max-width: 520px; margin: 0 auto;
+  }
+  .page-hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.85); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,107,107,0.15);
+    border-radius: 999px; padding: 8px 18px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.8s ease 0.05s both;
+  }
+  .page-hero-badge-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #4CAF50; animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .page-hero-badge-text { font-size: 14px; color: var(--text-secondary); font-weight: 500; }
+  .page-hero-badge-text strong { color: var(--brand); font-weight: 700; }
+  .page-hero h1 {
+    font-size: 42px; font-weight: 800; line-height: 1.35;
+    margin-bottom: 16px; letter-spacing: -0.5px;
+    animation: fadeUp 0.8s ease 0.15s both;
+  }
+  .page-hero h1 .brand { color: var(--brand); }
+  .page-hero-desc {
+    font-size: 20px; color: var(--text-secondary); line-height: 1.75;
+    animation: fadeUp 0.8s ease 0.25s both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== Counter Section ===== */
+  .counter-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  .counter-card {
+    background: var(--bg); border-radius: var(--radius); padding: 32px 20px;
+    text-align: center; box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(255,107,107,0.08);
+    transition: all 0.3s;
+  }
+  .counter-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .counter-icon {
+    font-size: 36px; margin-bottom: 12px; line-height: 1.2;
+  }
+  .counter-number {
+    font-size: 42px; font-weight: 800; color: var(--brand);
+    line-height: 1.1; margin-bottom: 8px; letter-spacing: -1px;
+  }
+  .counter-suffix {
+    font-size: 28px; font-weight: 800; color: var(--brand);
+  }
+  .counter-label {
+    font-size: 16px; color: var(--text-secondary); font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* ===== Gallery Section ===== */
+  .gallery-scroll-wrap {
+    position: relative;
+  }
+  .gallery-scroll {
+    display: flex; gap: 16px;
+    overflow-x: auto; padding: 8px 4px 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .gallery-scroll::-webkit-scrollbar { display: none; }
+  .gallery-card {
+    flex-shrink: 0; width: 260px;
+    border-radius: var(--radius); overflow: hidden;
+    box-shadow: var(--shadow-sm); background: var(--bg);
+    scroll-snap-align: start;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  .gallery-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .gallery-img-wrap {
+    position: relative; aspect-ratio: 4/3; overflow: hidden;
+    background: var(--bg-section);
+  }
+  .gallery-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+  }
+  .gallery-card:hover .gallery-img-wrap img { transform: scale(1.06); }
+  .gallery-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.55));
+    padding: 28px 14px 14px;
+  }
+  .gallery-overlay-title {
+    font-size: 15px; font-weight: 700; color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+  .gallery-body {
+    padding: 14px 16px 18px;
+  }
+  .gallery-tag {
+    display: inline-block; background: var(--brand-light); color: var(--brand);
+    font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+    margin-bottom: 8px; letter-spacing: 0.3px;
+  }
+  .gallery-desc {
+    font-size: 14px; color: var(--text-secondary); line-height: 1.6;
+  }
+
+  .gallery-hint {
+    text-align: center; padding-top: 4px;
+    font-size: 14px; color: var(--text-tertiary);
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .gallery-hint-arrow {
+    display: inline-flex; align-items: center; gap: 4px;
+    animation: hintSlide 2s ease-in-out infinite;
+  }
+  @keyframes hintSlide {
+    0%, 100% { transform: translateX(0); opacity: 0.6; }
+    50% { transform: translateX(-6px); opacity: 1; }
+  }
+
+  /* ===== Social Channel Section ===== */
+  .social-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .social-card {
+    background: var(--bg); border-radius: var(--radius); padding: 28px 24px;
+    box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    gap: 14px; transition: all 0.3s; text-decoration: none;
+  }
+  .social-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .social-icon-wrap {
+    width: 60px; height: 60px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s;
+  }
+  .social-card:hover .social-icon-wrap { transform: scale(1.08); }
+  .social-icon-wrap.instagram {
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  }
+  .social-icon-wrap.facebook {
+    background: #1877F2;
+  }
+  .social-icon-wrap svg { color: white; fill: white; }
+  .social-channel-name {
+    font-size: 18px; font-weight: 700; color: var(--text-primary);
+  }
+  .social-channel-handle {
+    font-size: 14px; color: var(--text-tertiary);
+  }
+  .social-desc {
+    font-size: 15px; color: var(--text-secondary); line-height: 1.6;
+  }
+  .social-follow-btn {
+    display: inline-block; border-radius: 999px; padding: 10px 24px;
+    font-size: 14px; font-weight: 700; cursor: pointer;
+    text-decoration: none; transition: all 0.2s; border: none;
+    margin-top: 4px;
+  }
+  .social-follow-btn.instagram {
+    background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
+    color: white;
+  }
+  .social-follow-btn.instagram:hover { opacity: 0.88; transform: translateY(-1px); }
+  .social-follow-btn.facebook {
+    background: #1877F2; color: white;
+  }
+  .social-follow-btn.facebook:hover { background: #1565C0; transform: translateY(-1px); }
+
+  /* ===== CTA Bottom ===== */
+  .cta-bottom {
+    text-align: center; padding: 80px 24px;
+    background: linear-gradient(180deg, var(--bg-warm), var(--bg));
+    position: relative;
+  }
+  .cta-bottom::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 48px;
+    background: linear-gradient(180deg, transparent, var(--brand));
+  }
+  .cta-title {
+    font-size: 34px; font-weight: 700;
+    line-height: 1.4; margin-bottom: 12px;
+    letter-spacing: -0.3px;
+  }
+  .cta-title .brand { color: var(--brand); }
+  .cta-desc {
+    font-size: 19px; color: var(--text-secondary); margin-bottom: 32px;
+  }
+  .cta-button {
+    display: inline-block; background: var(--brand); color: white;
+    border-radius: 999px; padding: 18px 48px; font-size: 20px; font-weight: 700;
+    text-decoration: none; box-shadow: 0 8px 24px rgba(255,107,107,0.3);
+    transition: all 0.3s;
+  }
+  .cta-button:hover { background: var(--brand-dark); transform: translateY(-2px); }
+
+  /* ===== Footer ===== */
+  .footer {
+    text-align: center; padding: 28px 24px 100px;
+    font-size: 14px; color: var(--text-tertiary);
+    border-top: 1px solid #F0F0F0;
+  }
+  .footer a { color: var(--text-tertiary); text-decoration: none; }
+  .footer a:hover { color: var(--brand); }
+  .footer-social {
+    display: flex; justify-content: center; gap: 16px;
+    margin-bottom: 16px;
+  }
+  .footer-social a {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--bg-section); color: var(--text-tertiary);
+    transition: all 0.2s;
+  }
+  .footer-social a:hover { background: var(--brand); color: white; }
+  .footer-social a svg { fill: currentColor; }
+
+  /* ===== Sticky Mobile CTA ===== */
+  .sticky-cta {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding: 12px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+  .sticky-cta.show { transform: translateY(0); }
+  .sticky-cta-text {
+    font-size: 14px; color: var(--text-secondary); line-height: 1.4;
+    font-weight: 600;
+  }
+  .sticky-cta-text strong { color: var(--brand); }
+  .sticky-cta-btn {
+    flex-shrink: 0;
+    background: var(--brand); color: white; border: none; border-radius: 999px;
+    padding: 14px 28px; font-size: 16px; font-weight: 700; cursor: pointer;
+    text-decoration: none; white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(255,107,107,0.3);
+  }
+
+  /* ===== Scroll Animations ===== */
+  .anim-ready .anim-fade-up {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .anim-ready .anim-fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  .anim-ready .anim-scale {
+    opacity: 0; transform: scale(0.9);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .anim-ready .anim-scale.visible { opacity: 1; transform: scale(1); }
+
+  .anim-ready .anim-slide-left {
+    opacity: 0; transform: translateX(-32px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .anim-ready .anim-slide-left.visible { opacity: 1; transform: translateX(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .anim-ready .anim-fade-up, .anim-ready .anim-scale, .anim-ready .anim-slide-left {
+      opacity: 1 !important; transform: none !important; transition: none !important;
+    }
+  }
+
+  /* ===== Responsive 768px ===== */
+  @media (max-width: 768px) {
+    :root { --section-padding: 60px 20px; }
+    .nav-links { display: none; }
+    .section-header h2 { font-size: 26px; }
+    .section-header p { font-size: 16px; }
+    .page-hero h1 { font-size: 32px; }
+    .page-hero-desc { font-size: 17px; }
+    .counter-number { font-size: 34px; }
+    .counter-suffix { font-size: 22px; }
+    .cta-title { font-size: 28px; }
+    .cta-desc { font-size: 16px; }
+    .cta-button { padding: 16px 36px; font-size: 17px; }
+  }
+
+  /* ===== Responsive 480px ===== */
+  @media (max-width: 480px) {
+    :root { --section-padding: 48px 16px; }
+    .nav-inner { padding: 0 16px; }
+    .page-hero { padding: 80px 16px 48px; }
+    .page-hero h1 { font-size: 26px; }
+    .page-hero-desc { font-size: 15px; }
+    .counter-grid { grid-template-columns: 1fr; gap: 12px; }
+    .counter-card { padding: 24px 16px; }
+    .counter-number { font-size: 40px; }
+    .counter-icon { font-size: 30px; }
+    .gallery-card { width: 220px; }
+    .social-grid { grid-template-columns: 1fr; }
+    .section-header h2 { font-size: 22px; }
+    .section-header p { font-size: 14px; }
+    .cta-bottom { padding: 60px 16px; }
+    .cta-title { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVVXVJJ5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="./about.html" class="nav-logo"><img src="./logo.png" alt="온담"></a>
+      <div class="nav-links">
+        <a href="./about.html" class="nav-link">소개</a>
+        <a href="./faq.html" class="nav-link">FAQ</a>
+        <a href="./quiz.html" class="nav-link">모임 찾기</a>
+        <a href="./gallery.html" class="nav-link active">모임 현장</a>
+      </div>
+    </div>
+    <a href="https://ondam-front.vercel.app" class="nav-cta">무료로 시작하기</a>
+  </div>
+</nav>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-badge">
+      <span class="page-hero-badge-dot"></span>
+      <span class="page-hero-badge-text"><strong>매주</strong> 새로운 모임이 열립니다</span>
+    </div>
+    <h1>온담의<br><span class="brand">모임 현장</span></h1>
+    <p class="page-hero-desc">
+      좋은 사람들과 함께한 순간들.<br>
+      사진으로 먼저 만나보세요.
+    </p>
+  </div>
+</section>
+
+<!-- Counter Section -->
+<div class="section-warm">
+  <div class="section-inner">
+    <div class="section-header anim-fade-up">
+      <h2>온담이 만들어온 만남</h2>
+      <p>숫자로 보는 온담의 이야기</p>
+    </div>
+    <div class="counter-grid">
+      <div class="counter-card anim-scale">
+        <div class="counter-icon">&#x1F9D1;&#x200D;&#x1F91D;&#x200D;&#x1F9D1;</div>
+        <div class="counter-number">
+          <span class="count-num" data-target="3000">0</span><span class="counter-suffix">명+</span>
+        </div>
+        <div class="counter-label">함께한 참여자</div>
+      </div>
+      <div class="counter-card anim-scale">
+        <div class="counter-icon">&#x1F4C5;</div>
+        <div class="counter-number">
+          <span class="count-num" data-target="150">0</span><span class="counter-suffix">회+</span>
+        </div>
+        <div class="counter-label">진행된 모임</div>
+      </div>
+      <div class="counter-card anim-scale">
+        <div class="counter-icon">&#x2B50;</div>
+        <div class="counter-number">
+          <span class="count-num" data-target="48" data-decimal="1">0</span><span class="counter-suffix">&#x2605;</span>
+        </div>
+        <div class="counter-label">평균 만족도</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Gallery Section -->
+<section class="section">
+  <div class="section-header anim-fade-up">
+    <h2>온담의 모임 현장</h2>
+    <p>직접 가서 찍은 생생한 모임 사진들</p>
+  </div>
+
+  <div class="gallery-scroll-wrap">
+    <div class="gallery-scroll" id="galleryScroll">
+
+      <div class="gallery-card">
+        <div class="gallery-img-wrap">
+          <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=400&q=80" alt="산책 모임" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">산책 모임</div>
+          </div>
+        </div>
+        <div class="gallery-body">
+          <span class="gallery-tag">&#x1F6B6; 도심 산책</span>
+          <div class="gallery-desc">서촌 골목을 함께 걸으며 나눈 따뜻한 이야기</div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-img-wrap">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80" alt="맛집 투어" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">맛집 투어</div>
+          </div>
+        </div>
+        <div class="gallery-body">
+          <span class="gallery-tag">&#x1F372; 맛집 탐방</span>
+          <div class="gallery-desc">을지로 노포에서 함께한 즐거운 저녁 식사</div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-img-wrap">
+          <img src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400&q=80" alt="커피 모임" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">커피 모임</div>
+          </div>
+        </div>
+        <div class="gallery-body">
+          <span class="gallery-tag">&#x2615; 커피 한 잔</span>
+          <div class="gallery-desc">분위기 좋은 카페에서 나눈 편안한 수다</div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-img-wrap">
+          <img src="https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?w=400&q=80" alt="등산 모임" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">등산 모임</div>
+          </div>
+        </div>
+        <div class="gallery-body">
+          <span class="gallery-tag">&#x26F0; 가벼운 등산</span>
+          <div class="gallery-desc">북한산 둘레길에서 땀 흘리며 친해진 사람들</div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-img-wrap">
+          <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400&q=80" alt="문화 나들이" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">문화 나들이</div>
+          </div>
+        </div>
+        <div class="gallery-body">
+          <span class="gallery-tag">&#x1F3A8; 문화 탐방</span>
+          <div class="gallery-desc">미술관 관람 후 카페에서 나눈 감상 이야기</div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-img-wrap">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80" alt="여행 동반" loading="lazy">
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">여행 동반</div>
+          </div>
+        </div>
+        <div class="gallery-body">
+          <span class="gallery-tag">&#x2708;&#xFE0F; 여행 동반</span>
+          <div class="gallery-desc">혼자는 막막했던 여행, 함께라서 설레는 여행</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="gallery-hint">
+    <span class="gallery-hint-arrow">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      스와이프하여 더 보기
+    </span>
+  </div>
+</section>
+
+<!-- Social Channel Section -->
+<div class="section-bg">
+  <div class="section-inner">
+    <div class="section-header anim-fade-up">
+      <h2>온담과 소통해요</h2>
+      <p>모임 소식과 후기를 가장 먼저 받아보세요</p>
+    </div>
+
+    <div class="social-grid">
+      <a href="https://www.instagram.com/ondam.chosim/" target="_blank" rel="noopener" class="social-card anim-fade-up">
+        <div class="social-icon-wrap instagram">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </div>
+        <div>
+          <div class="social-channel-name">Instagram</div>
+          <div class="social-channel-handle">@ondam.chosim</div>
+        </div>
+        <div class="social-desc">모임 현장 사진, 참여자 후기, 신규 모임 소식을 인스타그램에서 먼저 확인하세요.</div>
+        <span class="social-follow-btn instagram">팔로우하기</span>
+      </a>
+
+      <a href="https://www.facebook.com/profile.php?id=61582026520843" target="_blank" rel="noopener" class="social-card anim-fade-up">
+        <div class="social-icon-wrap facebook">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <div>
+          <div class="social-channel-name">Facebook</div>
+          <div class="social-channel-handle">온담 공식 페이지</div>
+        </div>
+        <div class="social-desc">온담 커뮤니티에서 다른 참여자들과 소통하고, 모임 정보를 나눠보세요.</div>
+        <span class="social-follow-btn facebook">팔로우하기</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CTA Bottom -->
+<section class="cta-bottom">
+  <h2 class="cta-title anim-fade-up">함께할 준비 되셨나요?</h2>
+  <p class="cta-desc anim-fade-up">사진 속 따뜻한 만남, 이제 직접 경험해보세요.</p>
+  <a href="https://ondam-front.vercel.app" class="cta-button anim-fade-up">이번 주 모임 보기</a>
+</section>
+
+<!-- Sticky Mobile CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-text"><strong>서울</strong> 첫 모임 모집 중</div>
+  <a href="https://ondam-front.vercel.app" class="sticky-cta-btn">무료로 시작하기</a>
+</div>
+
+<!-- Footer -->
+<footer class="footer" id="social-footer">
+  <div class="footer-social">
+    <a href="https://www.instagram.com/ondam.chosim/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61582026520843" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+  </div>
+  <p><a href="./about.html">투자자 페이지</a> · <a href="https://ondam-front.vercel.app">온담 웹</a></p>
+  <p style="margin-top:8px;">&copy; 2026 Ondam. All rights reserved.</p>
+</footer>
+
+<script>
+// Enable animation system
+document.documentElement.classList.add('anim-ready');
+
+// ===== Counter Animation =====
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target, 10);
+  const isDecimal = el.dataset.decimal === '1';
+  const duration = 1500;
+  const start = performance.now();
+
+  function step(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    // ease out cubic
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = target * eased;
+    if (isDecimal) {
+      el.textContent = (current / 10).toFixed(1);
+    } else {
+      el.textContent = Math.floor(current).toLocaleString('ko-KR');
+    }
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// Intersection Observer for counters
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const nums = e.target.querySelectorAll('.count-num');
+    nums.forEach(animateCounter);
+    counterObs.unobserve(e.target);
+  });
+}, { threshold: 0.3 });
+
+const counterSection = document.querySelector('.counter-grid');
+if (counterSection) counterObs.observe(counterSection);
+
+// ===== Scroll Animations =====
+const animObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('visible');
+    animObs.unobserve(e.target);
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.anim-fade-up, .anim-scale, .anim-slide-left').forEach((el, i) => {
+  if (!el.style.transitionDelay) {
+    // stagger cards within the same parent
+    const siblings = el.parentElement ? el.parentElement.querySelectorAll('.anim-scale, .anim-fade-up') : [];
+    const idx = Array.from(siblings).indexOf(el);
+    if (idx > 0) el.style.transitionDelay = `${idx * 0.1}s`;
+  }
+  animObs.observe(el);
+});
+
+// ===== CTA Click Tracking =====
+document.querySelectorAll('a[href*="ondam-front.vercel.app"]').forEach(link => {
+  link.addEventListener('click', () => {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'cta_click', {
+        event_category: 'conversion',
+        event_label: link.textContent.trim(),
+        transport_type: 'beacon'
+      });
+    }
+  });
+});
+
+// ===== Sticky CTA =====
+const stickyCta = document.getElementById('stickyCta');
+const pageHero = document.querySelector('.page-hero');
+if (stickyCta && pageHero) {
+  const stickyObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      stickyCta.classList.toggle('show', !e.isIntersecting);
+    });
+  }, { threshold: 0 });
+  stickyObs.observe(pageHero);
+}
+</script>
+</body>
+</html>
