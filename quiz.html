@@ -806,11 +806,13 @@ function goNext(fromStep) {
   }, 400);
 
   toSlide.style.display = '';
-  toSlide.style.transform = 'translateX(60px)';
-  toSlide.style.opacity = '0';
   requestAnimationFrame(() => {
+    toSlide.style.transform = 'translateX(60px)';
+    toSlide.style.opacity = '0';
     requestAnimationFrame(() => {
       toSlide.classList.add('active');
+      toSlide.style.transform = '';
+      toSlide.style.opacity = '';
     });
   });
 
