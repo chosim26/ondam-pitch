@@ -573,7 +573,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Q2 -->
     <div class="quiz-slide" id="slide2">
-      <div class="quiz-question">어떤 활동이 끌리세요?</div>
+      <div class="quiz-question" id="q2-title">어떤 활동이 끌리세요?</div>
+      <div class="quiz-bridge" id="q2-bridge" style="display:none; text-align:center; padding:16px 20px; margin-bottom:16px; background:var(--brand-light); border-radius:14px; font-size:17px; color:var(--brand-dark); line-height:1.7; animation:fadeUp 0.5s ease;">
+        괜찮아요! 온담 모임은 진행자가 분위기를 이끌어서<br>편하게 나오기만 하면 돼요. 😊<br><strong>혹시 한 번 나가본다면?</strong>
+      </div>
       <div class="multi-hint">&#x2713; 여러 개 선택해도 좋아요</div>
       <div class="choice-grid multi-col" id="q2-cards">
         <div class="choice-card" data-val="walk" onclick="selectMulti(this,'q2')">
@@ -689,7 +692,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
     </a>
   </div>
-  <p><a href="/ondam-pitch/about.html">투자자 페이지</a> · <a href="https://ondam-front.vercel.app">온담 웹</a></p>
+  <p><a href="/about">온담 소개</a> · <a href="https://ondam-front.vercel.app">온담 웹</a></p>
   <p style="margin-top:8px;">&copy; 2026 Ondam. All rights reserved.</p>
 </footer>
 
@@ -813,6 +816,23 @@ function goNext(fromStep) {
 
   currentStep = fromStep + 1;
   updateProgress(currentStep);
+
+  // Q1 → Q2: adapt question based on Q1 answer
+  if (fromStep === 1) {
+    const bridge = document.getElementById('q2-bridge');
+    const title = document.getElementById('q2-title');
+    if (answers.q1 === 'home') {
+      bridge.style.display = 'block';
+      title.textContent = '그래도 한 번 나가본다면, 뭐가 끌릴까요?';
+    } else if (answers.q1 === 'invite') {
+      bridge.style.display = 'block';
+      bridge.innerHTML = '온담이 불러드릴게요! 😄<br>모임 날짜·장소·사람까지 다 준비되어 있어요.<br><strong>어떤 모임에 불려가고 싶으세요?</strong>';
+      title.textContent = '어떤 모임에 끌리세요?';
+    } else {
+      bridge.style.display = 'none';
+      title.textContent = '어떤 활동이 끌리세요?';
+    }
+  }
 
   // Scroll to top of quiz
   document.querySelector('.progress-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
