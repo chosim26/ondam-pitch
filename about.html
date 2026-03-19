@@ -93,8 +93,17 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     max-width: var(--content-width); margin: 0 auto; padding: 0 24px;
     height: 56px; display: flex; align-items: center; justify-content: space-between;
   }
+  .nav-left { display: flex; align-items: center; gap: 20px; }
   .nav-logo { display: flex; align-items: center; text-decoration: none; }
   .nav-logo img { height: 32px; width: auto; }
+  .nav-links { display: flex; align-items: center; gap: 4px; }
+  .nav-link {
+    font-size: 14px; font-weight: 500; color: var(--text-secondary);
+    text-decoration: none; padding: 6px 10px; border-radius: 8px;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .nav-link:hover { color: var(--brand); background: var(--brand-light); }
+  .nav-link.active { color: var(--brand); font-weight: 700; background: var(--brand-light); }
   .nav-social {
     display: flex; align-items: flex-end; gap: 12px;
   }
@@ -685,7 +694,18 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
 
   /* ===== Responsive ===== */
   @media (max-width: 768px) {
-    .nav-links { display: none !important; }
+    .nav { border-bottom: none; }
+    .nav-inner { flex-wrap: wrap; height: auto; padding-top: 10px; padding-bottom: 0; }
+    .nav-left { width: 100%; justify-content: space-between; }
+    .nav-links {
+      width: 100%; order: 3; gap: 0;
+      justify-content: space-around;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      margin-top: 8px; padding: 0;
+    }
+    .nav-link { font-size: 13px; padding: 10px 8px; flex: 1; text-align: center; border-radius: 0; }
+    .nav-link.active { background: none; border-bottom: 2px solid var(--brand); }
+    .nav-cta { padding: 8px 16px; font-size: 14px; }
     :root {
       --section-padding: 60px 20px;
     }
@@ -784,13 +804,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Nav -->
 <nav class="nav">
   <div class="nav-inner">
-    <div style="display:flex; align-items:center; gap:16px;">
+    <div class="nav-left">
       <a href="/about" class="nav-logo"><img src="/logo.png" alt="온담"></a>
-      <div class="nav-links" style="display:flex; gap:6px;">
-        <a href="/about" style="padding:6px 14px; border-radius:999px; font-size:14px; font-weight:600; text-decoration:none; background:var(--brand); color:white;">소개</a>
-        <a href="/faq" style="padding:6px 14px; border-radius:999px; font-size:14px; font-weight:600; text-decoration:none; color:var(--text-secondary); transition:color 0.2s;">FAQ</a>
-        <a href="/quiz" style="padding:6px 14px; border-radius:999px; font-size:14px; font-weight:600; text-decoration:none; color:var(--text-secondary); transition:color 0.2s;">모임 찾기</a>
-        <a href="/gallery" style="padding:6px 14px; border-radius:999px; font-size:14px; font-weight:600; text-decoration:none; color:var(--text-secondary); transition:color 0.2s;">모임 현장</a>
+      <div class="nav-links">
+        <a href="/about" class="nav-link active">소개</a>
+        <a href="/faq" class="nav-link">FAQ</a>
+        <a href="/quiz" class="nav-link">모임 찾기</a>
+        <a href="/gallery" class="nav-link">모임 현장</a>
       </div>
     </div>
     <a href="https://ondam-front.vercel.app" class="nav-cta">무료로 시작하기</a>
