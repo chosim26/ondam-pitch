@@ -1,7 +1,8 @@
 {
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/about", "dest": "/about.html" },
+    { "src": "/about", "headers": { "Location": "/" }, "status": 301 },
+    { "src": "/pitch", "dest": "/pitch.html" },
     { "src": "/faq", "dest": "/faq.html" },
     { "src": "/quiz", "dest": "/quiz.html" },
     { "src": "/gallery", "dest": "/gallery.html" },
