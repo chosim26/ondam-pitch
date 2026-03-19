@@ -118,6 +118,7 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     text-decoration: none; transition: background 0.2s;
   }
   .nav-cta:hover { background: var(--brand-dark); }
+  .nav-links-mobile { display: none; }
 
   /* ===== Section Layout ===== */
   .section {
@@ -695,17 +696,18 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   /* ===== Responsive ===== */
   @media (max-width: 768px) {
     .nav { border-bottom: none; }
-    .nav-inner { flex-wrap: wrap; height: auto; padding-top: 10px; padding-bottom: 0; }
-    .nav-left { width: 100%; justify-content: space-between; }
-    .nav-links {
-      width: 100%; order: 3; gap: 0;
+    .nav-inner { flex-wrap: wrap; height: auto; padding: 10px 24px 0; justify-content: space-between; align-items: center; }
+    .nav-left { width: auto; flex: 0; gap: 0; }
+    .nav-left .nav-links { display: none; }
+    .nav-cta { padding: 8px 16px; font-size: 14px; }
+    .nav-links-mobile {
+      display: flex; width: 100%; gap: 0;
       justify-content: space-around;
       border-top: 1px solid rgba(0,0,0,0.06);
       margin-top: 8px; padding: 0;
     }
-    .nav-link { font-size: 13px; padding: 10px 8px; flex: 1; text-align: center; border-radius: 0; }
-    .nav-link.active { background: none; border-bottom: 2px solid var(--brand); }
-    .nav-cta { padding: 8px 16px; font-size: 14px; }
+    .nav-links-mobile .nav-link { font-size: 13px; padding: 10px 8px; flex: 1; text-align: center; border-radius: 0; }
+    .nav-links-mobile .nav-link.active { background: none; border-bottom: 2px solid var(--brand); }
     :root {
       --section-padding: 60px 20px;
     }
@@ -814,6 +816,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <a href="https://ondam-front.vercel.app" class="nav-cta">무료로 시작하기</a>
+    <div class="nav-links-mobile">
+      <a href="/about" class="nav-link active">소개</a>
+      <a href="/faq" class="nav-link">FAQ</a>
+      <a href="/quiz" class="nav-link">모임 찾기</a>
+      <a href="/gallery" class="nav-link">모임 현장</a>
+    </div>
   </div>
 </nav>
 
