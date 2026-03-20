@@ -698,6 +698,20 @@ if (stickyCta && pageHeader) {
   }, { threshold: 0 });
   stickyObs.observe(pageHeader);
 }
+
+// FAQ 항목 클릭 추적
+document.querySelectorAll('.faq-question').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var text = btn.querySelector('.faq-question-text').textContent.trim();
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'faq_item_click', {
+        page_name: 'faq',
+        question: text.substring(0, 80)
+      });
+    }
+  });
+});
 </script>
+<script src="/tracking.js"></script>
 </body>
 </html>
