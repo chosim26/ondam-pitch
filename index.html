@@ -787,6 +787,7 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     .cta-desc { font-size: 16px; margin-bottom: 24px; }
     .cta-button { padding: 16px 36px; font-size: 17px; }
     .cta-stores { gap: 16px; }
+
   }
 
   @media (max-width: 360px) {
@@ -811,17 +812,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="/" class="nav-logo"><img src="/logo.png" alt="온담"></a>
       <div class="nav-links">
         <a href="/" class="nav-link active">소개</a>
+        <a href="/call" class="nav-link">만능전화</a>
+        <a href="/quiz" class="nav-link">모임</a>
         <a href="/faq" class="nav-link">FAQ</a>
-        <a href="/quiz" class="nav-link">모임 찾기</a>
-        <a href="/gallery" class="nav-link">모임 현장</a>
       </div>
     </div>
     <a href="https://ondam-front.vercel.app" class="nav-cta">무료로 시작하기</a>
     <div class="nav-links-mobile">
       <a href="/" class="nav-link active">소개</a>
+      <a href="/call" class="nav-link">만능전화</a>
+      <a href="/quiz" class="nav-link">모임</a>
       <a href="/faq" class="nav-link">FAQ</a>
-      <a href="/quiz" class="nav-link">모임 찾기</a>
-      <a href="/gallery" class="nav-link">모임 현장</a>
     </div>
   </div>
 </nav>
@@ -1294,6 +1295,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- Gallery Link -->
+<section class="gallery-link-section" style="text-align:center; padding:0 24px 60px; background:var(--bg);">
+  <a href="/gallery" style="display:inline-flex; align-items:center; gap:8px; color:var(--text-secondary); font-size:16px; font-weight:600; text-decoration:none; padding:14px 28px; border:1.5px solid rgba(0,0,0,0.08); border-radius:999px; transition:all 0.2s;"
+     onmouseover="this.style.borderColor='rgba(255,107,107,0.3)';this.style.color='#FF6B6B'"
+     onmouseout="this.style.borderColor='rgba(0,0,0,0.08)';this.style.color='#666'">
+    <span style="font-size:20px;">&#x1F4F8;</span> 모임 현장 후기 보러가기 &rarr;
+  </a>
+</section>
+
 <!-- CTA Bottom -->
 <section class="cta-bottom">
   <h2 class="cta-title">좋은 사람 만나기,<br>이제 <span class="brand">온담</span>에서 시작하세요</h2>
@@ -1402,6 +1412,7 @@ document.querySelectorAll('.chat-row, .chat-left-group, .chat-result').forEach((
   el.style.transitionDelay = `${0.15 + i * 0.2}s`;
   obs.observe(el);
 });
+
 
 // CTA click tracking
 document.querySelectorAll('a[href*="ondam-front.vercel.app"]').forEach(link => {
