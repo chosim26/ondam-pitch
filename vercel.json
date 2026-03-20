@@ -3,6 +3,7 @@
     { "handle": "filesystem" },
     { "src": "/about", "headers": { "Location": "/" }, "status": 301 },
     { "src": "/pitch", "dest": "/pitch.html" },
+    { "src": "/call", "dest": "/call.html" },
     { "src": "/faq", "dest": "/faq.html" },
     { "src": "/quiz", "dest": "/quiz.html" },
     { "src": "/gallery", "dest": "/gallery.html" },
