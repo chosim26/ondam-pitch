@@ -1,12 +1,14 @@
 {
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/about", "headers": { "Location": "/" }, "status": 301 },
-    { "src": "/pitch", "dest": "/pitch.html" },
-    { "src": "/call", "dest": "/call.html" },
-    { "src": "/faq", "dest": "/faq.html" },
-    { "src": "/quiz", "dest": "/quiz.html" },
-    { "src": "/gallery", "dest": "/gallery.html" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "call.ondam.me" }],
+      "destination": "/about.html"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/index.html"
+    }
   ]
 }
