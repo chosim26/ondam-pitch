@@ -1,5 +1,12 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/about",
+      "destination": "/call",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/call",
