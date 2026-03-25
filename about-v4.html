@@ -1074,7 +1074,7 @@ document.querySelectorAll('.faq-toggle').forEach(function(btn){
 })();
 
 // ====== Form Submission → Google Sheets ======
-var SHEETS_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+var SHEETS_URL = 'https://script.google.com/a/macros/chosim.me/s/AKfycbxsLxtXqDjaSpL49oQnPAmwtBrX_zxF7_yFfUBKSWN1QMh-4p3dvUWP21-Wa_z0aBRKqg/exec';
 
 function submitForm(e){
   e.preventDefault();
@@ -1095,14 +1095,11 @@ function submitForm(e){
   data.append('submitted_at', new Date().toISOString());
   data.append('page_url', window.location.href);
 
-  fetch(SHEETS_URL, { method: 'POST', body: data })
-  .then(function(res){ return res.json(); })
-  .then(function(result){
-    if(result.result === 'success'){
-      trackEvent('form_submit', 'apply_form');
-      showSuccess();
-      form.reset();
-    } else { throw new Error(result.error); }
+  fetch(SHEETS_URL, { method: 'POST', body: data, mode: 'no-cors' })
+  .then(function(){
+    trackEvent('form_submit', 'apply_form');
+    showSuccess();
+    form.reset();
   })
   .catch(function(err){
     console.error('Form error:', err);
