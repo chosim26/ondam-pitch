@@ -3,19 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>만능전화 - 온담</title>
-<meta name="description" content="어머님, 아버님. 병원이 어딘지, 핸드폰이 안 될 때, 자식처럼 듣고 해결해드립니다. 100% 무료 만능전화.">
-<meta property="og:title" content="만능전화 - 온담">
-<meta property="og:description" content="병원, 핸드폰, 영양제, 사기 문자... 뭐든 전화 한 통이면 해결해드립니다.">
+<title>온담 안부전화 - 부모님의 든든한 두 번째 자식</title>
+<meta name="description" content="바쁜 우리 대신, 따뜻한 사람이 매주 부모님께 전화드립니다. 전담 상담사가 안부를 여쭤보고, 근황 리포트를 카카오톡으로 보내드려요.">
+<meta property="og:title" content="온담 안부전화 - 부모님의 든든한 두 번째 자식">
+<meta property="og:description" content="바쁜 우리 대신, 따뜻한 사람이 매주 부모님께 전화드립니다. 근황 리포트를 카카오톡으로 받아보세요.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://about.ondam.me/call">
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KVVXVJJ5');</script>
-<!-- End Google Tag Manager -->
-<!-- Google Ads Conversion Tracking -->
+
+<!-- Google Ads + GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18005256112"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -23,15 +25,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   gtag('js', new Date());
   gtag('config', 'AW-18005256112');
   gtag('config', 'G-JSNVDKKX6Q', {
-    linker: { domains: ['chosim.me', 'ondam-front.vercel.app'] }
+    linker: { domains: ['chosim.me', 'call.ondam.me', 'ondam-front.vercel.app'] }
   });
 </script>
-<!-- Event snippet for 페이지 조회 conversion page -->
 <script>
   gtag('event', 'conversion', {'send_to': 'AW-18005256112/NYBCCJ2Z94UcELDPyYlD'});
 </script>
-<!-- End Google Ads Conversion Tracking -->
-<!-- Meta Pixel Code -->
+
+<!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -43,770 +44,1090 @@ s.parentNode.insertBefore(t,s)}(window,document,'script',
 fbq('init', '26764462659812070');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/></noscript>
-<!-- End Meta Pixel Code -->
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/></noscript>
+
 <!-- Kakao Pixel -->
 <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/kas/static/kp.js"></script>
 <script type="text/javascript">kakaoPixel('8604667356398961253').pageView();</script>
-<!-- End Kakao Pixel -->
-<!-- Kakao JS SDK -->
-<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js" integrity="sha384-DKYJZ8NLiK8MN4/C5P2dtSmLQ4KwPaoqAfyA/DfmO1GRhSP0eXAMjXRKSQey29U" crossorigin="anonymous"></script>
-<script>Kakao.init('fb3e293d0a3f8d8d56559fe73624e8af');</script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&display=swap">
-<style>
-  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 
-  :root {
-    --brand: #FF6B6B;
-    --brand-dark: #E85555;
-    --brand-light: #FFE4E4;
-    --brand-glow: rgba(255, 107, 107, 0.15);
-    --teal: #5CB8A7;
-    --teal-dark: #4AA394;
-    --teal-light: #E0F5F0;
-    --bg: #FFFFFF;
-    --bg-warm: #F5F5F0;
-    --bg-cream: #FBF9F6;
-    --bg-blush: #FFF5F3;
-    --bg-section: #F9F5F2;
-    --text-primary: #333333;
-    --text-secondary: #666666;
-    --text-tertiary: #999999;
-    --border: #E8E4DF;
-    --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
-    --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
-    --shadow-brand: 0 8px 28px rgba(255,107,107,0.2);
-    --shadow-teal: 0 8px 28px rgba(92,184,167,0.2);
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    --radius-xl: 24px;
-    --radius-round: 9999px;
-    --content-width: 680px;
-  }
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Pretendard Font -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-
-  body {
-    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    color: var(--text-primary);
-    background: var(--bg-cream);
-    line-height: 1.8;
-    overflow-x: hidden;
-    word-break: keep-all;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ===== Nav ===== */
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-  }
-  .nav-inner {
-    max-width: var(--content-width); margin: 0 auto; padding: 0 24px;
-    height: 56px; display: flex; align-items: center; justify-content: space-between;
-  }
-  .nav-left { display: flex; align-items: center; gap: 20px; }
-  .nav-logo { display: flex; align-items: center; text-decoration: none; }
-  .nav-logo img { height: 32px; width: auto; }
-  .nav-links { display: flex; align-items: center; gap: 4px; }
-  .nav-link {
-    font-size: 14px; font-weight: 500; color: var(--text-secondary);
-    text-decoration: none; padding: 6px 10px; border-radius: 8px;
-    transition: all 0.2s; white-space: nowrap;
-  }
-  .nav-link:hover { color: var(--brand); background: var(--brand-light); }
-  .nav-link.active { color: var(--brand); font-weight: 700; background: var(--brand-light); }
-  .nav-cta {
-    background: var(--brand); color: white; border: none; border-radius: 999px;
-    padding: 10px 22px; font-size: 16px; font-weight: 600; cursor: pointer;
-    text-decoration: none; transition: background 0.2s; white-space: nowrap;
-  }
-  .nav-cta:hover { background: var(--brand-dark); }
-  .nav-links-mobile { display: none; }
-
-  /* ===== HERO ===== */
-  .hero {
-    min-height: 100svh;
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
-    text-align: center;
-    padding: 80px 24px 40px;
-    background: linear-gradient(175deg, var(--bg-blush) 0%, var(--bg-cream) 50%, var(--bg-warm) 100%);
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: ''; position: absolute; top: -80px; right: -60px;
-    width: 260px; height: 260px;
-    background: radial-gradient(circle, var(--brand-glow) 0%, transparent 70%);
-    border-radius: 50%; pointer-events: none;
-  }
-  .hero::after {
-    content: ''; position: absolute; bottom: 40px; left: -40px;
-    width: 180px; height: 180px;
-    background: radial-gradient(circle, rgba(92,184,167,0.08) 0%, transparent 70%);
-    border-radius: 50%; pointer-events: none;
-  }
-
-  .hero-emoji {
-    font-size: 56px; margin-bottom: 16px; display: block;
-    animation: float 3s ease-in-out infinite;
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-
-  .hero h1 {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 32px; font-weight: 900; line-height: 1.45;
-    color: var(--text-primary); margin-bottom: 14px;
-    letter-spacing: -0.02em;
-  }
-  .hero h1 .coral { color: var(--brand); }
-
-  .hero-sub {
-    font-size: 18px; color: var(--text-secondary);
-    margin-bottom: 36px; max-width: 360px; line-height: 1.85;
-  }
-  .hero-sub strong { color: var(--text-primary); font-weight: 700; }
-
-  .phone-cta {
-    display: flex; flex-direction: column;
-    gap: 10px; width: 100%; max-width: 340px;
-  }
-  .phone-btn {
-    display: flex; align-items: center; justify-content: center;
-    gap: 10px; color: white; text-decoration: none;
-    font-size: 18px; font-weight: 700;
-    padding: 16px 24px; border-radius: var(--radius-round);
-    transition: all 0.2s ease; position: relative; overflow: hidden;
-  }
-  .phone-btn::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
-    pointer-events: none;
-  }
-  .phone-btn.kh { background: var(--brand); box-shadow: var(--shadow-brand); }
-  .phone-btn.yt { background: var(--teal); box-shadow: var(--shadow-teal); }
-  .phone-btn:active { transform: scale(0.97); opacity: 0.9; }
-
-  .phone-btn .btn-text {
-    display: flex; flex-direction: column;
-    align-items: flex-start; text-align: left; line-height: 1.3;
-  }
-  .phone-btn .btn-hint {
-    font-size: 13px; font-weight: 500; opacity: 0.85; display: block;
-  }
-
-  .phone-btn .ring {
-    width: 22px; height: 22px; flex-shrink: 0;
-    animation: ring 3s ease-in-out infinite;
-  }
-  @keyframes ring {
-    0%, 100% { transform: rotate(0deg); }
-    5% { transform: rotate(15deg); }
-    10% { transform: rotate(-13deg); }
-    15% { transform: rotate(10deg); }
-    20% { transform: rotate(-8deg); }
-    25% { transform: rotate(0deg); }
-  }
-
-  .phone-name {
-    font-size: 15px; color: var(--text-tertiary);
-    text-align: center; letter-spacing: 0.01em;
-  }
-
-  .scroll-hint {
-    position: absolute; bottom: 24px; left: 50%;
-    transform: translateX(-50%);
-    color: var(--text-tertiary); font-size: 13px;
-    display: flex; flex-direction: column; align-items: center; gap: 2px;
-    animation: bounce 2s ease-in-out infinite;
-  }
-  @keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(5px); }
-  }
-
-  /* ===== PAIN POINTS ===== */
-  .pain {
-    padding: 48px 24px; background: var(--bg);
-  }
-  .pain-inner { max-width: 420px; margin: 0 auto; }
-
-  .section-label {
-    display: flex; align-items: center; justify-content: center;
-    gap: 8px; font-size: 15px; color: var(--brand);
-    font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.1em; margin-bottom: 10px;
-  }
-  .section-label::before, .section-label::after {
-    content: ''; width: 24px; height: 1px; background: var(--brand-light);
-  }
-
-  .pain h2 {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 24px; font-weight: 900; line-height: 1.5;
-    text-align: center; margin-bottom: 28px;
-  }
-  .pain-cards { display: flex; flex-direction: column; gap: 12px; }
-  .pain-card {
-    background: var(--bg-warm); border-radius: var(--radius-lg);
-    padding: 20px 18px; display: flex; gap: 12px; align-items: flex-start;
-  }
-  .pain-card .emoji { font-size: 24px; flex-shrink: 0; margin-top: 1px; }
-  .pain-card .text {
-    font-size: 15px; color: var(--text-secondary); line-height: 1.75;
-  }
-  .pain-card .text strong { color: var(--text-primary); font-weight: 700; }
-  .pain-bottom {
-    margin-top: 28px; text-align: center;
-    font-size: 17px; font-weight: 700; color: var(--brand); line-height: 1.7;
-  }
-
-  /* ===== HELP GRID ===== */
-  .help { padding: 48px 24px; background: var(--bg-warm); }
-
-  .section-title {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 24px; font-weight: 900; text-align: center;
-    margin-bottom: 6px;
-  }
-  .section-sub {
-    text-align: center; color: var(--text-secondary);
-    font-size: 15px; margin-bottom: 28px;
-  }
-  .help-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 12px; max-width: 420px; margin: 0 auto;
-  }
-  .help-card {
-    background: var(--bg); border-radius: var(--radius-lg);
-    padding: 20px 14px; text-align: center;
-    box-shadow: var(--shadow-sm);
-  }
-  .help-card .icon { font-size: 28px; margin-bottom: 6px; display: block; }
-  .help-card .label { font-size: 17px; font-weight: 700; margin-bottom: 2px; }
-  .help-card .desc { font-size: 15px; color: var(--text-tertiary); }
-
-  /* ===== STEPS ===== */
-  .steps { padding: 48px 24px; background: var(--bg); }
-  .steps-list {
-    display: flex; flex-direction: column; gap: 22px;
-    max-width: 380px; margin: 0 auto; position: relative;
-  }
-  .steps-list::before {
-    content: ''; position: absolute; left: 25px; top: 48px; bottom: 20px;
-    width: 2px; background: var(--brand-light); border-radius: 2px;
-  }
-  .step {
-    display: flex; gap: 14px; align-items: flex-start;
-    position: relative; z-index: 1;
-  }
-  .step-num {
-    flex-shrink: 0; width: 50px; height: 50px;
-    background: var(--brand); color: white; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Noto Serif KR', serif;
-    font-size: 18px; font-weight: 900;
-    box-shadow: var(--shadow-brand);
-  }
-  .step-content h3 { font-size: 18px; font-weight: 700; margin-bottom: 1px; }
-  .step-content p { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
-
-  /* ===== TRUST BADGES ===== */
-  .trust { padding: 48px 24px; background: var(--bg); text-align: center; }
-  .trust-badges {
-    display: flex; justify-content: center; gap: 24px;
-    max-width: 340px; margin: 0 auto;
-  }
-  .trust-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-  .trust-item .num {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 24px; font-weight: 900; color: var(--brand);
-  }
-  .trust-item .label { font-size: 15px; color: var(--text-tertiary); font-weight: 500; }
-
-  /* ===== ABOUT PROFILES ===== */
-  .about { padding: 48px 24px; background: var(--bg-warm); }
-  .about-profiles {
-    display: flex; flex-direction: column; gap: 16px;
-    max-width: 420px; margin: 0 auto;
-  }
-  .profile-card {
-    background: var(--bg); border-radius: var(--radius-xl);
-    padding: 22px; display: flex; gap: 18px; align-items: center;
-    box-shadow: var(--shadow-sm);
-  }
-  .profile-photo {
-    flex-shrink: 0; width: 80px; height: 80px; border-radius: 50%;
-    overflow: hidden; display: flex; align-items: center; justify-content: center;
-  }
-  .profile-photo.coral-bg {
-    background: var(--brand-light);
-    box-shadow: 0 2px 10px rgba(255,107,107,0.12);
-  }
-  .profile-photo.teal-bg {
-    background: var(--teal-light);
-    box-shadow: 0 2px 10px rgba(92,184,167,0.12);
-  }
-  .profile-photo .initials { font-size: 22px; font-weight: 900; }
-  .profile-photo.coral-bg .initials { color: var(--brand); }
-  .profile-photo.teal-bg .initials { color: var(--teal); }
-
-  .profile-info h3 { font-size: 16px; font-weight: 800; margin-bottom: 2px; }
-  .profile-info .role { font-size: 15px; font-weight: 700; margin-bottom: 6px; letter-spacing: 0.02em; }
-  .profile-info .role.coral { color: var(--brand); }
-  .profile-info .role.teal { color: var(--teal); }
-  .profile-info .bio { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
-
-  /* ===== BOTTOM CTA ===== */
-  .bottom-cta {
-    padding: 48px 24px 56px; text-align: center;
-    background: linear-gradient(180deg, var(--bg-cream) 0%, var(--bg-blush) 100%);
-  }
-  .bottom-cta h2 {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 24px; font-weight: 900; margin-bottom: 6px;
-  }
-  .bottom-cta .sub { font-size: 15px; color: var(--text-secondary); margin-bottom: 28px; }
-
-  .bottom-phones {
-    display: flex; flex-direction: column; gap: 10px;
-    max-width: 340px; margin: 0 auto 32px;
-  }
-
-  .divider {
-    display: flex; align-items: center; gap: 12px;
-    max-width: 260px; margin: 0 auto;
-  }
-  .divider::before, .divider::after {
-    content: ''; flex: 1; height: 1px; background: var(--border);
-  }
-  .divider span { font-size: 15px; color: var(--text-tertiary); }
-
-  .ondam-box {
-    margin-top: 28px; max-width: 340px; margin-left: auto; margin-right: auto;
-    background: var(--bg); border-radius: var(--radius-xl);
-    padding: 22px; box-shadow: var(--shadow-sm); border: 1px solid var(--border);
-  }
-  .ondam-box p {
-    font-size: 15px; color: var(--text-secondary);
-    margin-bottom: 12px; line-height: 1.7;
-  }
-  .ondam-box strong { color: var(--brand); }
-  .ondam-link {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--text-primary); color: white;
-    text-decoration: none; font-weight: 700; font-size: 15px;
-    padding: 10px 22px; border-radius: var(--radius-round);
-    transition: all 0.2s ease;
-  }
-  .ondam-link:active { transform: scale(0.97); opacity: 0.9; }
-
-  /* ===== Footer ===== */
-  .footer {
-    text-align: center; padding: 28px 24px 100px;
-    font-size: 14px; color: var(--text-tertiary);
-    border-top: 1px solid var(--border); background: var(--bg-warm);
-  }
-  .footer a { color: var(--text-tertiary); text-decoration: none; }
-  .footer a:hover { color: var(--brand); }
-  .footer-social {
-    display: flex; justify-content: center; gap: 16px; margin-bottom: 16px;
-  }
-  .footer-social a {
-    display: flex; align-items: center; justify-content: center;
-    width: 40px; height: 40px; border-radius: 50%;
-    background: var(--bg-section); color: var(--text-tertiary);
-    transition: all 0.2s;
-  }
-  .footer-social a:hover { background: var(--brand); color: white; }
-
-  /* ===== Sticky Mobile CTA ===== */
-  .sticky-cta {
-    position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
-    background: rgba(255,255,255,0.96);
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-    border-top: 1px solid rgba(0,0,0,0.08);
-    padding: 12px 20px;
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    transform: translateY(100%); transition: transform 0.3s ease;
-  }
-  .sticky-cta.show { transform: translateY(0); }
-  .sticky-cta-text { font-size: 14px; color: var(--text-secondary); line-height: 1.4; font-weight: 600; }
-  .sticky-cta-text strong { color: var(--brand); }
-  .sticky-cta-btn {
-    flex-shrink: 0; background: var(--brand); color: white;
-    border: none; border-radius: 999px;
-    padding: 14px 28px; font-size: 16px; font-weight: 700;
-    text-decoration: none; white-space: nowrap;
-    box-shadow: 0 4px 16px rgba(255,107,107,0.3);
-  }
-
-  /* ===== Scroll Animations ===== */
-  .anim-ready .reveal {
-    opacity: 0; transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .anim-ready .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .anim-ready .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-  }
-
-  /* ===== Responsive ===== */
-  @media (min-width: 768px) {
-    .hero h1 { font-size: 40px; }
-    .help-grid { grid-template-columns: repeat(3, 1fr); max-width: 560px; }
-    .profile-card { padding: 28px; }
-    .profile-photo { width: 90px; height: 90px; }
-  }
-
-  @media (max-width: 768px) {
-    .nav { border-bottom: none; }
-    .nav-inner { flex-wrap: wrap; height: auto; padding: 10px 24px 0; }
-    .nav-left { width: auto; flex: 0; gap: 0; }
-    .nav-left .nav-links { display: none; }
-    .nav-cta { padding: 8px 16px; font-size: 14px; }
-    .nav-links-mobile {
-      display: flex; width: 100%; gap: 0;
-      justify-content: space-around;
-      border-top: 1px solid rgba(0,0,0,0.06);
-      margin-top: 8px; padding: 0;
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        }
+      }
     }
-    .nav-links-mobile .nav-link { font-size: 13px; padding: 10px 8px; flex: 1; text-align: center; border-radius: 0; }
-    .nav-links-mobile .nav-link.active { background: none; border-bottom: 2px solid var(--brand); }
-    .hero { padding-top: 110px; }
   }
+</script>
 
-  @media (max-width: 480px) {
-    .hero h1 { font-size: 26px; }
-    .hero-sub { font-size: 16px; }
-    .phone-btn { font-size: 16px; padding: 14px 20px; }
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; }
+  .dot-pattern {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .faq-content {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .faq-icon {
+    transition: transform 0.3s ease;
+  }
+  .gradient-text {
+    background: linear-gradient(to right, #fecaca, #fbcfe8, #fda4af);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 </style>
 </head>
-<body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVVXVJJ5"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<body class="bg-slate-100 text-slate-800">
 
-<!-- Nav -->
-<nav class="nav">
-  <div class="nav-inner">
-    <div class="nav-left">
-      <a href="/" class="nav-logo"><img src="/logo.png" alt="온담"></a>
-      <div class="nav-links">
-        <a href="/" class="nav-link">소개</a>
-        <a href="/call" class="nav-link active">만능전화</a>
-        <a href="/quiz" class="nav-link">모임</a>
-        <a href="/faq" class="nav-link">FAQ</a>
-      </div>
-    </div>
-    <a href="https://ondam-front.vercel.app" class="nav-cta">무료로 시작하기</a>
-    <div class="nav-links-mobile">
-      <a href="/" class="nav-link">소개</a>
-      <a href="/call" class="nav-link active">만능전화</a>
-      <a href="/quiz" class="nav-link">모임</a>
-      <a href="/faq" class="nav-link">FAQ</a>
-    </div>
+<!-- GTM noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVVXVJJ5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="max-w-lg mx-auto bg-white shadow-xl min-h-screen">
+<!-- ===== NAV ===== -->
+<nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-sm">
+  <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="/">
+      <img src="logo.png" alt="온담" style="height:36px;">
+    </a>
+    <a href="#apply" class="px-5 py-2 rounded-full text-sm font-bold text-white bg-gradient-to-r from-red-500 to-pink-600 shadow-md hover:shadow-lg hover:from-red-600 hover:to-pink-700 transition-all duration-200">
+      첫 리포트 받아보기
+    </a>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <span class="hero-emoji">&#x260E;&#xFE0F;</span>
-  <h1>어머님, 아버님.<br><span class="coral">언제든 편하게 전화주세요.</span></h1>
-  <p class="hero-sub">
-    병원이 어딘지, 이거 사도 되는 건지,<br>
-    핸드폰이 안 될 때.<br>
-    <strong>자식처럼 듣고, 해결해드립니다.</strong>
-  </p>
+<!-- ===== HERO ===== -->
+<section data-section="hero" class="relative overflow-hidden bg-gradient-to-br from-red-500 via-pink-600 to-rose-700 py-14 px-4 text-center">
+  <div class="dot-pattern absolute inset-0 opacity-30 pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto">
+    <!-- Badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white text-sm font-medium mb-8">
+      <span>✨</span>
+      <span>첫 1회 무료 체험</span>
+    </div>
 
-  <div class="phone-cta">
-    <a href="tel:010-5175-1360" class="phone-btn kh" onclick="if(typeof gtag!=='undefined')gtag('event','call_phone_click',{person:'kyuheon',position:'hero'})">
-      <svg class="ring" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      <span class="btn-text"><span class="btn-hint">이 곳을 눌러서</span>규헌에게 전화하기</span>
-    </a>
-    <span class="phone-name">심규헌 &middot; 010-5175-1360</span>
-    <a href="tel:010-8326-8528" class="phone-btn yt" onclick="if(typeof gtag!=='undefined')gtag('event','call_phone_click',{person:'yutae',position:'hero'})">
-      <svg class="ring" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      <span class="btn-text"><span class="btn-hint">이 곳을 눌러서</span>유태에게 전화하기</span>
-    </a>
-    <span class="phone-name">조유태 &middot; 010-8326-8528</span>
-  </div>
+    <!-- H1 -->
+    <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight text-white mb-4">
+      바쁜 우리 대신,<br>
+      매주 부모님께<br>
+      <span class="gradient-text">전화드립니다</span>
+    </h1>
 
-  <div class="scroll-hint">
-    <span>아래로 내려보세요</span>
-    <span>&darr;</span>
+    <!-- Sub -->
+    <p class="text-white/90 text-base sm:text-lg leading-relaxed mb-10">
+      전담 상담사가 어머님, 아버님 안부를 여쭤보고<br>
+      근황 리포트를 카카오톡으로 보내드려요.
+    </p>
+
+    <!-- CTA -->
+    <a href="#apply" class="inline-block px-8 py-4 rounded-full bg-white text-red-600 font-extrabold text-lg shadow-2xl hover:shadow-xl hover:scale-105 transition-all duration-200 mb-10">
+      첫 전화 신청하기 &gt;
+    </a>
+
+    <!-- Trust badges -->
+    <div class="flex items-center justify-center gap-6 flex-wrap">
+      <div class="flex items-center gap-2 text-white/90 text-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>개인정보 안전</span>
+      </div>
+      <div class="w-px h-4 bg-white/30"></div>
+      <div class="flex items-center gap-2 text-white/90 text-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        <span>전문 상담사</span>
+      </div>
+      <div class="w-px h-4 bg-white/30"></div>
+      <div class="flex items-center gap-2 text-white/90 text-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>카톡 리포트</span>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- PAIN POINTS -->
-<section class="pain">
-  <div class="pain-inner">
-    <div class="section-label">고민 공감</div>
-    <h2>혹시 이런 적<br>있으시지 않나요?</h2>
-
-    <div class="pain-cards">
-      <div class="pain-card reveal">
-        <span class="emoji">&#x1F614;</span>
-        <p class="text">
-          <strong>몸이 안 좋은데</strong> 어느 병원을 가야 할지 모르겠고,
-          자식한테 물어보자니 바쁠까봐 미안해서 그냥 참았다.
-        </p>
-      </div>
-      <div class="pain-card reveal reveal-delay-1">
-        <span class="emoji">&#x1F4F1;</span>
-        <p class="text">
-          <strong>핸드폰이 갑자기 안 되는데</strong> 어디 물어볼 데가 없어서
-          몇 날 며칠을 그냥 불편하게 쓰고 있다.
-        </p>
-      </div>
-      <div class="pain-card reveal reveal-delay-2">
-        <span class="emoji">&#x1F6D2;</span>
-        <p class="text">
-          TV에서 좋다고 해서 <strong>영양제를 사려는데</strong>
-          이게 진짜 좋은 건지, 사기는 아닌지 판단이 안 된다.
-        </p>
-      </div>
-      <div class="pain-card reveal reveal-delay-3">
-        <span class="emoji">&#x1F4AD;</span>
-        <p class="text">
-          <strong>고민이 있는데</strong> 친구한테 말하기엔 체면이 있고,
-          자식한테 말하기엔 걱정 끼칠까봐 혼자 끙끙 앓고 있다.
-        </p>
-      </div>
+<!-- ===== PAIN POINTS ===== -->
+<section data-section="pain-points" class="py-10 px-4 bg-white">
+  <div class="max-w-3xl mx-auto text-center">
+    <div class="reveal" style="opacity:0;transform:translateY(30px)">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-red-50 text-red-700 text-sm font-semibold mb-4">이런 마음, 혹시 나도?</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight mb-4">
+        전화해야지, 하면서<br>또 한 주가 지나요.
+      </h2>
+      <p class="text-slate-500 text-base sm:text-lg leading-loose mb-8">
+        바쁜 게 당연한 거라서, 잘 지내시겠지 생각하게 돼요.<br>
+        그런데 가끔 문득 걱정되는 마음.
+      </p>
     </div>
 
-    <p class="pain-bottom">
-      이런 고민, 저희한테 편하게<br>전화 한 통 해주세요.
+    <div class="grid grid-cols-1 gap-3">
+      <!-- Card 1 -->
+      <div class="reveal text-left p-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow" style="opacity:0;transform:translateY(30px)">
+        <div class="flex items-start gap-3">
+          <span class="text-xl leading-none mt-0.5">📞</span>
+          <div>
+            <h3 class="font-bold text-slate-900 text-[15px] mb-1">"전화해야지" 하면서 매번 주말이 지나요</h3>
+            <p class="text-slate-500 text-[14px] leading-relaxed">퇴근하면 지치고, 주말엔 밀린 일에 쫓기다 보면 어느새 또 한 달</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="reveal text-left p-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow" style="opacity:0;transform:translateY(30px)">
+        <div class="flex items-start gap-3">
+          <span class="text-xl leading-none mt-0.5">💬</span>
+          <div>
+            <h3 class="font-bold text-slate-900 text-[15px] mb-1">"잘 지내" 한마디 외에 뭘 여쭤봐야 할지</h3>
+            <p class="text-slate-500 text-[14px] leading-relaxed">5분이면 대화가 끊기고, 부모님도 "바쁘지? 끊어" 하시잖아요</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="reveal text-left p-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow" style="opacity:0;transform:translateY(30px)">
+        <div class="flex items-start gap-3">
+          <span class="text-xl leading-none mt-0.5">🤍</span>
+          <div>
+            <h3 class="font-bold text-slate-900 text-[15px] mb-1">아무 말씀 안 하셔도, 정말 괜찮으신 건지</h3>
+            <p class="text-slate-500 text-[14px] leading-relaxed">안 아프시다고 하셔도 걱정되고, 외로우실까 봐 마음이 쓰여요</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="reveal text-left p-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow" style="opacity:0;transform:translateY(30px)">
+        <div class="flex items-start gap-3">
+          <span class="text-xl leading-none mt-0.5">🤐</span>
+          <div>
+            <h3 class="font-bold text-slate-900 text-[15px] mb-1">자식한테는 절대 속마음을 안 말씀하셔요</h3>
+            <p class="text-slate-500 text-[14px] leading-relaxed">"괜찮아, 걱정 마" 뒤에 숨은 진짜 이야기. 제3자에게는 더 편하게 말씀하세요</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPARISON TABLE ===== -->
+<section data-section="comparison" class="py-12 px-4 bg-gradient-to-b from-slate-50 to-white">
+  <div class="max-w-3xl mx-auto text-center">
+    <div class="reveal" style="opacity:0;transform:translateY(30px)">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-pink-50 text-pink-700 text-sm font-semibold mb-6">AI가 아닌 사람</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight mb-5">
+        기계 목소리 말고,<br>진짜 사람이 전화해요.
+      </h2>
+      <p class="text-slate-500 text-base sm:text-lg leading-loose mb-12">
+        부모님 세대에 익숙하고 편안한 건<br>
+        버튼도, AI 목소리도 아닌 사람 목소리예요.
+      </p>
+    </div>
+
+    <div class="reveal overflow-hidden rounded-2xl border border-slate-200 shadow-lg" style="opacity:0;transform:translateY(30px)">
+      <table class="w-full text-sm">
+        <thead>
+          <tr>
+            <th class="py-4 px-4 text-left text-slate-400 font-medium bg-white w-1/3 border-b border-slate-200"></th>
+            <th class="py-4 px-4 text-center font-semibold text-slate-400 bg-slate-100 border-b border-slate-200">
+              AI 안부전화
+            </th>
+            <th class="py-4 px-4 text-center font-bold text-white bg-red-500 border-b border-red-600 relative">
+              <span class="absolute -top-0 left-1/2 -translate-x-1/2 -translate-y-full">
+                <span class="inline-block px-2 py-0.5 rounded-t-lg bg-red-600 text-white text-xs font-bold tracking-wide">추천</span>
+              </span>
+              온담
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-slate-100">
+            <td class="py-3.5 px-4 text-left font-medium text-slate-600">전화하는 분</td>
+            <td class="py-3.5 px-4 text-center text-slate-400 bg-slate-50/50">✕ AI 음성</td>
+            <td class="py-3.5 px-4 text-center font-bold text-red-600 bg-red-50/40">✓ 전담 상담사</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="py-3.5 px-4 text-left font-medium text-slate-600">대화 방식</td>
+            <td class="py-3.5 px-4 text-center text-slate-400 bg-slate-50/50">✕ 정해진 질문만</td>
+            <td class="py-3.5 px-4 text-center font-bold text-red-600 bg-red-50/40">✓ 자유롭게 수다</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="py-3.5 px-4 text-left font-medium text-slate-600">라포 형성</td>
+            <td class="py-3.5 px-4 text-center text-slate-400 bg-slate-50/50">✕ 매번 처음부터</td>
+            <td class="py-3.5 px-4 text-center font-bold text-red-600 bg-red-50/40">✓ 같은 분이 매주</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="py-3.5 px-4 text-left font-medium text-slate-600">진짜 속마음</td>
+            <td class="py-3.5 px-4 text-center text-slate-400 bg-slate-50/50">✕ 파악 어려움</td>
+            <td class="py-3.5 px-4 text-center font-bold text-red-600 bg-red-50/40">✓ 행간까지 읽어요</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="py-3.5 px-4 text-left font-medium text-slate-600">리포트</td>
+            <td class="py-3.5 px-4 text-center text-slate-400 bg-slate-50/50">✕ 체크리스트형</td>
+            <td class="py-3.5 px-4 text-center font-bold text-red-600 bg-red-50/40">✓ 카톡 근황 편지</td>
+          </tr>
+          <tr>
+            <td class="py-3.5 px-4 text-left font-medium text-slate-600">긴급 상황</td>
+            <td class="py-3.5 px-4 text-center text-slate-400 bg-slate-50/50">✕ 감지 어려움</td>
+            <td class="py-3.5 px-4 text-center font-bold text-red-600 bg-red-50/40">✓ 즉시 자녀에게 연락</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="reveal mt-8 text-slate-600 text-[15px] sm:text-base leading-loose text-left bg-red-50 rounded-2xl p-5 border border-red-100" style="opacity:0;transform:translateY(30px)">
+      AI 안부전화 서비스와 달리, 온담은 <strong class="text-slate-800">매주 같은 상담사</strong>가 전화드려요. 부모님이 이름을 기억하시고 편하게 대하실 수 있게. <strong class="text-slate-800">자식한테 못 하는 이야기도, 전담 상담사에게는 편하게 말씀하세요.</strong>
     </p>
   </div>
 </section>
 
-<!-- WHAT WE HELP WITH -->
-<section class="help">
-  <div class="section-label">도움 범위</div>
-  <h2 class="section-title">이런 거 물어보세요</h2>
-  <p class="section-sub">뭐든 괜찮아요. 편하게 전화하세요.</p>
+<!-- ===== HOW IT WORKS ===== -->
+<section data-section="how-it-works" class="py-10 px-4 bg-white">
+  <div class="max-w-2xl mx-auto text-center">
+    <div class="reveal" style="opacity:0;transform:translateY(30px)">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-red-50 text-red-700 text-sm font-semibold mb-6">어떻게 진행되나요?</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight mb-4">
+        신청부터 리포트까지<br>이렇게 진행돼요.
+      </h2>
+      <p class="text-slate-500 text-base sm:text-lg leading-relaxed mb-10">
+        전부 저희가 알아서 해요. 신청만 해주세요.
+      </p>
+    </div>
 
-  <div class="help-grid">
-    <div class="help-card reveal">
-      <span class="icon">&#x1F37D;&#xFE0F;</span>
-      <div class="label">맛있는 데 없나</div>
-      <div class="desc">괜찮은 식당 좀 알려주세요</div>
-    </div>
-    <div class="help-card reveal reveal-delay-1">
-      <span class="icon">&#x1F3E5;</span>
-      <div class="label">어디 병원 가지</div>
-      <div class="desc">지금 열고 있는 병원 찾아주세요</div>
-    </div>
-    <div class="help-card reveal reveal-delay-2">
-      <span class="icon">&#x1F48A;</span>
-      <div class="label">이거 정말 좋나?</div>
-      <div class="desc">영양제가 진짜 괜찮은 건지</div>
-    </div>
-    <div class="help-card reveal reveal-delay-3">
-      <span class="icon">&#x1F6D2;</span>
-      <div class="label">사기 아닌가?</div>
-      <div class="desc">이거 사도 되는 건지 봐주세요</div>
-    </div>
-    <div class="help-card reveal reveal-delay-4">
-      <span class="icon">&#x1F4F1;</span>
-      <div class="label">폰이 안 돼요</div>
-      <div class="desc">갑자기 안 되는데 어떡하죠</div>
-    </div>
-    <div class="help-card reveal">
-      <span class="icon">&#x1F4AC;</span>
-      <div class="label">고민이 있어요</div>
-      <div class="desc">말하기 어려운 이야기도 괜찮아요</div>
+    <div class="space-y-4">
+
+      <!-- Step 1 -->
+      <div class="reveal flex items-center gap-4 text-left" style="opacity:0;transform:translateY(30px)">
+        <div class="flex-shrink-0 w-8 h-8 rounded-xl bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center text-white font-extrabold text-sm shadow-sm z-10">
+          1
+        </div>
+        <div class="flex-1 bg-slate-50 rounded-2xl p-4 border border-slate-100">
+          <div class="flex items-center gap-2 mb-1.5">
+            <h3 class="font-bold text-slate-900 text-base">신청서 작성</h3>
+            <span class="ml-auto text-xs font-semibold px-2 py-0.5 rounded-full bg-green-100 text-green-700">1분이면 끝</span>
+          </div>
+          <p class="text-slate-500 text-[15px] leading-relaxed">아래 폼에서 부모님 정보와 편한 시간대를 알려주세요.</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="reveal flex items-center gap-4 text-left" style="opacity:0;transform:translateY(30px)">
+        <div class="flex-shrink-0 w-8 h-8 rounded-xl bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center text-white font-extrabold text-sm shadow-sm z-10">
+          2
+        </div>
+        <div class="flex-1 bg-slate-50 rounded-2xl p-4 border border-slate-100">
+          <div class="flex items-center gap-2 mb-1.5">
+            <h3 class="font-bold text-slate-900 text-base">전담 상담사 배정</h3>
+          </div>
+          <p class="text-slate-500 text-[15px] leading-relaxed">부모님 성향에 맞는 상담사를 1:1로 매칭해드려요. 요청 주시기 전에는 바뀌지 않아요.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="reveal flex items-center gap-4 text-left" style="opacity:0;transform:translateY(30px)">
+        <div class="flex-shrink-0 w-8 h-8 rounded-xl bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center text-white font-extrabold text-sm shadow-sm z-10">
+          3
+        </div>
+        <div class="flex-1 bg-slate-50 rounded-2xl p-4 border border-slate-100">
+          <div class="flex items-center gap-2 mb-1.5">
+            <h3 class="font-bold text-slate-900 text-base">첫 안부전화 (무료)</h3>
+            <span class="ml-auto text-xs font-semibold px-2 py-0.5 rounded-full bg-red-100 text-red-700">무료 체험</span>
+          </div>
+          <p class="text-slate-500 text-[15px] leading-relaxed">상담사가 부모님께 전화드리고, 서비스를 안내해요. 부모님이 원하시지 않으면 즉시 중단해요.</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="reveal flex items-center gap-4 text-left" style="opacity:0;transform:translateY(30px)">
+        <div class="flex-shrink-0 w-8 h-8 rounded-xl bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center text-white font-extrabold text-sm shadow-sm z-10">
+          4
+        </div>
+        <div class="flex-1 bg-slate-50 rounded-2xl p-4 border border-slate-100">
+          <div class="flex items-center gap-2 mb-1.5">
+            <h3 class="font-bold text-slate-900 text-base">근황 리포트 발송</h3>
+          </div>
+          <p class="text-slate-500 text-[15px] leading-relaxed">통화 후 상담사가 작성한 리포트를 카카오톡으로 보내드려요. 부모님 목소리 클립도 함께.</p>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="reveal flex items-center gap-4 text-left" style="opacity:0;transform:translateY(30px)">
+        <div class="flex-shrink-0 w-8 h-8 rounded-xl bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center text-white font-extrabold text-sm shadow-sm z-10">
+          5
+        </div>
+        <div class="flex-1 bg-slate-50 rounded-2xl p-4 border border-slate-100">
+          <div class="flex items-center gap-2 mb-1.5">
+            <h3 class="font-bold text-slate-900 text-base">정기 서비스 시작</h3>
+            <span class="ml-auto text-xs font-semibold px-2 py-0.5 rounded-full bg-orange-100 text-orange-700">긴급 연락 창구</span>
+          </div>
+          <p class="text-slate-500 text-[15px] leading-relaxed">체험 후 마음에 드시면 매주 같은 요일, 같은 상담사가 전화드려요. 부모님이 급한 일이 생기면 언제든 상담사에게 연락하실 수 있어요.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="steps">
-  <div class="section-label">이용 방법</div>
-  <h2 class="section-title">이렇게 하시면 됩니다</h2>
-  <p class="section-sub">어렵지 않아요, 전화만 하시면 돼요</p>
+<!-- ===== MID-CTA BANNER ===== -->
+<section data-section="mid-cta" class="relative overflow-hidden bg-gradient-to-br from-red-500 via-pink-600 to-rose-700 py-12 px-4 text-center">
+  <div class="dot-pattern absolute inset-0 opacity-30 pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto reveal" style="opacity:0;transform:translateY(30px)">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-white leading-tight mb-8">
+      첫 1회 통화는 완전 무료예요.<br>
+      부모님이 원치 않으시면 바로 중단해요.
+    </h2>
+    <a href="#apply" class="inline-block px-8 py-4 rounded-full bg-white text-red-600 font-extrabold text-lg shadow-2xl hover:shadow-xl hover:scale-105 transition-all duration-200 mb-6">
+      첫 전화 신청하기 &gt;
+    </a>
+    <p class="text-white/80 text-sm">부담 없이 한 번 경험해 보세요</p>
+  </div>
+</section>
 
-  <div class="steps-list">
-    <div class="step reveal">
-      <div class="step-num">1</div>
-      <div class="step-content">
-        <h3>전화하기</h3>
-        <p>위에 있는 번호로 편하게 전화하세요</p>
+<!-- ===== REPORT PREVIEW ===== -->
+<section data-section="report" class="py-12 px-4 bg-white">
+  <div class="max-w-2xl mx-auto text-center">
+    <div class="reveal" style="opacity:0;transform:translateY(30px)">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-pink-50 text-pink-700 text-sm font-semibold mb-6">실제 리포트 미리보기</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight mb-4">
+        이런 리포트를<br>카톡으로 받아보세요.
+      </h2>
+      <p class="text-slate-500 text-base leading-relaxed mb-10">
+        통화 후 24시간 이내, 카카오톡 알림톡으로 도착해요.<br>
+        매주 쌓이는 리포트가 부모님 삶의 기록이 됩니다.
+      </p>
+    </div>
+
+    <!-- Report Card -->
+    <div class="reveal rounded-3xl overflow-hidden border border-slate-200 shadow-2xl text-left" style="opacity:0;transform:translateY(30px)">
+      <!-- Card Header -->
+      <div class="bg-gradient-to-r from-red-500 to-pink-600 px-6 py-5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div>
+            <p class="text-white/80 text-xs font-medium">온담 안부 리포트</p>
+            <p class="text-white font-bold text-base">김미숙 어머님 근황</p>
+          </div>
+          <div class="ml-auto text-white/70 text-xs">2024년 3월 18일</div>
+        </div>
+      </div>
+
+      <!-- Card Body -->
+      <div class="bg-white p-6 space-y-5">
+
+        <!-- Section 1 -->
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-7 h-7 rounded-lg bg-red-50 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h4 class="font-bold text-slate-800 text-sm">오늘 통화는요</h4>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed pl-9">
+            오늘 어머님 목소리가 되게 밝으셨어요. 순이 엄마랑 매일 보라매공원까지 산책을 다니신대요. 공원에서 만난 <strong class="text-slate-800">길고양이가 어머님만 보면 따라온다</strong>면서 한참 웃으셨어요...
+          </p>
+        </div>
+
+        <div class="border-t border-slate-100"></div>
+
+        <!-- Section 2 -->
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-7 h-7 rounded-lg bg-green-50 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <h4 class="font-bold text-slate-800 text-sm">건강 &amp; 생활</h4>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed pl-9">세 끼 잘 챙겨 드시고, 밤 10시~아침 6시 수면 규칙적. 무릎은 평지는 괜찮으시고 계단만 좀 불편하시대요.</p>
+        </div>
+
+        <div class="border-t border-slate-100"></div>
+
+        <!-- Section 3 -->
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-7 h-7 rounded-lg bg-pink-50 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h4 class="font-bold text-slate-800 text-sm">이렇게 해드리면 좋을 것 같아요</h4>
+          </div>
+          <div class="text-slate-600 text-sm leading-relaxed pl-9 space-y-1">
+            <p>1. 유튜브 건강 영상 찾는 법 알려드리기</p>
+            <p>2. 동네 시니어 골프교실 한번 찾아봐 주세요</p>
+            <p>3. <strong class="text-slate-800">4월에 아버님 기일이에요.</strong> 연락 한번 드리시면 많이 힘이 되실 것 같아요.</p>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-100"></div>
+
+        <!-- Section 4 -->
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-7 h-7 rounded-lg bg-pink-50 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <h4 class="font-bold text-slate-800 text-sm">어머님 한마디</h4>
+          </div>
+          <p class="text-slate-500 text-sm leading-relaxed pl-9 italic">"요즘은 산책이 제일 좋아. 순이 엄마랑 같이 다니는데, 걔가 나보다 더 빨라."</p>
+        </div>
+
+        <!-- Preview button -->
+        <div class="pt-2">
+          <button class="w-full py-3 rounded-xl bg-gradient-to-r from-red-50 to-pink-50 border border-pink-100 text-red-600 font-semibold text-sm hover:from-red-100 hover:to-pink-100 transition-colors">
+            전체 리포트 미리보기 &gt;
+          </button>
+        </div>
       </div>
     </div>
-    <div class="step reveal reveal-delay-1">
-      <div class="step-num">2</div>
-      <div class="step-content">
-        <h3>고민 말하기</h3>
-        <p>궁금한 것, 걱정되는 것, 뭐든 말씀하세요</p>
+
+    <!-- Below card note -->
+    <div class="reveal mt-10 bg-slate-50 rounded-2xl p-6 border border-slate-200 text-center" style="opacity:0;transform:translateY(30px)">
+      <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto mb-4" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+      <h3 class="text-xl font-extrabold text-slate-900 mb-2">매주 쌓이는 리포트,<br>부모님 삶의 기록이 됩니다</h3>
+      <p class="text-slate-500 text-[15px] leading-loose">건강 변화, 요즘 관심사, 고민거리까지.<br>3개월이면 12편의 근황 편지가 모여요.<br>나중에 돌아보면, 그 자체로 소중한 기록이에요.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TEAM ===== -->
+<section data-section="team" class="overflow-hidden max-w-3xl mx-auto">
+  <!-- 조유태 -->
+  <div class="reveal" style="opacity:0;transform:translateY(30px)">
+    <div class="relative h-[420px] sm:h-[500px] md:h-[560px] overflow-hidden">
+      <img src="founder-headshot.jpg" alt="조유태" class="w-full h-full object-cover" style="object-position: center 10%; filter: contrast(1.1) saturate(0);">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+    </div>
+    <div class="bg-slate-900 px-6 py-8">
+      <div class="max-w-xl mx-auto">
+        <p class="text-white/40 text-[10px] font-bold tracking-[0.25em] uppercase mb-2">Co-founder · Service & Brand</p>
+        <h3 class="text-white text-4xl font-extrabold tracking-tight mb-5">조유태</h3>
+        <p class="text-white/90 text-[17px] font-bold leading-relaxed mb-6">
+          부모님은 자식한테 속마음을 안 하세요.<br>
+          저한테는 하세요. 매주 30분씩.
+        </p>
+        <div class="space-y-1.5 text-white/50 text-[13px] leading-relaxed mb-6">
+          <p>고려대 보건정책 전공 · 철학 부전공</p>
+          <p>시니어케어 전문교육 이수</p>
+          <p>대형 캠프 운영기획 다수</p>
+          <p>부모님 100명+ 직접 통화</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-3 py-1.5 rounded-full bg-white/10 text-white/70 text-[11px] font-semibold border border-white/10">브랜드 · 감성 설계</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/10 text-white/70 text-[11px] font-semibold border border-white/10">시니어케어 전공</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/10 text-white/70 text-[11px] font-semibold border border-white/10">직접 통화 100명+</span>
+        </div>
       </div>
     </div>
-    <div class="step reveal reveal-delay-2">
-      <div class="step-num">3</div>
-      <div class="step-content">
-        <h3>해결!</h3>
-        <p>찾아보고, 알아보고, 해결해드립니다</p>
+  </div>
+
+  <!-- 심규헌 -->
+  <div class="reveal" style="opacity:0;transform:translateY(30px)">
+    <div class="relative h-[420px] sm:h-[500px] md:h-[560px] overflow-hidden">
+      <img src="sim-headshot2.jpg" alt="심규헌" class="w-full h-full object-cover" style="object-position: center 20%; filter: contrast(1.1) saturate(0);">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+    </div>
+    <div class="bg-slate-900 px-6 py-8">
+      <div class="max-w-xl mx-auto">
+        <p class="text-white/40 text-[10px] font-bold tracking-[0.25em] uppercase mb-2">Co-founder · Technology</p>
+        <h3 class="text-white text-4xl font-extrabold tracking-tight mb-5">심규헌</h3>
+        <p class="text-white/90 text-[17px] font-bold leading-relaxed mb-6">
+          매주 쌓이는 통화 데이터가 변화를 말해줍니다.<br>
+          느끼기 전에, 리포트로 알려드려요.
+        </p>
+        <div class="space-y-1.5 text-white/50 text-[13px] leading-relaxed mb-6">
+          <p>KAIST 전기전자공학부</p>
+          <p>고려대 대학원 AI 석사</p>
+          <p>국제 학술지 제1저자</p>
+          <p>두잇 초기멤버 · 스타트업 PO</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-3 py-1.5 rounded-full bg-white/10 text-white/70 text-[11px] font-semibold border border-white/10">KAIST · 고려대</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/10 text-white/70 text-[11px] font-semibold border border-white/10">AI 감정 변화 감지</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/10 text-white/70 text-[11px] font-semibold border border-white/10">데이터 기반 리포트</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/10 text-white/70 text-[11px] font-semibold border border-white/10">스타트업 PO</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TRUST BADGES -->
-<section class="trust reveal">
-  <div class="trust-badges">
-    <div class="trust-item">
-      <span class="num">100%</span>
-      <span class="label">무료 상담</span>
+<!-- ===== CREDIBILITY / RESEARCH (심규헌) ===== -->
+<section data-section="credibility" class="py-10 px-4 relative overflow-hidden bg-white">
+  <!-- 심규헌 background photo - from subtitle to "같은 사람" card -->
+  <div class="absolute left-0 right-0" style="top: 60px; height: 820px; background-image: url('sim-bg-photo.jpg'); background-size: 130% auto; background-position: center 15%; background-repeat: no-repeat; opacity: 0.22;"></div>
+  <div class="absolute left-0 right-0" style="top: 60px; height: 820px; background: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.15) 30%, rgba(255,255,255,0.15) 70%, rgba(255,255,255,0.6) 100%);"></div>
+  <div class="max-w-2xl mx-auto relative z-10">
+    <div class="reveal text-center mb-8" style="opacity:0;transform:translateY(30px)">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-sm font-semibold mb-5">심규헌 · 기술로 만드는 신뢰</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight mb-4">
+        감이 아니라,<br>데이터로 만들었어요.
+      </h2>
+      <p class="text-slate-500 text-base leading-loose">
+        KAIST · 고려대 AI 연구자가 설계했습니다.<br>
+        국내외 논문 10편과 WHO·OECD 보고서를 기반으로.
+      </p>
+      <div class="mt-4 inline-flex items-center gap-2">
+        <p class="text-slate-400 text-sm">서비스 설계·품질 관리</p>
+        <span class="text-slate-300">|</span>
+        <p class="font-bold text-slate-700 text-sm">심규헌 · 고려대 AI 석사</p>
+      </div>
     </div>
-    <div class="trust-item">
-      <span class="num">365</span>
-      <span class="label">연중무휴</span>
+
+    <!-- Stats bar -->
+    <div class="reveal flex items-center justify-center gap-3 mb-10 flex-wrap" style="opacity:0;transform:translateY(30px)">
+      <span class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">참고 논문 10+</span>
+      <span class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">WHO · OECD 보고서</span>
+      <span class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">시니어 상담 전문가 자문</span>
     </div>
-    <div class="trust-item">
-      <span class="num">1:1</span>
-      <span class="label">맞춤 도움</span>
+
+    <!-- Research Cards -->
+    <div class="reveal space-y-4 mb-8" style="opacity:0;transform:translateY(30px)">
+      <div class="bg-blue-50/60 rounded-2xl p-5 border border-blue-100">
+        <div class="flex items-start gap-3">
+          <span class="text-lg leading-none mt-0.5">📊</span>
+          <div>
+            <h3 class="font-bold text-slate-900 text-[15px] mb-1.5">정기적 사회 접촉이 우울감을 줄인다</h3>
+            <p class="text-slate-600 text-[14px] leading-relaxed">주 1회 이상 정기적으로 대화 상대가 있는 노인은 그렇지 않은 노인 대비 우울 증상이 유의하게 낮다는 결과가 반복적으로 보고되고 있습니다.</p>
+            <p class="text-slate-400 text-xs mt-2">한국보건사회연구원 「노인실태조사」 등 다수 연구</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-blue-50/60 rounded-2xl p-5 border border-blue-100">
+        <div class="flex items-start gap-3">
+          <span class="text-lg leading-none mt-0.5">🤝</span>
+          <div>
+            <h3 class="font-bold text-slate-900 text-[15px] mb-1.5">"같은 사람"이 핵심이다</h3>
+            <p class="text-slate-600 text-[14px] leading-relaxed">상담 심리학에서 라포(rapport)는 반복적 만남에서 형성됩니다. 매번 다른 사람이 전화하면 표면적 대화에 그치지만, 같은 사람이 매주 전화하면 속마음까지 나눌 수 있게 됩니다.</p>
+            <p class="text-slate-400 text-xs mt-2">상담 심리학 라포 형성 이론 기반</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-blue-50/60 rounded-2xl p-5 border border-blue-100">
+        <div class="flex items-start gap-3">
+          <span class="text-lg leading-none mt-0.5">🌍</span>
+          <div>
+            <h3 class="font-bold text-slate-900 text-[15px] mb-1.5">사회적 고립 = 하루 15개비 흡연</h3>
+            <p class="text-slate-600 text-[14px] leading-relaxed">WHO와 OECD는 노인의 사회적 고립이 건강에 미치는 영향이 흡연·비만과 동등하다고 경고합니다. 한국은 OECD 노인 고독감 1위 국가입니다.</p>
+            <p class="text-slate-400 text-xs mt-2">WHO Commission on Social Connection (2024), OECD Society at a Glance</p>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- How we applied it -->
+    <div class="reveal bg-gradient-to-r from-slate-50 to-blue-50 rounded-2xl p-6 border border-slate-200" style="opacity:0;transform:translateY(30px)">
+      <p class="text-blue-700 text-xs font-bold tracking-wide mb-3">이 연구들을 이렇게 반영했어요</p>
+      <div class="space-y-3 text-[14px] text-slate-700 leading-relaxed">
+        <div class="flex items-start gap-2">
+          <span class="text-red-500 font-bold mt-0.5">→</span>
+          <p><strong class="text-slate-900">전담 상담사 1:1 매칭</strong> — 라포 형성 연구에 따라, 한 번 배정된 상담사가 계속 전화드립니다</p>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-red-500 font-bold mt-0.5">→</span>
+          <p><strong class="text-slate-900">주 1회 정기 전화</strong> — 사회적 접촉 빈도와 정서 안정 효과가 가장 높은 주기입니다</p>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-red-500 font-bold mt-0.5">→</span>
+          <p><strong class="text-slate-900">근황 리포트 발송</strong> — 자녀와의 정보 비대칭을 줄여, 가족 관계 품질을 높입니다</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ABOUT — PROFILE CARDS -->
-<section class="about">
-  <div class="section-label">팀 소개</div>
-  <h2 class="section-title">저희를 소개합니다</h2>
-  <p class="section-sub">어르신들의 든든한 자식이 되고 싶습니다</p>
+<!-- ===== FOUNDER STORY ===== -->
+<section data-section="founder-story" class="py-10 px-4 relative overflow-hidden" style="background: linear-gradient(to bottom, #FFF8F0, #FFF3E0);">
+  <!-- Background photo -->
+  <div class="absolute inset-0" style="background-image: url('founder-photo.jpg'); background-size: 180%; background-position: 55% 10%; opacity: 0.15;"></div>
+  <div class="max-w-xl mx-auto relative z-10">
+    <div class="reveal" style="opacity:0;transform:translateY(30px)">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-amber-100 text-amber-800 text-sm font-semibold mb-5">조유태 · 왜 이 서비스를 만들었나</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight mb-8">저도 그랬어요.</h2>
+    </div>
 
-  <div class="about-profiles">
-    <div class="profile-card reveal">
-      <div class="profile-photo coral-bg">
-        <span class="initials">규헌</span>
-      </div>
-      <div class="profile-info">
-        <h3>심규헌</h3>
-        <div class="role coral">온담 대표</div>
-        <p class="bio">
-          어머니가 아프신데 혼자 참고 계신 걸 보고
-          이 서비스를 시작했습니다.
-          어르신들의 든든한 맏아들이 되겠습니다.
+    <div class="reveal space-y-5" style="opacity:0;transform:translateY(30px)">
+      <div class="border-l-4 border-amber-300 pl-5">
+        <p class="text-slate-700 text-base leading-loose">
+          전화해야지, 생각은 매번 해요. 퇴근길에 엄마 얼굴이 떠오르면 지금 해야 하나, 싶다가도 지하철 타면 잊어버리고. 주말에 하려다 밀린 집안일에 치이고. 그러다 보면 또 한 달이 가 있어요.
         </p>
       </div>
+
+      <p class="text-slate-700 text-base leading-loose pl-0">
+        어느 날 아빠한테 전화가 왔어요. <span class="inline-block bg-amber-100 text-amber-900 px-1 rounded font-medium italic">"엄마한테 전화 좀 자주 해라."</span> 그 한마디에 마음이 쿵 내려앉았어요. 아, 엄마가 기다리고 계셨구나. 근데 아빠도 직접은 안 하시고, 나한테 말씀하시는 거 보면 — 아빠도 마음이 어려우신 거겠죠.
+      </p>
+
+      <p class="text-slate-700 text-base leading-loose">
+        사실 전화를 안 하는 게 아니라, 마음은 있는데 일상이 안 허락하는 거잖아요. 나중에 결혼하고 아이까지 생기면 더 바빠질 텐데, 그때는 진짜 한 달에 한 번도 어려울 수 있겠다 싶었어요.
+      </p>
+
+      <p class="text-slate-700 text-base leading-loose">
+        그래서 만들었어요. 바쁜 우리 대신, 매주 부모님께 안부를 여쭤봐 주는 사람. 기계가 아니라 진짜 사람이, 이름을 기억하고, 지난주 이야기의 뒷이야기를 물어봐 드리는 서비스요. 그리고 <em class="not-italic font-semibold text-slate-900">"오늘 어머님은 이랬어요"</em> 하고 저한테 알려주면 — 전화 못 드린 미안함이 조금은 줄어들 것 같았거든요.
+      </p>
     </div>
 
-    <div class="profile-card reveal reveal-delay-1">
-      <div class="profile-photo teal-bg">
-        <span class="initials">유태</span>
-      </div>
-      <div class="profile-info">
-        <h3>조유태</h3>
-        <div class="role teal">온담 공동창업자</div>
-        <p class="bio">
-          할머니께서 항상 "물어볼 데가 없다"고
-          하셨던 말씀이 마음에 남았습니다.
-          어떤 것이든 편하게 물어보세요.
-        </p>
+    <div class="reveal mt-8 flex justify-end" style="opacity:0;transform:translateY(30px)">
+      <div class="text-right">
+        <p class="text-slate-500 text-sm mb-1">온담을 만든 사람</p>
+        <p class="font-bold text-slate-800 text-base">조유태 · 온담 공동창업자</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BOTTOM CTA -->
-<section class="bottom-cta">
-  <h2>지금 바로<br>전화해보세요</h2>
-  <p class="sub">무료입니다. 부담 갖지 마세요.</p>
+<!-- ===== FAQ ===== -->
+<section data-section="faq" class="py-12 px-4 bg-white">
+  <div class="max-w-2xl mx-auto">
+    <div class="reveal text-center mb-12" style="opacity:0;transform:translateY(30px)">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-700 text-sm font-semibold mb-6">자주 묻는 질문</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight mb-4">궁금한 점이 있으시면</h2>
+      <p class="text-slate-500 text-sm">그 외 문의는 <a href="mailto:contact@chosim.me" class="text-indigo-600 hover:underline">contact@chosim.me</a>로 주세요.</p>
+    </div>
 
-  <div class="bottom-phones">
-    <a href="tel:010-5175-1360" class="phone-btn kh" onclick="if(typeof gtag!=='undefined')gtag('event','call_phone_click',{person:'kyuheon',position:'bottom'})">
-      <svg class="ring" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 규헌 010-5175-1360
-    </a>
-    <a href="tel:010-8326-8528" class="phone-btn yt" onclick="if(typeof gtag!=='undefined')gtag('event','call_phone_click',{person:'yutae',position:'bottom'})">
-      <svg class="ring" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 유태 010-8326-8528
-    </a>
-  </div>
+    <div class="space-y-3">
 
-  <div class="divider"><span>또는</span></div>
+      <!-- FAQ 1 -->
+      <div class="reveal rounded-2xl border border-slate-200 overflow-hidden" style="opacity:0;transform:translateY(30px)">
+        <button class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left bg-white hover:bg-slate-50 transition-colors">
+          <span class="font-semibold text-slate-800 text-sm sm:text-base">부모님이 전화를 원치 않으시면요?</span>
+          <svg class="faq-icon flex-shrink-0 ml-3 text-slate-400" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-content">
+          <p class="px-5 pb-5 text-slate-500 text-[15px] leading-loose">첫 통화 시 상담사가 서비스를 안내하고 동의를 구해요. 부모님이 원치 않으시면 즉시 중단하고, 결제하신 금액은 전액 환불해드려요. 강제로 진행하는 건 절대 없어요.</p>
+        </div>
+      </div>
 
-  <div class="ondam-box">
-    <p>더 많은 도움이 필요하시면<br><strong>온담</strong>에서 만나요</p>
-    <a href="https://ondam-front.vercel.app" class="ondam-link">온담 가입하기 &rarr;</a>
+      <!-- FAQ 2 -->
+      <div class="reveal rounded-2xl border border-slate-200 overflow-hidden" style="opacity:0;transform:translateY(30px)">
+        <button class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left bg-white hover:bg-slate-50 transition-colors">
+          <span class="font-semibold text-slate-800 text-sm sm:text-base">어떤 분이 전화하시나요?</span>
+          <svg class="faq-icon flex-shrink-0 ml-3 text-slate-400" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-content">
+          <p class="px-5 pb-5 text-slate-500 text-[15px] leading-loose">보건·AI를 전공한 공동창업자 두 명이 직접 전화드려요. 한 번 배정되면 계속 같은 사람이 전화드려서, 부모님과 자연스럽게 친해져요. 변경이 필요하시면 언제든 말씀해주세요.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="reveal rounded-2xl border border-slate-200 overflow-hidden" style="opacity:0;transform:translateY(30px)">
+        <button class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left bg-white hover:bg-slate-50 transition-colors">
+          <span class="font-semibold text-slate-800 text-sm sm:text-base">통화 내용을 녹음하나요?</span>
+          <svg class="faq-icon flex-shrink-0 ml-3 text-slate-400" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-content">
+          <p class="px-5 pb-5 text-slate-500 text-[15px] leading-loose">전체 통화는 녹음하지 않아요. 다만 부모님이 동의하시면, 마지막에 15~20초 짧은 음성 인사만 녹음해서 리포트에 첨부해드려요. 부모님 목소리를 직접 들으실 수 있게요.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="reveal rounded-2xl border border-slate-200 overflow-hidden" style="opacity:0;transform:translateY(30px)">
+        <button class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left bg-white hover:bg-slate-50 transition-colors">
+          <span class="font-semibold text-slate-800 text-sm sm:text-base">무료 체험 후 자동결제 되나요?</span>
+          <svg class="faq-icon flex-shrink-0 ml-3 text-slate-400" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-content">
+          <p class="px-5 pb-5 text-slate-500 text-[15px] leading-loose">아니요. 자동결제는 없어요. 무료 체험 후 마음에 드시면 별도로 결제 안내를 드려요. 결제 의사가 없으시면 그냥 끝이에요.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="reveal rounded-2xl border border-slate-200 overflow-hidden" style="opacity:0;transform:translateY(30px)">
+        <button class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left bg-white hover:bg-slate-50 transition-colors">
+          <span class="font-semibold text-slate-800 text-sm sm:text-base">리포트는 어떻게 받나요?</span>
+          <svg class="faq-icon flex-shrink-0 ml-3 text-slate-400" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-content">
+          <p class="px-5 pb-5 text-slate-500 text-[15px] leading-loose">통화 후 24시간 이내에 카카오톡 알림톡으로 보내드려요. 요약본이 먼저 오고, 링크를 누르면 건강, 생활, 관심사, 상담사 소견까지 상세 리포트를 볼 수 있어요.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 6 -->
+      <div class="reveal rounded-2xl border border-slate-200 overflow-hidden" style="opacity:0;transform:translateY(30px)">
+        <button class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left bg-white hover:bg-slate-50 transition-colors">
+          <span class="font-semibold text-slate-800 text-sm sm:text-base">해지는 어떻게 하나요?</span>
+          <svg class="faq-icon flex-shrink-0 ml-3 text-slate-400" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-content">
+          <p class="px-5 pb-5 text-slate-500 text-[15px] leading-loose">이메일(contact@chosim.me) 또는 카카오톡 채널로 말씀해주시면 바로 처리해드려요. 잔여 기간만큼 일할 계산해서 환불해드려요. 위약금은 없어요.</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
-<!-- Sticky Mobile CTA -->
-<div class="sticky-cta" id="stickyCta">
-  <div class="sticky-cta-text"><strong>무료</strong> 만능전화</div>
-  <a href="tel:010-5175-1360" class="sticky-cta-btn">지금 전화하기</a>
-</div>
+<!-- ===== FORM SECTION ===== -->
+<section id="apply" data-section="apply" class="py-12 px-4 bg-gradient-to-b from-slate-50 to-white">
+  <div class="max-w-xl mx-auto">
+    <div class="reveal text-center mb-10" style="opacity:0;transform:translateY(30px)">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-sm font-semibold mb-6">첫 전화 신청</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight mb-3">1분이면 끝나요.</h2>
+      <p class="text-slate-500 text-base">첫 1회 통화는 무료입니다. 부담 없이 경험해 보세요.</p>
+    </div>
 
-<!-- Footer -->
-<footer class="footer" id="social">
-  <div class="footer-social">
-    <a href="https://www.instagram.com/ondam.chosim/" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-    </a>
-    <a href="https://www.facebook.com/profile.php?id=61582026520843" target="_blank" rel="noopener" aria-label="Facebook">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-    </a>
+    <form id="applyForm" onsubmit="return submitForm(event)" class="reveal space-y-8" style="opacity:0;transform:translateY(30px)">
+
+      <!-- Section 1: Applicant -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 rounded-xl bg-red-50 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h3 class="font-bold text-red-700 text-sm">신청자(자녀) 정보</h3>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">이름 <span class="text-red-500">*</span></label>
+          <input type="text" name="applicant_name" required onfocus="trackFormField('applicant_name')"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-red-300 focus:border-red-400 transition-all"
+            placeholder="홍길동">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">연락처 <span class="text-red-500">*</span></label>
+          <input type="tel" name="applicant_phone" required onfocus="trackFormField('applicant_phone')"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-red-300 focus:border-red-400 transition-all"
+            placeholder="010-0000-0000">
+        </div>
+      </div>
+
+      <!-- Section 2: Parent -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 rounded-xl bg-pink-50 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#be185d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3 class="font-bold text-pink-700 text-sm">부모님 정보</h3>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">부모님 성함 <span class="text-red-500">*</span></label>
+          <input type="text" name="parent_name" required onfocus="trackFormField('parent_name')"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-400 transition-all"
+            placeholder="김미숙">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">부모님 연락처 <span class="text-red-500">*</span></label>
+          <input type="tel" name="parent_phone" required onfocus="trackFormField('parent_phone')"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-400 transition-all"
+            placeholder="010-0000-0000">
+          <p class="text-slate-400 text-xs mt-1.5">번호는 안부전화 드리는 용도로만 사용해요</p>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">연령대</label>
+            <select name="parent_age" onfocus="trackFormField('parent_age')"
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-400 transition-all bg-white">
+              <option value="">선택</option>
+              <option value="50대">50대</option>
+              <option value="60대">60대</option>
+              <option value="70대">70대</option>
+              <option value="80대이상">80대 이상</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">관계</label>
+            <select name="relationship" onfocus="trackFormField('relationship')"
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-400 transition-all bg-white">
+              <option value="">선택</option>
+              <option value="어머니">어머니</option>
+              <option value="아버지">아버지</option>
+              <option value="할머니">할머니</option>
+              <option value="할아버지">할아버지</option>
+              <option value="기타">기타</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Preferred time -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 rounded-xl bg-indigo-50 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4338ca" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="font-bold text-indigo-700 text-sm">희망 통화 시간</h3>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">요일</label>
+            <select name="preferred_day" onfocus="trackFormField('preferred_day')"
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all bg-white">
+              <option value="">선택</option>
+              <option value="월요일">월요일</option>
+              <option value="화요일">화요일</option>
+              <option value="수요일">수요일</option>
+              <option value="목요일">목요일</option>
+              <option value="금요일">금요일</option>
+              <option value="상관없음">상관없음</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">시간대</label>
+            <select name="preferred_time" onfocus="trackFormField('preferred_time')"
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all bg-white">
+              <option value="">선택</option>
+              <option value="오전9~12">오전 9~12시</option>
+              <option value="오후12~3">오후 12~3시</option>
+              <option value="오후3~6">오후 3~6시</option>
+              <option value="상관없음">상관없음</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">참고사항</label>
+          <textarea name="notes" rows="4" onfocus="trackFormField('notes')"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all resize-none"
+            placeholder="예: 어머님이 좀 내성적이세요..."></textarea>
+        </div>
+      </div>
+
+      <!-- Agree checkbox -->
+      <div class="flex items-start gap-3">
+        <input type="checkbox" id="agreeCheck" required
+          class="mt-0.5 w-4 h-4 rounded border-slate-300 text-red-500 focus:ring-red-400 cursor-pointer">
+        <label for="agreeCheck" class="text-sm text-slate-600 leading-relaxed cursor-pointer">
+          <a href="/privacy" class="text-red-600 hover:underline font-medium">개인정보처리방침</a> 및 <a href="/terms" class="text-red-600 hover:underline font-medium">이용약관</a>에 동의합니다. <span class="text-red-500">*</span>
+        </label>
+      </div>
+
+      <!-- Submit button -->
+      <button id="submitBtn" type="submit"
+        class="w-full py-4 rounded-2xl bg-gradient-to-r from-red-500 to-pink-600 text-white font-extrabold text-lg shadow-lg hover:shadow-xl hover:from-red-600 hover:to-pink-700 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed">
+        첫 전화 신청하기
+      </button>
+
+      <p class="text-center text-slate-400 text-xs leading-relaxed">
+        신청 후 24시간 이내에 확인 문자를 보내드려요.<br>
+        첫 통화 일정은 문자로 안내해 드립니다.
+      </p>
+
+    </form>
   </div>
-  <p><a href="/">온담 소개</a> &middot; <a href="https://ondam-front.vercel.app">온담 웹</a></p>
-  <p style="margin-top:8px;">&copy; 2026 온담(Ondam) &middot; 어르신을 위한 동반자 서비스</p>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-slate-900 py-12 px-4 text-center">
+  <div class="max-w-xl mx-auto">
+    <!-- Kakao channel button -->
+    <a href="https://pf.kakao.com/_xjxkxiK" target="_blank" rel="noopener"
+      class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-yellow-400 text-slate-900 font-bold text-sm hover:bg-yellow-300 transition-colors shadow-md mb-8">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 6.589 2 11c0 2.895 1.756 5.436 4.43 6.959l-.946 3.519a.25.25 0 0 0 .373.283L10.1 19.27A11.84 11.84 0 0 0 12 19.5c5.523 0 10-3.59 10-8.5S17.523 3 12 3z"/></svg>
+      카카오톡 채널 문의
+    </a>
+
+    <div class="text-slate-400 text-xs space-y-2">
+      <p class="font-medium text-slate-300">온담 · 공동창업자 조유태</p>
+      <p>
+        <a href="mailto:contact@chosim.me" class="hover:text-white transition-colors">contact@chosim.me</a>
+      </p>
+      <p class="flex items-center justify-center gap-3">
+        <a href="/privacy" class="hover:text-white transition-colors">개인정보처리방침</a>
+        <span class="text-slate-600">·</span>
+        <a href="/terms" class="hover:text-white transition-colors">이용약관</a>
+      </p>
+      <p class="text-slate-500 mt-4 pt-4 border-t border-slate-800">부모님의 든든한 두 번째 자식</p>
+    </div>
+  </div>
 </footer>
 
+<!-- ===== SUCCESS OVERLAY ===== -->
+<div id="successOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center transition-all duration-300" style="display:none;opacity:0;">
+  <div class="bg-white rounded-3xl p-10 text-center max-w-sm mx-4 shadow-2xl">
+    <div class="text-6xl mb-4">🎉</div>
+    <h3 class="text-2xl font-bold text-slate-900 mb-3">신청이 완료되었습니다!</h3>
+    <p class="text-slate-600 mb-6">24시간 이내에 확인 문자를 보내드릴게요.<br>감사합니다.</p>
+    <button onclick="closeSuccess()" class="px-8 py-3 bg-gradient-to-r from-red-500 to-pink-600 text-white rounded-full font-bold">확인</button>
+  </div>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
 <script>
-// Enable animation system
-document.documentElement.classList.add('anim-ready');
-
-// Scroll reveal animations
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      obs.unobserve(e.target);
-    }
+// ====== UTM Parameter Preservation ======
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var utmKeys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+  var utmData = {};
+  utmKeys.forEach(function(k){
+    var v = params.get(k);
+    if(v) utmData[k] = v;
   });
-}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  if(Object.keys(utmData).length > 0){
+    sessionStorage.setItem('utm_params', JSON.stringify(utmData));
+  }
+})();
 
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+function getUTM(){
+  try { return JSON.parse(sessionStorage.getItem('utm_params') || '{}'); }
+  catch(e){ return {}; }
+}
 
-// CTA click tracking
-document.querySelectorAll('a[href*="ondam-front.vercel.app"]').forEach(link => {
-  link.addEventListener('click', () => {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'cta_click', {
-        event_category: 'conversion',
-        event_label: link.textContent.trim(),
-        transport_type: 'beacon'
-      });
+// ====== GA Tracking ======
+var formStarted = false;
+var trackedFields = {};
+
+function trackEvent(action, label, value){
+  if(typeof gtag === 'function'){
+    gtag('event', action, {
+      event_category: 'landing_call',
+      event_label: label,
+      value: value || 0
+    });
+  }
+  if(typeof fbq === 'function' && action === 'form_submit'){
+    fbq('track', 'Lead');
+  }
+}
+
+function trackFormField(field){
+  if(!formStarted){
+    formStarted = true;
+    trackEvent('form_start', 'apply_form');
+  }
+  if(!trackedFields[field]){
+    trackedFields[field] = true;
+    trackEvent('form_field_focus', field);
+  }
+}
+
+// Scroll depth tracking
+(function(){
+  var milestones = [25, 50, 75, 100];
+  var fired = {};
+  function getScrollPercent(){
+    var h = document.documentElement, b = document.body;
+    var st = h.scrollTop || b.scrollTop;
+    var sh = (h.scrollHeight || b.scrollHeight) - h.clientHeight;
+    return sh > 0 ? Math.round((st / sh) * 100) : 0;
+  }
+  window.addEventListener('scroll', function(){
+    var pct = getScrollPercent();
+    milestones.forEach(function(m){
+      if(pct >= m && !fired[m]){
+        fired[m] = true;
+        trackEvent('scroll_depth', m + '%', m);
+      }
+    });
+  }, {passive: true});
+})();
+
+// Time on page
+(function(){
+  var intervals = [30, 60, 120, 180, 300];
+  var startTime = Date.now();
+  var firedI = {};
+  setInterval(function(){
+    var elapsed = Math.floor((Date.now() - startTime) / 1000);
+    intervals.forEach(function(sec){
+      if(elapsed >= sec && !firedI[sec]){
+        firedI[sec] = true;
+        trackEvent('time_on_page', sec + 's', sec);
+      }
+    });
+  }, 5000);
+})();
+
+// ====== FAQ Accordion ======
+document.querySelectorAll('.faq-toggle').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var content = this.nextElementSibling;
+    var icon = this.querySelector('.faq-icon');
+    var isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+    // Close all
+    document.querySelectorAll('.faq-content').forEach(function(c){
+      c.style.maxHeight = '0px';
+    });
+    document.querySelectorAll('.faq-icon').forEach(function(i){
+      i.style.transform = 'rotate(0deg)';
+    });
+    // Open this one if it was closed
+    if(!isOpen){
+      content.style.maxHeight = content.scrollHeight + 'px';
+      if(icon) icon.style.transform = 'rotate(180deg)';
     }
   });
 });
 
-// Sticky CTA - show after scrolling past hero
-const stickyCta = document.getElementById('stickyCta');
-const hero = document.querySelector('.hero');
-if (stickyCta && hero) {
-  const stickyObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      stickyCta.classList.toggle('show', !e.isIntersecting);
+// ====== Scroll Reveal Animation ======
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'none';
+        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.unobserve(entry.target);
+      }
     });
-  }, { threshold: 0 });
-  stickyObs.observe(hero);
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(function(el){
+    observer.observe(el);
+  });
+})();
+
+// ====== Form Submission → Google Sheets ======
+var SHEETS_URL = 'https://script.google.com/a/macros/chosim.me/s/AKfycbxsLxtXqDjaSpL49oQnPAmwtBrX_zxF7_yFfUBKSWN1QMh-4p3dvUWP21-Wa_z0aBRKqg/exec';
+
+function submitForm(e){
+  e.preventDefault();
+  var form = document.getElementById('applyForm');
+  var btn = document.getElementById('submitBtn');
+  var data = new FormData(form);
+
+  if(!document.getElementById('agreeCheck').checked){
+    alert('개인정보처리방침 및 이용약관에 동의해주세요.');
+    return false;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '신청 중...';
+
+  var utm = getUTM();
+  Object.keys(utm).forEach(function(k){ data.append(k, utm[k]); });
+  data.append('submitted_at', new Date().toISOString());
+  data.append('page_url', window.location.href);
+
+  fetch(SHEETS_URL, { method: 'POST', body: data, mode: 'no-cors' })
+  .then(function(){
+    trackEvent('form_submit', 'apply_form');
+    showSuccess();
+    form.reset();
+  })
+  .catch(function(err){
+    console.error('Form error:', err);
+    trackEvent('form_submit', 'apply_form');
+    showSuccess();
+    form.reset();
+  })
+  .finally(function(){
+    btn.disabled = false;
+    btn.textContent = '첫 전화 신청하기';
+  });
+  return false;
+}
+
+function showSuccess(){
+  var el = document.getElementById('successOverlay');
+  el.style.display = 'flex';
+  setTimeout(function(){ el.style.opacity = '1'; }, 10);
+}
+
+function closeSuccess(){
+  var el = document.getElementById('successOverlay');
+  el.style.opacity = '0';
+  setTimeout(function(){ el.style.display = 'none'; }, 300);
 }
 </script>
-<script src="/tracking.js"></script>
+
+</div><!-- /max-w-lg wrapper -->
 </body>
 </html>

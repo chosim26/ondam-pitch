@@ -9,10 +9,6 @@
   ],
   "rewrites": [
     {
-      "source": "/call",
-      "destination": "/about.html"
-    },
-    {
       "source": "/:path*",
       "destination": "/index.html"
     }
