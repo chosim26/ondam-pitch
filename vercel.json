@@ -2,8 +2,7 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "call.ondam.me" }],
+      "source": "/call",
       "destination": "/about.html"
     },
     {
