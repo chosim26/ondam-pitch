@@ -1074,6 +1074,45 @@ document.querySelectorAll('.faq-toggle').forEach(function(btn){
   });
 })();
 
+// ====== Section View Tracking ======
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var sectionFired = {};
+  var sectionObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var name = entry.target.getAttribute('data-section');
+        if(name && !sectionFired[name]){
+          sectionFired[name] = true;
+          trackEvent('section_view', name);
+        }
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('[data-section]').forEach(function(el){
+    sectionObserver.observe(el);
+  });
+})();
+
+// ====== CTA Click Tracking ======
+document.querySelectorAll('a[href="#apply"]').forEach(function(el){
+  el.addEventListener('click', function(){
+    var section = el.closest('[data-section]');
+    var loc = section ? section.getAttribute('data-section') : 'unknown';
+    trackEvent('cta_click', loc);
+  });
+});
+
+// ====== Sample Report Click Tracking ======
+(function(){
+  var reportBtn = document.querySelector('[data-section="report"] button');
+  if(reportBtn){
+    reportBtn.addEventListener('click', function(){
+      trackEvent('sample_report_click', 'report_preview');
+    });
+  }
+})();
+
 // ====== Form Submission → Google Sheets ======
 var SHEETS_URL = 'https://script.google.com/a/macros/chosim.me/s/AKfycbxsLxtXqDjaSpL49oQnPAmwtBrX_zxF7_yFfUBKSWN1QMh-4p3dvUWP21-Wa_z0aBRKqg/exec';
 
