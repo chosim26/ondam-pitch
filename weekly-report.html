@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    color: #333; background: #fff;
+    width: 794px; padding: 48px 56px;
+    line-height: 1.6;
+  }
+
+  /* Header */
+  .header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 24px; border-bottom: 3px solid #FF6B6B;
+    margin-bottom: 32px;
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .logo-text {
+    font-size: 32px; font-weight: 900; color: #FF6B6B;
+    position: relative; line-height: 1;
+  }
+  .logo-heart {
+    position: absolute; top: -6px; right: 1px;
+    font-size: 12px; color: #FF6B6B;
+  }
+  .header-title {
+    font-size: 14px; color: #999; font-weight: 500;
+    border-left: 2px solid #ddd; padding-left: 16px;
+  }
+  .header-title strong { display: block; font-size: 20px; color: #333; font-weight: 700; }
+  .header-date {
+    text-align: right; font-size: 13px; color: #999;
+  }
+  .header-date strong { display: block; font-size: 15px; color: #666; font-weight: 600; }
+
+  /* Section Title */
+  .section-title {
+    font-size: 18px; font-weight: 700; color: #333;
+    margin: 28px 0 14px; padding-left: 12px;
+    border-left: 4px solid #FF6B6B;
+  }
+
+  /* KPI Cards */
+  .kpi-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    margin-bottom: 8px;
+  }
+  .kpi-card {
+    background: #f9f5f2; border-radius: 12px; padding: 18px 16px;
+    text-align: center;
+  }
+  .kpi-label { font-size: 12px; color: #999; font-weight: 500; margin-bottom: 6px; }
+  .kpi-value { font-size: 28px; font-weight: 800; color: #333; }
+  .kpi-value.brand { color: #FF6B6B; }
+  .kpi-sub { font-size: 11px; color: #bbb; margin-top: 4px; }
+
+  /* Table */
+  table {
+    width: 100%; border-collapse: collapse; margin: 8px 0 16px;
+    font-size: 13px;
+  }
+  thead th {
+    background: #FF6B6B; color: white; padding: 10px 12px;
+    text-align: left; font-weight: 600; font-size: 12px;
+  }
+  thead th:first-child { border-radius: 8px 0 0 0; }
+  thead th:last-child { border-radius: 0 8px 0 0; }
+  thead th.right { text-align: right; }
+  tbody td {
+    padding: 10px 12px; border-bottom: 1px solid #f0f0f0;
+  }
+  tbody td.right { text-align: right; font-variant-numeric: tabular-nums; }
+  tbody td.bold { font-weight: 700; }
+  tbody tr:last-child td { border-bottom: 2px solid #FF6B6B; }
+  tbody tr.total { background: #fff5f5; font-weight: 700; }
+  .bar {
+    height: 6px; border-radius: 3px; background: #FFE4E4; margin-top: 4px;
+  }
+  .bar-fill { height: 100%; border-radius: 3px; background: #FF6B6B; }
+
+  /* Geo Grid */
+  .geo-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+    margin: 8px 0;
+  }
+  .geo-card {
+    background: #f0f8ff; border-radius: 10px; padding: 14px;
+    text-align: center;
+  }
+  .geo-city { font-size: 14px; font-weight: 700; color: #333; }
+  .geo-num { font-size: 24px; font-weight: 800; color: #4A90D9; margin: 4px 0; }
+  .geo-pct { font-size: 11px; color: #999; }
+
+  /* Page Info */
+  .page-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    margin: 8px 0;
+  }
+  .page-card {
+    background: #f9f5f2; border-radius: 10px; padding: 16px;
+  }
+  .page-name { font-size: 13px; font-weight: 700; color: #333; margin-bottom: 8px; }
+  .page-stats { display: flex; gap: 16px; }
+  .page-stat-item { text-align: center; }
+  .page-stat-val { font-size: 20px; font-weight: 800; color: #FF6B6B; }
+  .page-stat-label { font-size: 10px; color: #999; }
+
+  /* Insights */
+  .insight-list { margin: 8px 0 16px; }
+  .insight-item {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 10px 14px; margin-bottom: 6px;
+    background: #fff5f5; border-radius: 10px;
+    border-left: 3px solid #FF6B6B;
+  }
+  .insight-num {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #FF6B6B; color: white; font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .insight-text { font-size: 13px; color: #555; line-height: 1.6; }
+  .insight-text strong { color: #333; }
+
+  /* Action Items */
+  .action-list { margin: 8px 0; }
+  .action-item {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 10px 14px; margin-bottom: 6px;
+    background: #f0f8ff; border-radius: 10px;
+    border-left: 3px solid #4A90D9;
+  }
+  .action-icon {
+    font-size: 16px; flex-shrink: 0; margin-top: 1px;
+  }
+  .action-text { font-size: 13px; color: #555; line-height: 1.6; }
+  .action-text strong { color: #333; }
+
+  /* Footer */
+  .footer {
+    margin-top: 32px; padding-top: 16px;
+    border-top: 1px solid #eee;
+    display: flex; justify-content: space-between;
+    font-size: 11px; color: #bbb;
+  }
+
+  /* Divider */
+  .divider { height: 1px; background: #f0f0f0; margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <img src="/logo.png" alt="온담" style="height:36px;width:auto;">
+    <div class="header-title">
+      Google Ads + Analytics
+      <strong>Weekly Performance Report</strong>
+    </div>
+  </div>
+  <div class="header-date">
+    리포트 기간
+    <strong>2026.03.10 (월) ~ 03.16 (일)</strong>
+    발행일: 2026.03.17
+  </div>
+</div>
+
+<!-- KPI Overview -->
+<div class="section-title">주간 핵심 지표</div>
+<div class="kpi-grid">
+  <div class="kpi-card">
+    <div class="kpi-label">활성 사용자</div>
+    <div class="kpi-value brand">28</div>
+    <div class="kpi-sub">전주 대비 -</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">총 세션수</div>
+    <div class="kpi-value">38</div>
+    <div class="kpi-sub">사용자당 1.36회</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">평균 참여 시간</div>
+    <div class="kpi-value">19초</div>
+    <div class="kpi-sub">목표: 45초</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">전환 (회원가입)</div>
+    <div class="kpi-value" style="color:#E85555;">0</div>
+    <div class="kpi-sub">전환율: 0%</div>
+  </div>
+</div>
+
+<!-- Traffic Acquisition -->
+<div class="section-title">트래픽 채널별 성과</div>
+<table>
+  <thead>
+    <tr>
+      <th>채널</th>
+      <th class="right">세션수</th>
+      <th class="right">비율</th>
+      <th class="right">참여 세션</th>
+      <th class="right">참여율</th>
+      <th class="right">평균 참여시간</th>
+      <th class="right">이벤트수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="bold">Paid Search (Google Ads)</td>
+      <td class="right">31</td>
+      <td class="right">81.6%</td>
+      <td class="right">16</td>
+      <td class="right">51.6%</td>
+      <td class="right">15초</td>
+      <td class="right">134</td>
+    </tr>
+    <tr>
+      <td class="bold">Direct (직접 방문)</td>
+      <td class="right">6</td>
+      <td class="right">15.8%</td>
+      <td class="right">4</td>
+      <td class="right">66.7%</td>
+      <td class="right">6초</td>
+      <td class="right">34</td>
+    </tr>
+    <tr>
+      <td class="bold">Cross-network</td>
+      <td class="right">1</td>
+      <td class="right">2.6%</td>
+      <td class="right">1</td>
+      <td class="right">100%</td>
+      <td class="right">8초</td>
+      <td class="right">7</td>
+    </tr>
+    <tr class="total">
+      <td>합계</td>
+      <td class="right">38</td>
+      <td class="right">100%</td>
+      <td class="right">21</td>
+      <td class="right">55.3%</td>
+      <td class="right">14초</td>
+      <td class="right">175</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Channel Mix Visual -->
+<div style="display:flex;gap:4px;height:12px;border-radius:6px;overflow:hidden;margin-bottom:8px;">
+  <div style="flex:81.6;background:#FF6B6B;"></div>
+  <div style="flex:15.8;background:#4A90D9;"></div>
+  <div style="flex:2.6;background:#FFC107;"></div>
+</div>
+<div style="display:flex;gap:16px;font-size:11px;color:#999;margin-bottom:4px;">
+  <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#FF6B6B;margin-right:4px;"></span>Paid Search 81.6%</span>
+  <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#4A90D9;margin-right:4px;"></span>Direct 15.8%</span>
+  <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#FFC107;margin-right:4px;"></span>Cross-network 2.6%</span>
+</div>
+
+<!-- User Acquisition -->
+<div class="section-title">신규 사용자 획득</div>
+<table>
+  <thead>
+    <tr>
+      <th>채널</th>
+      <th class="right">총 사용자</th>
+      <th class="right">새 사용자</th>
+      <th class="right">재방문</th>
+      <th class="right">평균 참여시간</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="bold">Paid Search</td>
+      <td class="right">24</td>
+      <td class="right">24</td>
+      <td class="right">2</td>
+      <td class="right">20초</td>
+    </tr>
+    <tr>
+      <td class="bold">Direct</td>
+      <td class="right">4</td>
+      <td class="right">4</td>
+      <td class="right">1</td>
+      <td class="right">13초</td>
+    </tr>
+    <tr class="total">
+      <td>합계</td>
+      <td class="right">28</td>
+      <td class="right">28</td>
+      <td class="right">3</td>
+      <td class="right">19초</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="divider"></div>
+
+<!-- Geographic & Page Data -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+  <div>
+    <div class="section-title" style="margin-top:0;">지역별 분포</div>
+    <div class="geo-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="geo-card">
+        <div class="geo-city">서울</div>
+        <div class="geo-num">19</div>
+        <div class="geo-pct">70.4%</div>
+      </div>
+      <div class="geo-card">
+        <div class="geo-city">부산</div>
+        <div class="geo-num">2</div>
+        <div class="geo-pct">7.4%</div>
+      </div>
+      <div class="geo-card">
+        <div class="geo-city">천안</div>
+        <div class="geo-num">1</div>
+        <div class="geo-pct">3.7%</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="section-title" style="margin-top:0;">인기 페이지</div>
+    <div class="page-grid" style="grid-template-columns:1fr;">
+      <div class="page-card">
+        <div class="page-name">온담 - 좋은 모임, 따뜻한 만남 (메인)</div>
+        <div class="page-stats">
+          <div class="page-stat-item">
+            <div class="page-stat-val">50</div>
+            <div class="page-stat-label">조회수</div>
+          </div>
+          <div class="page-stat-item">
+            <div class="page-stat-val">27</div>
+            <div class="page-stat-label">활성 사용자</div>
+          </div>
+          <div class="page-stat-item">
+            <div class="page-stat-val">43.2%</div>
+            <div class="page-stat-label">이탈률</div>
+          </div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-name">온담(Ondam) — 서비스 소개</div>
+        <div class="page-stats">
+          <div class="page-stat-item">
+            <div class="page-stat-val">3</div>
+            <div class="page-stat-label">조회수</div>
+          </div>
+          <div class="page-stat-item">
+            <div class="page-stat-val">2</div>
+            <div class="page-stat-label">활성 사용자</div>
+          </div>
+          <div class="page-stat-item">
+            <div class="page-stat-val">33.3%</div>
+            <div class="page-stat-label">이탈률</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Insights -->
+<div class="section-title">주간 인사이트</div>
+<div class="insight-list">
+  <div class="insight-item">
+    <div class="insight-num">1</div>
+    <div class="insight-text"><strong>트래픽의 85%가 Google Ads에서 유입.</strong> 유일한 유료 채널이 거의 전체 트래픽을 견인 중. Paid Search 의존도가 높은 상태.</div>
+  </div>
+  <div class="insight-item">
+    <div class="insight-num">2</div>
+    <div class="insight-text"><strong>참여율 51.6%는 양호하나, 체류시간 15~20초는 부족.</strong> 사용자가 페이지에 도달하지만 콘텐츠를 충분히 소비하지 않고 이탈. 랜딩 페이지 개선 필요.</div>
+  </div>
+  <div class="insight-item">
+    <div class="insight-num">3</div>
+    <div class="insight-text"><strong>전환 0건 (회원가입 0건).</strong> 28명 방문 중 아무도 회원가입하지 않음. 랜딩 → 앱 전환 퍼널에 병목이 있거나, CTA가 충분히 설득력 없음.</div>
+  </div>
+  <div class="insight-item">
+    <div class="insight-num">4</div>
+    <div class="insight-text"><strong>서울 집중도 70%로 타겟 지역 적중.</strong> 서울 대상 캠페인이 효과적으로 작동 중. 부산·천안 등 타 지역 유입은 자연 발생.</div>
+  </div>
+  <div class="insight-item">
+    <div class="insight-num">5</div>
+    <div class="insight-text"><strong>재방문 3명 (10.7%).</strong> 초기 단계 기준 매우 낮음. 리타겟팅 또는 콘텐츠 업데이트로 재방문 유도 필요.</div>
+  </div>
+</div>
+
+<!-- Next Actions -->
+<div class="section-title">다음 주 액션 플랜</div>
+<div class="action-list">
+  <div class="action-item">
+    <div class="action-icon">&#x1F3AF;</div>
+    <div class="action-text"><strong>랜딩 페이지 개선</strong> — 히어로 축소, 앱 스크린샷 추가, 탭 네비게이션으로 체류시간 45초+ 달성. 스크롤 유도 강화.</div>
+  </div>
+  <div class="action-item">
+    <div class="action-icon">&#x1F4E2;</div>
+    <div class="action-text"><strong>당근 광고 테스트</strong> — 지역 기반 광고 채널 확장. Google Ads 단일 의존에서 벗어나기. 제한업종 여부 확인 후 진행.</div>
+  </div>
+  <div class="action-item">
+    <div class="action-icon">&#x1F504;</div>
+    <div class="action-text"><strong>리마케팅 설정</strong> — 방문자 28명 대상 Google Ads 리마케팅 오디언스 생성. 재방문율 끌어올리기.</div>
+  </div>
+  <div class="action-item">
+    <div class="action-icon">&#x1F4B0;</div>
+    <div class="action-text"><strong>카카오 모먼트 비즈월렛 환불</strong> — 업종 제한으로 집행 불가 확인. 충전 금액 환불 신청.</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <span>온담 (Ondam) · Weekly Performance Report</span>
+  <span>Google Analytics 4 · Google Ads (Account: 221-848-5317)</span>
+</div>
+
+</body>
+</html>
