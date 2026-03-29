@@ -139,7 +139,7 @@ fbq('track', 'PageView');
 
     <!-- CTA -->
     <a href="#apply" class="inline-block px-8 py-4 rounded-full bg-white text-red-600 font-extrabold text-lg shadow-2xl hover:shadow-xl hover:scale-105 transition-all duration-200 mb-10">
-      무료 상담 신청하기 &gt;
+      신청서 제출하기 &gt;
     </a>
 
     <!-- Trust badges -->
@@ -391,7 +391,7 @@ fbq('track', 'PageView');
       부모님이 원치 않으시면 바로 중단해요.
     </h2>
     <a href="#apply" class="inline-block px-8 py-4 rounded-full bg-white text-red-600 font-extrabold text-lg shadow-2xl hover:shadow-xl hover:scale-105 transition-all duration-200 mb-6">
-      무료 상담 신청하기 &gt;
+      신청서 제출하기 &gt;
     </a>
     <p class="text-white/80 text-sm">부담 없이 한 번 경험해 보세요</p>
   </div>
@@ -804,17 +804,17 @@ fbq('track', 'PageView');
     <!-- Sub CTA: Simple form -->
     <form id="applyForm" onsubmit="return submitForm(event)" class="reveal space-y-5" style="opacity:0;transform:translateY(30px)">
 
-      <p class="text-center text-slate-600 text-sm font-medium mb-2">연락처를 남겨주시면 저희가 먼저 전화드릴게요.</p>
+      <p class="text-center text-slate-600 text-sm font-medium mb-2">신청자(자녀) 정보를 남겨주시면, 저희가 먼저 연락드릴게요.</p>
 
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
         <div>
-          <label class="block text-sm font-medium text-slate-700 mb-1.5">이름 <span class="text-red-500">*</span></label>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">내 이름 <span class="text-red-500">*</span></label>
           <input type="text" name="applicant_name" required onfocus="trackFormField('applicant_name')"
             class="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-slate-800 text-base focus:outline-none focus:ring-2 focus:ring-red-300 focus:border-red-400 transition-all"
             placeholder="홍길동">
         </div>
         <div>
-          <label class="block text-sm font-medium text-slate-700 mb-1.5">연락처 <span class="text-red-500">*</span></label>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">내 연락처 <span class="text-red-500">*</span></label>
           <input type="tel" name="applicant_phone" required onfocus="trackFormField('applicant_phone')"
             class="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-slate-800 text-base focus:outline-none focus:ring-2 focus:ring-red-300 focus:border-red-400 transition-all"
             placeholder="010-0000-0000">
@@ -831,11 +831,11 @@ fbq('track', 'PageView');
 
       <button id="submitBtn" type="submit"
         class="w-full py-4 rounded-2xl bg-gradient-to-r from-red-500 to-pink-600 text-white font-extrabold text-lg shadow-lg hover:shadow-xl hover:from-red-600 hover:to-pink-700 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed">
-        무료 상담 신청하기
+        신청서 제출하기
       </button>
 
       <p class="text-center text-slate-400 text-xs leading-relaxed">
-        신청 후 24시간 이내에 전화드려요.
+        제출 후 24시간 이내에 연락드려요.
       </p>
 
     </form>
@@ -1079,7 +1079,7 @@ function submitForm(e){
   })
   .finally(function(){
     btn.disabled = false;
-    btn.textContent = '무료 상담 신청하기';
+    btn.textContent = '신청서 제출하기';
   });
   return false;
 }
