@@ -190,7 +190,7 @@ function processNewRows() {
           var msg = '온담 신청 접수완료\n\n'
             + row.applicant_name + '님, 전화서비스 신청이 접수되었습니다.\n'
             + '부모님(' + row.parent_name + ')께 첫 안부전화 일정을 24시간 내 안내드릴게요.\n\n'
-            + '문의 010-5175-1360';
+            + '문의 010-8326-8528';
           sendSms(phone, msg);
         }
       }
