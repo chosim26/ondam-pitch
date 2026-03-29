@@ -187,9 +187,9 @@ function processNewRows() {
         // 알림톡 실패 시 SMS 폴백
         if (!kakaoResult) {
           Logger.log('알림톡 실패, SMS 폴백 발송');
-          var msg = '온담 신청 접수완료\n\n'
-            + row.applicant_name + '님, 전화서비스 신청이 접수되었습니다.\n'
-            + '부모님(' + row.parent_name + ')께 첫 안부전화 일정을 24시간 내 안내드릴게요.\n\n'
+          var msg = '[온담] 신청 접수완료\n\n'
+            + row.applicant_name + '님, 안부전화 서비스 신청이 접수되었습니다.\n'
+            + '24시간 내에 안내 전화 드릴게요.\n\n'
             + '문의 010-8326-8528';
           sendSms(phone, msg);
         }
