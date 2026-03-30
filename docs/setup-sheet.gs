@@ -50,7 +50,7 @@ var SOLAPI = {
   BASE_URL: 'https://api.solapi.com',
   // 알림톡 설정
   KAKAO_PFID: 'KA01PF260325052824245x3NAqMark6X',
-  KAKAO_TEMPLATE_ID: 'KA01TP260325054433901tdGmPY3RVBg'
+  KAKAO_TEMPLATE_ID: 'KA01TP2603291804086797U9LBpQymAh'
 };
 
 // ===== 최초 1회 실행: 트리거 설치 =====
@@ -177,11 +177,7 @@ function processNewRows() {
           phone = '0' + phone;
         }
         var kakaoResult = sendKakaoAlimtalk(phone, {
-          '#{신청자명}': row.applicant_name || '',
-          '#{부모님성함}': row.parent_name || '',
-          '#{관계}': row.relationship || '',
-          '#{희망요일}': row.preferred_day || '',
-          '#{희망시간}': row.preferred_time || ''
+          '#{신청자명}': row.applicant_name || ''
         });
 
         // 알림톡 실패 시 SMS 폴백
