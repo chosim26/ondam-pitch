@@ -1,0 +1,10 @@
+{"t":0,"agent":"system","event":"keyword_detected","keyword":"team"}
+{"t":0,"agent":"system","event":"mode_change","mode_from":"none","mode_to":"team"}
+{"t":0,"agent":"a01b420","agent_type":"unknown","event":"agent_stop","success":true}
+{"t":0,"agent":"system","event":"skill_activated","skill_name":"content","skill_source":"user"}
+{"t":0,"agent":"a584598","agent_type":"scientist","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"a584598","agent_type":"scientist","event":"agent_stop","success":true,"duration_ms":520580}
+{"t":0,"agent":"a4c94f2","agent_type":"scientist","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"a4c94f2","agent_type":"scientist","event":"agent_stop","success":true,"duration_ms":221126}
+{"t":0,"agent":"system","event":"skill_activated","skill_name":"content","skill_source":"user"}
+{"t":0,"agent":"a31f9d6","agent_type":"unknown","event":"agent_stop","success":true}

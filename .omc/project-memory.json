@@ -1,0 +1,74 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1774932693848,
+  "projectRoot": "/Users/admin/chosim/ondam-pitch",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "docs"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "ads": {
+      "path": "ads",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1774932693834,
+      "keyFiles": [
+        "ad2-comparison-final.html",
+        "ad2-comparison-v2.html"
+      ]
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 4,
+      "lastAccessed": 1774932693835,
+      "keyFiles": [
+        "call-script.md",
+        "daily-report.gs",
+        "setup-sheet.gs"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "call.html",
+      "accessCount": 6,
+      "lastAccessed": 1774932842700,
+      "type": "file"
+    },
+    {
+      "path": "call-styles.css",
+      "accessCount": 1,
+      "lastAccessed": 1774932801446,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

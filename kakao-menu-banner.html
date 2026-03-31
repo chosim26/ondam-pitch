@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 800px; height: 400px;
+    overflow: hidden;
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 40%, #FF6B6B 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* Decorative circles */
+  .deco-1 {
+    position: absolute; top: -60px; right: -40px;
+    width: 200px; height: 200px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+  }
+  .deco-2 {
+    position: absolute; bottom: -80px; left: -30px;
+    width: 250px; height: 250px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+  }
+  .deco-3 {
+    position: absolute; top: 40px; left: 60px;
+    width: 80px; height: 80px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
+  }
+
+  .container {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+
+  .title {
+    font-size: 36px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+    margin-bottom: 24px;
+  }
+
+  .features {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+  .feat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .logo-area {
+    position: absolute;
+    bottom: 24px;
+    right: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+  }
+  .logo-text {
+    font-size: 22px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.9);
+  }
+</style>
+</head>
+<body>
+
+<div class="deco-1"></div>
+<div class="deco-2"></div>
+<div class="deco-3"></div>
+
+<div class="container">
+  <div class="subtitle">온담 안부전화 서비스</div>
+  <div class="title">바쁜 당신 대신,<br>매주 부모님께 전화드립니다</div>
+  <div class="features">
+    <div class="feat">📞 주 1회 안부전화</div>
+    <div class="feat">📋 근황 리포트</div>
+    <div class="feat">🎁 첫 통화 무료</div>
+  </div>
+</div>
+
+<div class="logo-area">
+  <span class="logo-text">온담</span>
+</div>
+
+</body>
+</html>

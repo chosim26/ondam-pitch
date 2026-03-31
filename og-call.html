@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px;
+    overflow: hidden;
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    background: linear-gradient(135deg, #FFF5F5 0%, #FBF8F5 40%, #FFF9F6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* Decorative circles */
+  .deco-1 {
+    position: absolute; top: -80px; right: -60px;
+    width: 300px; height: 300px;
+    background: rgba(255, 107, 107, 0.08);
+    border-radius: 50%;
+  }
+  .deco-2 {
+    position: absolute; bottom: -100px; left: -40px;
+    width: 350px; height: 350px;
+    background: rgba(255, 107, 107, 0.05);
+    border-radius: 50%;
+  }
+  .deco-3 {
+    position: absolute; top: 60px; left: 80px;
+    width: 120px; height: 120px;
+    background: rgba(255, 107, 107, 0.06);
+    border-radius: 50%;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 0 80px;
+    z-index: 2;
+    position: relative;
+  }
+
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FF6B6B;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 100px;
+    width: fit-content;
+  }
+
+  .title {
+    font-size: 52px;
+    font-weight: 900;
+    color: #1A1A1A;
+    line-height: 1.35;
+    letter-spacing: -1.5px;
+  }
+  .title em {
+    font-style: normal;
+    color: #FF6B6B;
+  }
+
+  .desc {
+    font-size: 22px;
+    font-weight: 500;
+    color: #888;
+    line-height: 1.6;
+    margin-top: 4px;
+  }
+
+  .features {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .feat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 2px solid #FFE4E4;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #555;
+  }
+  .feat-icon {
+    font-size: 22px;
+  }
+
+  .right {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* Phone mockup with report card */
+  .phone {
+    width: 260px;
+    height: 420px;
+    background: #fff;
+    border-radius: 32px;
+    border: 3px solid #E8E8E8;
+    padding: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phone-header {
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #F5F5F5;
+  }
+  .phone-header .label {
+    font-size: 11px;
+    color: #999;
+    font-weight: 500;
+  }
+  .phone-header .title-sm {
+    font-size: 16px;
+    font-weight: 800;
+    color: #FF6B6B;
+    margin-top: 2px;
+  }
+
+  .report-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+  }
+  .report-emoji { font-size: 20px; }
+  .report-label { font-size: 12px; color: #999; min-width: 42px; }
+  .report-value { font-size: 13px; color: #333; font-weight: 500; }
+
+  .report-msg {
+    background: #FFF5F5;
+    border-radius: 12px;
+    padding: 14px;
+    margin-top: 4px;
+    text-align: center;
+  }
+  .report-msg .q { font-size: 11px; color: #FF6B6B; font-weight: 600; }
+  .report-msg .msg { font-size: 14px; color: #555; font-weight: 600; margin-top: 4px; line-height: 1.5; }
+
+  .phone-cta {
+    background: #FF6B6B;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 12px;
+    border-radius: 12px;
+    margin-top: auto;
+  }
+
+  /* Logo area */
+  .logo-area {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 2;
+  }
+  .logo-text {
+    font-size: 28px;
+    font-weight: 900;
+    color: #FF6B6B;
+    position: relative;
+  }
+  .logo-heart {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 10px;
+    height: 10px;
+  }
+  .logo-sub {
+    font-size: 15px;
+    color: #BBB;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<div class="deco-1"></div>
+<div class="deco-2"></div>
+<div class="deco-3"></div>
+
+<div class="container">
+  <div class="left">
+    <div class="badge">안부전화 서비스</div>
+    <div class="title">바쁜 당신 대신,<br><em>매주 부모님께</em><br>전화드립니다</div>
+    <div class="desc">전담 상담사의 안부전화 + 근황 리포트</div>
+    <div class="features">
+      <div class="feat"><span class="feat-icon">📞</span> 주 1회 안부전화</div>
+      <div class="feat"><span class="feat-icon">📋</span> 근황 리포트</div>
+      <div class="feat"><span class="feat-icon">🎁</span> 첫 통화 무료</div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="phone">
+      <div class="phone-header">
+        <div class="label">온담 주간 리포트</div>
+        <div class="title-sm">3월 넷째 주 어머니 근황</div>
+      </div>
+      <div class="report-row">
+        <span class="report-emoji">😊</span>
+        <span class="report-label">기분</span>
+        <span class="report-value">밝으심, 산책 다니심</span>
+      </div>
+      <div class="report-row">
+        <span class="report-emoji">🏥</span>
+        <span class="report-label">건강</span>
+        <span class="report-value">무릎 통증 호전 ↓</span>
+      </div>
+      <div class="report-row">
+        <span class="report-emoji">💊</span>
+        <span class="report-label">복약</span>
+        <span class="report-value">혈압약 잘 드시는 중</span>
+      </div>
+      <div class="report-msg">
+        <div class="q">어머니 한마디</div>
+        <div class="msg">"요즘 골프를<br>배워보고 싶다고 하셨어요"</div>
+      </div>
+      <div class="phone-cta">지금 신청하기</div>
+    </div>
+  </div>
+</div>
+
+<div class="logo-area">
+  <span class="logo-text">온담
+    <svg class="logo-heart" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 8.5C5 8.5 1 6.2 1 3.7C1 2.2 2.2 1 3.5 1C4.2 1 4.7 1.3 5 1.8C5.3 1.3 5.8 1 6.5 1C7.8 1 9 2.2 9 3.7C9 6.2 5 8.5 5 8.5Z" fill="#FF6B6B"/>
+    </svg>
+  </span>
+  <span class="logo-sub">부모님의 든든한 두 번째 자식</span>
+</div>
+
+</body>
+</html>
