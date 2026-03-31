@@ -16,62 +16,58 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://about.ondam.me/og-call.png">
 
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KVVXVJJ5');</script>
+<!-- Preconnect hints for critical third-party domains -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<link rel="preconnect" href="https://connect.facebook.net" crossorigin>
 
-<!-- Google Ads + GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18005256112"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-18005256112');
-  gtag('config', 'G-JSNVDKKX6Q', {
-    linker: { domains: ['chosim.me', 'about.ondam.me', 'ondam-front.vercel.app'] }
-  });
-</script>
-<script>
-  gtag('event', 'conversion', {'send_to': 'AW-18005256112/NYBCCJ2Z94UcELDPyYlD'});
-</script>
-
-<!-- Meta Pixel -->
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window,document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '26764462659812070');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/></noscript>
-
-<!-- Kakao Pixel -->
-<script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/kas/static/kp.js"></script>
-<script type="text/javascript">kakaoPixel('8604667356398961253').pageView();</script>
-
-<!-- Tailwind CSS CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
+<!-- Static CSS (replaces Tailwind CDN for instant render) -->
+<link rel="stylesheet" href="call-styles.css">
 <!-- Pretendard Font -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 
+<!-- Deferred tracking: GTM, GA4, Meta Pixel, Kakao Pixel — loaded after paint -->
 <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        }
-      }
-    }
-  }
+// Defer all tracking scripts until after first paint
+window.addEventListener('DOMContentLoaded', function(){
+  // GTM
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KVVXVJJ5');
+
+  // GA4 + Google Ads
+  var gs=document.createElement('script');gs.async=true;
+  gs.src='https://www.googletagmanager.com/gtag/js?id=AW-18005256112';
+  document.head.appendChild(gs);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','AW-18005256112');
+  gtag('config','G-JSNVDKKX6Q',{linker:{domains:['chosim.me','about.ondam.me','ondam-front.vercel.app']}});
+  gtag('event','conversion',{'send_to':'AW-18005256112/NYBCCJ2Z94UcELDPyYlD'});
+
+  // Meta Pixel
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','26764462659812070');
+  fbq('track','PageView');
+
+  // Kakao Pixel
+  var kp=document.createElement('script');kp.async=true;
+  kp.src='//t1.daumcdn.net/kas/static/kp.js';
+  kp.onload=function(){kakaoPixel('8604667356398961253').pageView();};
+  document.head.appendChild(kp);
+});
 </script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/></noscript>
 
 <style>
   html { scroll-behavior: smooth; }
@@ -509,7 +505,7 @@ fbq('track', 'PageView');
   <!-- 조유태 -->
   <div class="reveal" style="opacity:0;transform:translateY(30px)">
     <div class="relative h-[420px] sm:h-[500px] md:h-[560px] overflow-hidden">
-      <img src="founder-headshot.jpg" alt="조유태" class="w-full h-full object-cover" style="object-position: center 10%; filter: contrast(1.1) saturate(0);">
+      <img src="founder-headshot.jpg" alt="조유태" loading="lazy" class="w-full h-full object-cover" style="object-position: center 10%; filter: contrast(1.1) saturate(0);">
       <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
     </div>
     <div class="bg-slate-900 px-6 py-8">
@@ -538,7 +534,7 @@ fbq('track', 'PageView');
   <!-- 심규헌 -->
   <div class="reveal" style="opacity:0;transform:translateY(30px)">
     <div class="relative h-[420px] sm:h-[500px] md:h-[560px] overflow-hidden">
-      <img src="sim-headshot2.jpg" alt="심규헌" class="w-full h-full object-cover" style="object-position: center 20%; filter: contrast(1.1) saturate(0);">
+      <img src="sim-headshot2.jpg" alt="심규헌" loading="lazy" class="w-full h-full object-cover" style="object-position: center 20%; filter: contrast(1.1) saturate(0);">
       <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
     </div>
     <div class="bg-slate-900 px-6 py-8">
