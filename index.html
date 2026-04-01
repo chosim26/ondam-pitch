@@ -261,10 +261,16 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   .step-desc { font-size: 16px; color: var(--text-secondary); line-height: 1.65; }
 
   /* ===== App Flow Phones ===== */
+  .app-flow-wrapper {
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    margin: 40px -24px 0; padding: 0 24px 12px;
+    scrollbar-width: none;
+  }
+  .app-flow-wrapper::-webkit-scrollbar { display: none; }
   .app-flow {
     display: flex; justify-content: center; align-items: flex-start;
-    gap: 12px; margin-top: 40px; flex-wrap: nowrap;
-    padding: 0 8px;
+    gap: 12px; flex-wrap: nowrap;
+    min-width: min-content;
   }
   .app-phone {
     flex-shrink: 0; width: 170px; text-align: center;
@@ -291,11 +297,12 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   }
 
   @media (max-width: 480px) {
-    .app-phone { width: 130px; }
-    .app-phone-frame { width: 130px; height: 266px; border-radius: 18px; padding: 4px; }
-    .app-phone-frame img { border-radius: 14px; }
-    .app-flow { gap: 6px; padding: 0 4px; }
-    .app-flow-arrow { font-size: 16px; padding-top: 110px; }
+    .app-phone { width: 150px; }
+    .app-phone-frame { width: 150px; height: 308px; border-radius: 20px; padding: 4px; }
+    .app-phone-frame img { border-radius: 16px; }
+    .app-flow { gap: 10px; justify-content: flex-start; }
+    .app-flow-wrapper { margin: 32px -16px 0; padding: 0 16px 12px; }
+    .app-flow-arrow { font-size: 18px; padding-top: 130px; }
     .app-phone-label { font-size: 13px; }
     .app-phone-desc { font-size: 11px; }
   }
@@ -303,6 +310,7 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   /* ===== Moim Cards with Photos ===== */
   .moim-grid {
     display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+    padding: 0 2px;
   }
   .moim-card {
     background: var(--bg); border-radius: var(--radius); overflow: hidden;
@@ -738,29 +746,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <!-- App Screen Flow -->
-  <div class="app-flow">
-    <div class="app-phone">
-      <div class="app-phone-frame">
-        <img src="/images/app-moim.png" alt="모임 탭" loading="lazy">
+  <div class="app-flow-wrapper">
+    <div class="app-flow">
+      <div class="app-phone">
+        <div class="app-phone-frame">
+          <img src="/images/app-moim.png" alt="모임 탭" loading="lazy">
+        </div>
+        <div class="app-phone-label">모임 둘러보기</div>
+        <div class="app-phone-desc">관심 가는 모임에<br>참여 신청</div>
       </div>
-      <div class="app-phone-label">모임 둘러보기</div>
-      <div class="app-phone-desc">관심 가는 모임에<br>참여 신청</div>
-    </div>
-    <div class="app-flow-arrow">&#x279C;</div>
-    <div class="app-phone">
-      <div class="app-phone-frame">
-        <img src="/images/app-inyeon.png" alt="인연 탭" loading="lazy">
+      <div class="app-flow-arrow">&#x279C;</div>
+      <div class="app-phone">
+        <div class="app-phone-frame">
+          <img src="/images/app-inyeon.png" alt="인연 탭" loading="lazy">
+        </div>
+        <div class="app-phone-label">인연 만나기</div>
+        <div class="app-phone-desc">매일 새로운 인연을<br>추천받기</div>
       </div>
-      <div class="app-phone-label">인연 만나기</div>
-      <div class="app-phone-desc">매일 새로운 인연을<br>추천받기</div>
-    </div>
-    <div class="app-flow-arrow">&#x279C;</div>
-    <div class="app-phone">
-      <div class="app-phone-frame">
-        <img src="/images/app-chat.png" alt="대화방 탭" loading="lazy">
+      <div class="app-flow-arrow">&#x279C;</div>
+      <div class="app-phone">
+        <div class="app-phone-frame">
+          <img src="/images/app-chat.png" alt="대화방 탭" loading="lazy">
+        </div>
+        <div class="app-phone-label">대화 이어가기</div>
+        <div class="app-phone-desc">모임에서 만난 분과<br>편하게 대화</div>
       </div>
-      <div class="app-phone-label">대화 이어가기</div>
-      <div class="app-phone-desc">모임에서 만난 분과<br>편하게 대화</div>
     </div>
   </div>
 </section>
