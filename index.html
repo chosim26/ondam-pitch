@@ -1143,6 +1143,25 @@ document.querySelectorAll('.ondam-cta').forEach(function(link) {
 var stickyCta = document.getElementById('stickyCta');
 var kakaoFloat = document.getElementById('kakaoFloat');
 var hero = document.querySelector('.hero');
+
+// Fix mobile browser address bar causing bottom shift
+if (stickyCta && window.visualViewport) {
+  function pinSticky() {
+    var vv = window.visualViewport;
+    stickyCta.style.bottom = 'auto';
+    stickyCta.style.top = (vv.offsetTop + vv.height - stickyCta.offsetHeight) + 'px';
+  }
+  window.visualViewport.addEventListener('resize', pinSticky);
+  window.visualViewport.addEventListener('scroll', pinSticky);
+  // Initial pin once shown
+  var origShow = stickyCta.classList.contains('show');
+  if (origShow) pinSticky();
+  var pinOnShow = new MutationObserver(function() {
+    if (stickyCta.classList.contains('show')) pinSticky();
+  });
+  pinOnShow.observe(stickyCta, { attributes: true, attributeFilter: ['class'] });
+}
+
 if (stickyCta && hero) {
   var stickyObs = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
