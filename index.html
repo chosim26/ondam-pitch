@@ -469,10 +469,16 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     border-top: 1px solid rgba(0,0,0,0.08);
     padding: 12px 20px;
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    transform: translateY(100%);
+    transform: translate3d(0, 100%, 0);
+    will-change: transform;
+    -webkit-transform: translate3d(0, 100%, 0);
     transition: transform 0.3s ease;
   }
-  .sticky-cta.show { transform: translateY(0); }
+  .sticky-cta.show {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transition: none;
+  }
   .sticky-cta-text {
     font-size: 14px; color: var(--text-secondary); line-height: 1.4;
     font-weight: 600;
