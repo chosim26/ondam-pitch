@@ -262,23 +262,21 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
 
   /* ===== App Flow Phones ===== */
   .app-flow {
-    display: flex; justify-content: center; gap: 16px;
-    margin-top: 40px; flex-wrap: nowrap; overflow-x: auto;
-    padding: 0 16px 8px;
-    -webkit-overflow-scrolling: touch;
+    display: flex; justify-content: center; align-items: flex-start;
+    gap: 12px; margin-top: 40px; flex-wrap: nowrap;
+    padding: 0 8px;
   }
-  .app-flow::-webkit-scrollbar { display: none; }
   .app-phone {
-    flex-shrink: 0; width: 200px; text-align: center;
+    flex-shrink: 0; width: 170px; text-align: center;
   }
   .app-phone-frame {
-    width: 200px; height: 410px; border-radius: 28px;
-    background: #1A1A1A; padding: 6px;
+    width: 170px; height: 348px; border-radius: 24px;
+    background: #1A1A1A; padding: 5px;
     box-shadow: 0 16px 48px rgba(0,0,0,0.15);
     overflow: hidden;
   }
   .app-phone-frame img {
-    width: 100%; height: 100%; border-radius: 22px;
+    width: 100%; height: 100%; border-radius: 20px;
     object-fit: cover; object-position: top;
   }
   .app-phone-label {
@@ -289,17 +287,17 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   }
   .app-flow-arrow {
     display: flex; align-items: center; flex-shrink: 0;
-    color: var(--brand); font-size: 24px; padding-bottom: 40px;
+    color: var(--brand); font-size: 22px; padding-top: 150px;
   }
 
   @media (max-width: 480px) {
-    .app-phone { width: 160px; }
-    .app-phone-frame { width: 160px; height: 328px; border-radius: 22px; padding: 4px; }
-    .app-phone-frame img { border-radius: 18px; }
-    .app-flow { gap: 10px; }
-    .app-flow-arrow { font-size: 18px; padding-bottom: 32px; }
-    .app-phone-label { font-size: 14px; }
-    .app-phone-desc { font-size: 12px; }
+    .app-phone { width: 130px; }
+    .app-phone-frame { width: 130px; height: 266px; border-radius: 18px; padding: 4px; }
+    .app-phone-frame img { border-radius: 14px; }
+    .app-flow { gap: 6px; padding: 0 4px; }
+    .app-flow-arrow { font-size: 16px; padding-top: 110px; }
+    .app-phone-label { font-size: 13px; }
+    .app-phone-desc { font-size: 11px; }
   }
 
   /* ===== Moim Cards with Photos ===== */
