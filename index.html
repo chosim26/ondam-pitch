@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>온담 - 좋은 모임, 따뜻한 만남</title>
-<meta name="description" content="좋은 모임 찾기, 왜 이렇게 어려울까요? 온담이 모임을 기획하고, 장소를 예약하고, 좋은 사람들을 연결합니다.">
-<meta property="og:title" content="온담 - 좋은 모임, 따뜻한 만남">
-<meta property="og:description" content="모임 찾기도, 예약하기도, 새 사람 만나기도 어려우셨나요? 온담이 대신 준비합니다.">
+<title>온담 - 40대 50대 60대를 위한 모임앱</title>
+<meta name="description" content="같은 동네, 같은 세대, 같은 관심사를 가진 새 친구를 만나보세요. 온담이 모임을 기획하고, 장소를 예약하고, 좋은 사람들을 연결합니다.">
+<meta property="og:title" content="온담 - 40대 50대 60대를 위한 모임앱">
+<meta property="og:description" content="등산, 맛집, 산책, 문화생활. 온담에서 새 친구를 만나보세요.">
 <meta property="og:type" content="website">
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -85,7 +85,7 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   /* ===== Nav ===== */
   .nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.92);
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(0,0,0,0.06);
   }
@@ -93,170 +93,146 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     max-width: var(--content-width); margin: 0 auto; padding: 0 24px;
     height: 56px; display: flex; align-items: center; justify-content: space-between;
   }
-  .nav-left { display: flex; align-items: center; gap: 20px; }
   .nav-logo { display: flex; align-items: center; text-decoration: none; }
   .nav-logo img { height: 32px; width: auto; }
-  .nav-links { display: flex; align-items: center; gap: 4px; }
-  .nav-link {
-    font-size: 14px; font-weight: 500; color: var(--text-secondary);
-    text-decoration: none; padding: 6px 10px; border-radius: 8px;
-    transition: all 0.2s; white-space: nowrap;
-  }
-  .nav-link:hover { color: var(--brand); background: var(--brand-light); }
-  .nav-link.active { color: var(--brand); font-weight: 700; background: var(--brand-light); }
-  .nav-social {
-    display: flex; align-items: flex-end; gap: 12px;
-  }
-  .nav-social a {
-    display: flex; align-items: center; justify-content: center;
-    color: var(--text-tertiary); transition: color 0.2s;
-  }
-  .nav-social a:hover { color: var(--brand); }
   .nav-cta {
     background: var(--brand); color: white; border: none; border-radius: 999px;
-    padding: 10px 22px; font-size: 16px; font-weight: 600; cursor: pointer;
+    padding: 10px 22px; font-size: 15px; font-weight: 600; cursor: pointer;
     text-decoration: none; transition: background 0.2s;
   }
   .nav-cta:hover { background: var(--brand-dark); }
-  .nav-links-mobile { display: none; }
+
+  /* ===== Hero ===== */
+  .hero {
+    position: relative; overflow: hidden;
+    min-height: 100vh; min-height: 100svh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+  }
+  .hero-bg img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.35);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 540px; margin: 0 auto; padding: 80px 24px 40px;
+    color: white;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px; padding: 8px 18px;
+    margin-bottom: 28px; animation: fadeUp 0.8s ease 0.1s both;
+  }
+  .hero-badge-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #4CAF50; animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .hero-badge-text { font-size: 14px; color: rgba(255,255,255,0.9); font-weight: 500; }
+
+  .hero h1 {
+    font-size: 40px; font-weight: 800; line-height: 1.35;
+    margin-bottom: 20px; animation: fadeUp 0.8s ease 0.2s both;
+    letter-spacing: -0.5px;
+  }
+  .hero-desc {
+    font-size: 18px; color: rgba(255,255,255,0.8);
+    line-height: 1.7; margin-bottom: 36px;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--brand); color: white;
+    border-radius: 999px; padding: 18px 44px; font-size: 19px; font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 8px 32px rgba(255,107,107,0.4);
+    transition: all 0.3s; animation: fadeUp 0.8s ease 0.4s both;
+  }
+  .hero-cta:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,107,107,0.5); }
+  .hero-cta svg { flex-shrink: 0; }
+  .hero-sub {
+    font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 16px;
+    animation: fadeUp 0.8s ease 0.5s both;
+  }
+  .hero-stores {
+    margin-top: 24px; display: flex; justify-content: center; gap: 16px;
+    animation: fadeUp 0.8s ease 0.55s both;
+  }
+  .hero-store-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px; padding: 10px 20px;
+    color: white; text-decoration: none; font-size: 14px; font-weight: 500;
+    transition: all 0.2s;
+  }
+  .hero-store-btn:hover { background: rgba(255,255,255,0.2); }
+  .hero-store-btn svg { flex-shrink: 0; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== Photo Strip ===== */
+  .photo-strip {
+    padding: 0; overflow: hidden; background: var(--bg);
+  }
+  .photo-strip-inner {
+    display: flex; gap: 4px;
+    animation: scrollStrip 30s linear infinite;
+    width: max-content;
+  }
+  .photo-strip-inner img {
+    width: 180px; height: 180px; object-fit: cover;
+    flex-shrink: 0;
+  }
+  @keyframes scrollStrip {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 
   /* ===== Section Layout ===== */
   .section {
     max-width: var(--content-width); margin: 0 auto; padding: var(--section-padding);
   }
-  .section-bg {
-    background: var(--bg-section);
-  }
+  .section-bg { background: var(--bg-section); }
   .section-bg > .section-inner {
     max-width: var(--content-width); margin: 0 auto; padding: var(--section-padding);
   }
-
-  /* Section header pattern */
-  .section-header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
+  .section-header { text-align: center; margin-bottom: 40px; }
   .section-header h2 {
-    font-size: 34px;
-    font-weight: 700;
-    line-height: 1.4;
-    margin-bottom: 10px;
+    font-size: 32px; font-weight: 700; line-height: 1.4; margin-bottom: 10px;
   }
-  .section-header p {
-    font-size: 20px;
-    color: var(--text-tertiary);
-    line-height: 1.5;
-  }
-
-  /* ===== Hero ===== */
-  .hero {
-    min-height: auto;
-    display: flex; align-items: center; justify-content: center;
-    text-align: center; position: relative; overflow: hidden;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(253,248,246,0.92) 100%),
-      url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1200&q=80') center/cover no-repeat;
-    padding: 80px 24px 32px;
-  }
-  .hero::before {
-    content: ''; position: absolute; top: -50px; right: -80px;
-    width: 500px; height: 500px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,107,107,0.15) 0%, transparent 60%);
-    animation: drift 10s ease-in-out infinite;
-  }
-  .hero::after {
-    content: ''; position: absolute; bottom: -60px; left: -60px;
-    width: 400px; height: 400px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,180,107,0.1) 0%, transparent 60%);
-    animation: drift 12s ease-in-out infinite reverse;
-  }
-  @keyframes drift {
-    0%, 100% { transform: translate(0,0); }
-    50% { transform: translate(-20px, 15px); }
-  }
-
-  .hero-content {
-    position: relative; z-index: 2;
-    max-width: 520px; margin: 0 auto;
-  }
-  .hero-logo {
-    width: 80px; height: 80px; margin: 0 auto 28px;
-    animation: fadeUp 0.8s ease;
-  }
-  .hero-logo img { width: 100%; height: 100%; object-fit: contain; }
-
-  .hero-question {
-    font-size: 18px; color: var(--text-secondary);
-    margin-bottom: 14px; animation: fadeUp 0.8s ease 0.1s both;
-  }
-  .hero h1 {
-    font-size: 44px; font-weight: 800; line-height: 1.35;
-    margin-bottom: 22px; animation: fadeUp 0.8s ease 0.2s both;
-    letter-spacing: -0.5px;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.06);
-  }
-  .hero h1 .brand { color: var(--brand); }
-  .hero-sub-title {
-    font-size: 26px; color: var(--text-primary); font-weight: 600;
-    margin-bottom: 20px; animation: fadeUp 0.8s ease 0.2s both;
-    line-height: 1.5;
-  }
-  .hero-sub-title .brand { color: var(--brand); font-weight: 700; }
-  .hero-desc {
-    font-size: 21px; color: var(--text-primary); opacity: 0.75;
-    line-height: 1.8; margin-bottom: 36px; animation: fadeUp 0.8s ease 0.3s both;
-  }
-  .hero-cta {
-    display: inline-block; background: var(--brand); color: white;
-    border-radius: 999px; padding: 18px 48px; font-size: 20px; font-weight: 700;
-    text-decoration: none; box-shadow: 0 8px 24px rgba(255,107,107,0.3);
-    transition: all 0.3s; animation: fadeUp 0.8s ease 0.4s both;
-  }
-  .hero-cta:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,107,107,0.4); }
-  .hero-sub {
-    font-size: 15px; color: var(--text-tertiary); margin-top: 14px;
-    animation: fadeUp 0.8s ease 0.5s both;
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  .section-header p { font-size: 18px; color: var(--text-tertiary); line-height: 1.5; }
+  .brand { color: var(--brand); }
 
   /* ===== Pain Points ===== */
-  .pain-list {
-    display: flex; flex-direction: column; gap: 12px;
+  .pain-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
   }
-  .pain-item {
-    background: var(--bg); border-radius: var(--radius); padding: 20px 24px;
-    display: flex; align-items: flex-start; gap: 16px;
+  .pain-card {
+    background: var(--bg); border-radius: var(--radius); padding: 24px;
     box-shadow: var(--shadow-sm); transition: transform 0.2s;
   }
-  .pain-item:hover { transform: translateX(4px); }
-  .pain-emoji {
-    font-size: 30px; flex-shrink: 0;
-    width: 52px; height: 52px;
-    display: flex; align-items: center; justify-content: center;
-    background: var(--bg-section); border-radius: 10px;
+  .pain-card:hover { transform: translateY(-2px); }
+  .pain-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--brand-light); color: var(--brand);
+    font-size: 14px; font-weight: 700; margin-bottom: 12px;
   }
-  .pain-text { font-size: 20px; color: var(--text-secondary); line-height: 1.65; flex: 1; }
-  .pain-text strong {
-    display: block; font-size: 22px; color: var(--text-primary);
-    font-weight: 700; margin-bottom: 6px;
-  }
+  .pain-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .pain-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
 
   /* ===== Solution / Steps ===== */
-  .solution-header {
-    text-align: center; margin-bottom: 48px;
-  }
-  .solution-header h2 {
-    font-size: 34px; font-weight: 700; line-height: 1.4; margin-bottom: 12px;
-    letter-spacing: -0.3px;
-  }
-  .solution-header h2 .brand { color: var(--brand); }
-  .solution-header p {
-    font-size: 19px; color: var(--text-secondary); line-height: 1.6;
-  }
-
   .steps { display: flex; flex-direction: column; gap: 0; position: relative; }
   .steps::before {
     content: ''; position: absolute; left: 27px; top: 48px; bottom: 48px;
@@ -275,26 +251,30 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     position: relative; z-index: 1;
   }
   .step-content { padding-top: 4px; flex: 1; }
-  .step-title { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
-  .step-desc { font-size: 19px; color: var(--text-secondary); line-height: 1.65; }
+  .step-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .step-desc { font-size: 16px; color: var(--text-secondary); line-height: 1.65; }
 
-  /* ===== Moim Examples ===== */
+  /* ===== Moim Cards with Photos ===== */
   .moim-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
   }
   .moim-card {
-    background: var(--bg); border-radius: var(--radius); padding: 24px 16px;
-    text-align: center; box-shadow: var(--shadow-sm);
-    border: 1px solid rgba(0,0,0,0.03);
+    background: var(--bg); border-radius: var(--radius); overflow: hidden;
+    box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.03);
     transition: all 0.3s;
   }
   .moim-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-  .moim-icon {
-    font-size: 44px; margin-bottom: 14px;
-    line-height: 1.2;
+  .moim-card-img {
+    width: 100%; height: 160px; object-fit: cover;
   }
-  .moim-name { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
-  .moim-desc { font-size: 20px; color: var(--text-tertiary); line-height: 1.5; }
+  .moim-card-body { padding: 16px; }
+  .moim-card-tag {
+    display: inline-block; background: var(--brand-light); color: var(--brand);
+    font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+    margin-bottom: 8px;
+  }
+  .moim-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .moim-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
 
   /* ===== Benefits ===== */
   .benefit-grid {
@@ -309,64 +289,54 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   .benefit-card:nth-child(2) { background: #F5F0FF; }
   .benefit-card:nth-child(3) { background: #F0F8FF; }
   .benefit-card:nth-child(4) { background: #FFF8F0; }
-  .benefit-emoji {
-    font-size: 28px; margin-bottom: 10px;
-    line-height: 1.2;
+  .benefit-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin-bottom: 14px;
   }
-  .benefit-title { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
-  .benefit-desc { font-size: 20px; color: var(--text-secondary); line-height: 1.6; }
+  .benefit-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .benefit-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
 
   /* ===== Reviews ===== */
-  .review-grid {
-    display: flex; flex-direction: column; gap: 14px;
-  }
+  .review-grid { display: flex; flex-direction: column; gap: 14px; }
   .review-card {
-    background: var(--bg); border-radius: var(--radius); padding: 28px;
+    background: var(--bg); border-radius: var(--radius); padding: 24px;
     box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.03);
+    display: flex; gap: 16px; align-items: flex-start;
   }
+  .review-avatar {
+    width: 56px; height: 56px; border-radius: 50%; object-fit: cover;
+    flex-shrink: 0;
+  }
+  .review-body { flex: 1; }
   .review-text {
-    font-size: 19px; color: var(--text-secondary); line-height: 1.8;
-    margin-bottom: 16px; position: relative;
-    padding-left: 20px;
-  }
-  .review-text::before {
-    content: '"'; position: absolute; left: 0; top: -4px;
-    font-size: 28px; color: var(--brand); opacity: 0.4; font-weight: 700;
+    font-size: 16px; color: var(--text-secondary); line-height: 1.7;
+    margin-bottom: 10px;
   }
   .review-text mark {
     background: #FFF9C4; color: var(--text-primary);
     padding: 2px 5px; border-radius: 3px; font-weight: 600;
   }
-  .review-footer {
-    display: flex; align-items: center; justify-content: flex-end; gap: 8px;
-  }
-  .review-author {
-    font-size: 16px; color: var(--brand); font-weight: 600;
-  }
+  .review-author { font-size: 14px; color: var(--brand); font-weight: 600; }
 
   /* ===== Children Section ===== */
   .children-bg {
-    background: linear-gradient(135deg, rgba(245,240,255,0.92), rgba(255,245,245,0.92)),
-      url('https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1200&q=80') center/cover no-repeat;
+    background: linear-gradient(135deg, #F8F4FF, #FFF5F5);
     position: relative;
   }
   .children-content { text-align: center; position: relative; z-index: 1; }
-  .children-emoji { font-size: 48px; margin-bottom: 20px; line-height: 1.2; }
   .children-title {
-    font-size: 34px; font-weight: 700;
+    font-size: 30px; font-weight: 700;
     line-height: 1.45; margin-bottom: 16px;
-    letter-spacing: -0.3px;
   }
   .children-sub {
-    font-size: 23px; color: var(--brand); font-weight: 600;
+    font-size: 20px; color: var(--brand); font-weight: 600;
     line-height: 1.6; margin-bottom: 20px;
   }
   .children-desc {
-    font-size: 21px; color: var(--text-secondary); line-height: 1.8;
+    font-size: 17px; color: var(--text-secondary); line-height: 1.8;
     max-width: 440px; margin: 0 auto 28px;
   }
-
-  /* KakaoTalk style chat */
   .chat-box {
     max-width: 360px; width: 100%; margin: 0 auto;
     display: flex; flex-direction: column; gap: 10px;
@@ -377,7 +347,7 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   .chat-row.left { justify-content: flex-start; }
   .chat-bubble {
     padding: 14px 18px; border-radius: 16px;
-    font-size: 19px; line-height: 1.55; max-width: 75%;
+    font-size: 16px; line-height: 1.55; max-width: 75%;
   }
   .chat-row.right .chat-bubble {
     background: #FEE500; color: #1A1A1A;
@@ -388,15 +358,12 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     border-bottom-left-radius: 4px;
     box-shadow: var(--shadow-sm);
   }
-  .chat-name {
-    font-size: 14px; color: var(--text-tertiary); margin-bottom: 4px;
-    padding-left: 4px;
-  }
+  .chat-name { font-size: 13px; color: var(--text-tertiary); margin-bottom: 4px; padding-left: 4px; }
   .chat-left-group { display: flex; flex-direction: column; }
   .chat-bubble strong { color: var(--brand); }
   .chat-result {
     text-align: center; margin-top: 20px;
-    font-size: 21px; color: var(--text-primary); font-weight: 600;
+    font-size: 18px; color: var(--text-primary); font-weight: 600;
   }
 
   /* ===== Trust ===== */
@@ -407,69 +374,38 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   .trust-icon {
     width: 56px; height: 56px; margin: 0 auto 12px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 32px;
-    background: var(--bg-section); border-radius: 12px;
+    font-size: 28px;
+    background: var(--bg-section); border-radius: 14px;
   }
-  .trust-label { font-size: 21px; font-weight: 700; margin-bottom: 6px; }
-  .trust-desc { font-size: 18px; color: var(--text-secondary); line-height: 1.5; }
+  .trust-label { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .trust-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
 
   /* ===== CTA Bottom ===== */
   .cta-bottom {
     text-align: center; padding: 80px 24px;
     background: linear-gradient(180deg, var(--bg-warm), var(--bg));
-    position: relative;
-  }
-  .cta-bottom::before {
-    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-    width: 1px; height: 48px;
-    background: linear-gradient(180deg, transparent, var(--brand));
   }
   .cta-title {
-    font-size: 34px; font-weight: 700;
+    font-size: 32px; font-weight: 700;
     line-height: 1.4; margin-bottom: 12px;
-    letter-spacing: -0.3px;
   }
-  .cta-title .brand { color: var(--brand); }
-  .cta-desc {
-    font-size: 19px; color: var(--text-secondary); margin-bottom: 32px;
-  }
+  .cta-desc { font-size: 17px; color: var(--text-secondary); margin-bottom: 32px; }
   .cta-button {
     display: inline-block; background: var(--brand); color: white;
-    border-radius: 999px; padding: 18px 48px; font-size: 20px; font-weight: 700;
+    border-radius: 999px; padding: 18px 48px; font-size: 19px; font-weight: 700;
     text-decoration: none; box-shadow: 0 8px 24px rgba(255,107,107,0.3);
     transition: all 0.3s;
   }
   .cta-button:hover { background: var(--brand-dark); transform: translateY(-2px); }
   .cta-stores {
-    margin-top: 16px; display: flex; justify-content: center; gap: 20px;
-    flex-wrap: wrap;
+    margin-top: 16px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
   }
   .cta-store {
     display: inline-flex; align-items: center; gap: 6px;
-    font-size: 15px; color: var(--text-tertiary); text-decoration: none;
+    font-size: 14px; color: var(--text-tertiary); text-decoration: none;
     transition: color 0.2s;
   }
   .cta-store:hover { color: var(--text-secondary); }
-
-  /* ===== Footer ===== */
-  .footer {
-    text-align: center; padding: 28px 24px 100px;
-    font-size: 14px; color: var(--text-tertiary);
-    border-top: 1px solid #F0F0F0;
-  }
-  .footer a { color: var(--text-tertiary); text-decoration: none; }
-  .footer a:hover { color: var(--brand); }
-  .footer-social {
-    display: flex; justify-content: center; gap: 16px;
-    margin-bottom: 16px;
-  }
-  .footer-social a {
-    display: flex; align-items: center; justify-content: center;
-    width: 40px; height: 40px; border-radius: 50%;
-    background: var(--bg-section); color: var(--text-tertiary);
-    transition: all 0.2s;
-  }
-  .footer-social a:hover { background: var(--brand); color: white; }
 
   /* ===== Sticky Mobile CTA ===== */
   .sticky-cta {
@@ -491,311 +427,128 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   .sticky-cta-btn {
     flex-shrink: 0;
     background: var(--brand); color: white; border: none; border-radius: 999px;
-    padding: 14px 28px; font-size: 16px; font-weight: 700; cursor: pointer;
+    padding: 14px 28px; font-size: 15px; font-weight: 700; cursor: pointer;
     text-decoration: none; white-space: nowrap;
     box-shadow: 0 4px 16px rgba(255,107,107,0.3);
   }
 
-  /* ===== Social Proof Badge ===== */
-  .hero-proof {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,0.85); backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,107,107,0.15);
-    border-radius: 999px; padding: 8px 18px;
-    margin-bottom: 24px; animation: fadeUp 0.8s ease 0.05s both;
+  /* ===== Floating Kakao Button ===== */
+  .kakao-float {
+    position: fixed; bottom: 80px; right: 20px; z-index: 190;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #FEE500;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    text-decoration: none;
+    transition: all 0.3s;
+    transform: translateY(120px);
   }
-  .hero-proof-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: #4CAF50; animation: pulse 2s infinite;
+  .kakao-float.show { transform: translateY(0); }
+  .kakao-float:hover { transform: translateY(-3px); box-shadow: 0 6px 28px rgba(0,0,0,0.2); }
+  .kakao-float.show:hover { transform: translateY(-3px); }
+  .kakao-float svg { width: 28px; height: 28px; }
+
+  /* ===== Footer ===== */
+  .footer {
+    text-align: center; padding: 28px 24px 100px;
+    font-size: 14px; color: var(--text-tertiary);
+    border-top: 1px solid #F0F0F0;
   }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
+  .footer a { color: var(--text-tertiary); text-decoration: none; }
+  .footer a:hover { color: var(--brand); }
+  .footer-social {
+    display: flex; justify-content: center; gap: 16px;
+    margin-bottom: 16px;
   }
-  .hero-proof-text {
-    font-size: 14px; color: var(--text-secondary); font-weight: 500;
+  .footer-social a {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--bg-section); color: var(--text-tertiary);
+    transition: all 0.2s;
   }
-  .hero-proof-text strong { color: var(--brand); font-weight: 700; }
+  .footer-social a:hover { background: var(--brand); color: white; }
 
   /* ===== Scroll Animations ===== */
-  /* JS adds .anim-ready to <html> — without it, everything stays visible */
   .anim-ready .anim-fade-up {
     opacity: 0; transform: translateY(28px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
   .anim-ready .anim-fade-up.visible { opacity: 1; transform: translateY(0); }
-
   .anim-ready .anim-slide-left {
     opacity: 0; transform: translateX(-32px);
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
   .anim-ready .anim-slide-left.visible { opacity: 1; transform: translateX(0); }
-
-  .anim-ready .anim-slide-right {
-    opacity: 0; transform: translateX(32px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  .anim-ready .anim-slide-right.visible { opacity: 1; transform: translateX(0); }
-
   .anim-ready .anim-scale {
     opacity: 0; transform: scale(0.9);
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
   .anim-ready .anim-scale.visible { opacity: 1; transform: scale(1); }
 
-  /* Respect reduced motion */
   @media (prefers-reduced-motion: reduce) {
-    .anim-ready .anim-fade-up, .anim-ready .anim-slide-left,
-    .anim-ready .anim-slide-right, .anim-ready .anim-scale {
-      opacity: 1 !important; transform: none !important;
-      transition: none !important;
+    .anim-ready .anim-fade-up, .anim-ready .anim-slide-left, .anim-ready .anim-scale {
+      opacity: 1 !important; transform: none !important; transition: none !important;
     }
-  }
-
-  /* ===== Scroll Hint ===== */
-  .scroll-hint {
-    text-align: center; padding: 8px 0 0;
-    animation: fadeUp 0.8s ease 0.6s both;
-  }
-  .scroll-hint-arrow {
-    display: inline-block; width: 28px; height: 28px;
-    border-right: 2px solid var(--text-tertiary);
-    border-bottom: 2px solid var(--text-tertiary);
-    transform: rotate(45deg); opacity: 0.4;
-    animation: scrollBounce 2s ease-in-out infinite;
-  }
-  @keyframes scrollBounce {
-    0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.4; }
-    50% { transform: rotate(45deg) translateY(6px); opacity: 0.8; }
-  }
-  .scroll-hint-text {
-    display: block; font-size: 13px; color: var(--text-tertiary);
-    margin-top: 4px; letter-spacing: 1px;
-  }
-
-  /* ===== Tab Navigation ===== */
-  .tab-section { padding: 0; }
-  .tab-nav {
-    display: flex; justify-content: center; gap: 8px;
-    margin-bottom: 32px; flex-wrap: wrap;
-  }
-  .tab-btn {
-    background: var(--bg-section); border: 1.5px solid transparent;
-    border-radius: 999px; padding: 10px 22px;
-    font-size: 16px; font-weight: 600; color: var(--text-secondary);
-    cursor: pointer; transition: all 0.25s; font-family: inherit;
-  }
-  .tab-btn:hover { border-color: var(--brand-light); color: var(--brand); }
-  .tab-btn.active {
-    background: var(--brand); color: white; border-color: var(--brand);
-    box-shadow: 0 4px 12px rgba(255,107,107,0.25);
-  }
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; animation: tabFade 0.35s ease; }
-  @keyframes tabFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-  /* Tab panel content styles */
-  .tab-story {
-    background: var(--bg); border-radius: var(--radius); padding: 28px;
-    box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.03);
-  }
-  .tab-story-header {
-    display: flex; align-items: center; gap: 14px; margin-bottom: 16px;
-  }
-  .tab-story-icon {
-    width: 52px; height: 52px; border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px; flex-shrink: 0;
-  }
-  .tab-story-meta { flex: 1; }
-  .tab-story-title { font-size: 20px; font-weight: 700; margin-bottom: 2px; }
-  .tab-story-info { font-size: 14px; color: var(--text-tertiary); }
-  .tab-story-body {
-    font-size: 17px; color: var(--text-secondary); line-height: 1.8;
-    margin-bottom: 16px;
-  }
-  .tab-story-tags {
-    display: flex; gap: 8px; flex-wrap: wrap;
-  }
-  .tab-story-tag {
-    background: var(--bg-section); border-radius: 999px;
-    padding: 5px 14px; font-size: 13px; color: var(--text-secondary); font-weight: 500;
-  }
-  .tab-story-photos {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;
-  }
-  .tab-story-photo {
-    aspect-ratio: 4/3; border-radius: 12px; overflow: hidden;
-    background: var(--bg-section); display: flex; align-items: center; justify-content: center;
-    font-size: 40px;
-  }
-  .tab-story-quote {
-    background: var(--brand-light); border-radius: 12px; padding: 16px 20px;
-    font-size: 16px; color: var(--brand-dark); font-weight: 500; line-height: 1.6;
-    border-left: 3px solid var(--brand); margin-top: 16px;
-  }
-  .tab-story-schedule {
-    display: grid; grid-template-columns: auto 1fr; gap: 8px 16px;
-    margin: 16px 0; font-size: 15px;
-  }
-  .tab-story-time { color: var(--brand); font-weight: 700; }
-  .tab-story-activity { color: var(--text-secondary); }
-
-  /* ===== App Preview ===== */
-  .app-preview {
-    display: flex; justify-content: center; gap: 20px;
-    margin-top: 32px; flex-wrap: wrap;
-  }
-  .phone-mockup {
-    width: 180px; height: 360px; border-radius: 28px;
-    background: #1A1A1A; padding: 8px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-    position: relative; overflow: hidden;
-  }
-  .phone-screen {
-    width: 100%; height: 100%; border-radius: 22px;
-    background: var(--bg); overflow: hidden;
-    display: flex; flex-direction: column;
-  }
-  .phone-status {
-    height: 28px; background: var(--brand); display: flex;
-    align-items: center; justify-content: center;
-    font-size: 11px; color: white; font-weight: 600;
-  }
-  .phone-content { flex: 1; padding: 12px; overflow: hidden; }
-  .phone-content h4 {
-    font-size: 13px; font-weight: 700; margin-bottom: 8px; color: var(--text-primary);
-  }
-  .phone-card {
-    background: var(--bg-section); border-radius: 10px; padding: 10px;
-    margin-bottom: 6px; font-size: 11px;
-  }
-  .phone-card-title { font-weight: 700; font-size: 12px; margin-bottom: 3px; }
-  .phone-card-desc { color: var(--text-tertiary); font-size: 10px; line-height: 1.4; }
-  .phone-card-badge {
-    display: inline-block; background: var(--brand-light); color: var(--brand);
-    font-size: 9px; font-weight: 600; padding: 2px 6px; border-radius: 4px; margin-top: 4px;
-  }
-  .phone-nav {
-    height: 36px; border-top: 1px solid #eee;
-    display: flex; align-items: center; justify-content: space-around;
-    font-size: 16px;
-  }
-
-  @media (max-width: 480px) {
-    .tab-btn { padding: 8px 16px; font-size: 14px; }
-    .tab-story { padding: 20px; }
-    .tab-story-title { font-size: 18px; }
-    .tab-story-body { font-size: 15px; }
-    .phone-mockup { width: 150px; height: 300px; }
-    .app-preview { gap: 12px; }
-    .scroll-hint { padding: 4px 0 0; }
-    .scroll-hint-arrow { width: 22px; height: 22px; }
   }
 
   /* ===== Responsive ===== */
   @media (max-width: 768px) {
-    .nav { border-bottom: none; }
-    .nav-inner { flex-wrap: wrap; height: auto; padding: 10px 24px 0; justify-content: space-between; align-items: center; }
-    .nav-left { width: auto; flex: 0; gap: 0; }
-    .nav-left .nav-links { display: none; }
-    .nav-cta { padding: 8px 16px; font-size: 14px; }
-    .nav-links-mobile {
-      display: flex; width: 100%; gap: 0;
-      justify-content: space-around;
-      border-top: 1px solid rgba(0,0,0,0.06);
-      margin-top: 8px; padding: 0;
-    }
-    .nav-links-mobile .nav-link { font-size: 13px; padding: 10px 8px; flex: 1; text-align: center; border-radius: 0; }
-    .nav-links-mobile .nav-link.active { background: none; border-bottom: 2px solid var(--brand); }
-    :root {
-      --section-padding: 60px 20px;
-    }
-    .hero { padding-top: 116px; }
+    :root { --section-padding: 60px 20px; }
     .section-header h2 { font-size: 26px; }
-    .hero h1 { font-size: 34px; }
-    .hero-question { font-size: 16px; }
-    .hero-desc { font-size: 17px; }
-    .solution-header h2 { font-size: 28px; }
-    .moim-grid { grid-template-columns: repeat(2, 1fr); }
-    .children-title { font-size: 26px; }
-    .children-sub { font-size: 18px; }
-    .hero-sub-title { font-size: 20px; }
-    .cta-title { font-size: 28px; }
+    .hero h1 { font-size: 32px; }
+    .hero-desc { font-size: 16px; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .moim-grid { grid-template-columns: 1fr 1fr; }
+    .trust-grid { grid-template-columns: repeat(2, 1fr); }
+    .children-title { font-size: 24px; }
+    .cta-title { font-size: 26px; }
+    .benefit-grid { grid-template-columns: 1fr; }
+    .benefit-card { display: flex; gap: 16px; align-items: flex-start; padding: 22px 20px; }
+    .benefit-icon { margin-bottom: 0; flex-shrink: 0; }
+    .photo-strip-inner img { width: 140px; height: 140px; }
   }
 
   @media (max-width: 480px) {
-    :root {
-      --section-padding: 48px 16px;
-    }
+    :root { --section-padding: 48px 16px; }
     .nav-inner { padding: 0 16px; }
-
-    .hero { padding: 116px 16px 32px; min-height: auto; }
-    .hero-logo { width: 64px; height: 64px; margin-bottom: 20px; }
-    .hero-question { font-size: 15px; }
+    .hero { min-height: 100vh; min-height: 100svh; }
+    .hero-content { padding: 100px 20px 32px; }
     .hero h1 { font-size: 28px; margin-bottom: 16px; }
-    .hero-desc { font-size: 16px; line-height: 1.75; margin-bottom: 28px; }
+    .hero-desc { font-size: 15px; margin-bottom: 28px; }
     .hero-cta { padding: 16px 36px; font-size: 17px; }
-    .hero-sub { font-size: 13px; }
-
-    .section-header { margin-bottom: 28px; }
+    .hero-stores { flex-direction: column; align-items: center; }
+    .hero-store-btn { width: 100%; max-width: 240px; justify-content: center; }
     .section-header h2 { font-size: 24px; }
     .section-header p { font-size: 15px; }
-
-    .pain-item { padding: 16px 18px; gap: 12px; }
-    .pain-emoji { width: 36px; height: 36px; font-size: 20px; border-radius: 8px; }
-    .pain-text { font-size: 14px; }
-
-    .solution-header h2 { font-size: 24px; }
-    .solution-header p { font-size: 16px; }
-    .steps::before { left: 21px; }
-    .step { gap: 14px; padding: 14px 0; }
-    .step-num { width: 44px; height: 44px; font-size: 18px; }
+    .pain-title { font-size: 16px; }
+    .pain-desc { font-size: 14px; }
     .step-title { font-size: 18px; }
     .step-desc { font-size: 15px; }
-
-    .moim-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .moim-card { padding: 18px 12px; border-radius: 14px; }
-    .moim-icon { font-size: 30px; margin-bottom: 8px; }
-    .moim-name { font-size: 15px; }
+    .moim-card-img { height: 120px; }
+    .moim-name { font-size: 16px; }
     .moim-desc { font-size: 13px; }
-
-    .benefit-grid { grid-template-columns: 1fr; gap: 10px; }
-    .benefit-card { padding: 22px 18px; display: flex; gap: 14px; align-items: flex-start; }
-    .benefit-emoji { font-size: 24px; margin-bottom: 0; flex-shrink: 0; }
-    .benefit-text { flex: 1; }
-
-    .review-card { padding: 20px; }
-    .review-text { font-size: 16px; }
-    .review-mark { font-size: 28px; }
-
-    .children-emoji { font-size: 40px; margin-bottom: 16px; }
-    .children-title { font-size: 22px; }
-    .children-sub { font-size: 17px; }
-    .children-desc { font-size: 16px; margin-bottom: 24px; }
-    .hero-sub-title { font-size: 18px; }
-    .chat-box { max-width: 100%; }
-    .chat-bubble { font-size: 15px; max-width: 80%; }
-
-    .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .trust-icon { width: 44px; height: 44px; font-size: 22px; border-radius: 10px; }
+    .benefit-title { font-size: 16px; }
+    .benefit-desc { font-size: 14px; }
+    .review-card { padding: 18px; }
+    .review-avatar { width: 48px; height: 48px; }
+    .review-text { font-size: 14px; }
+    .trust-icon { width: 44px; height: 44px; font-size: 22px; }
     .trust-label { font-size: 14px; }
     .trust-desc { font-size: 13px; }
-
+    .children-title { font-size: 22px; }
+    .children-sub { font-size: 17px; }
+    .children-desc { font-size: 15px; }
+    .chat-bubble { font-size: 14px; max-width: 80%; }
     .cta-bottom { padding: 60px 16px; }
     .cta-title { font-size: 24px; }
-    .cta-desc { font-size: 16px; margin-bottom: 24px; }
+    .cta-desc { font-size: 15px; }
     .cta-button { padding: 16px 36px; font-size: 17px; }
-    .cta-stores { gap: 16px; }
-
+    .photo-strip-inner img { width: 120px; height: 120px; }
   }
 
   @media (max-width: 360px) {
     .hero h1 { font-size: 25px; }
-    .section-header h2 { font-size: 22px; }
-    .solution-header h2 { font-size: 22px; }
     .moim-grid { gap: 8px; }
-    .moim-card { padding: 16px 10px; }
   }
 </style>
 </head>
@@ -808,52 +561,69 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Nav -->
 <nav class="nav">
   <div class="nav-inner">
-    <div class="nav-left">
-      <a href="/" class="nav-logo"><img src="/logo.png" alt="온담"></a>
-      <div class="nav-links">
-        <a href="/" class="nav-link active">소개</a>
-        <a href="/call" class="nav-link">안부전화</a>
-        <a href="/quiz" class="nav-link">모임</a>
-        <a href="/faq" class="nav-link">FAQ</a>
-      </div>
-    </div>
-    <a href="https://ondam-front.vercel.app" class="nav-cta">무료로 시작하기</a>
-    <div class="nav-links-mobile">
-      <a href="/" class="nav-link active">소개</a>
-      <a href="/call" class="nav-link">안부전화</a>
-      <a href="/quiz" class="nav-link">모임</a>
-      <a href="/faq" class="nav-link">FAQ</a>
-    </div>
+    <a href="/" class="nav-logo"><img src="/logo.png" alt="온담"></a>
+    <a href="https://ondam-front.vercel.app" class="nav-cta ondam-cta">무료로 시작하기</a>
   </div>
 </nav>
 
 <!-- Hero -->
 <section class="hero">
+  <div class="hero-bg">
+    <img src="/images/hero-cafe.png" alt="온담 모임">
+  </div>
   <div class="hero-content">
-    <div class="hero-logo">
-      <img src="/logo.png" alt="온담 로고">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      <span class="hero-badge-text">서울·경기 모임 참여자 모집 중</span>
     </div>
-
-    <div class="hero-proof">
-      <span class="hero-proof-dot"></span>
-      <span class="hero-proof-text"><strong>서울</strong> 지역 첫 모임 참여자 모집 중</span>
-    </div>
-    <h1>좋은 모임 찾기,<br>왜 이렇게 어려울까요?</h1>
-    <p class="hero-sub-title">따뜻한 모임, <span class="brand">온담</span>이 준비합니다.</p>
+    <h1>새 친구 만나기,<br>이제 어렵지 않아요</h1>
     <p class="hero-desc">
-      모임을 기획하고, 장소를 예약하고,<br>
-      좋은 사람들을 연결합니다.<br>
-      여러분은 나오기만 하면 됩니다.
+      같은 동네, 같은 세대, 같은 관심사.<br>
+      등산, 맛집, 산책, 문화생활까지<br>
+      온담이 모임을 준비합니다.
     </p>
-    <a href="https://ondam-front.vercel.app" class="hero-cta">이번 주 모임 보기</a>
-    <p class="hero-sub">무료 가입 · 첫 모임 초대권 제공</p>
-
-    <div class="scroll-hint">
-      <span class="scroll-hint-arrow"></span>
-      <span class="scroll-hint-text">더 알아보기</span>
+    <a href="https://ondam-front.vercel.app" class="hero-cta ondam-cta">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      앱 다운로드
+    </a>
+    <p class="hero-sub">무료 가입 · Google Play 출시</p>
+    <div class="hero-stores">
+      <a href="https://play.google.com/store/apps/details?id=com.ondam.app" class="hero-store-btn" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302L17.698 13l-2.302-2.302 2.302-2.302v.012zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
+        Google Play
+      </a>
+      <a href="https://ondam-front.vercel.app" class="hero-store-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        웹에서 시작
+      </a>
     </div>
   </div>
 </section>
+
+<!-- Photo Strip -->
+<div class="photo-strip">
+  <div class="photo-strip-inner">
+    <img src="/images/hiking.png" alt="등산 모임" loading="lazy">
+    <img src="/images/pottery.png" alt="도예 체험" loading="lazy">
+    <img src="/images/bookclub.png" alt="독서 모임" loading="lazy">
+    <img src="/images/park-dog.png" alt="공원 산책" loading="lazy">
+    <img src="/images/scenic.png" alt="여행" loading="lazy">
+    <img src="/images/ocean-cafe.png" alt="카페 모임" loading="lazy">
+    <img src="/images/palace.png" alt="문화 탐방" loading="lazy">
+    <img src="/images/train.png" alt="기차 여행" loading="lazy">
+    <img src="/images/park-bench.png" alt="공원" loading="lazy">
+    <!-- duplicate for seamless loop -->
+    <img src="/images/hiking.png" alt="등산 모임" loading="lazy">
+    <img src="/images/pottery.png" alt="도예 체험" loading="lazy">
+    <img src="/images/bookclub.png" alt="독서 모임" loading="lazy">
+    <img src="/images/park-dog.png" alt="공원 산책" loading="lazy">
+    <img src="/images/scenic.png" alt="여행" loading="lazy">
+    <img src="/images/ocean-cafe.png" alt="카페 모임" loading="lazy">
+    <img src="/images/palace.png" alt="문화 탐방" loading="lazy">
+    <img src="/images/train.png" alt="기차 여행" loading="lazy">
+    <img src="/images/park-bench.png" alt="공원" loading="lazy">
+  </div>
+</div>
 
 <!-- Pain Points -->
 <div class="section-bg">
@@ -862,23 +632,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2>혹시 이런 경험 있으신가요?</h2>
       <p>나이가 들수록, 좋은 만남은 점점 멀어집니다</p>
     </div>
-
-    <div class="pain-list">
-      <div class="pain-item">
-        <span class="pain-emoji">&#x1F50D;</span>
-        <div class="pain-text"><strong>취향 맞는 모임 찾기가 어렵습니다.</strong> 검색해도 나오는 건 20~30대용 모임뿐. 혼자 나가자니 부담되고, 나이에 맞는 좋은 모임은 어디 있을까요?</div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-num">1</div>
+        <div class="pain-title">모임 찾기가 어렵다</div>
+        <div class="pain-desc">검색해도 20~30대용 모임뿐. 나이에 맞는 좋은 모임은 어디 있을까요?</div>
       </div>
-      <div class="pain-item">
-        <span class="pain-emoji">&#x1F4F1;</span>
-        <div class="pain-text"><strong>예약이 복잡합니다.</strong> 장소 찾고, 인원 모으고, 날짜 맞추고... 모임 하나 만들려면 일이 너무 많습니다.</div>
+      <div class="pain-card">
+        <div class="pain-num">2</div>
+        <div class="pain-title">혼자 나가기 부담된다</div>
+        <div class="pain-desc">장소 찾고, 인원 모으고, 날짜 맞추고. 모임 하나가 큰일입니다.</div>
       </div>
-      <div class="pain-item">
-        <span class="pain-emoji">&#x1F465;</span>
-        <div class="pain-text"><strong>새 사람 만나기가 어렵습니다.</strong> 직장 동료는 부담스럽고, 학교 친구는 흩어지고. 새로운 친구를 어디서 만들까요?</div>
+      <div class="pain-card">
+        <div class="pain-num">3</div>
+        <div class="pain-title">새 친구 만들기가 어렵다</div>
+        <div class="pain-desc">직장 동료는 부담, 학교 친구는 흩어지고. 새로운 친구를 어디서 만들까요?</div>
       </div>
-      <div class="pain-item">
-        <span class="pain-emoji">&#x1F614;</span>
-        <div class="pain-text"><strong>가고 싶은 곳은 많은데, 부탁할 곳이 없습니다.</strong> 자식들한테 매번 부탁하기도 미안하고, 혼자 알아보기엔 막막합니다.</div>
+      <div class="pain-card">
+        <div class="pain-num">4</div>
+        <div class="pain-title">갈 곳은 많은데 같이 갈 사람이 없다</div>
+        <div class="pain-desc">혼자 알아보기엔 막막하고, 매번 부탁하기도 미안합니다.</div>
       </div>
     </div>
   </div>
@@ -886,265 +659,94 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Solution -->
 <section class="section">
-  <div class="solution-header">
-    <h2>그래서 <span class="brand">온담</span>이<br>대신 준비합니다</h2>
-    <p>모임 기획부터 장소 예약, 사람 연결까지<br>온담이 전부 해드립니다.</p>
+  <div class="section-header">
+    <h2>그래서 <span class="brand">온담</span>이 대신 준비합니다</h2>
+    <p>모임 기획부터 장소 예약, 사람 연결까지 전부.</p>
   </div>
-
   <div class="steps">
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-content">
         <div class="step-title">온담이 모임을 기획합니다</div>
-        <div class="step-desc">산책, 맛집, 여행, 문화 탐방 등 다양한 테마로 모임을 설계합니다. 장소 예약, 인원 구성, 분위기까지 온담이 신경 씁니다.</div>
+        <div class="step-desc">산책, 맛집, 여행, 문화 탐방 등 다양한 테마. 장소 예약, 인원 구성까지 온담이 신경 씁니다.</div>
       </div>
     </div>
     <div class="step">
       <div class="step-num">2</div>
       <div class="step-content">
         <div class="step-title">마음에 드는 모임에 참여하세요</div>
-        <div class="step-desc">앱에서 모임을 둘러보고, 끌리는 모임에 참여 신청만 누르면 됩니다. 6~10명 소규모라 편안하게 대화할 수 있습니다.</div>
+        <div class="step-desc">앱에서 모임을 둘러보고, 끌리는 모임에 참여 신청. 6~10명 소규모라 편안합니다.</div>
       </div>
     </div>
     <div class="step">
       <div class="step-num">3</div>
       <div class="step-content">
         <div class="step-title">따뜻한 만남이 시작됩니다</div>
-        <div class="step-desc">함께 걷고, 먹고, 웃으면서 자연스럽게 관계가 만들어집니다. 마음에 드는 사람이 있다면, 채팅으로 대화를 이어가세요.</div>
+        <div class="step-desc">함께 걷고, 먹고, 웃으면서 자연스럽게 관계가 만들어집니다.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Moim Examples -->
+<!-- Moim Examples with Real Photos -->
 <div class="section-bg">
   <div class="section-inner">
     <div class="section-header">
       <h2>이런 모임이 기다리고 있어요</h2>
-      <p>온담이 기획하는 다양한 테마의 모임</p>
+      <p>온담 회원들이 직접 참여한 모임</p>
     </div>
-
     <div class="moim-grid">
       <div class="moim-card">
-        <div class="moim-icon">&#x1F6B6;</div>
-        <div class="moim-name">도심 산책</div>
-        <div class="moim-desc">서촌, 북촌, 한강<br>함께 걸으며 대화해요</div>
+        <img class="moim-card-img" src="/images/park-dog.png" alt="도심 산책 모임" loading="lazy">
+        <div class="moim-card-body">
+          <span class="moim-card-tag">인기</span>
+          <div class="moim-name">도심 산책</div>
+          <div class="moim-desc">서촌, 북촌, 한강 함께 걸으며 대화</div>
+        </div>
       </div>
       <div class="moim-card">
-        <div class="moim-icon">&#x2615;</div>
-        <div class="moim-name">커피 한 잔</div>
-        <div class="moim-desc">분위기 좋은 카페에서<br>편한 수다 한판</div>
+        <img class="moim-card-img" src="/images/ocean-cafe.png" alt="커피 한 잔 모임" loading="lazy">
+        <div class="moim-card-body">
+          <span class="moim-card-tag">매주</span>
+          <div class="moim-name">커피 한 잔</div>
+          <div class="moim-desc">분위기 좋은 카페에서 편한 수다</div>
+        </div>
       </div>
       <div class="moim-card">
-        <div class="moim-icon">&#x1F3A8;</div>
-        <div class="moim-name">문화 탐방</div>
-        <div class="moim-desc">전시, 공연, 영화<br>함께 보면 더 좋은 것들</div>
+        <img class="moim-card-img" src="/images/pottery.png" alt="문화 체험 모임" loading="lazy">
+        <div class="moim-card-body">
+          <span class="moim-card-tag">체험</span>
+          <div class="moim-name">문화 체험</div>
+          <div class="moim-desc">도예, 전시, 공연 함께 즐기기</div>
+        </div>
       </div>
       <div class="moim-card">
-        <div class="moim-icon">&#x1F372;</div>
-        <div class="moim-name">맛집 탐방</div>
-        <div class="moim-desc">좋은 사람들과<br>맛있는 밥 한 끼</div>
+        <img class="moim-card-img" src="/images/bookclub.png" alt="독서 모임" loading="lazy">
+        <div class="moim-card-body">
+          <span class="moim-card-tag">월 2회</span>
+          <div class="moim-name">독서 모임</div>
+          <div class="moim-desc">한 달에 한 권, 함께 읽고 대화</div>
+        </div>
       </div>
       <div class="moim-card">
-        <div class="moim-icon">&#x26F0;</div>
-        <div class="moim-name">가벼운 등산</div>
-        <div class="moim-desc">북한산, 관악산<br>건강한 만남</div>
+        <img class="moim-card-img" src="/images/hiking.png" alt="가벼운 등산 모임" loading="lazy">
+        <div class="moim-card-body">
+          <span class="moim-card-tag">건강</span>
+          <div class="moim-name">가벼운 등산</div>
+          <div class="moim-desc">북한산, 관악산 건강한 만남</div>
+        </div>
       </div>
       <div class="moim-card">
-        <div class="moim-icon">&#x2708;&#xFE0F;</div>
-        <div class="moim-name">여행 동반</div>
-        <div class="moim-desc">혼자는 막막한 여행<br>함께라면 설레는 여행</div>
+        <img class="moim-card-img" src="/images/scenic.png" alt="여행 동반 모임" loading="lazy">
+        <div class="moim-card-body">
+          <span class="moim-card-tag">여행</span>
+          <div class="moim-name">여행 동반</div>
+          <div class="moim-desc">혼자는 막막한 여행, 함께라면 설렘</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-<!-- Moim Detail Tabs -->
-<section class="section tab-section">
-  <div class="section-header">
-    <h2>어떤 모임인지 궁금하시죠?</h2>
-    <p>테마별로 자세히 살펴보세요</p>
-  </div>
-
-  <div class="tab-nav">
-    <button class="tab-btn active" data-tab="walk">도심 산책</button>
-    <button class="tab-btn" data-tab="food">맛집 탐방</button>
-    <button class="tab-btn" data-tab="culture">문화 나들이</button>
-    <button class="tab-btn" data-tab="hiking">가벼운 등산</button>
-  </div>
-
-  <div class="tab-panel active" id="tab-walk">
-    <div class="tab-story">
-      <div class="tab-story-header">
-        <div class="tab-story-icon" style="background:#E8F5E9;">&#x1F6B6;</div>
-        <div class="tab-story-meta">
-          <div class="tab-story-title">서촌 골목길 산책 모임</div>
-          <div class="tab-story-info">매주 토요일 · 6~8명 · 약 2시간</div>
-        </div>
-      </div>
-      <div class="tab-story-schedule">
-        <span class="tab-story-time">10:00</span><span class="tab-story-activity">경복궁역 3번 출구 집합</span>
-        <span class="tab-story-time">10:15</span><span class="tab-story-activity">서촌 골목 걸으며 자기소개</span>
-        <span class="tab-story-time">11:00</span><span class="tab-story-activity">통인시장 구경 & 간식 타임</span>
-        <span class="tab-story-time">11:40</span><span class="tab-story-activity">수성동 계곡 산책 & 자유 대화</span>
-        <span class="tab-story-time">12:00</span><span class="tab-story-activity">마무리 인사 (원하시면 점심도 함께!)</span>
-      </div>
-      <div class="tab-story-body">
-        온담 진행자가 자연스러운 대화를 이끌어드립니다. 억지로 말 걸 필요 없고, 걸으면서 편하게 이야기하면 됩니다. 첫 참여자도 항상 환영합니다.
-      </div>
-      <div class="tab-story-tags">
-        <span class="tab-story-tag">&#x1F33F; 서촌</span>
-        <span class="tab-story-tag">&#x1F9D1;&#x200D;&#x1F91D;&#x200D;&#x1F9D1; 6~8명</span>
-        <span class="tab-story-tag">&#x23F0; 2시간</span>
-        <span class="tab-story-tag">&#x1F530; 진행자 동행</span>
-      </div>
-      <div class="tab-story-quote">"처음이라 긴장했는데, 같이 걸으니까 금방 편해졌어요. 다음 주에도 나올 거예요!" — 참여자 후기</div>
-    </div>
-  </div>
-
-  <div class="tab-panel" id="tab-food">
-    <div class="tab-story">
-      <div class="tab-story-header">
-        <div class="tab-story-icon" style="background:#FFF3E0;">&#x1F372;</div>
-        <div class="tab-story-meta">
-          <div class="tab-story-title">을지로 노포 맛집 투어</div>
-          <div class="tab-story-info">격주 금요일 · 6명 · 약 2시간</div>
-        </div>
-      </div>
-      <div class="tab-story-schedule">
-        <span class="tab-story-time">18:30</span><span class="tab-story-activity">을지로3가역 집합</span>
-        <span class="tab-story-time">18:45</span><span class="tab-story-activity">첫 번째 노포에서 저녁 식사</span>
-        <span class="tab-story-time">19:45</span><span class="tab-story-activity">을지로 골목 산책 & 이야기</span>
-        <span class="tab-story-time">20:15</span><span class="tab-story-activity">카페에서 커피 한 잔 (선택)</span>
-        <span class="tab-story-time">20:30</span><span class="tab-story-activity">마무리 & 다음 모임 안내</span>
-      </div>
-      <div class="tab-story-body">
-        40년 된 노포부터 숨은 맛집까지, 온담이 미리 방문해서 검증한 곳만 선정합니다. 같은 테이블에서 밥 먹으면 금방 친해지죠. 혼밥 대신 좋은 사람들과 맛있는 한 끼.
-      </div>
-      <div class="tab-story-tags">
-        <span class="tab-story-tag">&#x1F35C; 을지로</span>
-        <span class="tab-story-tag">&#x1F9D1;&#x200D;&#x1F91D;&#x200D;&#x1F9D1; 6명</span>
-        <span class="tab-story-tag">&#x1F374; 저녁 포함</span>
-        <span class="tab-story-tag">&#x2B50; 검증된 맛집</span>
-      </div>
-      <div class="tab-story-quote">"혼자 밥 먹는 게 지겨웠는데, 같이 먹으니까 밥이 이렇게 맛있을 수가." — 참여자 후기</div>
-    </div>
-  </div>
-
-  <div class="tab-panel" id="tab-culture">
-    <div class="tab-story">
-      <div class="tab-story-header">
-        <div class="tab-story-icon" style="background:#F3E5F5;">&#x1F3A8;</div>
-        <div class="tab-story-meta">
-          <div class="tab-story-title">미술관 나들이 모임</div>
-          <div class="tab-story-info">월 2회 수요일 · 8명 · 약 2.5시간</div>
-        </div>
-      </div>
-      <div class="tab-story-schedule">
-        <span class="tab-story-time">14:00</span><span class="tab-story-activity">미술관 로비 집합 & 인사</span>
-        <span class="tab-story-time">14:15</span><span class="tab-story-activity">함께 전시 관람 (온담 가이드 제공)</span>
-        <span class="tab-story-time">15:30</span><span class="tab-story-activity">카페에서 감상 나누기</span>
-        <span class="tab-story-time">16:15</span><span class="tab-story-activity">다음 전시 추천 & 마무리</span>
-      </div>
-      <div class="tab-story-body">
-        혼자 보면 조용하고, 둘이 보면 이야기가 됩니다. 전시 감상 후 카페에서 나누는 대화가 이 모임의 핵심입니다. 미술을 몰라도 괜찮아요 — 느낌만 나누면 됩니다.
-      </div>
-      <div class="tab-story-tags">
-        <span class="tab-story-tag">&#x1F5BC; 전시 관람</span>
-        <span class="tab-story-tag">&#x1F9D1;&#x200D;&#x1F91D;&#x200D;&#x1F9D1; 8명</span>
-        <span class="tab-story-tag">&#x2615; 카페 포함</span>
-        <span class="tab-story-tag">&#x1F4AC; 감상 토크</span>
-      </div>
-      <div class="tab-story-quote">"미술관은 혼자만 갔었는데, 같이 가니까 보이는 게 달라요. 대화도 자연스럽고." — 참여자 후기</div>
-    </div>
-  </div>
-
-  <div class="tab-panel" id="tab-hiking">
-    <div class="tab-story">
-      <div class="tab-story-header">
-        <div class="tab-story-icon" style="background:#E0F2F1;">&#x26F0;</div>
-        <div class="tab-story-meta">
-          <div class="tab-story-title">북한산 둘레길 트레킹</div>
-          <div class="tab-story-info">격주 일요일 · 8~10명 · 약 3시간</div>
-        </div>
-      </div>
-      <div class="tab-story-schedule">
-        <span class="tab-story-time">09:00</span><span class="tab-story-activity">구파발역 집합 & 스트레칭</span>
-        <span class="tab-story-time">09:20</span><span class="tab-story-activity">북한산 둘레길 출발 (초보 코스)</span>
-        <span class="tab-story-time">10:30</span><span class="tab-story-activity">중간 쉼터에서 간식 & 대화</span>
-        <span class="tab-story-time">11:30</span><span class="tab-story-activity">하산 후 막걸리 한 잔 (선택)</span>
-        <span class="tab-story-time">12:00</span><span class="tab-story-activity">마무리 & 인증샷</span>
-      </div>
-      <div class="tab-story-body">
-        운동도 하고 친구도 만드는 일석이조. 초보자 코스로만 진행하니 체력 걱정 마세요. 같이 땀 흘리면 말 안 해도 친해집니다. 하산 후 막걸리는 보너스.
-      </div>
-      <div class="tab-story-tags">
-        <span class="tab-story-tag">&#x26F0; 북한산</span>
-        <span class="tab-story-tag">&#x1F9D1;&#x200D;&#x1F91D;&#x200D;&#x1F9D1; 8~10명</span>
-        <span class="tab-story-tag">&#x1F3C3; 초보 코스</span>
-        <span class="tab-story-tag">&#x1F376; 막걸리 (선택)</span>
-      </div>
-      <div class="tab-story-quote">"산 좋아하는 사람 만나기 어려웠는데, 여기서 산 친구 3명이 생겼어요!" — 참여자 후기</div>
-    </div>
-  </div>
-
-  <!-- App Preview Mockups -->
-  <div class="app-preview">
-    <div class="phone-mockup">
-      <div class="phone-screen">
-        <div class="phone-status">온담</div>
-        <div class="phone-content">
-          <h4>&#x1F525; 이번 주 모임</h4>
-          <div class="phone-card">
-            <div class="phone-card-title">서촌 골목길 산책</div>
-            <div class="phone-card-desc">3/22 토 · 10:00 · 경복궁역</div>
-            <div class="phone-card-badge">모집 중 4/8</div>
-          </div>
-          <div class="phone-card">
-            <div class="phone-card-title">을지로 맛집 투어</div>
-            <div class="phone-card-desc">3/28 금 · 18:30 · 을지로3가역</div>
-            <div class="phone-card-badge">마감 임박</div>
-          </div>
-          <div class="phone-card">
-            <div class="phone-card-title">북한산 둘레길</div>
-            <div class="phone-card-desc">3/30 일 · 09:00 · 구파발역</div>
-            <div class="phone-card-badge">모집 중 5/10</div>
-          </div>
-        </div>
-        <div class="phone-nav">
-          <span>&#x1F3E0;</span><span>&#x1F50D;</span><span>&#x1F4AC;</span><span>&#x1F464;</span>
-        </div>
-      </div>
-    </div>
-    <div class="phone-mockup">
-      <div class="phone-screen">
-        <div class="phone-status">모임 상세</div>
-        <div class="phone-content">
-          <h4>&#x1F6B6; 서촌 골목길 산책</h4>
-          <div class="phone-card">
-            <div class="phone-card-desc" style="line-height:1.6;">
-              &#x1F4C5; 3월 22일 토요일<br>
-              &#x23F0; 오전 10:00 ~ 12:00<br>
-              &#x1F4CD; 경복궁역 3번 출구<br>
-              &#x1F465; 참여자 4/8명
-            </div>
-          </div>
-          <div class="phone-card" style="background:var(--brand-light);">
-            <div class="phone-card-title" style="color:var(--brand);">참여 신청하기</div>
-            <div class="phone-card-desc">버튼 하나로 참여 완료!</div>
-          </div>
-          <div class="phone-card">
-            <div class="phone-card-title">참여자</div>
-            <div class="phone-card-desc">김OO(58) · 이OO(55) · 박OO(61) · 최OO(52)</div>
-          </div>
-        </div>
-        <div class="phone-nav">
-          <span>&#x1F3E0;</span><span>&#x1F50D;</span><span>&#x1F4AC;</span><span>&#x1F464;</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- Benefits -->
 <section class="section">
@@ -1152,34 +754,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2>온담에서 얻는 것들</h2>
     <p>모임 하나로 시작되는 변화</p>
   </div>
-
   <div class="benefit-grid">
     <div class="benefit-card">
-      <div class="benefit-emoji">&#x1F91D;</div>
-      <div class="benefit-text">
+      <div class="benefit-icon" style="background:#FFE4E4;">&#x1F91D;</div>
+      <div>
         <div class="benefit-title">새로운 친구</div>
         <div class="benefit-desc">비슷한 나이, 비슷한 관심사를 가진 사람들과 자연스럽게 친해집니다.</div>
       </div>
     </div>
     <div class="benefit-card">
-      <div class="benefit-emoji">&#x1F4C5;</div>
-      <div class="benefit-text">
+      <div class="benefit-icon" style="background:#E8E0FF;">&#x1F4C5;</div>
+      <div>
         <div class="benefit-title">기다려지는 주말</div>
-        <div class="benefit-desc">매주 새로운 모임이 열립니다. 토요일이 기다려지기 시작합니다.</div>
+        <div class="benefit-desc">매주 새로운 모임이 열립니다. 토요일이 기다려지기 시작해요.</div>
       </div>
     </div>
     <div class="benefit-card">
-      <div class="benefit-emoji">&#x1F49B;</div>
-      <div class="benefit-text">
+      <div class="benefit-icon" style="background:#E0F0FF;">&#x1F49B;</div>
+      <div>
         <div class="benefit-title">따뜻한 관계</div>
-        <div class="benefit-desc">모임에서 시작된 인연이 우정으로, 때로는 특별한 관계로 이어집니다.</div>
+        <div class="benefit-desc">모임에서 시작된 인연이 우정으로, 때로는 특별한 관계로.</div>
       </div>
     </div>
     <div class="benefit-card">
-      <div class="benefit-emoji">&#x1F3E0;</div>
-      <div class="benefit-text">
+      <div class="benefit-icon" style="background:#FFF0E0;">&#x1F3E0;</div>
+      <div>
         <div class="benefit-title">나만의 커뮤니티</div>
-        <div class="benefit-desc">정기적으로 만나는 사람들이 생기면, 그게 바로 내 커뮤니티입니다.</div>
+        <div class="benefit-desc">정기적으로 만나는 사람들이 생기면, 그게 바로 내 커뮤니티.</div>
       </div>
     </div>
   </div>
@@ -1192,24 +793,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2>참여자 이야기</h2>
       <p>온담 모임에 다녀온 분들의 솔직한 후기</p>
     </div>
-
     <div class="review-grid">
       <div class="review-card">
-        <div class="review-text">퇴직하고 2년 동안 집에만 있었어요. 온담 산책 모임에 처음 나갔는데, 다들 너무 편하게 대해주셔서 놀랐습니다. <mark>지금은 매주 나가요.</mark></div>
-        <div class="review-footer">
-          <span class="review-author">&#x1F6B6; 김OO · 58세 · 서울</span>
+        <img class="review-avatar" src="/images/park-bench.png" alt="김OO" loading="lazy">
+        <div class="review-body">
+          <div class="review-text">퇴직하고 2년 동안 집에만 있었어요. 온담 산책 모임에 처음 나갔는데, 다들 너무 편하게 대해주셔서 놀랐습니다. <mark>지금은 매주 나가요.</mark></div>
+          <span class="review-author">김OO · 58세 · 서울</span>
         </div>
       </div>
       <div class="review-card">
-        <div class="review-text"><mark>혼자 밥 먹는 게 지겨웠는데,</mark> 온담에서 만난 분들이랑 이젠 같이 먹어요. <mark>토요일이 기다려지는 건 정말 오랜만이에요.</mark></div>
-        <div class="review-footer">
-          <span class="review-author">&#x2615; 이OO · 63세 · 경기</span>
+        <img class="review-avatar" src="/images/smile.png" alt="이OO" loading="lazy">
+        <div class="review-body">
+          <div class="review-text"><mark>혼자 밥 먹는 게 지겨웠는데,</mark> 온담에서 만난 분들이랑 이젠 같이 먹어요. <mark>토요일이 기다려지는 건 정말 오랜만이에요.</mark></div>
+          <span class="review-author">이OO · 63세 · 경기</span>
         </div>
       </div>
       <div class="review-card">
-        <div class="review-text"><mark>딸이 깔아줬어요.</mark> 처음엔 반신반의했는데, 첫 모임에서 동갑내기 친구를 만났습니다. <mark>지금 제일 친한 친구예요.</mark></div>
-        <div class="review-footer">
-          <span class="review-author">&#x1F46B; 박OO · 55세 · 인천</span>
+        <img class="review-avatar" src="/images/palace.png" alt="박OO" loading="lazy">
+        <div class="review-body">
+          <div class="review-text"><mark>딸이 깔아줬어요.</mark> 처음엔 반신반의했는데, 첫 모임에서 동갑내기 친구를 만났습니다. <mark>지금 제일 친한 친구예요.</mark></div>
+          <span class="review-author">박OO · 55세 · 인천</span>
         </div>
       </div>
     </div>
@@ -1220,7 +823,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="children-bg">
   <div class="section-inner" style="padding:var(--section-padding);">
     <div class="children-content">
-      <div class="children-emoji">&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;</div>
       <h2 class="children-title">나도 새로운 곳 가기 어려운데,<br>부모님은 오죽하실까요.</h2>
       <p class="children-sub">그래서 만들었습니다.<br>나와만 주세요, 나머지는 온담이.</p>
       <p class="children-desc">
@@ -1228,7 +830,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         온담이 전부 합니다.<br>
         자식같은 마음으로, 부모님의 주말을 준비합니다.
       </p>
-
       <div class="chat-box">
         <div class="chat-row right">
           <div class="chat-bubble">엄마 요즘 뭐 하고 지내?</div>
@@ -1270,7 +871,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2>안심하고 참여하세요</h2>
     <p>온담은 안전하고 신뢰할 수 있는 서비스입니다</p>
   </div>
-
   <div class="trust-grid">
     <div class="trust-item">
       <div class="trust-icon">&#x1F4F1;</div>
@@ -1295,30 +895,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- Gallery Link -->
-<section class="gallery-link-section" style="text-align:center; padding:0 24px 60px; background:var(--bg);">
-  <a href="/gallery" style="display:inline-flex; align-items:center; gap:8px; color:var(--text-secondary); font-size:16px; font-weight:600; text-decoration:none; padding:14px 28px; border:1.5px solid rgba(0,0,0,0.08); border-radius:999px; transition:all 0.2s;"
-     onmouseover="this.style.borderColor='rgba(255,107,107,0.3)';this.style.color='#FF6B6B'"
-     onmouseout="this.style.borderColor='rgba(0,0,0,0.08)';this.style.color='#666'">
-    <span style="font-size:20px;">&#x1F4F8;</span> 모임 현장 후기 보러가기 &rarr;
-  </a>
-</section>
-
 <!-- CTA Bottom -->
 <section class="cta-bottom">
   <h2 class="cta-title">좋은 사람 만나기,<br>이제 <span class="brand">온담</span>에서 시작하세요</h2>
-  <p class="cta-desc">앱 출시 준비 중이지만, 웹에서 바로 이용할 수 있어요.<br>가입은 무료입니다.</p>
-  <a href="https://ondam-front.vercel.app" class="cta-button">웹에서 바로 시작하기</a>
+  <p class="cta-desc">Google Play에서 앱을 다운로드하거나,<br>웹에서 바로 이용할 수 있어요. 가입은 무료입니다.</p>
+  <a href="https://ondam-front.vercel.app" class="cta-button ondam-cta">무료로 시작하기</a>
   <div class="cta-stores">
-    <span class="cta-store">App Store · Google Play 곧 출시</span>
+    <a href="https://play.google.com/store/apps/details?id=com.ondam.app" class="cta-store" target="_blank" rel="noopener">Google Play 다운로드</a>
+    <span class="cta-store">·</span>
+    <span class="cta-store">App Store 준비 중</span>
   </div>
 </section>
 
 <!-- Sticky Mobile CTA -->
 <div class="sticky-cta" id="stickyCta">
-  <div class="sticky-cta-text"><strong>서울</strong> 첫 모임 모집 중</div>
-  <a href="https://ondam-front.vercel.app" class="sticky-cta-btn">무료로 시작하기</a>
+  <div class="sticky-cta-text"><strong>온담</strong> 새 친구 만나기</div>
+  <a href="https://ondam-front.vercel.app" class="sticky-cta-btn ondam-cta">무료로 시작하기</a>
 </div>
+
+<!-- Floating Kakao Button -->
+<a href="https://pf.kakao.com/_CxfWxfn/chat" class="kakao-float" id="kakaoFloat" target="_blank" rel="noopener" aria-label="카카오톡 문의">
+  <svg viewBox="0 0 24 24" fill="#3C1E1E"><path d="M12 3C6.477 3 2 6.463 2 10.691c0 2.725 1.8 5.117 4.508 6.477-.144.522-.926 3.373-.961 3.587 0 0-.02.166.088.229.108.063.235.014.235.014.31-.043 3.593-2.363 4.157-2.761.64.091 1.3.139 1.973.139 5.523 0 10-3.463 10-7.685C22 6.463 17.523 3 12 3z"/></svg>
+</a>
 
 <!-- Footer -->
 <footer class="footer" id="social">
@@ -1330,108 +928,122 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
     </a>
   </div>
-  <p><a href="/pitch">투자자 페이지</a> · <a href="https://ondam-front.vercel.app">온담 웹</a></p>
+  <p><a href="https://pf.kakao.com/_CxfWxfn/chat" target="_blank" rel="noopener">카카오톡 문의</a> · <a href="/pitch">투자자 페이지</a> · <a href="https://ondam-front.vercel.app">온담 웹</a></p>
   <p style="margin-top:8px;">&copy; 2026 Ondam. All rights reserved.</p>
 </footer>
 
 <script>
-// Enable animation system (fallback: content visible without JS)
+// Enable animation system
 document.documentElement.classList.add('anim-ready');
 
-// Tab navigation
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-  });
-});
-
 // Scroll animation system
-const animate = (entries) => {
-  entries.forEach(e => {
+var animate = function(entries) {
+  entries.forEach(function(e) {
     if (!e.isIntersecting) return;
     e.target.classList.add('visible');
     obs.unobserve(e.target);
   });
 };
-const obs = new IntersectionObserver(animate, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+var obs = new IntersectionObserver(animate, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
 // Section headers - fade up
-document.querySelectorAll('.section-header, .solution-header, .children-content, .cta-bottom').forEach(el => {
+document.querySelectorAll('.section-header, .children-content, .cta-bottom').forEach(function(el) {
   el.classList.add('anim-fade-up');
   obs.observe(el);
 });
 
-// Pain items - slide in from left, staggered
-document.querySelectorAll('.pain-item').forEach((el, i) => {
-  el.classList.add('anim-slide-left');
-  el.style.transitionDelay = `${i * 0.1}s`;
+// Pain cards - scale, staggered
+document.querySelectorAll('.pain-card').forEach(function(el, i) {
+  el.classList.add('anim-scale');
+  el.style.transitionDelay = i * 0.1 + 's';
   obs.observe(el);
 });
 
-// Steps - slide in from right, staggered
-document.querySelectorAll('.step').forEach((el, i) => {
-  el.classList.add('anim-slide-right');
-  el.style.transitionDelay = `${i * 0.15}s`;
+// Steps - fade up, staggered
+document.querySelectorAll('.step').forEach(function(el, i) {
+  el.classList.add('anim-fade-up');
+  el.style.transitionDelay = i * 0.15 + 's';
   obs.observe(el);
 });
 
 // Moim cards - scale up, staggered
-document.querySelectorAll('.moim-card').forEach((el, i) => {
+document.querySelectorAll('.moim-card').forEach(function(el, i) {
   el.classList.add('anim-scale');
-  el.style.transitionDelay = `${i * 0.08}s`;
+  el.style.transitionDelay = i * 0.08 + 's';
   obs.observe(el);
 });
 
 // Benefit cards - fade up, staggered
-document.querySelectorAll('.benefit-card').forEach((el, i) => {
+document.querySelectorAll('.benefit-card').forEach(function(el, i) {
   el.classList.add('anim-fade-up');
-  el.style.transitionDelay = `${i * 0.12}s`;
+  el.style.transitionDelay = i * 0.12 + 's';
   obs.observe(el);
 });
 
 // Review cards - slide left, staggered
-document.querySelectorAll('.review-card').forEach((el, i) => {
+document.querySelectorAll('.review-card').forEach(function(el, i) {
   el.classList.add('anim-slide-left');
-  el.style.transitionDelay = `${i * 0.12}s`;
+  el.style.transitionDelay = i * 0.12 + 's';
   obs.observe(el);
 });
 
 // Trust items - scale, staggered
-document.querySelectorAll('.trust-item').forEach((el, i) => {
+document.querySelectorAll('.trust-item').forEach(function(el, i) {
   el.classList.add('anim-scale');
-  el.style.transitionDelay = `${i * 0.1}s`;
+  el.style.transitionDelay = i * 0.1 + 's';
   obs.observe(el);
 });
 
 // Chat bubbles - fade up, staggered
-document.querySelectorAll('.chat-row, .chat-left-group, .chat-result').forEach((el, i) => {
+document.querySelectorAll('.chat-row, .chat-left-group, .chat-result').forEach(function(el, i) {
   el.classList.add('anim-fade-up');
-  el.style.transitionDelay = `${0.15 + i * 0.2}s`;
+  el.style.transitionDelay = (0.15 + i * 0.2) + 's';
   obs.observe(el);
 });
 
+// Platform detection & CTA routing
+(function() {
+  var ua = navigator.userAgent || '';
+  var isAndroid = /Android/i.test(ua);
+  var playStoreUrl = 'https://play.google.com/store/apps/details?id=com.ondam.app&referrer=utm_source%3Dabout%26utm_medium%3Dweb%26utm_campaign%3Dlanding';
+
+  document.querySelectorAll('.ondam-cta').forEach(function(link) {
+    if (isAndroid) {
+      link.href = playStoreUrl;
+      if (link.classList.contains('hero-cta')) {
+        link.textContent = '앱 다운로드';
+      } else if (link.classList.contains('cta-button')) {
+        link.textContent = 'Google Play에서 시작하기';
+      } else {
+        link.textContent = '앱 다운로드';
+      }
+    }
+  });
+})();
 
 // CTA click tracking
-document.querySelectorAll('a[href*="ondam-front.vercel.app"]').forEach(link => {
-  link.addEventListener('click', () => {
+document.querySelectorAll('.ondam-cta').forEach(function(link) {
+  link.addEventListener('click', function() {
+    var dest = /play\.google/.test(link.href) ? 'play_store' : 'web';
     gtag('event', 'cta_click', {
       event_category: 'conversion',
       event_label: link.textContent.trim(),
+      destination: dest,
       transport_type: 'beacon'
     });
   });
 });
 
-// Sticky CTA - show after scrolling past hero
-const stickyCta = document.getElementById('stickyCta');
-const hero = document.querySelector('.hero');
+// Sticky CTA & Kakao float - show after scrolling past hero
+var stickyCta = document.getElementById('stickyCta');
+var kakaoFloat = document.getElementById('kakaoFloat');
+var hero = document.querySelector('.hero');
 if (stickyCta && hero) {
-  const stickyObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      stickyCta.classList.toggle('show', !e.isIntersecting);
+  var stickyObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      var show = !e.isIntersecting;
+      stickyCta.classList.toggle('show', show);
+      if (kakaoFloat) kakaoFloat.classList.toggle('show', show);
     });
   }, { threshold: 0 });
   stickyObs.observe(hero);
