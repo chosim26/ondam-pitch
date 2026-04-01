@@ -113,8 +113,14 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     position: absolute; inset: 0; z-index: 0;
   }
   .hero-bg img {
+    position: absolute; inset: 0;
     width: 100%; height: 100%; object-fit: cover;
     filter: brightness(0.35);
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+  }
+  .hero-bg img.active {
+    opacity: 1;
   }
   .hero-content {
     position: relative; z-index: 2;
@@ -253,6 +259,48 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   .step-content { padding-top: 4px; flex: 1; }
   .step-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
   .step-desc { font-size: 16px; color: var(--text-secondary); line-height: 1.65; }
+
+  /* ===== App Flow Phones ===== */
+  .app-flow {
+    display: flex; justify-content: center; gap: 16px;
+    margin-top: 40px; flex-wrap: nowrap; overflow-x: auto;
+    padding: 0 16px 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .app-flow::-webkit-scrollbar { display: none; }
+  .app-phone {
+    flex-shrink: 0; width: 200px; text-align: center;
+  }
+  .app-phone-frame {
+    width: 200px; height: 410px; border-radius: 28px;
+    background: #1A1A1A; padding: 6px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+    overflow: hidden;
+  }
+  .app-phone-frame img {
+    width: 100%; height: 100%; border-radius: 22px;
+    object-fit: cover; object-position: top;
+  }
+  .app-phone-label {
+    margin-top: 14px; font-size: 15px; font-weight: 700; color: var(--text-primary);
+  }
+  .app-phone-desc {
+    font-size: 13px; color: var(--text-secondary); margin-top: 4px; line-height: 1.4;
+  }
+  .app-flow-arrow {
+    display: flex; align-items: center; flex-shrink: 0;
+    color: var(--brand); font-size: 24px; padding-bottom: 40px;
+  }
+
+  @media (max-width: 480px) {
+    .app-phone { width: 160px; }
+    .app-phone-frame { width: 160px; height: 328px; border-radius: 22px; padding: 4px; }
+    .app-phone-frame img { border-radius: 18px; }
+    .app-flow { gap: 10px; }
+    .app-flow-arrow { font-size: 18px; padding-bottom: 32px; }
+    .app-phone-label { font-size: 14px; }
+    .app-phone-desc { font-size: 12px; }
+  }
 
   /* ===== Moim Cards with Photos ===== */
   .moim-grid {
@@ -569,7 +617,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Hero -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="/images/hero-cafe.png" alt="온담 모임">
+    <img src="/images/hero-cafe.png" alt="온담 모임" class="active">
+    <img src="/images/hiking.png" alt="등산 모임">
+    <img src="/images/pottery.png" alt="문화 체험">
+    <img src="/images/park-dog.png" alt="공원 산책">
+    <img src="/images/bookclub.png" alt="독서 모임">
   </div>
   <div class="hero-content">
     <div class="hero-badge">
@@ -684,6 +736,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="step-title">따뜻한 만남이 시작됩니다</div>
         <div class="step-desc">함께 걷고, 먹고, 웃으면서 자연스럽게 관계가 만들어집니다.</div>
       </div>
+    </div>
+  </div>
+
+  <!-- App Screen Flow -->
+  <div class="app-flow">
+    <div class="app-phone">
+      <div class="app-phone-frame">
+        <img src="/images/app-moim.png" alt="모임 탭" loading="lazy">
+      </div>
+      <div class="app-phone-label">모임 둘러보기</div>
+      <div class="app-phone-desc">관심 가는 모임에<br>참여 신청</div>
+    </div>
+    <div class="app-flow-arrow">&#x279C;</div>
+    <div class="app-phone">
+      <div class="app-phone-frame">
+        <img src="/images/app-inyeon.png" alt="인연 탭" loading="lazy">
+      </div>
+      <div class="app-phone-label">인연 만나기</div>
+      <div class="app-phone-desc">매일 새로운 인연을<br>추천받기</div>
+    </div>
+    <div class="app-flow-arrow">&#x279C;</div>
+    <div class="app-phone">
+      <div class="app-phone-frame">
+        <img src="/images/app-chat.png" alt="대화방 탭" loading="lazy">
+      </div>
+      <div class="app-phone-label">대화 이어가기</div>
+      <div class="app-phone-desc">모임에서 만난 분과<br>편하게 대화</div>
     </div>
   </div>
 </section>
@@ -1000,6 +1079,18 @@ document.querySelectorAll('.chat-row, .chat-left-group, .chat-result').forEach(f
   el.style.transitionDelay = (0.15 + i * 0.2) + 's';
   obs.observe(el);
 });
+
+// Hero slideshow - slow crossfade
+(function() {
+  var imgs = document.querySelectorAll('.hero-bg img');
+  if (imgs.length < 2) return;
+  var current = 0;
+  setInterval(function() {
+    imgs[current].classList.remove('active');
+    current = (current + 1) % imgs.length;
+    imgs[current].classList.add('active');
+  }, 5000);
+})();
 
 // Platform detection & CTA routing
 (function() {
