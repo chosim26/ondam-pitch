@@ -1181,7 +1181,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Step 1: 성별 + 연령대 -->
       <div class="modal-step active" id="step1">
         <h2 class="modal-title">성별과 연령대를<br>알려주세요</h2>
-        <p class="modal-subtitle">맞는 모임을 추천해드릴게요</p>
+        <p class="modal-subtitle">딱 맞는 또래 모임을 찾아드릴게요</p>
         <p class="modal-label">성별</p>
         <div class="select-grid cols-2" style="margin-bottom:24px">
           <button class="select-btn" data-field="gender" data-value="남성" onclick="selectOne(this)">
@@ -1205,7 +1205,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Step 2: 관심 모임 -->
       <div class="modal-step" id="step2">
         <h2 class="modal-title">어떤 모임에<br>관심 있으세요?</h2>
-        <p class="modal-subtitle">여러 개 선택할 수 있어요</p>
+        <p class="modal-subtitle">여러 개 선택할 수 있어요 (나중에 바꿀 수 있어요)</p>
         <div class="select-grid cols-2">
           <button class="select-btn" data-field="interest" data-value="등산" onclick="selectMulti(this)"><span class="select-emoji">⛰️</span>등산/트레킹</button>
           <button class="select-btn" data-field="interest" data-value="맛집" onclick="selectMulti(this)"><span class="select-emoji">🍽️</span>맛집탐방</button>
@@ -1240,10 +1240,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <!-- Step 4: 연락처 -->
+      <!-- Step 4: 연락처 → 여기서 1차 제출 -->
       <div class="modal-step" id="step4">
         <h2 class="modal-title">연락처를<br>알려주세요</h2>
-        <p class="modal-subtitle">초대장을 보내드릴게요</p>
+        <p class="modal-subtitle">온담에서 직접 전화드려요.<br>개인정보는 모임 안내 외 사용하지 않아요.</p>
         <div class="modal-input-group">
           <label class="modal-label">이름</label>
           <input class="modal-input" id="inputName" type="text" placeholder="홍길동" oninput="checkStep4()">
@@ -1254,10 +1254,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <!-- Step 5: 전화 일정 -->
+      <!-- Step 5: 통화 가능 시간 (이미 접수 완료) -->
       <div class="modal-step" id="step5">
-        <h2 class="modal-title">마지막 단계!<br><span id="step5Name"></span>님에게<br>전화드릴게요</h2>
-        <p class="modal-subtitle">통화 가능한 시간대를 선택해주세요<br><span style="color:rgba(255,255,255,0.35);font-size:13px">(약 5분 소요)</span></p>
+        <div style="text-align:center;background:rgba(255,107,107,0.1);border-radius:12px;padding:12px;margin-bottom:24px;">
+          <p style="font-size:15px;color:var(--brand);font-weight:700;margin:0;">✅ 신청이 접수됐어요!</p>
+        </div>
+        <h2 class="modal-title"><span id="step5Name"></span>님,<br>통화 가능한 시간대를<br>알려주세요</h2>
+        <p class="modal-subtitle">초대를 위해 전화드릴게요 (약 5분 소요)</p>
         <div class="modal-input-group">
           <label class="modal-label">날짜</label>
           <div class="select-grid cols-3">
@@ -1275,10 +1278,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div style="margin-top:20px;padding:16px 18px;background:rgba(255,255,255,0.05);border-radius:12px;">
-          <p style="font-size:15px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0;">
+          <p style="font-size:15px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 0 12px;">
             <strong style="color:rgba(255,255,255,0.7)">어떤 통화인가요?</strong><br>
-            온담은 직접 운영하는 모임이에요.<br>취향에 맞는 모임을 안내해드리기 위해 잠깐 통화합니다. 통화 후 참여 여부를 결정하셔도 돼요 :)
+            온담은 직접 운영하는 모임이에요. 취향에 맞는 모임을 안내해드리기 위해 잠깐 통화합니다.
           </p>
+          <p style="font-size:15px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0;">
+            <strong style="color:rgba(255,255,255,0.7)">통화 후 참여를 결정해도 되나요?</strong><br>
+            물론이에요 :) 서로 맞는지 알아보는 과정이에요.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 6: 추가 정보 (선택) -->
+      <div class="modal-step" id="step6">
+        <h2 class="modal-title">딱 맞는 모임을 찾을 수 있도록<br><span id="step6Name"></span>님에 대해<br>알려주세요</h2>
+        <p class="modal-subtitle">선택사항이에요. 건너뛰셔도 돼요!</p>
+        <div class="modal-input-group">
+          <label class="modal-label">간단한 자기소개</label>
+          <textarea class="modal-input" id="inputIntro" rows="3" placeholder="Ex) 마케팅 회사 다니는 52세입니다. 주말에 같이 등산할 친구를 찾고 있어요." oninput="checkStep6()" style="resize:none;line-height:1.6;"></textarea>
+        </div>
+        <div class="modal-input-group">
+          <label class="modal-label">참여 가능 시간대 (모두 선택)</label>
+          <div class="select-grid cols-2">
+            <button class="select-btn" data-field="availableTime" data-value="평일 오전" onclick="selectMultiField(this,'availableTime')">평일 오전</button>
+            <button class="select-btn" data-field="availableTime" data-value="평일 오후" onclick="selectMultiField(this,'availableTime')">평일 오후</button>
+            <button class="select-btn" data-field="availableTime" data-value="주말 오전" onclick="selectMultiField(this,'availableTime')">주말 오전</button>
+            <button class="select-btn" data-field="availableTime" data-value="주말 오후" onclick="selectMultiField(this,'availableTime')">주말 오후</button>
+          </div>
         </div>
       </div>
 
@@ -1287,7 +1313,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="complete-screen" style="padding-top:40px;text-align:left;">
           <div style="text-align:center;margin-bottom:28px;">
             <div class="complete-icon">🎉</div>
-            <h2 class="complete-title"><span id="completeName"></span>님,<br>신청이 완료됐어요!</h2>
+            <h2 class="complete-title"><span id="completeName"></span>님,<br>모든 답변이 완료됐어요!</h2>
             <p class="complete-desc">
               선택하신 시간에 온담에서 전화드릴게요.
             </p>
@@ -1327,6 +1353,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="modal-footer" id="modalFooter">
       <button class="modal-next-btn" id="nextBtn" onclick="nextStep()" disabled>다음</button>
+      <button class="modal-skip-btn" id="skipBtn" onclick="skipStep()" style="display:none;background:none;border:none;color:rgba(255,255,255,0.4);font-size:15px;font-family:inherit;cursor:pointer;padding:12px;text-decoration:underline;">건너뛰기</button>
     </div>
   </div>
 </div>
@@ -1428,8 +1455,8 @@ document.querySelectorAll('.chat-row, .chat-left-group, .chat-result').forEach(f
 
 // ===== Invite Modal Logic =====
 var currentStep = 1;
-var totalSteps = 5;
-var formData = { gender: '', age: '', interests: [], region: [], day: [], name: '', phone: '', date: '', time: '' };
+var totalSteps = 6;
+var formData = { gender: '', age: '', interests: [], region: [], day: [], name: '', phone: '', date: '', time: '', intro: '', availableTime: [] };
 
 function initDateButtons() {
   var today = new Date();
@@ -1496,9 +1523,10 @@ function updateModal() {
   }
   document.getElementById('stepComplete').classList.toggle('active', currentStep > totalSteps);
 
-  // Set name in step 5 and complete screen
+  // Set name in step 5, 6, and complete screen
   if (formData.name) {
     if (currentStep === 5) document.getElementById('step5Name').textContent = formData.name;
+    if (currentStep === 6) document.getElementById('step6Name').textContent = formData.name;
     if (currentStep > totalSteps) document.getElementById('completeName').textContent = formData.name;
   }
 
@@ -1506,21 +1534,32 @@ function updateModal() {
   var pct = currentStep <= totalSteps ? (currentStep / totalSteps * 100) : 100;
   document.getElementById('progressBar').style.width = pct + '%';
 
-  // Step label
-  document.getElementById('stepLabel').textContent = currentStep <= totalSteps ? currentStep + ' / ' + totalSteps : '';
+  // Step label — steps 5,6 show as bonus (no count)
+  if (currentStep <= 4) {
+    document.getElementById('stepLabel').textContent = currentStep + ' / 4';
+  } else if (currentStep <= totalSteps) {
+    document.getElementById('stepLabel').textContent = '';
+  } else {
+    document.getElementById('stepLabel').textContent = '';
+  }
 
-  // Back button visibility
-  document.getElementById('modalBack').style.visibility = currentStep <= 1 ? 'hidden' : 'visible';
+  // Back button visibility — hide on step 5 (post-submit, no going back to change phone)
+  document.getElementById('modalBack').style.visibility = (currentStep <= 1 || currentStep === 5) ? 'hidden' : 'visible';
 
   // Footer visibility
-  document.getElementById('modalFooter').style.display = currentStep > totalSteps ? 'none' : 'block';
+  document.getElementById('modalFooter').style.display = currentStep > totalSteps ? 'none' : '';
+
+  // Skip button — only on step 6
+  document.getElementById('skipBtn').style.display = currentStep === 6 ? 'block' : 'none';
 
   // Next button state
   checkNextBtn();
 
   // Button text
   var nextBtn = document.getElementById('nextBtn');
-  if (currentStep === totalSteps) {
+  if (currentStep === 4) {
+    nextBtn.textContent = '신청하기 →';
+  } else if (currentStep === 6) {
     nextBtn.textContent = '답변 완료 →';
   } else {
     nextBtn.textContent = '계속 →';
@@ -1528,8 +1567,13 @@ function updateModal() {
 }
 
 function nextStep() {
+  // Step 4 → 5: 1차 제출 (핵심 리드 확보)
+  if (currentStep === 4) {
+    submitBasic();
+  }
+  // Step 6 (final): 2차 제출 (전체 데이터)
   if (currentStep === totalSteps) {
-    submitForm();
+    submitFull();
     return;
   }
   currentStep++;
@@ -1537,8 +1581,15 @@ function nextStep() {
   gtag('event', 'funnel_step', { event_category: 'funnel', event_label: 'step_' + currentStep });
 }
 
+function skipStep() {
+  // Step 6 건너뛰기 → complete
+  if (currentStep === 6) {
+    submitFull();
+  }
+}
+
 function prevStep() {
-  if (currentStep > 1) {
+  if (currentStep > 1 && currentStep !== 5) {
     currentStep--;
     updateModal();
   }
@@ -1589,7 +1640,8 @@ function checkStep4() {
   checkNextBtn();
 }
 
-function checkStep5() {
+function checkStep6() {
+  formData.intro = document.getElementById('inputIntro').value.trim();
   checkNextBtn();
 }
 
@@ -1601,41 +1653,44 @@ function checkNextBtn() {
     case 3: valid = formData.region.length > 0 && formData.day.length > 0; break;
     case 4: valid = formData.name.length >= 2 && formData.phone.replace(/\D/g,'').length >= 10; break;
     case 5: valid = formData.date && formData.time; break;
+    case 6: valid = true; break; // 선택사항이므로 항상 진행 가능
   }
   document.getElementById('nextBtn').disabled = !valid;
 }
 
-// Google Sheets webhook URL — Apps Script 배포 후 여기에 붙여넣기
+// Google Sheets webhook URL
 var GOOGLE_SHEET_WEBHOOK = 'https://script.google.com/macros/s/AKfycbxD1FX-ucL8GB7446_auNnfeLwjydsAWv7p-FWMvrLnr8S9ZeCBbOpOwlqSgh5zY-fl/exec';
 
-function submitForm() {
-  // Track conversion
-  gtag('event', 'conversion', { send_to: 'AW-18005256112/NYBCCJ2Z94UcELDPyYlD' });
-  gtag('event', 'form_submit', { event_category: 'funnel', event_label: 'invite_complete' });
-  fbq('track', 'Lead');
+function sendToSheets(data) {
+  if (!GOOGLE_SHEET_WEBHOOK) { console.log('Form data (no webhook):', JSON.stringify(data)); return; }
+  var payload = JSON.parse(JSON.stringify(data));
+  payload.region = Array.isArray(payload.region) ? payload.region.join(', ') : payload.region;
+  payload.day = Array.isArray(payload.day) ? payload.day.join(', ') : payload.day;
+  payload.availableTime = Array.isArray(payload.availableTime) ? payload.availableTime.join(', ') : (payload.availableTime || '');
+  fetch(GOOGLE_SHEET_WEBHOOK, {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(function() { console.log('Sheets saved:', JSON.stringify(payload)); })
+    .catch(function(err) { console.error('Sheets error:', err); });
+}
 
-  // Show complete screen immediately (don't wait for API)
+// 1차 제출: Step 4 → 5 (핵심 리드 확보)
+function submitBasic() {
+  gtag('event', 'conversion', { send_to: 'AW-18005256112/NYBCCJ2Z94UcELDPyYlD' });
+  gtag('event', 'form_submit', { event_category: 'funnel', event_label: 'basic_submit' });
+  fbq('track', 'Lead');
+  sendToSheets(formData);
+  console.log('Basic submit complete');
+}
+
+// 2차 제출: Step 6 → Complete (전체 데이터)
+function submitFull() {
+  gtag('event', 'form_complete', { event_category: 'funnel', event_label: 'full_submit' });
+  sendToSheets(formData);
   currentStep = totalSteps + 1;
   updateModal();
-
-  // Send to Google Sheets
-  if (GOOGLE_SHEET_WEBHOOK) {
-    var payload = JSON.parse(JSON.stringify(formData));
-    payload.region = Array.isArray(payload.region) ? payload.region.join(', ') : payload.region;
-    payload.day = Array.isArray(payload.day) ? payload.day.join(', ') : payload.day;
-    fetch(GOOGLE_SHEET_WEBHOOK, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    }).then(function() {
-      console.log('Sheets saved:', JSON.stringify(formData));
-    }).catch(function(err) {
-      console.error('Sheets error:', err);
-    });
-  } else {
-    console.log('Form data (no webhook):', JSON.stringify(formData));
-  }
+  console.log('Full submit complete');
 }
 
 // Sticky CTA & Kakao float - show after scrolling past hero
