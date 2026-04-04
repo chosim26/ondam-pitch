@@ -82,32 +82,25 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     word-break: keep-all;
   }
 
-  /* ===== Nav ===== */
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0,0,0,0.06);
+  /* ===== Hero Logo ===== */
+  .hero-logo {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+    padding: 24px 28px;
+    display: flex; align-items: center; justify-content: space-between;
   }
-  .nav-inner {
-    max-width: var(--content-width); margin: 0 auto; padding: 0 24px;
-    height: 56px; display: flex; align-items: center; justify-content: space-between;
+  .hero-logo img {
+    height: 32px; width: auto;
+    filter: brightness(0) invert(1);
   }
-  .nav-logo { display: flex; align-items: center; text-decoration: none; }
-  .nav-logo img { height: 32px; width: auto; }
-  .nav-cta {
-    background: var(--brand); color: white; border: none; border-radius: 999px;
-    padding: 10px 22px; font-size: 15px; font-weight: 600; cursor: pointer;
-    text-decoration: none; transition: background 0.2s;
-  }
-  .nav-cta:hover { background: var(--brand-dark); }
 
   /* ===== Hero ===== */
   .hero {
     position: relative; overflow: hidden;
     min-height: 100vh; min-height: 100svh;
-    display: flex; align-items: center; justify-content: center;
-    text-align: center;
+    display: flex; align-items: flex-start;
+    text-align: left;
+    padding-top: 10vh;
+    padding-bottom: 80px;
   }
   .hero-bg {
     position: absolute; inset: 0; z-index: 0;
@@ -115,7 +108,8 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   .hero-bg img {
     position: absolute; inset: 0;
     width: 100%; height: 100%; object-fit: cover;
-    filter: brightness(0.35);
+    object-position: center 25%;
+    filter: brightness(0.6);
     opacity: 0;
     transition: opacity 2s ease-in-out;
   }
@@ -124,63 +118,75 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   }
   .hero-content {
     position: relative; z-index: 2;
-    max-width: 540px; margin: 0 auto; padding: 80px 24px 40px;
+    width: 100%;
+    padding: 0 28px;
     color: white;
   }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 999px; padding: 8px 18px;
-    margin-bottom: 28px; animation: fadeUp 0.8s ease 0.1s both;
-  }
-  .hero-badge-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: #4CAF50; animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-  .hero-badge-text { font-size: 14px; color: rgba(255,255,255,0.9); font-weight: 500; }
 
   .hero h1 {
-    font-size: 40px; font-weight: 800; line-height: 1.35;
-    margin-bottom: 20px; animation: fadeUp 0.8s ease 0.2s both;
-    letter-spacing: -0.5px;
+    font-size: clamp(120px, 64vw, 250px); font-weight: 700; line-height: 1.45;
+    margin-bottom: 44px; animation: fadeUp 0.8s ease 0.2s both;
+    letter-spacing: -1px;
+    word-spacing: 4px;
   }
   .hero-desc {
-    font-size: 18px; color: rgba(255,255,255,0.8);
-    line-height: 1.7; margin-bottom: 36px;
+    font-size: 18px; color: rgba(255,255,255,0.65);
+    line-height: 1.8;
     animation: fadeUp 0.8s ease 0.3s both;
   }
-  .hero-cta {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: var(--brand); color: white;
-    border-radius: 999px; padding: 18px 44px; font-size: 19px; font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 8px 32px rgba(255,107,107,0.4);
-    transition: all 0.3s; animation: fadeUp 0.8s ease 0.4s both;
+
+  /* Hero bottom CTA bar — fixed at bottom like LST */
+  .hero-bottom-cta {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
+    padding: 0 20px 28px;
+    text-align: center;
   }
-  .hero-cta:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,107,107,0.5); }
-  .hero-cta svg { flex-shrink: 0; }
-  .hero-sub {
-    font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 16px;
-    animation: fadeUp 0.8s ease 0.5s both;
+  .hero-cta-label {
+    font-size: 15px; color: rgba(255,255,255,0.75);
+    margin-bottom: 12px;
+    animation: fadeUp 0.8s ease 0.4s both;
+    font-weight: 500;
   }
-  .hero-stores {
-    margin-top: 24px; display: flex; justify-content: center; gap: 16px;
-    animation: fadeUp 0.8s ease 0.55s both;
+  .hero-cta-label strong {
+    color: #fff;
+    font-weight: 700;
   }
-  .hero-store-btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 12px; padding: 10px 20px;
-    color: white; text-decoration: none; font-size: 14px; font-weight: 500;
-    transition: all 0.2s;
+  .hero-bottom-cta button {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%;
+    background: var(--brand); color: white; border: none;
+    border-radius: 16px; padding: 22px 0; font-size: 22px; font-weight: 800;
+    cursor: pointer; font-family: inherit;
+    box-shadow: 0 4px 24px rgba(255,107,107,0.5), 0 0 60px rgba(255,107,107,0.2);
+    transition: all 0.3s; animation: fadeUp 0.8s ease 0.5s both;
+    position: relative;
   }
-  .hero-store-btn:hover { background: rgba(255,255,255,0.2); }
-  .hero-store-btn svg { flex-shrink: 0; }
+  .cta-live-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #22C55E; color: white;
+    font-size: 12px; font-weight: 800;
+    padding: 4px 10px; border-radius: 999px;
+    letter-spacing: 1px;
+    position: relative;
+  }
+  .cta-live-badge::before {
+    content: '';
+    width: 6px; height: 6px; border-radius: 50%;
+    background: white;
+    animation: pulse 1.5s infinite;
+  }
+  .hero-bottom-cta button:hover {
+    background: var(--brand-dark); transform: translateY(-2px);
+  }
+  .hero-bottom-cta button .cta-arrow {
+    font-size: 20px; margin-left: 4px;
+  }
+  .hero-cta-sub {
+    font-size: 14px; color: rgba(255,255,255,0.55);
+    margin-top: 12px;
+    animation: fadeUp 0.8s ease 0.6s both;
+    font-weight: 500;
+  }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -610,6 +616,169 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     .hero h1 { font-size: 25px; }
     .moim-grid { gap: 8px; }
   }
+
+  /* ===== Invite Modal ===== */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.6);
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+  .modal-overlay.active { opacity: 1; visibility: visible; }
+
+  .modal-sheet {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 10000;
+    background: #1a1a1a; color: #fff;
+    border-radius: 20px 20px 0 0;
+    height: 92vh; max-height: 92vh;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .modal-overlay.active .modal-sheet { transform: translateY(0); }
+
+  .modal-header {
+    padding: 20px 24px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .modal-back {
+    background: none; border: none; color: #fff; font-size: 24px;
+    cursor: pointer; padding: 4px 8px; opacity: 0.7;
+  }
+  .modal-back:hover { opacity: 1; }
+  .modal-close {
+    background: none; border: none; color: #fff; font-size: 20px;
+    cursor: pointer; padding: 4px 8px; opacity: 0.5;
+  }
+  .modal-close:hover { opacity: 1; }
+  .modal-step-label {
+    font-size: 14px; color: rgba(255,255,255,0.5); font-weight: 500;
+  }
+
+  .modal-progress {
+    height: 3px; background: rgba(255,255,255,0.1);
+    margin: 0 24px; flex-shrink: 0;
+  }
+  .modal-progress-bar {
+    height: 100%; background: var(--brand);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+
+  .modal-body {
+    flex: 1; overflow-y: auto; padding: 32px 24px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .modal-title {
+    font-size: 28px; font-weight: 800; line-height: 1.4;
+    margin-bottom: 8px; letter-spacing: -0.5px;
+  }
+  .modal-subtitle {
+    font-size: 15px; color: rgba(255,255,255,0.45);
+    margin-bottom: 32px;
+  }
+
+  .modal-step { display: none; }
+  .modal-step.active { display: block; }
+
+  /* Selection buttons */
+  .select-grid {
+    display: grid; gap: 12px;
+  }
+  .select-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+  .select-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  .select-btn {
+    background: #2e2e2e; border: 2px solid transparent;
+    border-radius: 14px; padding: 18px 16px;
+    color: #fff; font-size: 17px; font-weight: 600;
+    cursor: pointer; text-align: center;
+    transition: all 0.2s; font-family: inherit;
+  }
+  .select-btn:hover { background: #3a3a3a; }
+  .select-btn.selected {
+    border-color: var(--brand); background: rgba(255,107,107,0.15);
+  }
+  .select-btn .select-emoji {
+    display: block; font-size: 28px; margin-bottom: 8px;
+  }
+
+  /* Input fields */
+  .modal-input-group { margin-bottom: 20px; }
+  .modal-label {
+    display: block; font-size: 14px; color: rgba(255,255,255,0.5);
+    margin-bottom: 8px; font-weight: 500;
+  }
+  .modal-input {
+    width: 100%; background: #2e2e2e; border: 2px solid transparent;
+    border-radius: 14px; padding: 18px 16px;
+    color: #fff; font-size: 17px; font-family: inherit;
+    outline: none; transition: border-color 0.2s;
+  }
+  .modal-input:focus { border-color: var(--brand); }
+  .modal-input::placeholder { color: rgba(255,255,255,0.25); }
+
+  /* Time slots */
+  .time-slots { display: flex; flex-wrap: wrap; gap: 10px; }
+  .time-slot {
+    background: #2e2e2e; border: 2px solid transparent;
+    border-radius: 12px; padding: 14px 20px;
+    color: #fff; font-size: 15px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+    transition: all 0.2s;
+  }
+  .time-slot:hover { background: #3a3a3a; }
+  .time-slot.selected { border-color: var(--brand); background: rgba(255,107,107,0.15); }
+
+  /* Date picker */
+  .modal-date-input {
+    width: 100%; background: #2e2e2e; border: 2px solid transparent;
+    border-radius: 14px; padding: 18px 16px;
+    color: #fff; font-size: 17px; font-family: inherit;
+    outline: none; transition: border-color 0.2s;
+    -webkit-appearance: none;
+    color-scheme: dark;
+  }
+  .modal-date-input:focus { border-color: var(--brand); }
+
+  /* Footer CTA */
+  .modal-footer {
+    padding: 16px 24px 32px;
+    flex-shrink: 0;
+  }
+  .modal-next-btn {
+    width: 100%; background: var(--brand); color: white; border: none;
+    border-radius: 14px; padding: 20px 0; font-size: 19px; font-weight: 800;
+    cursor: pointer; font-family: inherit;
+    transition: all 0.2s;
+  }
+  .modal-next-btn:hover { background: var(--brand-dark); }
+  .modal-next-btn:disabled {
+    background: #3a3a3a; color: rgba(255,255,255,0.3);
+    cursor: not-allowed;
+  }
+
+  /* Complete screen */
+  .complete-screen {
+    text-align: center; padding-top: 60px;
+  }
+  .complete-icon { font-size: 72px; margin-bottom: 24px; }
+  .complete-title {
+    font-size: 28px; font-weight: 800; margin-bottom: 12px;
+  }
+  .complete-desc {
+    font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  .complete-app-link {
+    display: inline-block; background: #2e2e2e; color: #fff;
+    border-radius: 14px; padding: 16px 32px;
+    font-size: 16px; font-weight: 600; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .complete-app-link:hover { background: #3a3a3a; }
 </style>
 </head>
 <body>
@@ -618,49 +787,31 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<!-- Nav -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo"><img src="/logo.png" alt="온담"></a>
-    <a href="https://ondam-front.vercel.app" class="nav-cta ondam-cta">무료로 시작하기</a>
-  </div>
-</nav>
-
 <!-- Hero -->
 <section class="hero">
+  <div class="hero-logo">
+    <img src="/logo.png" alt="온담">
+  </div>
   <div class="hero-bg">
     <img src="/images/hero-cafe.png" alt="온담 모임" class="active">
     <img src="/images/hiking.png" alt="등산 모임">
     <img src="/images/pottery.png" alt="문화 체험">
-    <img src="/images/park-dog.png" alt="공원 산책">
-    <img src="/images/bookclub.png" alt="독서 모임">
   </div>
   <div class="hero-content">
-    <div class="hero-badge">
-      <span class="hero-badge-dot"></span>
-      <span class="hero-badge-text">서울·경기 모임 참여자 모집 중</span>
-    </div>
-    <h1>새 친구 만나기,<br>이제 어렵지 않아요</h1>
+    <h1>낯선 자리도<br>편안하게,<br>대접받는 모임</h1>
     <p class="hero-desc">
-      같은 동네, 같은 세대, 같은 관심사.<br>
-      등산, 맛집, 산책, 문화생활까지<br>
-      온담이 모임을 준비합니다.
+      40·50·60대 전용 초대제 모임.<br>
+      검증된 또래만, 온담이 직접 모십니다.
     </p>
-    <a href="https://ondam-front.vercel.app" class="hero-cta ondam-cta">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      앱 다운로드
-    </a>
-    <p class="hero-sub">무료 가입 · Google Play 출시</p>
-    <div class="hero-stores">
-      <a href="https://play.google.com/store/apps/details?id=com.ondam.app" class="hero-store-btn" target="_blank" rel="noopener">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302L17.698 13l-2.302-2.302 2.302-2.302v.012zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
-        Google Play
-      </a>
-      <a href="https://ondam-front.vercel.app" class="hero-store-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        웹에서 시작
-      </a>
-    </div>
+  </div>
+  <div class="hero-bottom-cta">
+    <p class="hero-cta-label">🌸 4월 멤버 모집 <strong>73</strong> / 100명</p>
+    <button onclick="openInviteModal()">
+      <span class="cta-live-badge">ON</span>
+      4월 멤버 초대장 받기
+      <span class="cta-arrow">&rarr;</span>
+    </button>
+    <p class="hero-cta-sub">소규모 6~10명 · 온담이 직접 관리 · 첫 모임 무료</p>
   </div>
 </section>
 
@@ -991,25 +1142,143 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- CTA Bottom -->
 <section class="cta-bottom">
   <h2 class="cta-title">좋은 사람 만나기,<br>이제 <span class="brand">온담</span>에서 시작하세요</h2>
-  <p class="cta-desc">Google Play에서 앱을 다운로드하거나,<br>웹에서 바로 이용할 수 있어요. 가입은 무료입니다.</p>
-  <a href="https://ondam-front.vercel.app" class="cta-button ondam-cta">무료로 시작하기</a>
-  <div class="cta-stores">
-    <a href="https://play.google.com/store/apps/details?id=com.ondam.app" class="cta-store" target="_blank" rel="noopener">Google Play 다운로드</a>
-    <span class="cta-store">·</span>
-    <span class="cta-store">App Store 준비 중</span>
-  </div>
+  <p class="cta-desc">4월 멤버를 모집하고 있어요.<br>초대장을 받으시면 연락드릴게요.</p>
+  <button class="cta-button" onclick="openInviteModal()">4월 멤버 초대장 받기</button>
 </section>
 
 <!-- Sticky Mobile CTA -->
 <div class="sticky-cta" id="stickyCta">
-  <div class="sticky-cta-text"><strong>온담</strong> 새 친구 만나기</div>
-  <a href="https://ondam-front.vercel.app" class="sticky-cta-btn ondam-cta">무료로 시작하기</a>
+  <div class="sticky-cta-text"><strong>온담</strong> 100% 초대제 모임</div>
+  <button class="sticky-cta-btn" onclick="openInviteModal()">내 초대장 받기</button>
 </div>
 
 <!-- Floating Kakao Button -->
 <a href="https://pf.kakao.com/_mxgtxhX/chat" class="kakao-float" id="kakaoFloat" target="_blank" rel="noopener" aria-label="카카오톡 문의">
   <svg viewBox="0 0 24 24" fill="#3C1E1E"><path d="M12 3C6.477 3 2 6.463 2 10.691c0 2.725 1.8 5.117 4.508 6.477-.144.522-.926 3.373-.961 3.587 0 0-.02.166.088.229.108.063.235.014.235.014.31-.043 3.593-2.363 4.157-2.761.64.091 1.3.139 1.973.139 5.523 0 10-3.463 10-7.685C22 6.463 17.523 3 12 3z"/></svg>
 </a>
+
+<!-- Invite Modal -->
+<div class="modal-overlay" id="inviteModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-sheet">
+    <div class="modal-header">
+      <button class="modal-back" id="modalBack" onclick="prevStep()">&#8592;</button>
+      <span class="modal-step-label" id="stepLabel">1 / 5</span>
+      <button class="modal-close" onclick="closeModal()">&#10005;</button>
+    </div>
+    <div class="modal-progress"><div class="modal-progress-bar" id="progressBar" style="width:20%"></div></div>
+
+    <div class="modal-body">
+      <!-- Step 1: 성별 + 연령대 -->
+      <div class="modal-step active" id="step1">
+        <h2 class="modal-title">성별과 연령대를<br>알려주세요</h2>
+        <p class="modal-subtitle">맞는 모임을 추천해드릴게요</p>
+        <p class="modal-label">성별</p>
+        <div class="select-grid cols-2" style="margin-bottom:24px">
+          <button class="select-btn" data-field="gender" data-value="남성" onclick="selectOne(this)">
+            <span class="select-emoji">👨</span>남성
+          </button>
+          <button class="select-btn" data-field="gender" data-value="여성" onclick="selectOne(this)">
+            <span class="select-emoji">👩</span>여성
+          </button>
+        </div>
+        <p class="modal-label">연령대</p>
+        <div class="select-grid cols-3">
+          <button class="select-btn" data-field="age" data-value="40대" onclick="selectOne(this)">40대</button>
+          <button class="select-btn" data-field="age" data-value="50대" onclick="selectOne(this)">50대</button>
+          <button class="select-btn" data-field="age" data-value="60대" onclick="selectOne(this)">60대</button>
+        </div>
+      </div>
+
+      <!-- Step 2: 관심 모임 -->
+      <div class="modal-step" id="step2">
+        <h2 class="modal-title">어떤 모임에<br>관심 있으세요?</h2>
+        <p class="modal-subtitle">여러 개 선택할 수 있어요</p>
+        <div class="select-grid cols-2">
+          <button class="select-btn" data-field="interest" data-value="등산" onclick="selectMulti(this)"><span class="select-emoji">⛰️</span>등산/트레킹</button>
+          <button class="select-btn" data-field="interest" data-value="맛집" onclick="selectMulti(this)"><span class="select-emoji">🍽️</span>맛집탐방</button>
+          <button class="select-btn" data-field="interest" data-value="산책" onclick="selectMulti(this)"><span class="select-emoji">🚶</span>산책/걷기</button>
+          <button class="select-btn" data-field="interest" data-value="영화" onclick="selectMulti(this)"><span class="select-emoji">🎬</span>영화/공연</button>
+          <button class="select-btn" data-field="interest" data-value="여행" onclick="selectMulti(this)"><span class="select-emoji">✈️</span>여행/나들이</button>
+          <button class="select-btn" data-field="interest" data-value="운동" onclick="selectMulti(this)"><span class="select-emoji">💪</span>운동/건강</button>
+          <button class="select-btn" data-field="interest" data-value="독서" onclick="selectMulti(this)"><span class="select-emoji">📚</span>독서모임</button>
+          <button class="select-btn" data-field="interest" data-value="카페" onclick="selectMulti(this)"><span class="select-emoji">☕</span>카페/차</button>
+        </div>
+      </div>
+
+      <!-- Step 3: 지역 + 선호 요일 -->
+      <div class="modal-step" id="step3">
+        <h2 class="modal-title">어디서 모임을<br>하고 싶으세요?</h2>
+        <p class="modal-subtitle">가까운 동네에서 열어드려요</p>
+        <p class="modal-label">지역</p>
+        <div class="select-grid cols-3" style="margin-bottom:24px">
+          <button class="select-btn" data-field="region" data-value="서울" onclick="selectOne(this)">서울</button>
+          <button class="select-btn" data-field="region" data-value="경기" onclick="selectOne(this)">경기</button>
+          <button class="select-btn" data-field="region" data-value="인천" onclick="selectOne(this)">인천</button>
+        </div>
+        <p class="modal-label">선호 요일</p>
+        <div class="select-grid cols-2">
+          <button class="select-btn" data-field="day" data-value="평일" onclick="selectOne(this)">평일</button>
+          <button class="select-btn" data-field="day" data-value="주말" onclick="selectOne(this)">주말</button>
+        </div>
+      </div>
+
+      <!-- Step 4: 연락처 -->
+      <div class="modal-step" id="step4">
+        <h2 class="modal-title">연락처를<br>알려주세요</h2>
+        <p class="modal-subtitle">초대장을 보내드릴게요</p>
+        <div class="modal-input-group">
+          <label class="modal-label">이름</label>
+          <input class="modal-input" id="inputName" type="text" placeholder="홍길동" oninput="checkStep4()">
+        </div>
+        <div class="modal-input-group">
+          <label class="modal-label">전화번호</label>
+          <input class="modal-input" id="inputPhone" type="tel" placeholder="010-0000-0000" oninput="formatPhone(this);checkStep4()">
+        </div>
+      </div>
+
+      <!-- Step 5: 전화 일정 -->
+      <div class="modal-step" id="step5">
+        <h2 class="modal-title">언제 전화드리면<br>편하세요?</h2>
+        <p class="modal-subtitle">모임 안내를 위해 잠깐 통화해요</p>
+        <div class="modal-input-group">
+          <label class="modal-label">날짜</label>
+          <div class="select-grid cols-3">
+            <button class="select-btn" data-field="date" id="dateBtn0" onclick="selectDate(this,0)">오늘<br><small id="dateLabel0"></small></button>
+            <button class="select-btn" data-field="date" id="dateBtn1" onclick="selectDate(this,1)">내일<br><small id="dateLabel1"></small></button>
+            <button class="select-btn" data-field="date" id="dateBtn2" onclick="selectDate(this,2)">모레<br><small id="dateLabel2"></small></button>
+          </div>
+        </div>
+        <div class="modal-input-group">
+          <label class="modal-label">시간대</label>
+          <div class="select-grid cols-3">
+            <button class="select-btn" data-field="time" data-value="오전(10~12시)" onclick="selectOne(this)">오전<br><small>10~12시</small></button>
+            <button class="select-btn" data-field="time" data-value="오후(1~3시)" onclick="selectOne(this)">오후<br><small>1~3시</small></button>
+            <button class="select-btn" data-field="time" data-value="저녁(5~7시)" onclick="selectOne(this)">저녁<br><small>5~7시</small></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Complete -->
+      <div class="modal-step" id="stepComplete">
+        <div class="complete-screen">
+          <div class="complete-icon">🎉</div>
+          <h2 class="complete-title">신청이 완료됐어요!</h2>
+          <p class="complete-desc">
+            선택하신 시간에 온담에서 전화드릴게요.<br>
+            따뜻한 모임에서 만나요!
+          </p>
+          <a href="https://play.google.com/store/apps/details?id=com.ondam.app" class="complete-app-link" target="_blank" rel="noopener">
+            📱 앱 미리 둘러보기
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer" id="modalFooter">
+      <button class="modal-next-btn" id="nextBtn" onclick="nextStep()" disabled>다음</button>
+    </div>
+  </div>
+</div>
 
 <!-- Footer -->
 <footer class="footer" id="social">
@@ -1106,38 +1375,169 @@ document.querySelectorAll('.chat-row, .chat-left-group, .chat-result').forEach(f
   }, 5000);
 })();
 
-// Platform detection & CTA routing
-(function() {
-  var ua = navigator.userAgent || '';
-  var isAndroid = /Android/i.test(ua);
-  var playStoreUrl = 'https://play.google.com/store/apps/details?id=com.ondam.app&referrer=utm_source%3Dabout%26utm_medium%3Dweb%26utm_campaign%3Dlanding';
+// ===== Invite Modal Logic =====
+var currentStep = 1;
+var totalSteps = 5;
+var formData = { gender: '', age: '', interests: [], region: '', day: '', name: '', phone: '', date: '', time: '' };
 
-  document.querySelectorAll('.ondam-cta').forEach(function(link) {
-    if (isAndroid) {
-      link.href = playStoreUrl;
-      if (link.classList.contains('hero-cta')) {
-        link.textContent = '앱 다운로드';
-      } else if (link.classList.contains('cta-button')) {
-        link.textContent = 'Google Play에서 시작하기';
-      } else {
-        link.textContent = '앱 다운로드';
-      }
-    }
-  });
-})();
+function initDateButtons() {
+  var today = new Date();
+  for (var i = 0; i < 3; i++) {
+    var d = new Date(today);
+    d.setDate(d.getDate() + i);
+    var m = d.getMonth() + 1;
+    var day = d.getDate();
+    var label = m + '/' + day + ' (' + ['일','월','화','수','목','금','토'][d.getDay()] + ')';
+    var iso = d.getFullYear() + '-' + String(m).padStart(2,'0') + '-' + String(day).padStart(2,'0');
+    document.getElementById('dateLabel' + i).textContent = label;
+    document.getElementById('dateBtn' + i).dataset.value = iso;
+  }
+}
 
-// CTA click tracking
-document.querySelectorAll('.ondam-cta').forEach(function(link) {
-  link.addEventListener('click', function() {
-    var dest = /play\.google/.test(link.href) ? 'play_store' : 'web';
-    gtag('event', 'cta_click', {
-      event_category: 'conversion',
-      event_label: link.textContent.trim(),
-      destination: dest,
-      transport_type: 'beacon'
+function selectDate(btn, offset) {
+  selectOne(btn);
+}
+
+function openInviteModal() {
+  currentStep = 1;
+  document.getElementById('inviteModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  initDateButtons();
+  updateModal();
+  gtag('event', 'modal_open', { event_category: 'funnel', event_label: 'invite_modal' });
+  fbq('track', 'InitiateCheckout');
+}
+
+function closeModal() {
+  document.getElementById('inviteModal').classList.remove('active');
+  document.body.style.overflow = '';
+  gtag('event', 'modal_close', { event_category: 'funnel', event_label: 'step_' + currentStep });
+}
+
+function updateModal() {
+  // Show/hide steps
+  for (var i = 1; i <= totalSteps; i++) {
+    var el = document.getElementById('step' + i);
+    if (el) el.classList.toggle('active', i === currentStep);
+  }
+  document.getElementById('stepComplete').classList.toggle('active', currentStep > totalSteps);
+
+  // Progress bar
+  var pct = currentStep <= totalSteps ? (currentStep / totalSteps * 100) : 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+
+  // Step label
+  document.getElementById('stepLabel').textContent = currentStep <= totalSteps ? currentStep + ' / ' + totalSteps : '';
+
+  // Back button visibility
+  document.getElementById('modalBack').style.visibility = currentStep <= 1 ? 'hidden' : 'visible';
+
+  // Footer visibility
+  document.getElementById('modalFooter').style.display = currentStep > totalSteps ? 'none' : 'block';
+
+  // Next button state
+  checkNextBtn();
+
+  // Button text
+  var nextBtn = document.getElementById('nextBtn');
+  if (currentStep === totalSteps) {
+    nextBtn.textContent = '신청 완료하기';
+  } else {
+    nextBtn.textContent = '다음';
+  }
+}
+
+function nextStep() {
+  if (currentStep === totalSteps) {
+    submitForm();
+    return;
+  }
+  currentStep++;
+  updateModal();
+  gtag('event', 'funnel_step', { event_category: 'funnel', event_label: 'step_' + currentStep });
+}
+
+function prevStep() {
+  if (currentStep > 1) {
+    currentStep--;
+    updateModal();
+  }
+}
+
+function selectOne(btn) {
+  var field = btn.dataset.field;
+  var siblings = btn.parentElement.querySelectorAll('.select-btn, .time-slot');
+  siblings.forEach(function(s) { if (s.dataset.field === field) s.classList.remove('selected'); });
+  btn.classList.add('selected');
+  formData[field] = btn.dataset.value;
+  checkNextBtn();
+}
+
+function selectMulti(btn) {
+  btn.classList.toggle('selected');
+  var selected = btn.parentElement.querySelectorAll('.select-btn.selected');
+  formData.interests = Array.from(selected).map(function(s) { return s.dataset.value; });
+  checkNextBtn();
+}
+
+function formatPhone(input) {
+  var v = input.value.replace(/\D/g, '');
+  if (v.length >= 8) v = v.slice(0,3) + '-' + v.slice(3,7) + '-' + v.slice(7,11);
+  else if (v.length >= 4) v = v.slice(0,3) + '-' + v.slice(3);
+  input.value = v;
+}
+
+function checkStep4() {
+  formData.name = document.getElementById('inputName').value.trim();
+  formData.phone = document.getElementById('inputPhone').value.trim();
+  checkNextBtn();
+}
+
+function checkStep5() {
+  checkNextBtn();
+}
+
+function checkNextBtn() {
+  var valid = false;
+  switch (currentStep) {
+    case 1: valid = formData.gender && formData.age; break;
+    case 2: valid = formData.interests.length > 0; break;
+    case 3: valid = formData.region && formData.day; break;
+    case 4: valid = formData.name.length >= 2 && formData.phone.replace(/\D/g,'').length >= 10; break;
+    case 5: valid = formData.date && formData.time; break;
+  }
+  document.getElementById('nextBtn').disabled = !valid;
+}
+
+// Google Sheets webhook URL — Apps Script 배포 후 여기에 붙여넣기
+var GOOGLE_SHEET_WEBHOOK = 'https://script.google.com/macros/s/AKfycbxD1FX-ucL8GB7446_auNnfeLwjydsAWv7p-FWMvrLnr8S9ZeCBbOpOwlqSgh5zY-fl/exec';
+
+function submitForm() {
+  // Track conversion
+  gtag('event', 'conversion', { send_to: 'AW-18005256112/NYBCCJ2Z94UcELDPyYlD' });
+  gtag('event', 'form_submit', { event_category: 'funnel', event_label: 'invite_complete' });
+  fbq('track', 'Lead');
+
+  // Show complete screen immediately (don't wait for API)
+  currentStep = totalSteps + 1;
+  updateModal();
+
+  // Send to Google Sheets
+  if (GOOGLE_SHEET_WEBHOOK) {
+    fetch(GOOGLE_SHEET_WEBHOOK, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    }).then(function() {
+      console.log('Sheets saved:', JSON.stringify(formData));
+    }).catch(function(err) {
+      console.error('Sheets error:', err);
     });
-  });
-});
+  } else {
+    console.log('Form data (no webhook):', JSON.stringify(formData));
+  }
+}
 
 // Sticky CTA & Kakao float - show after scrolling past hero
 var stickyCta = document.getElementById('stickyCta');
