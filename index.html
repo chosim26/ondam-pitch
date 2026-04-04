@@ -688,6 +688,7 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   .select-grid {
     display: grid; gap: 12px;
   }
+  .select-grid.cols-1 { grid-template-columns: 1fr; }
   .select-grid.cols-2 { grid-template-columns: 1fr 1fr; }
   .select-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
 
@@ -1219,14 +1220,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- Step 3: 지역 + 선호 요일 -->
       <div class="modal-step" id="step3">
-        <h2 class="modal-title">어디서 모임을<br>하고 싶으세요?</h2>
-        <p class="modal-subtitle">가까운 동네에서 열어드려요</p>
-        <p class="modal-label">지역</p>
-        <div class="select-grid cols-3" style="margin-bottom:24px">
-          <button class="select-btn" data-field="region" data-value="서울" onclick="selectMultiField(this,'region')">서울</button>
-          <button class="select-btn" data-field="region" data-value="경기" onclick="selectMultiField(this,'region')">경기</button>
+        <h2 class="modal-title">참여 가능한 지역을<br>전부 선택해주세요</h2>
+        <div class="select-grid cols-2" style="margin-bottom:16px">
+          <button class="select-btn" data-field="region" data-value="서울 강남/서초" onclick="selectMultiField(this,'region')">강남/서초</button>
+          <button class="select-btn" data-field="region" data-value="서울 강서/마포" onclick="selectMultiField(this,'region')">홍대/마포</button>
+          <button class="select-btn" data-field="region" data-value="서울 종로/을지로" onclick="selectMultiField(this,'region')">종로/을지로</button>
+          <button class="select-btn" data-field="region" data-value="서울 기타" onclick="selectMultiField(this,'region')">서울 기타</button>
+          <button class="select-btn" data-field="region" data-value="분당/판교" onclick="selectMultiField(this,'region')">분당/판교</button>
           <button class="select-btn" data-field="region" data-value="인천" onclick="selectMultiField(this,'region')">인천</button>
         </div>
+        <div class="select-grid cols-1" style="margin-bottom:28px">
+          <button class="select-btn" data-field="region" data-value="어디든 가능" onclick="selectMultiField(this,'region')">어디든 가능해요 😊</button>
+        </div>
+        <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:-16px;margin-bottom:24px;">* 현재 서울·수도권 위주로 모임을 열고 있어요</p>
         <p class="modal-label">선호 요일</p>
         <div class="select-grid cols-2">
           <button class="select-btn" data-field="day" data-value="평일" onclick="selectMultiField(this,'day')">평일</button>
@@ -1250,8 +1256,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- Step 5: 전화 일정 -->
       <div class="modal-step" id="step5">
-        <h2 class="modal-title">언제 전화드리면<br>편하세요?</h2>
-        <p class="modal-subtitle">모임 안내를 위해 잠깐 통화해요</p>
+        <h2 class="modal-title">마지막 단계!<br><span id="step5Name"></span>님에게<br>전화드릴게요</h2>
+        <p class="modal-subtitle">통화 가능한 시간대를 선택해주세요<br><span style="color:rgba(255,255,255,0.35);font-size:13px">(약 5분 소요)</span></p>
         <div class="modal-input-group">
           <label class="modal-label">날짜</label>
           <div class="select-grid cols-3">
@@ -1267,6 +1273,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <button class="select-btn" data-field="time" data-value="오후(1~3시)" id="timeBtn1" data-hour="13" onclick="selectOne(this)">오후<br><small>1~3시</small></button>
             <button class="select-btn" data-field="time" data-value="저녁(5~7시)" id="timeBtn2" data-hour="17" onclick="selectOne(this)">저녁<br><small>5~7시</small></button>
           </div>
+        </div>
+        <div style="margin-top:20px;padding:14px 16px;background:rgba(255,255,255,0.05);border-radius:12px;">
+          <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0;">
+            <strong style="color:rgba(255,255,255,0.7)">어떤 통화인가요?</strong><br>
+            온담은 직접 운영하는 모임이에요.<br>취향에 맞는 모임을 안내해드리기 위해 잠깐 통화합니다. 통화 후 참여 여부를 결정하셔도 돼요 :)
+          </p>
         </div>
       </div>
 
@@ -1457,6 +1469,11 @@ function updateModal() {
   }
   document.getElementById('stepComplete').classList.toggle('active', currentStep > totalSteps);
 
+  // Set name in step 5
+  if (currentStep === 5 && formData.name) {
+    document.getElementById('step5Name').textContent = formData.name;
+  }
+
   // Progress bar
   var pct = currentStep <= totalSteps ? (currentStep / totalSteps * 100) : 100;
   document.getElementById('progressBar').style.width = pct + '%';
@@ -1476,9 +1493,9 @@ function updateModal() {
   // Button text
   var nextBtn = document.getElementById('nextBtn');
   if (currentStep === totalSteps) {
-    nextBtn.textContent = '신청 완료하기';
+    nextBtn.textContent = '답변 완료 →';
   } else {
-    nextBtn.textContent = '다음';
+    nextBtn.textContent = '계속 →';
   }
 }
 
