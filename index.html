@@ -702,6 +702,9 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   .select-btn.selected {
     border-color: var(--brand); background: rgba(255,107,107,0.15);
   }
+  .select-btn:disabled {
+    opacity: 0.3; cursor: not-allowed; pointer-events: none;
+  }
   .select-btn .select-emoji {
     display: block; font-size: 28px; margin-bottom: 8px;
   }
@@ -1149,7 +1152,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Sticky Mobile CTA -->
 <div class="sticky-cta" id="stickyCta">
-  <div class="sticky-cta-text"><img src="logo.png" alt="온담"> 100% 초대제 모임</div>
+  <div class="sticky-cta-text"><img src="logo.png" alt="온담" style="height:18px; margin-top:-1px;"> 100% 초대제 모임</div>
   <button class="sticky-cta-btn" onclick="openInviteModal()">내 초대장 받기</button>
 </div>
 
@@ -1181,9 +1184,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <p class="modal-label">연령대</p>
         <div class="select-grid cols-3">
-          <button class="select-btn" data-field="age" data-value="40대" onclick="selectOne(this)">40대</button>
-          <button class="select-btn" data-field="age" data-value="50대" onclick="selectOne(this)">50대</button>
-          <button class="select-btn" data-field="age" data-value="60대" onclick="selectOne(this)">60대</button>
+          <button class="select-btn" data-field="age" data-value="40~44" onclick="selectOne(this)">40~44</button>
+          <button class="select-btn" data-field="age" data-value="45~49" onclick="selectOne(this)">45~49</button>
+          <button class="select-btn" data-field="age" data-value="50~54" onclick="selectOne(this)">50~54</button>
+          <button class="select-btn" data-field="age" data-value="55~59" onclick="selectOne(this)">55~59</button>
+          <button class="select-btn" data-field="age" data-value="60~64" onclick="selectOne(this)">60~64</button>
+          <button class="select-btn" data-field="age" data-value="65+" onclick="selectOne(this)">65+</button>
         </div>
       </div>
 
@@ -1249,9 +1255,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="modal-input-group">
           <label class="modal-label">시간대</label>
           <div class="select-grid cols-3">
-            <button class="select-btn" data-field="time" data-value="오전(10~12시)" onclick="selectOne(this)">오전<br><small>10~12시</small></button>
-            <button class="select-btn" data-field="time" data-value="오후(1~3시)" onclick="selectOne(this)">오후<br><small>1~3시</small></button>
-            <button class="select-btn" data-field="time" data-value="저녁(5~7시)" onclick="selectOne(this)">저녁<br><small>5~7시</small></button>
+            <button class="select-btn" data-field="time" data-value="오전(10~12시)" id="timeBtn0" data-hour="10" onclick="selectOne(this)">오전<br><small>10~12시</small></button>
+            <button class="select-btn" data-field="time" data-value="오후(1~3시)" id="timeBtn1" data-hour="13" onclick="selectOne(this)">오후<br><small>1~3시</small></button>
+            <button class="select-btn" data-field="time" data-value="저녁(5~7시)" id="timeBtn2" data-hour="17" onclick="selectOne(this)">저녁<br><small>5~7시</small></button>
           </div>
         </div>
       </div>
@@ -1394,6 +1400,29 @@ function initDateButtons() {
 
 function selectDate(btn, offset) {
   selectOne(btn);
+  updateTimeSlots(offset);
+}
+
+function updateTimeSlots(dayOffset) {
+  var now = new Date();
+  var currentHour = now.getHours();
+  var timeBtns = [document.getElementById('timeBtn0'), document.getElementById('timeBtn1'), document.getElementById('timeBtn2')];
+  timeBtns.forEach(function(tb) {
+    if (dayOffset === 0) {
+      var slotHour = parseInt(tb.dataset.hour);
+      var isPast = currentHour >= slotHour;
+      tb.disabled = isPast;
+      tb.style.opacity = isPast ? '0.3' : '1';
+      if (isPast && tb.classList.contains('selected')) {
+        tb.classList.remove('selected');
+        formData.time = '';
+      }
+    } else {
+      tb.disabled = false;
+      tb.style.opacity = '1';
+    }
+  });
+  checkNextBtn();
 }
 
 function openInviteModal() {
