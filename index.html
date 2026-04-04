@@ -700,7 +700,11 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   }
   .select-btn:hover { background: #3a3a3a; }
   .select-btn.selected {
-    border-color: var(--brand); background: rgba(255,107,107,0.15);
+    border-color: var(--brand); background: rgba(255,107,107,0.18);
+    color: #fff; box-shadow: 0 0 0 1px var(--brand);
+  }
+  .select-btn.has-selection:not(.selected) {
+    opacity: 0.45;
   }
   .select-btn:disabled {
     opacity: 0.3; cursor: not-allowed; pointer-events: none;
@@ -734,7 +738,8 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     transition: all 0.2s;
   }
   .time-slot:hover { background: #3a3a3a; }
-  .time-slot.selected { border-color: var(--brand); background: rgba(255,107,107,0.15); }
+  .time-slot.selected { border-color: var(--brand); background: rgba(255,107,107,0.18); box-shadow: 0 0 0 1px var(--brand); }
+  .time-slot.has-selection:not(.selected) { opacity: 0.45; }
 
   /* Date picker */
   .modal-date-input {
@@ -1218,14 +1223,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="modal-subtitle">가까운 동네에서 열어드려요</p>
         <p class="modal-label">지역</p>
         <div class="select-grid cols-3" style="margin-bottom:24px">
-          <button class="select-btn" data-field="region" data-value="서울" onclick="selectOne(this)">서울</button>
-          <button class="select-btn" data-field="region" data-value="경기" onclick="selectOne(this)">경기</button>
-          <button class="select-btn" data-field="region" data-value="인천" onclick="selectOne(this)">인천</button>
+          <button class="select-btn" data-field="region" data-value="서울" onclick="selectMultiField(this,'region')">서울</button>
+          <button class="select-btn" data-field="region" data-value="경기" onclick="selectMultiField(this,'region')">경기</button>
+          <button class="select-btn" data-field="region" data-value="인천" onclick="selectMultiField(this,'region')">인천</button>
         </div>
         <p class="modal-label">선호 요일</p>
         <div class="select-grid cols-2">
-          <button class="select-btn" data-field="day" data-value="평일" onclick="selectOne(this)">평일</button>
-          <button class="select-btn" data-field="day" data-value="주말" onclick="selectOne(this)">주말</button>
+          <button class="select-btn" data-field="day" data-value="평일" onclick="selectMultiField(this,'day')">평일</button>
+          <button class="select-btn" data-field="day" data-value="주말" onclick="selectMultiField(this,'day')">주말</button>
         </div>
       </div>
 
@@ -1385,7 +1390,7 @@ document.querySelectorAll('.chat-row, .chat-left-group, .chat-result').forEach(f
 // ===== Invite Modal Logic =====
 var currentStep = 1;
 var totalSteps = 5;
-var formData = { gender: '', age: '', interests: [], region: '', day: '', name: '', phone: '', date: '', time: '' };
+var formData = { gender: '', age: '', interests: [], region: [], day: [], name: '', phone: '', date: '', time: '' };
 
 function initDateButtons() {
   var today = new Date();
@@ -1497,16 +1502,32 @@ function prevStep() {
 function selectOne(btn) {
   var field = btn.dataset.field;
   var siblings = btn.parentElement.querySelectorAll('.select-btn, .time-slot');
-  siblings.forEach(function(s) { if (s.dataset.field === field) s.classList.remove('selected'); });
+  siblings.forEach(function(s) { if (s.dataset.field === field) { s.classList.remove('selected'); s.classList.remove('has-selection'); } });
   btn.classList.add('selected');
+  siblings.forEach(function(s) { if (s.dataset.field === field && s !== btn) s.classList.add('has-selection'); });
   formData[field] = btn.dataset.value;
   checkNextBtn();
 }
 
 function selectMulti(btn) {
   btn.classList.toggle('selected');
-  var selected = btn.parentElement.querySelectorAll('.select-btn.selected');
+  var container = btn.parentElement;
+  var all = container.querySelectorAll('.select-btn');
+  var selected = container.querySelectorAll('.select-btn.selected');
   formData.interests = Array.from(selected).map(function(s) { return s.dataset.value; });
+  var hasAny = selected.length > 0;
+  all.forEach(function(s) { s.classList.toggle('has-selection', hasAny && !s.classList.contains('selected')); });
+  checkNextBtn();
+}
+
+function selectMultiField(btn, field) {
+  btn.classList.toggle('selected');
+  var container = btn.parentElement;
+  var all = container.querySelectorAll('.select-btn[data-field="' + field + '"]');
+  var selected = container.querySelectorAll('.select-btn[data-field="' + field + '"].selected');
+  formData[field] = Array.from(selected).map(function(s) { return s.dataset.value; });
+  var hasAny = selected.length > 0;
+  all.forEach(function(s) { s.classList.toggle('has-selection', hasAny && !s.classList.contains('selected')); });
   checkNextBtn();
 }
 
@@ -1532,7 +1553,7 @@ function checkNextBtn() {
   switch (currentStep) {
     case 1: valid = formData.gender && formData.age; break;
     case 2: valid = formData.interests.length > 0; break;
-    case 3: valid = formData.region && formData.day; break;
+    case 3: valid = formData.region.length > 0 && formData.day.length > 0; break;
     case 4: valid = formData.name.length >= 2 && formData.phone.replace(/\D/g,'').length >= 10; break;
     case 5: valid = formData.date && formData.time; break;
   }
@@ -1554,11 +1575,14 @@ function submitForm() {
 
   // Send to Google Sheets
   if (GOOGLE_SHEET_WEBHOOK) {
+    var payload = JSON.parse(JSON.stringify(formData));
+    payload.region = Array.isArray(payload.region) ? payload.region.join(', ') : payload.region;
+    payload.day = Array.isArray(payload.day) ? payload.day.join(', ') : payload.day;
     fetch(GOOGLE_SHEET_WEBHOOK, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(payload)
     }).then(function() {
       console.log('Sheets saved:', JSON.stringify(formData));
     }).catch(function(err) {
