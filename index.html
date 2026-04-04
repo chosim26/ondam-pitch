@@ -1675,19 +1675,23 @@ function sendToSheets(data) {
     .catch(function(err) { console.error('Sheets error:', err); });
 }
 
-// 1차 제출: Step 4 → 5 (핵심 리드 확보)
+// 1차 제출: Step 4 → 5 (핵심 리드 확보 + SMS 발송)
 function submitBasic() {
   gtag('event', 'conversion', { send_to: 'AW-18005256112/NYBCCJ2Z94UcELDPyYlD' });
   gtag('event', 'form_submit', { event_category: 'funnel', event_label: 'basic_submit' });
   fbq('track', 'Lead');
-  sendToSheets(formData);
+  var data = JSON.parse(JSON.stringify(formData));
+  data.submitType = 'basic';
+  sendToSheets(data);
   console.log('Basic submit complete');
 }
 
-// 2차 제출: Step 6 → Complete (전체 데이터)
+// 2차 제출: Step 6 → Complete (전체 데이터, SMS 안 보냄)
 function submitFull() {
   gtag('event', 'form_complete', { event_category: 'funnel', event_label: 'full_submit' });
-  sendToSheets(formData);
+  var data = JSON.parse(JSON.stringify(formData));
+  data.submitType = 'full';
+  sendToSheets(data);
   currentStep = totalSteps + 1;
   updateModal();
   console.log('Full submit complete');
