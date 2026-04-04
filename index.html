@@ -221,9 +221,9 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   }
   .section-header { text-align: center; margin-bottom: 40px; }
   .section-header h2 {
-    font-size: 32px; font-weight: 700; line-height: 1.4; margin-bottom: 10px;
+    font-size: 36px; font-weight: 700; line-height: 1.4; margin-bottom: 10px;
   }
-  .section-header p { font-size: 18px; color: var(--text-tertiary); line-height: 1.5; }
+  .section-header p { font-size: 20px; color: var(--text-tertiary); line-height: 1.5; }
   .brand { color: var(--brand); }
 
   /* ===== Pain Points ===== */
@@ -241,8 +241,8 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     background: var(--brand-light); color: var(--brand);
     font-size: 14px; font-weight: 700; margin-bottom: 12px;
   }
-  .pain-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
-  .pain-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
+  .pain-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .pain-desc { font-size: 17px; color: var(--text-secondary); line-height: 1.6; }
 
   /* ===== Solution / Steps ===== */
   .steps { display: flex; flex-direction: column; gap: 0; position: relative; }
@@ -263,8 +263,8 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     position: relative; z-index: 1;
   }
   .step-content { padding-top: 4px; flex: 1; }
-  .step-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-  .step-desc { font-size: 16px; color: var(--text-secondary); line-height: 1.65; }
+  .step-title { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .step-desc { font-size: 18px; color: var(--text-secondary); line-height: 1.65; }
 
   /* ===== App Flow Phones ===== */
   .app-flow-wrapper {
@@ -354,8 +354,8 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     display: flex; align-items: center; justify-content: center;
     font-size: 24px; margin-bottom: 14px;
   }
-  .benefit-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
-  .benefit-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
+  .benefit-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .benefit-desc { font-size: 17px; color: var(--text-secondary); line-height: 1.6; }
 
   /* ===== Reviews ===== */
   .review-grid { display: flex; flex-direction: column; gap: 14px; }
@@ -370,7 +370,7 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   }
   .review-body { flex: 1; }
   .review-text {
-    font-size: 16px; color: var(--text-secondary); line-height: 1.7;
+    font-size: 18px; color: var(--text-secondary); line-height: 1.7;
     margin-bottom: 10px;
   }
   .review-text mark {
@@ -486,21 +486,22 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     transition: none;
   }
   .sticky-cta-text {
-    font-size: 14px; color: var(--text-secondary); line-height: 1.4;
+    font-size: 16px; color: var(--text-secondary); line-height: 1.4;
     font-weight: 600;
+    display: flex; align-items: center; gap: 6px;
   }
-  .sticky-cta-text strong { color: var(--brand); }
+  .sticky-cta-text img { height: 22px; }
   .sticky-cta-btn {
     flex-shrink: 0;
     background: var(--brand); color: white; border: none; border-radius: 999px;
-    padding: 14px 28px; font-size: 15px; font-weight: 700; cursor: pointer;
+    padding: 16px 32px; font-size: 17px; font-weight: 700; cursor: pointer;
     text-decoration: none; white-space: nowrap;
     box-shadow: 0 4px 16px rgba(255,107,107,0.3);
   }
 
   /* ===== Floating Kakao Button ===== */
   .kakao-float {
-    position: fixed; bottom: 80px; right: 20px; z-index: 190;
+    position: fixed; bottom: 100px; right: 20px; z-index: 190;
     width: 56px; height: 56px; border-radius: 50%;
     background: #FEE500;
     display: flex; align-items: center; justify-content: center;
@@ -1148,7 +1149,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Sticky Mobile CTA -->
 <div class="sticky-cta" id="stickyCta">
-  <div class="sticky-cta-text"><strong>온담</strong> 100% 초대제 모임</div>
+  <div class="sticky-cta-text"><img src="logo.png" alt="온담"> 100% 초대제 모임</div>
   <button class="sticky-cta-btn" onclick="openInviteModal()">내 초대장 받기</button>
 </div>
 
