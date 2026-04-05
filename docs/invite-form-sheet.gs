@@ -1,4 +1,4 @@
-// ===== 온담 모임 신청 폼 → Google Sheets + SMS/알림톡 =====
+// ===== 온담 모임 신청 폼 → Google Sheets + 알림톡/SMS =====
 //
 // 설정 방법:
 // 1. Google Sheets에서 확장 프로그램 → Apps Script
@@ -8,11 +8,16 @@
 // 5. 배포 URL 복사 → index.html의 GOOGLE_SHEET_WEBHOOK에 붙여넣기
 //
 // ※ 기존 배포가 있으면 "배포 관리 → 새 버전"으로 업데이트
+//
+// 알림 흐름:
+//   Step 4 (basic) → 시트 저장 + 관리자 이메일/슬랙
+//   Step 5~6 (full) → 시트 저장 + 사용자에게 알림톡(SMS 폴백)
 
 // ===== CONFIG =====
 var CONFIG = {
   SHEET_NAME: '초대장신청',
   NOTIFY_EMAIL: 'youxo@chosim.me',
+  SLACK_WEBHOOK: '',  // Slack Incoming Webhook URL (비워두면 스킵)
   HEADERS: [
     'submitted_at', 'submit_type',
     'gender', 'age', 'interests', 'region', 'day',
@@ -31,15 +36,14 @@ var CONFIG = {
   ]
 };
 
-// ===== Solapi (SMS + 알림톡) =====
+// ===== Solapi (알림톡 + SMS 폴백) =====
 var SOLAPI = {
   API_KEY: 'NCSMCKGGIEMPHY2I',
   API_SECRET: '0RIE8BHF4OCJSZAI5YPWJIL7B5MZROXC',
   SENDER: '01051751360',
   BASE_URL: 'https://api.solapi.com',
-  // 알림톡 (필요시 설정)
   KAKAO_PFID: 'KA01PF260325052824245x3NAqMark6X',
-  KAKAO_TEMPLATE_ID: ''  // 모임용 템플릿 ID (없으면 SMS 폴백)
+  KAKAO_TEMPLATE_ID: ''  // 솔라피에서 템플릿 등록 후 ID 입력 (비어있으면 SMS 폴백)
 };
 
 // ===== 최초 1회 실행: 시트 초기화 + 권한 승인 =====
@@ -113,28 +117,9 @@ function doPost(e) {
     var phoneCol = CONFIG.HEADERS.indexOf('phone') + 1;
     sheet.getRange(lastRow, phoneCol).setNumberFormat('@').setValue(data.phone || '');
 
-    // 1차 제출(basic)일 때만 SMS + 이메일 발송
+    // ===== 1차 제출(basic): 관리자 알림만 (이메일 + 슬랙) =====
     if (submitType === 'basic' && data.phone && data.name) {
-      // SMS 발송
-      try {
-        var phone = String(data.phone).replace(/-/g, '');
-        if (phone.length === 10 && !phone.startsWith('0')) {
-          phone = '0' + phone;
-        }
-
-        var smsText = '[온담] 신청 접수완료\n\n'
-          + data.name + '님, 모임 신청이 접수되었습니다.\n'
-          + '선택하신 시간에 전화드릴게요.\n\n'
-          + '온담 드림';
-        sendSms(phone, smsText);
-
-        sheet.getRange(lastRow, CONFIG.HEADERS.indexOf('status') + 1).setValue('SMS발송');
-      } catch (smsErr) {
-        Logger.log('SMS error: ' + smsErr.toString());
-        sheet.getRange(lastRow, CONFIG.HEADERS.indexOf('status') + 1).setValue('SMS실패');
-      }
-
-      // 이메일 알림 (관리자)
+      // 관리자 이메일
       try {
         MailApp.sendEmail({
           to: CONFIG.NOTIFY_EMAIL,
@@ -153,11 +138,44 @@ function doPost(e) {
       } catch (mailErr) {
         Logger.log('Mail error: ' + mailErr.toString());
       }
+
+      // 관리자 슬랙
+      sendSlack(data);
+
+      sheet.getRange(lastRow, CONFIG.HEADERS.indexOf('status') + 1).setValue('접수');
     }
 
-    // 2차 제출(full)일 때는 상태만 업데이트
+    // ===== 2차 제출(full): 사용자에게 알림톡/SMS (통화시간 포함) =====
     if (submitType === 'full') {
-      sheet.getRange(lastRow, CONFIG.HEADERS.indexOf('status') + 1).setValue('완료');
+      try {
+        var phone = String(data.phone).replace(/-/g, '');
+        if (phone.length === 10 && !phone.startsWith('0')) {
+          phone = '0' + phone;
+        }
+
+        var dateStr = data.date || '';
+        var timeStr = data.time || '';
+        var scheduleText = '';
+        if (dateStr && timeStr) {
+          scheduleText = dateStr + ' ' + timeStr + '에 전화드릴게요.';
+        } else if (dateStr) {
+          scheduleText = dateStr + '에 전화드릴게요.';
+        } else {
+          scheduleText = '빠른 시일 내에 연락드릴게요.';
+        }
+
+        var msgText = '[온담] ' + data.name + '님, 신청 감사합니다!\n\n'
+          + scheduleText + '\n'
+          + '편하게 받아주세요 :)\n\n'
+          + '온담 드림';
+
+        sendKakaoOrSms(phone, msgText, data);
+
+        sheet.getRange(lastRow, CONFIG.HEADERS.indexOf('status') + 1).setValue('알림발송');
+      } catch (msgErr) {
+        Logger.log('Message error: ' + msgErr.toString());
+        sheet.getRange(lastRow, CONFIG.HEADERS.indexOf('status') + 1).setValue('알림실패');
+      }
     }
 
     return ContentService
@@ -178,8 +196,8 @@ function tr(label, value) {
     + '<td style="padding:8px">' + (value || '-') + '</td></tr>';
 }
 
-// ===== Solapi SMS 함수 =====
-function sendSms(to, text) {
+// ===== 알림톡 (우선) / SMS (폴백) =====
+function sendKakaoOrSms(to, smsText, data) {
   var dateTime = new Date().toISOString();
   var salt = Utilities.getUuid();
   var signature = hmacSha256(dateTime + salt, SOLAPI.API_SECRET);
@@ -188,15 +206,31 @@ function sendSms(to, text) {
     + ', salt=' + salt
     + ', signature=' + signature;
 
-  var payload = {
-    messages: [{
-      to: String(to).replace(/-/g, ''),
-      from: SOLAPI.SENDER,
-      text: text
-    }]
+  var cleanTo = String(to).replace(/-/g, '');
+  var message = {
+    to: cleanTo,
+    from: SOLAPI.SENDER
   };
 
-  Logger.log('SMS payload: ' + JSON.stringify(payload));
+  // 알림톡 템플릿 ID가 있으면 알림톡, 없으면 SMS
+  if (SOLAPI.KAKAO_TEMPLATE_ID) {
+    message.kakaoOptions = {
+      pfId: SOLAPI.KAKAO_PFID,
+      templateId: SOLAPI.KAKAO_TEMPLATE_ID,
+      variables: {
+        '#{이름}': data.name || '',
+        '#{날짜}': data.date || '',
+        '#{시간}': data.time || ''
+      }
+    };
+    // 알림톡 실패 시 SMS 폴백
+    message.text = smsText;
+  } else {
+    message.text = smsText;
+  }
+
+  var payload = { messages: [message] };
+  Logger.log('Send payload: ' + JSON.stringify(payload));
 
   var response = UrlFetchApp.fetch(SOLAPI.BASE_URL + '/messages/v4/send-many/detail', {
     method: 'post',
@@ -207,11 +241,46 @@ function sendSms(to, text) {
   });
 
   var result = response.getContentText();
-  Logger.log('SMS response: ' + result.substring(0, 300));
+  Logger.log('Send response: ' + result.substring(0, 300));
   return result;
 }
 
-// HMAC-SHA256 서명
+// ===== Slack 웹훅 알림 =====
+function sendSlack(data) {
+  if (!CONFIG.SLACK_WEBHOOK) return;
+
+  try {
+    var interests = Array.isArray(data.interests) ? data.interests.join(', ') : (data.interests || '-');
+    var region = Array.isArray(data.region) ? data.region.join(', ') : (data.region || '-');
+    var day = Array.isArray(data.day) ? data.day.join(', ') : (data.day || '-');
+
+    var slackPayload = {
+      text: ':bell: *새 모임 신청!*',
+      blocks: [
+        { type: 'header', text: { type: 'plain_text', text: '새 모임 신청이 들어왔어요!' } },
+        { type: 'section', fields: [
+          { type: 'mrkdwn', text: '*이름:* ' + (data.name || '-') },
+          { type: 'mrkdwn', text: '*전화번호:* ' + (data.phone || '-') },
+          { type: 'mrkdwn', text: '*성별/연령:* ' + (data.gender || '-') + ' / ' + (data.age || '-') },
+          { type: 'mrkdwn', text: '*관심모임:* ' + interests },
+          { type: 'mrkdwn', text: '*지역:* ' + region },
+          { type: 'mrkdwn', text: '*선호요일:* ' + day }
+        ]}
+      ]
+    };
+
+    UrlFetchApp.fetch(CONFIG.SLACK_WEBHOOK, {
+      method: 'post',
+      contentType: 'application/json',
+      payload: JSON.stringify(slackPayload),
+      muteHttpExceptions: true
+    });
+  } catch (slackErr) {
+    Logger.log('Slack error: ' + slackErr.toString());
+  }
+}
+
+// ===== HMAC-SHA256 서명 =====
 function hmacSha256(message, secret) {
   var signature = Utilities.computeHmacSha256Signature(message, secret);
   return signature.map(function(b) {
