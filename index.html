@@ -235,14 +235,17 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     box-shadow: var(--shadow-sm); transition: transform 0.2s;
   }
   .pain-card:hover { transform: translateY(-2px); }
+  .pain-card { display: flex; flex-direction: column; }
+  .pain-emoji { font-size: 28px; margin-bottom: 10px; line-height: 1; }
   .pain-num {
     display: inline-flex; align-items: center; justify-content: center;
     width: 32px; height: 32px; border-radius: 50%;
     background: var(--brand-light); color: var(--brand);
     font-size: 14px; font-weight: 700; margin-bottom: 12px;
   }
-  .pain-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-  .pain-desc { font-size: 17px; color: var(--text-secondary); line-height: 1.6; }
+  .pain-title { font-size: 19px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.6px; line-height: 1.35; color: #222; }
+  .pain-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.65; letter-spacing: -0.2px; margin-bottom: 14px; flex: 1; }
+  .pain-solution { font-size: 13px; font-weight: 600; color: var(--brand); background: var(--brand-light); border-radius: 8px; padding: 8px 11px; line-height: 1.45; letter-spacing: -0.2px; }
 
   /* ===== Solution / Steps ===== */
   .steps { display: flex; flex-direction: column; gap: 0; position: relative; }
@@ -587,8 +590,9 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     .hero-store-btn { width: 100%; max-width: 240px; justify-content: center; }
     .section-header h2 { font-size: 24px; }
     .section-header p { font-size: 15px; }
-    .pain-title { font-size: 16px; }
+    .pain-title { font-size: 17px; }
     .pain-desc { font-size: 14px; }
+    .pain-solution { font-size: 13px; }
     .step-title { font-size: 18px; }
     .step-desc { font-size: 15px; }
     .moim-card-img { height: 120px; }
@@ -859,24 +863,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="pain-grid">
       <div class="pain-card">
-        <div class="pain-num">1</div>
-        <div class="pain-title">모임 찾기가 어렵다</div>
-        <div class="pain-desc">검색해도 20~30대용 모임뿐. 나이에 맞는 좋은 모임은 어디 있을까요?</div>
+        <div class="pain-emoji">😮‍💨</div>
+        <div class="pain-title">동창회는 자랑대회다</div>
+        <div class="pain-desc">비교당하는 기분이 들어서 안 가게 됩니다.</div>
+        <div class="pain-solution">→ 온담은 모두가 처음, 비교 없이 편하게</div>
       </div>
       <div class="pain-card">
-        <div class="pain-num">2</div>
-        <div class="pain-title">혼자 나가기 부담된다</div>
-        <div class="pain-desc">장소 찾고, 인원 모으고, 날짜 맞추고. 모임 하나가 큰일입니다.</div>
+        <div class="pain-emoji">😶</div>
+        <div class="pain-title">처음 가면 나만 모르는 사이</div>
+        <div class="pain-desc">이미 친한 사람들끼리 뭉쳐있어서 끼기 어렵습니다.</div>
+        <div class="pain-solution">→ 온담은 매번 새 멤버로 매칭합니다</div>
       </div>
       <div class="pain-card">
-        <div class="pain-num">3</div>
-        <div class="pain-title">새 친구 만들기가 어렵다</div>
-        <div class="pain-desc">직장 동료는 부담, 학교 친구는 흩어지고. 새로운 친구를 어디서 만들까요?</div>
+        <div class="pain-emoji">😣</div>
+        <div class="pain-title">젊은 모임에 가면 눈치가 보인다</div>
+        <div class="pain-desc">2030 모임에 끼면 나만 늙은 것 같고, 어색합니다.</div>
+        <div class="pain-solution">→ 온담은 같은 또래 4060끼리만 만납니다</div>
       </div>
       <div class="pain-card">
-        <div class="pain-num">4</div>
-        <div class="pain-title">갈 곳은 많은데 같이 갈 사람이 없다</div>
-        <div class="pain-desc">혼자 알아보기엔 막막하고, 매번 부탁하기도 미안합니다.</div>
+        <div class="pain-emoji">😰</div>
+        <div class="pain-title">사기당할까봐 무섭다</div>
+        <div class="pain-desc">인터넷에서 만나는 사람, 믿어도 되는 건가요?</div>
+        <div class="pain-solution">→ 온담이 모든 모임을 직접 기획·관리합니다</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">🤐</div>
+        <div class="pain-title">친한 사이라 더 못 꺼낸다</div>
+        <div class="pain-desc">너무 친한 사이라 오히려 꺼내기 어려운 이야기들이 있습니다.</div>
+        <div class="pain-solution">→ 적당한 거리감이 편한 대화를 만듭니다</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">📱</div>
+        <div class="pain-title">퇴직하니 전화 올 일이 없다</div>
+        <div class="pain-desc">하루 종일 울리지 않는 전화기. 내가 없어도 모를 것 같습니다.</div>
+        <div class="pain-solution">→ 온담이 매주 안부 전화를 드립니다</div>
       </div>
     </div>
   </div>
