@@ -126,11 +126,12 @@ function doPost(e) {
           phone = '0' + phone;
         }
 
-        var msgText = '[온담] ' + data.name + '님, 신청 접수가 완료되었어요.\n\n'
-          + '검토 후 온담 매니저가 연락드릴게요 :)\n\n'
-          + '* 상황에 따라 연락까지 최대 3일이 소요될 수 있어요.\n'
-          + '* 온담 인스타그램에서 다양한 모임을 미리 둘러보세요 :)\n\n'
-          + '온담 드림';
+        var msgText = '[온담] 신청 접수완료 ✅\n\n'
+          + data.name + '님! 신청 접수가 완료되었어요 😊\n\n'
+          + '온담 대표가 직접 초대장 보내드릴게요 💌\n\n'
+          + '* 상황에 따라 연락까지 최대 3일이 소요될 수 있어요\n'
+          + '* 온담 인스타그램에서 다양한 모임을 미리 둘러보세요 🤗\n\n'
+          + '온담 드림 🧡';
 
         sendKakaoOrSms(phone, msgText, data);
 
@@ -209,9 +210,7 @@ function sendKakaoOrSms(to, smsText, data) {
       pfId: SOLAPI.KAKAO_PFID,
       templateId: SOLAPI.KAKAO_TEMPLATE_ID,
       variables: {
-        '#{이름}': data.name || '',
-        '#{날짜}': data.date || '',
-        '#{시간}': data.time || ''
+        '#{이름}': data.name || ''
       }
     };
     // 알림톡 실패 시 SMS 폴백
