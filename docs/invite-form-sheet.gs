@@ -117,8 +117,29 @@ function doPost(e) {
     var phoneCol = CONFIG.HEADERS.indexOf('phone') + 1;
     sheet.getRange(lastRow, phoneCol).setNumberFormat('@').setValue(data.phone || '');
 
-    // ===== 1차 제출(basic): 관리자 알림만 (이메일 + 슬랙) =====
+    // ===== 1차 제출(basic): 관리자 + 신청자 동시 알림 =====
     if (submitType === 'basic' && data.phone && data.name) {
+      // 신청자에게 알림톡/SMS (접수 확인)
+      try {
+        var phone = String(data.phone).replace(/-/g, '');
+        if (phone.length === 10 && !phone.startsWith('0')) {
+          phone = '0' + phone;
+        }
+
+        var msgText = '[온담] ' + data.name + '님, 신청 접수가 완료되었어요.\n\n'
+          + '검토 후 온담 매니저가 연락드릴게요 :)\n\n'
+          + '* 상황에 따라 연락까지 최대 3일이 소요될 수 있어요.\n'
+          + '* 온담 인스타그램에서 다양한 모임을 미리 둘러보세요 :)\n\n'
+          + '온담 드림';
+
+        sendKakaoOrSms(phone, msgText, data);
+
+        sheet.getRange(lastRow, CONFIG.HEADERS.indexOf('status') + 1).setValue('알림발송');
+      } catch (msgErr) {
+        Logger.log('Message error: ' + msgErr.toString());
+        sheet.getRange(lastRow, CONFIG.HEADERS.indexOf('status') + 1).setValue('알림실패');
+      }
+
       // 관리자 이메일
       try {
         MailApp.sendEmail({
@@ -141,41 +162,11 @@ function doPost(e) {
 
       // 관리자 슬랙
       sendSlack(data);
-
-      sheet.getRange(lastRow, CONFIG.HEADERS.indexOf('status') + 1).setValue('접수');
     }
 
-    // ===== 2차 제출(full): 사용자에게 알림톡/SMS (통화시간 포함) =====
+    // ===== 2차 제출(full): 시트 업데이트만 =====
     if (submitType === 'full') {
-      try {
-        var phone = String(data.phone).replace(/-/g, '');
-        if (phone.length === 10 && !phone.startsWith('0')) {
-          phone = '0' + phone;
-        }
-
-        var dateStr = data.date || '';
-        var timeStr = data.time || '';
-        var scheduleText = '';
-        if (dateStr && timeStr) {
-          scheduleText = dateStr + ' ' + timeStr + '에 전화드릴게요.';
-        } else if (dateStr) {
-          scheduleText = dateStr + '에 전화드릴게요.';
-        } else {
-          scheduleText = '빠른 시일 내에 연락드릴게요.';
-        }
-
-        var msgText = '[온담] ' + data.name + '님, 신청 감사합니다!\n\n'
-          + scheduleText + '\n'
-          + '편하게 받아주세요 :)\n\n'
-          + '온담 드림';
-
-        sendKakaoOrSms(phone, msgText, data);
-
-        sheet.getRange(lastRow, CONFIG.HEADERS.indexOf('status') + 1).setValue('알림발송');
-      } catch (msgErr) {
-        Logger.log('Message error: ' + msgErr.toString());
-        sheet.getRange(lastRow, CONFIG.HEADERS.indexOf('status') + 1).setValue('알림실패');
-      }
+      sheet.getRange(lastRow, CONFIG.HEADERS.indexOf('status') + 1).setValue('완료');
     }
 
     return ContentService
