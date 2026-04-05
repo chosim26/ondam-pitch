@@ -17,7 +17,7 @@
 var CONFIG = {
   SHEET_NAME: '초대장신청',
   NOTIFY_EMAIL: 'youxo@chosim.me',
-  SLACK_WEBHOOK: '',  // Slack Incoming Webhook URL (비워두면 스킵)
+  SLACK_WEBHOOK: '',  // ← Apps Script에 붙여넣은 후 여기에 Slack Webhook URL 입력
   HEADERS: [
     'submitted_at', 'submit_type',
     'gender', 'age', 'interests', 'region', 'day',
