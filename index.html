@@ -1543,6 +1543,7 @@ function openInviteModal() {
   document.body.style.overflow = 'hidden';
   initDateButtons();
   updateModal();
+  gtag('event', 'invite_open', { funnel_step: 0, page_name: 'about' });
   gtag('event', 'modal_open', { event_category: 'funnel', event_label: 'invite_modal' });
   fbq('track', 'InitiateCheckout');
 }
@@ -1550,6 +1551,7 @@ function openInviteModal() {
 function closeModal() {
   document.getElementById('inviteModal').classList.remove('active');
   document.body.style.overflow = '';
+  gtag('event', 'invite_abandon', { funnel_step: currentStep, page_name: 'about' });
   gtag('event', 'modal_close', { event_category: 'funnel', event_label: 'step_' + currentStep });
 }
 
@@ -1605,6 +1607,19 @@ function updateModal() {
 }
 
 function nextStep() {
+  // Step-specific GA4 funnel events (for Funnel Exploration)
+  var stepEvents = {
+    1: 'invite_step1_profile',    // 성별+나이 선택 완료
+    2: 'invite_step2_interests',  // 관심사 선택 완료
+    3: 'invite_step3_region',     // 지역+요일 선택 완료
+    4: 'invite_step4_submit',     // 이름+전화 제출 (핵심 리드)
+    5: 'invite_step5_schedule',   // 통화시간 선택 완료
+    6: 'invite_step6_intro'       // 자기소개 완료
+  };
+  if (stepEvents[currentStep]) {
+    gtag('event', stepEvents[currentStep], { funnel_step: currentStep, page_name: 'about' });
+  }
+
   // Step 4 → 5: 1차 제출 (핵심 리드 확보)
   if (currentStep === 4) {
     submitBasic();
@@ -1726,6 +1741,7 @@ function submitBasic() {
 
 // 2차 제출: Step 6 → Complete (전체 데이터, SMS 안 보냄)
 function submitFull() {
+  gtag('event', 'invite_complete', { funnel_step: 7, page_name: 'about' });
   gtag('event', 'form_complete', { event_category: 'funnel', event_label: 'full_submit' });
   var data = JSON.parse(JSON.stringify(formData));
   data.submitType = 'full';
