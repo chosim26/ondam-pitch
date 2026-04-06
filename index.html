@@ -1491,6 +1491,17 @@ document.querySelectorAll('.chat-row, .chat-left-group, .chat-result').forEach(f
   }, 5000);
 })();
 
+// ===== UTM 파라미터 캡처 =====
+var urlParams = new URLSearchParams(window.location.search);
+var utmData = {
+  utm_source: urlParams.get('utm_source') || '',
+  utm_medium: urlParams.get('utm_medium') || '',
+  utm_campaign: urlParams.get('utm_campaign') || '',
+  utm_content: urlParams.get('utm_content') || '',
+  utm_term: urlParams.get('utm_term') || '',
+  referrer: document.referrer || ''
+};
+
 // ===== Invite Modal Logic =====
 var currentStep = 1;
 var totalSteps = 6;
@@ -1720,6 +1731,12 @@ function sendToSheets(data) {
   payload.region = Array.isArray(payload.region) ? payload.region.join(', ') : payload.region;
   payload.day = Array.isArray(payload.day) ? payload.day.join(', ') : payload.day;
   payload.availableTime = Array.isArray(payload.availableTime) ? payload.availableTime.join(', ') : (payload.availableTime || '');
+  // UTM 유입경로 추가
+  payload.utm_source = utmData.utm_source;
+  payload.utm_medium = utmData.utm_medium;
+  payload.utm_campaign = utmData.utm_campaign;
+  payload.utm_content = utmData.utm_content;
+  payload.referrer = utmData.referrer;
   fetch(GOOGLE_SHEET_WEBHOOK, {
     method: 'POST', mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
