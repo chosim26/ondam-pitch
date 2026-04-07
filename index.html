@@ -565,6 +565,109 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     }
   }
 
+  /* ===== Founder Story ===== */
+  .founder-story {
+    position: relative;
+    padding: 64px 24px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .founder-bg {
+    position: absolute; inset: 0;
+    display: flex;
+  }
+  .founder-bg-half {
+    flex: 1;
+    background-size: cover;
+    background-position: center 15%;
+  }
+  .founder-bg-half:first-child { background-image: url('/sim-headshot2.jpg'); }
+  .founder-bg-half:last-child { background-image: url('/founder-headshot.jpg'); }
+  .founder-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg,
+      rgba(255,249,247,0.75) 0%,
+      rgba(255,245,245,0.82) 50%,
+      rgba(255,249,247,0.88) 100%);
+  }
+  .founder-story-inner {
+    position: relative; z-index: 1;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .founder-quote {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.6;
+    color: #1A1A1A;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+  .founder-stories-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .story-card {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: left;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .story-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .story-card-photo {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,107,107,0.2);
+  }
+  .story-card-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1A1A1A;
+  }
+  .story-card-role {
+    font-size: 11px;
+    color: #aaa;
+  }
+  .story-card-text {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #777;
+  }
+  .story-card-text em {
+    color: #1A1A1A;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .founder-closing {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+  .founder-closing strong {
+    color: #1A1A1A;
+    font-weight: 700;
+  }
+
+  @media (max-width: 480px) {
+    .founder-quote { font-size: 18px; }
+    .founder-story { padding: 52px 16px; }
+    .founder-stories-grid { gap: 10px; }
+    .story-card { padding: 16px; }
+    .story-card-text { font-size: 13px; }
+  }
+
   /* ===== Desktop optimization ===== */
   @media (min-width: 769px) {
     .hero { align-items: center; padding-top: 0; }
@@ -1118,6 +1221,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </div>
+
+<!-- Founder Story Section -->
+<section class="founder-story">
+  <div class="founder-bg">
+    <div class="founder-bg-half"></div>
+    <div class="founder-bg-half"></div>
+  </div>
+  <div class="founder-story-inner anim-fade-up">
+    <p class="founder-quote">
+      부모님에게<br>좋은 친구가 생겼으면 했습니다.
+    </p>
+    <div class="founder-stories-grid">
+      <div class="story-card">
+        <div class="story-card-header">
+          <img src="/sim-headshot2.jpg" alt="심규헌" class="story-card-photo" style="object-position: center 20%;">
+          <div>
+            <div class="story-card-name">규헌</div>
+            <div class="story-card-role">Co-founder · 기술</div>
+          </div>
+        </div>
+        <div class="story-card-text">
+          아버지가 돌아가시고 어머니가 혼자 계세요. 서울로 올라와 곁에 있어드리지도 못하는데, 연락하고 지내시는 친구도 없고. <em>좋은 친구가 한 명이라도 계셨다면.</em>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-card-header">
+          <img src="/founder-headshot.jpg" alt="조유태" class="story-card-photo" style="object-position: center 10%;">
+          <div>
+            <div class="story-card-name">유태</div>
+            <div class="story-card-role">Co-founder · 서비스 & 브랜드</div>
+          </div>
+        </div>
+        <div class="story-card-text">
+          주말에 나가면 부모님은 늘 TV 앞에 계셨어요. 연락하는 친구도 점점 줄고. <em>외로움이 비단 젊은 세대만의 문제는 아니더라구요.</em>
+        </div>
+      </div>
+    </div>
+    <p class="founder-closing">
+      좋은 친구, 좋은 곳, 좋은 시간.<br>
+      <strong>부모님께 드리고 싶은 것들을 담았습니다.</strong>
+    </p>
+  </div>
+</section>
 
 <!-- Children Section -->
 <div class="children-bg">
