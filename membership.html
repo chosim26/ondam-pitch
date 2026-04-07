@@ -137,13 +137,16 @@ body {
 .photo-strip-inner {
   display:flex;
   gap:12px;
-  padding:0 24px;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
+  width:max-content;
+  animation:stripScroll 25s linear infinite;
 }
-.photo-strip-inner::-webkit-scrollbar { display:none; }
+.photo-strip:hover .photo-strip-inner {
+  animation-play-state:paused;
+}
+@keyframes stripScroll {
+  0% { transform:translateX(0); }
+  100% { transform:translateX(-50%); }
+}
 .photo-strip-item {
   flex-shrink:0;
   width:140px; height:140px;
@@ -615,6 +618,15 @@ body {
     <div class="photo-strip-item"><img src="/photos/F_011_013.jpg" alt=""></div>
     <div class="photo-strip-item"><img src="/photos/F_019_010.jpg" alt=""></div>
     <div class="photo-strip-item"><img src="/photos/F_003_013.jpg" alt=""></div>
+    <!-- duplicate for seamless loop -->
+    <div class="photo-strip-item"><img src="/photos/Gemini_Generated_Image_vnzf3lvnzf3lvnzf.jpg" alt=""></div>
+    <div class="photo-strip-item"><img src="/photos/F_010_013.jpg" alt=""></div>
+    <div class="photo-strip-item"><img src="/photos/F_015_003.jpg" alt=""></div>
+    <div class="photo-strip-item"><img src="/photos/F_008_005.jpg" alt=""></div>
+    <div class="photo-strip-item"><img src="/photos/F_014_003.jpg" alt=""></div>
+    <div class="photo-strip-item"><img src="/photos/F_011_013.jpg" alt=""></div>
+    <div class="photo-strip-item"><img src="/photos/F_019_010.jpg" alt=""></div>
+    <div class="photo-strip-item"><img src="/photos/F_003_013.jpg" alt=""></div>
   </div>
   <div class="photo-strip-label">온담 회원님들의 일상</div>
 </div>
@@ -880,16 +892,6 @@ if (quoteSlides.length > 0 && quoteDots) {
   }, 4000);
 }
 
-// Auto-scroll photo strip
-const strip = document.querySelector('.photo-strip-inner');
-if (strip) {
-  let scrollDir = 1;
-  setInterval(() => {
-    if (strip.scrollLeft >= strip.scrollWidth - strip.clientWidth - 10) scrollDir = -1;
-    if (strip.scrollLeft <= 10) scrollDir = 1;
-    strip.scrollBy({ left: 1 * scrollDir, behavior:'smooth' });
-  }, 50);
-}
 </script>
 </body>
 </html>
