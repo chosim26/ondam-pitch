@@ -17,13 +17,14 @@
 var CONFIG = {
   SHEET_NAME: '초대장신청',
   NOTIFY_EMAIL: 'youxo@chosim.me',
-  SLACK_WEBHOOK: '',  // ← Apps Script에 붙여넣은 후 여기에 Slack Webhook URL 입력
+  SLACK_WEBHOOK: '',  // ← Apps Script에 직접 입력 (GitHub 시크릿 보호)  // ← Apps Script에 붙여넣은 후 여기에 Slack Webhook URL 입력
   HEADERS: [
     'submitted_at', 'submit_type',
     'gender', 'age', 'interests', 'region', 'day',
     'name', 'phone',
     'date', 'time',
     'intro', 'available_time',
+    'utm_source',
     'status'
   ],
   HEADER_LABELS: [
@@ -32,6 +33,7 @@ var CONFIG = {
     '이름', '전화번호',
     '통화희망일', '통화희망시간',
     '자기소개', '참여가능시간대',
+    '유입매체',
     '상태'
   ]
 };
@@ -43,7 +45,7 @@ var SOLAPI = {
   SENDER: '01051751360',
   BASE_URL: 'https://api.solapi.com',
   KAKAO_PFID: 'KA01PF260325052824245x3NAqMark6X',
-  KAKAO_TEMPLATE_ID: ''  // 솔라피에서 템플릿 등록 후 ID 입력 (비어있으면 SMS 폴백)
+  KAKAO_TEMPLATE_ID: 'KA01TP260405133643673mJRuwMGQE15'  // 솔라피에서 템플릿 등록 후 ID 입력 (비어있으면 SMS 폴백)
 };
 
 // ===== 최초 1회 실행: 시트 초기화 + 권한 승인 =====
@@ -107,6 +109,7 @@ function doPost(e) {
       data.time || '',
       data.intro || '',
       Array.isArray(data.availableTime) ? data.availableTime.join(', ') : (data.availableTime || ''),
+      data.utm_source || '',
       '신규'
     ];
 
