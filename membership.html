@@ -17,12 +17,13 @@ gtag('js',new Date());gtag('config','G-JSNVDKKX6Q');
 </script>
 <style>
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
-/* Pretendard only — no serif */
 
 :root {
   --brand: #FF6B6B;
   --brand-dark: #E85555;
   --brand-light: #FFE4E4;
+  --gold: #C9A96E;
+  --gold-light: #F5ECD7;
   --bg: #FFFFFF;
   --bg-warm: #FDF8F6;
   --bg-section: #F9F5F2;
@@ -65,13 +66,12 @@ body {
   transition:opacity 1.5s ease-in-out;
 }
 .hero-bg img.active { opacity:1; }
-/* 다층 그라데이션 오버레이 — 상단 로고 가독성 + 하단 카피 가독성 + 브랜드 틴트 */
 .hero-bg::after {
   content:'';
   position:absolute; inset:0; z-index:1;
   background:
-    linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 30%),
-    linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 70%),
+    linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 30%),
+    linear-gradient(0deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 70%),
     linear-gradient(135deg, rgba(255,107,107,0.12) 0%, transparent 60%);
 }
 .hero-logo {
@@ -126,6 +126,43 @@ body {
 @keyframes fadeUp {
   from { opacity:0; transform:translateY(24px); }
   to { opacity:1; transform:translateY(0); }
+}
+
+/* ===== Photo Strip ===== */
+.photo-strip {
+  padding:28px 0;
+  overflow:hidden;
+  background:var(--bg);
+}
+.photo-strip-inner {
+  display:flex;
+  gap:12px;
+  padding:0 24px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.photo-strip-inner::-webkit-scrollbar { display:none; }
+.photo-strip-item {
+  flex-shrink:0;
+  width:140px; height:140px;
+  border-radius:20px;
+  overflow:hidden;
+  scroll-snap-align:start;
+  position:relative;
+}
+.photo-strip-item img {
+  width:100%; height:100%; object-fit:cover;
+  transition:transform 0.4s;
+}
+.photo-strip-item:hover img { transform:scale(1.05); }
+.photo-strip-label {
+  text-align:center;
+  font-size:13px;
+  color:var(--text-tertiary);
+  margin-top:12px;
+  letter-spacing:0.5px;
 }
 
 /* ===== Sections ===== */
@@ -202,6 +239,43 @@ body {
 .feature-title { font-size:18px; font-weight:800; margin-bottom:4px; }
 .feature-desc { font-size:15px; color:var(--text-secondary); line-height:1.6; }
 
+/* ===== Full-width Photo Break ===== */
+.photo-break {
+  position:relative;
+  height:320px;
+  overflow:hidden;
+}
+.photo-break img {
+  width:100%; height:100%;
+  object-fit:cover;
+  object-position:center 35%;
+}
+.photo-break::after {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    linear-gradient(0deg, var(--bg) 0%, transparent 20%),
+    linear-gradient(180deg, var(--bg) 0%, transparent 20%),
+    linear-gradient(0deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 100%);
+}
+.photo-break-text {
+  position:absolute;
+  bottom:0; left:0; right:0;
+  z-index:2;
+  text-align:center;
+  padding:0 24px 32px;
+}
+.photo-break-text span {
+  display:inline-block;
+  background:white;
+  padding:10px 24px;
+  border-radius:999px;
+  font-size:15px;
+  font-weight:700;
+  color:var(--text-primary);
+  box-shadow:0 4px 20px rgba(0,0,0,0.1);
+}
+
 /* ===== Trust Grid ===== */
 .trust-grid {
   display:grid;
@@ -225,75 +299,167 @@ body {
 .trust-label { font-size:16px; font-weight:800; margin-bottom:4px; }
 .trust-desc { font-size:13px; color:var(--text-tertiary); line-height:1.5; }
 
-/* ===== Price Card ===== */
-.price-card {
-  background:linear-gradient(160deg, var(--bg-warm) 0%, #fff 40%, var(--bg-warm) 100%);
-  border-radius:20px;
-  padding:40px 28px;
+/* ===== Member Faces ===== */
+.member-faces {
+  display:flex;
+  justify-content:center;
+  gap:0;
+  margin:20px 0 8px;
+}
+.member-face {
+  width:48px; height:48px;
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid white;
+  margin-left:-12px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+.member-face:first-child { margin-left:0; }
+.member-face img { width:100%; height:100%; object-fit:cover; }
+.member-count {
+  width:48px; height:48px;
+  border-radius:50%;
+  background:var(--brand);
+  color:white;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:800;
+  margin-left:-12px;
+  border:3px solid white;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+.member-faces-label {
   text-align:center;
-  border:2px solid var(--brand-light);
+  font-size:13px;
+  color:var(--text-tertiary);
+  margin-top:4px;
+}
+
+/* ===== Premium Price Card ===== */
+.price-card {
+  background:linear-gradient(160deg, #FFF9F0 0%, #fff 30%, #FFF5F5 60%, #fff 100%);
+  border-radius:24px;
+  padding:0;
+  text-align:center;
+  border:1.5px solid rgba(201,169,110,0.25);
   position:relative;
   overflow:hidden;
-  box-shadow:0 12px 40px rgba(255,107,107,0.1);
+  box-shadow:0 16px 48px rgba(0,0,0,0.08), 0 2px 8px rgba(201,169,110,0.15);
 }
-.price-card::before {
-  content:'';
-  position:absolute; top:-60px; right:-60px;
-  width:160px; height:160px;
-  border-radius:50%;
-  background:var(--brand-light);
-  opacity:0.35;
+.price-card-header {
+  background:linear-gradient(135deg, #2C2C2C 0%, #1A1A1A 100%);
+  padding:28px 28px 24px;
+  color:white;
+  position:relative;
+  overflow:hidden;
 }
-.price-card::after {
+.price-card-header::before {
   content:'';
-  position:absolute; bottom:-40px; left:-40px;
-  width:100px; height:100px;
+  position:absolute; top:-30px; right:-30px;
+  width:120px; height:120px;
   border-radius:50%;
-  background:var(--brand-light);
-  opacity:0.2;
+  background:linear-gradient(135deg, var(--gold) 0%, rgba(201,169,110,0.3) 100%);
+  opacity:0.15;
+}
+.price-card-header::after {
+  content:'';
+  position:absolute; bottom:-20px; left:-20px;
+  width:80px; height:80px;
+  border-radius:50%;
+  background:var(--brand);
+  opacity:0.08;
 }
 .price-badge {
   display:inline-block;
-  background:var(--brand);
-  color:white;
-  padding:8px 20px;
+  background:linear-gradient(135deg, var(--gold) 0%, #D4B87A 100%);
+  color:#1A1A1A;
+  padding:6px 16px;
   border-radius:999px;
-  font-size:14px;
-  font-weight:700;
-  margin-bottom:20px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:0.5px;
+  margin-bottom:16px;
   position:relative;
 }
+.price-card-title {
+  font-size:20px;
+  font-weight:800;
+  margin-bottom:4px;
+  position:relative;
+}
+.price-card-subtitle {
+  font-size:14px;
+  color:rgba(255,255,255,0.5);
+  position:relative;
+}
+.price-card-body {
+  padding:32px 28px 36px;
+}
+.price-amount-row {
+  display:flex;
+  align-items:baseline;
+  justify-content:center;
+  gap:4px;
+  margin-bottom:4px;
+}
+.price-original {
+  font-size:18px;
+  color:var(--text-tertiary);
+  text-decoration:line-through;
+  font-weight:500;
+}
 .price-amount {
-  font-size:44px;
+  font-size:48px;
   font-weight:900;
   color:var(--text-primary);
   line-height:1;
-  position:relative;
 }
-.price-amount span { font-size:20px; font-weight:700; }
+.price-amount span { font-size:22px; font-weight:700; }
 .price-per {
-  font-size:15px;
+  font-size:14px;
   color:var(--text-tertiary);
-  margin-top:4px;
   margin-bottom:28px;
+}
+.price-divider {
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(201,169,110,0.3), transparent);
+  margin:0 0 24px;
 }
 .price-includes {
   text-align:left;
-  display:flex; flex-direction:column; gap:12px;
-  position:relative;
+  display:flex; flex-direction:column; gap:14px;
 }
 .price-item {
   display:flex; align-items:center; gap:12px;
   font-size:16px; font-weight:600;
 }
+.price-item.highlight {
+  font-weight:800;
+  color:var(--brand-dark);
+  font-size:17px;
+}
 .price-check {
-  width:24px; height:24px;
+  width:26px; height:26px;
   border-radius:50%;
   background:var(--brand-light);
   color:var(--brand);
   display:flex; align-items:center; justify-content:center;
   font-size:13px; font-weight:900;
   flex-shrink:0;
+}
+.price-item.highlight .price-check {
+  background:var(--brand);
+  color:white;
+}
+.price-unlimited-tag {
+  display:inline-block;
+  background:linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+  color:white;
+  font-size:11px;
+  font-weight:800;
+  padding:3px 8px;
+  border-radius:6px;
+  margin-left:6px;
+  letter-spacing:0.3px;
 }
 
 /* ===== Divider ===== */
@@ -304,8 +470,6 @@ body {
   background:linear-gradient(90deg, transparent 0%, var(--brand-light) 30%, var(--brand) 50%, var(--brand-light) 70%, transparent 100%);
   opacity:0.4;
 }
-
-/* Sticky CTA removed — this is an info page, not a landing page */
 
 /* ===== Quote ===== */
 .quote-section {
@@ -346,6 +510,22 @@ body {
   position:relative;
 }
 
+/* ===== Guarantee Banner ===== */
+.guarantee {
+  background:linear-gradient(135deg, #FFF5F5 0%, #FFF 50%, #FFF5F5 100%);
+  border:1.5px solid var(--brand-light);
+  border-radius:20px;
+  padding:28px 24px;
+  text-align:center;
+  margin:0 24px;
+  max-width:calc(var(--content-width) - 48px);
+  margin-left:auto;
+  margin-right:auto;
+}
+.guarantee-icon { font-size:36px; margin-bottom:8px; }
+.guarantee-title { font-size:18px; font-weight:800; margin-bottom:6px; }
+.guarantee-desc { font-size:14px; color:var(--text-secondary); line-height:1.6; }
+
 /* ===== Footer ===== */
 .footer {
   text-align:center;
@@ -369,6 +549,8 @@ body {
   .moim-grid { grid-template-columns:repeat(4, 1fr); }
   .trust-grid { grid-template-columns:repeat(4, 1fr); }
   .quote-text { font-size:26px; }
+  .photo-strip-item { width:180px; height:180px; }
+  .photo-break { height:400px; }
 }
 </style>
 </head>
@@ -377,14 +559,14 @@ body {
 <!-- Hero -->
 <div class="hero">
   <div class="hero-bg">
-    <img src="/photos/Gemini_Generated_Image_a5a18a5a18a5a18a.jpg" class="active" alt="">
-    <img src="/photos/Gemini_Generated_Image_eysx82eysx82eysx (1).jpg" alt="">
+    <img src="/photos/F_024_010.jpg" class="active" alt="">
+    <img src="/photos/F_008_005.jpg" alt="">
+    <img src="/photos/Gemini_Generated_Image_a5a18a5a18a5a18a.jpg" alt="">
+    <img src="/photos/F_014_003.jpg" alt="">
     <img src="/photos/Gemini_Generated_Image_kbkmlnkbkmlnkbkm.jpg" alt="">
-    <img src="/photos/F_007_003.jpg" alt="">
+    <img src="/photos/F_010_013.jpg" alt="">
     <img src="/photos/Gemini_Generated_Image_vnzf3lvnzf3lvnzf.jpg" alt="">
-    <img src="/photos/F_001_003.jpg" alt="">
-    <img src="/photos/F_011_010.jpg" alt="">
-    <img src="/photos/F_009_003.jpg" alt="">
+    <img src="/photos/F_015_003.jpg" alt="">
   </div>
   <div class="hero-logo"><img src="/logo.png" alt="온담"></div>
   <div class="hero-content">
@@ -393,9 +575,25 @@ body {
   </div>
   <div class="hero-bottom-cta">
     <button onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">
-      아래로 스크롤 <span>↓</span>
+      멤버십 알아보기
     </button>
+    <div class="hero-cta-sub">가입 즉시 이번 주 모임 참석 가능</div>
   </div>
+</div>
+
+<!-- Member Photo Strip -->
+<div class="photo-strip reveal">
+  <div class="photo-strip-inner">
+    <div class="photo-strip-item"><img src="/photos/F_024_010.jpg" alt=""></div>
+    <div class="photo-strip-item"><img src="/photos/F_010_013.jpg" alt=""></div>
+    <div class="photo-strip-item"><img src="/photos/F_015_003.jpg" alt=""></div>
+    <div class="photo-strip-item"><img src="/photos/F_008_005.jpg" alt=""></div>
+    <div class="photo-strip-item"><img src="/photos/F_014_003.jpg" alt=""></div>
+    <div class="photo-strip-item"><img src="/photos/F_011_013.jpg" alt=""></div>
+    <div class="photo-strip-item"><img src="/photos/F_019_010.jpg" alt=""></div>
+    <div class="photo-strip-item"><img src="/photos/F_003_013.jpg" alt=""></div>
+  </div>
+  <div class="photo-strip-label">온담 회원님들의 일상</div>
 </div>
 
 <!-- Quote -->
@@ -435,7 +633,13 @@ body {
   </div>
 </div>
 
-<div class="divider"></div>
+<!-- Photo Break: 행복한 모습 -->
+<div class="photo-break reveal">
+  <img src="/photos/Gemini_Generated_Image_a5a18a5a18a5a18a.jpg" alt="">
+  <div class="photo-break-text">
+    <span>매주 새로운 사람, 새로운 이야기</span>
+  </div>
+</div>
 
 <!-- 진행 방식 -->
 <div class="section reveal">
@@ -513,22 +717,84 @@ body {
   <div class="quote-source">— 온담 회원 이OO님 (52세)</div>
 </div>
 
+<!-- Photo Break 2 -->
+<div class="photo-break reveal">
+  <img src="/photos/F_024_010.jpg" alt="">
+  <div class="photo-break-text">
+    <span>벚꽃 나들이, 등산, 맛집 탐방까지</span>
+  </div>
+</div>
+
 <!-- 가격 -->
 <div class="section reveal" id="pricing">
   <div class="section-label">MEMBERSHIP</div>
-  <div class="section-title">멤버십 가입하면<br>바로 모임 시작</div>
-  <div class="section-desc">가입 즉시 이번 주 온보딩 모임에 참석할 수 있어요.</div>
+  <div class="section-title">온담 멤버십,<br>한 번에 전부 누리세요</div>
+  <div class="section-desc">가입 즉시 이번 주 모임에 참석할 수 있어요.<br>횟수 제한 없이, 원하는 모임 전부.</div>
+
+  <!-- Member Faces -->
+  <div class="member-faces">
+    <div class="member-face"><img src="/photos/F_024_010.jpg" alt=""></div>
+    <div class="member-face"><img src="/photos/F_010_013.jpg" alt=""></div>
+    <div class="member-face"><img src="/photos/F_015_003.jpg" alt=""></div>
+    <div class="member-face"><img src="/photos/F_014_003.jpg" alt=""></div>
+    <div class="member-face"><img src="/photos/F_008_005.jpg" alt=""></div>
+    <div class="member-count">+50</div>
+  </div>
+  <div class="member-faces-label">이미 함께하고 있는 회원님들</div>
+
+  <div style="height:24px;"></div>
+
   <div class="price-card reveal">
-    <div class="price-badge">온보딩 모임 포함</div>
-    <div class="price-amount">20,000<span>원</span></div>
-    <div class="price-per">멤버십 가입비 (1회)</div>
-    <div class="price-includes">
-      <div class="price-item"><div class="price-check">✓</div>온보딩 모임 바로 참석</div>
-      <div class="price-item"><div class="price-check">✓</div>앞으로 열리는 모임 계속 참여</div>
-      <div class="price-item"><div class="price-check">✓</div>등산·맛집·독서·여행 원하는 모임 선택</div>
-      <div class="price-item"><div class="price-check">✓</div>담당 코디 1:1 배정</div>
-      <div class="price-item"><div class="price-check">✓</div>모임 장소·시간 전부 세팅</div>
+    <div class="price-card-header">
+      <div class="price-badge">ONDAM MEMBERSHIP</div>
+      <div class="price-card-title">프리미엄 올인원 멤버십</div>
+      <div class="price-card-subtitle">모든 모임, 횟수 제한 없이</div>
     </div>
+    <div class="price-card-body">
+      <div class="price-amount-row">
+        <span class="price-original">50,000원</span>
+      </div>
+      <div class="price-amount">20,000<span>원</span></div>
+      <div class="price-per">첫 달 특별가 (1회 가입비)</div>
+      <div class="price-divider"></div>
+      <div class="price-includes">
+        <div class="price-item highlight">
+          <div class="price-check">✓</div>
+          모든 모임 무제한 참석
+          <span class="price-unlimited-tag">UNLIMITED</span>
+        </div>
+        <div class="price-item">
+          <div class="price-check">✓</div>
+          등산·맛집·독서·여행 원하는 모임 선택
+        </div>
+        <div class="price-item">
+          <div class="price-check">✓</div>
+          온보딩 모임 바로 참석
+        </div>
+        <div class="price-item">
+          <div class="price-check">✓</div>
+          담당 코디 1:1 배정
+        </div>
+        <div class="price-item">
+          <div class="price-check">✓</div>
+          모임 장소·시간 전부 세팅
+        </div>
+        <div class="price-item">
+          <div class="price-check">✓</div>
+          신규 회원 전용 모임 우선 배정
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 만족 보장 -->
+<div class="guarantee reveal" style="margin-bottom:40px;">
+  <div class="guarantee-icon">💝</div>
+  <div class="guarantee-title">첫 모임 만족 보장</div>
+  <div class="guarantee-desc">
+    첫 모임 후 만족하지 않으시면<br>
+    가입비 전액 환불해 드립니다.
   </div>
 </div>
 
@@ -565,7 +831,16 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// No sticky CTA — info page
+// Auto-scroll photo strip
+const strip = document.querySelector('.photo-strip-inner');
+if (strip) {
+  let scrollDir = 1;
+  setInterval(() => {
+    if (strip.scrollLeft >= strip.scrollWidth - strip.clientWidth - 10) scrollDir = -1;
+    if (strip.scrollLeft <= 10) scrollDir = 1;
+    strip.scrollBy({ left: 1 * scrollDir, behavior:'smooth' });
+  }, 50);
+}
 </script>
 </body>
 </html>
