@@ -579,17 +579,25 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
   .founder-bg-half {
     flex: 1;
     background-size: cover;
-    background-position: center 15%;
+    background-repeat: no-repeat;
   }
-  .founder-bg-half:first-child { background-image: url('/sim-headshot2.jpg'); }
-  .founder-bg-half:last-child { background-image: url('/founder-headshot.jpg'); }
+  .founder-bg-half:first-child {
+    background-image: url('/sim-headshot2.jpg');
+    background-size: 180%;
+    background-position: center 20%;
+  }
+  .founder-bg-half:last-child {
+    background-image: url('/founder-headshot.jpg');
+    background-size: 160%;
+    background-position: center 12%;
+  }
   .founder-bg::after {
     content: '';
     position: absolute; inset: 0;
     background: linear-gradient(180deg,
-      rgba(255,249,247,0.88) 0%,
-      rgba(255,245,245,0.92) 50%,
-      rgba(255,249,247,0.95) 100%);
+      rgba(255,249,247,0.75) 0%,
+      rgba(255,245,245,0.82) 50%,
+      rgba(255,249,247,0.88) 100%);
   }
   .founder-story-inner {
     position: relative; z-index: 1;
