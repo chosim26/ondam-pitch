@@ -135,15 +135,16 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     animation: fadeUp 0.8s ease 0.3s both;
   }
 
-  /* Hero bottom CTA bar — fixed at bottom like LST */
+  /* Hero bottom CTA bar */
   .hero-bottom-cta {
     position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
     padding: 0 20px 28px;
+    padding-bottom: calc(28px + env(safe-area-inset-bottom));
     text-align: center;
   }
   .hero-cta-label {
-    font-size: 15px; color: rgba(255,255,255,0.75);
-    margin-bottom: 12px;
+    font-size: 14px; color: rgba(255,255,255,0.75);
+    margin-bottom: 10px;
     animation: fadeUp 0.8s ease 0.4s both;
     font-weight: 500;
   }
@@ -152,22 +153,24 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     font-weight: 700;
   }
   .hero-bottom-cta button {
-    display: flex; align-items: center; justify-content: center; gap: 10px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
     width: 100%;
     background: var(--brand); color: white; border: none;
-    border-radius: 16px; padding: 22px 0; font-size: 22px; font-weight: 800;
+    border-radius: 14px; padding: 18px 0; font-size: 18px; font-weight: 800;
     cursor: pointer; font-family: inherit;
-    box-shadow: 0 4px 24px rgba(255,107,107,0.5), 0 0 60px rgba(255,107,107,0.2);
+    box-shadow: 0 4px 20px rgba(255,107,107,0.45);
     transition: all 0.3s; animation: fadeUp 0.8s ease 0.5s both;
-    position: relative;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .hero-bottom-cta button:active {
+    transform: scale(0.97);
   }
   .cta-live-badge {
     display: inline-flex; align-items: center; gap: 5px;
     background: #22C55E; color: white;
-    font-size: 12px; font-weight: 800;
-    padding: 4px 10px; border-radius: 999px;
-    letter-spacing: 1px;
-    position: relative;
+    font-size: 11px; font-weight: 800;
+    padding: 3px 8px; border-radius: 999px;
+    letter-spacing: 0.5px;
   }
   .cta-live-badge::before {
     content: '';
@@ -175,15 +178,12 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     background: white;
     animation: pulse 1.5s infinite;
   }
-  .hero-bottom-cta button:hover {
-    background: var(--brand-dark); transform: translateY(-2px);
-  }
   .hero-bottom-cta button .cta-arrow {
-    font-size: 20px; margin-left: 4px;
+    font-size: 18px; margin-left: 2px;
   }
   .hero-cta-sub {
-    font-size: 14px; color: rgba(255,255,255,0.55);
-    margin-top: 12px;
+    font-size: 12px; color: rgba(255,255,255,0.45);
+    margin-top: 8px;
     animation: fadeUp 0.8s ease 0.6s both;
     font-weight: 500;
   }
@@ -684,7 +684,7 @@ src="https://www.facebook.com/tr?id=26764462659812070&ev=PageView&noscript=1"/><
     .hero-desc { font-size: 20px; }
     .hero-bottom-cta { padding: 0 48px 40px; }
     .hero-bottom-cta button { max-width: 480px; margin: 0 auto; font-size: 20px; padding: 20px 0; }
-    .hero-cta-label { font-size: 16px; }
+    .hero-cta-label { font-size: 15px; }
     .hero-cta-sub { font-size: 15px; }
   }
 
@@ -950,7 +950,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero-bottom-cta">
     <p class="hero-cta-label">🔥 4/19(토) 잔여 <strong>27</strong>자리 — 마감 임박</p>
     <button onclick="openInviteModal()">
-      <span class="cta-live-badge">LIVE</span>
+      <span class="cta-live-badge">LIVE</span>&nbsp;
       4/19 토요일 모임 신청하기
       <span class="cta-arrow">&rarr;</span>
     </button>
